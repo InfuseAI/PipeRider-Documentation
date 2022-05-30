@@ -1,67 +1,64 @@
-# What is PrimeHub?
+---
+description: >-
+  PipeRider helps data professionals to assure data quality on time, so they can
+  find data problems easier, save time on debugging, and collaborate on data
+  insights.
+---
 
-**PrimeHub** is a _Kubernetes-based_ platform designed for groups of data scientists. It aims to be an all-in-one, enterprise-level, machine learning platform that provides a seamless MLOps experience.
+# Home
 
-PrimeHub adopts a group-centric design, which accelerates collaborative development. In PrimeHub, scientists can share datasets, artifacts, and seamlessly collaborate on projects in groups. Models can be developed, deployed, and monitored with full control in a transparent group environment.
 
-Using PrimeHub’s granular controls, administrators can configure access control settings, manage resources, and adjust resource quotas for groups - All facilitating efficient resource utilization.
 
-With the addition of 3rd-party app integration, PrimeHub’s capabilities can be augmented on demand, accelerating the machine learning workflow. These 3rd-party apps also benefit from the access control and resource configurability that is available through PrimeHub, making for a true, all-in-one, MLOps solution.
+{% hint style="info" %}
+**Good to know:** providing a brief overview of your product and its core use cases is a great place to start with product docs. Your product might seem obvious to you – you made it! However, to others, even folks who are trying your product after reading your site or getting a sales demo, it can still be unclear. This is your chance to clarify your product and set the right expectations!
+{% endhint %}
+
+Here are a couple of examples of succinct overviews from products with really great docs:
+
+> Loom is a video messaging tool that helps you get your message across through instantly shareable videos.
+>
+> With Loom, you can record your camera, microphone, and desktop simultaneously. Your video is then instantly available to share through Loom's patented technology.
+>
+> — From the [Loom Docs](https://support.loom.com/hc/en-us/articles/360002158057-What-is-Loom-)
+
+> The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.
+>
+> — From the [Mailchimp Marketing API docs](https://mailchimp.com/developer/marketing/docs/fundamentals/)
 
 ## Getting Started
 
-**Got 1 minute?** Check out a video overview of PrimeHub:
+**Got 2 minutes?** Check out a video overview of our product:
 
-{% embed url="https://www.youtube.com/watch?v=PL2J6KPijdw" %}
+{% embed url="https://www.loom.com/share/3bfa83acc9fd41b7b98b803ba9197d90" %}
 
 {% hint style="info" %}
 **Good to know:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at [Loom](https://loom.com) as a perfect example of a succinct feature overview.
 {% endhint %}
 
-### Guides: Jump right in
+### Guides: Get stuck in
 
 Follow our handy guides to get started on the basics as quickly as possible:
 
-{% content-ref url="guides/one-click-install.md" %}
-[one-click-install.md](guides/one-click-install.md)
+{% content-ref url="install-piperider.md" %}
+[install-piperider.md](install-piperider.md)
 {% endcontent-ref %}
 
-{% content-ref url="guides/train-your-first-model.md" %}
-[train-your-first-model.md](guides/train-your-first-model.md)
-{% endcontent-ref %}
-
-{% content-ref url="guides/submit-your-first-job.md" %}
-[submit-your-first-job.md](guides/submit-your-first-job.md)
-{% endcontent-ref %}
-
-{% content-ref url="guides/deploy-your-first-model.md" %}
-[deploy-your-first-model.md](guides/deploy-your-first-model.md)
+{% content-ref url="quick-start.md" %}
+[quick-start.md](quick-start.md)
 {% endcontent-ref %}
 
 {% hint style="info" %}
 **Good to know:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
 {% endhint %}
 
-### Fundamentals: Dive a little deeper
+### The Concepts behind PipeRider
 
-Learn the fundamentals of MyProduct to get a deeper understanding of our main features:
-
-{% content-ref url="fundamentals/projects.md" %}
-[projects.md](fundamentals/projects.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/members.md" %}
-[members.md](fundamentals/members.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/task-lists.md" %}
-[task-lists.md](fundamentals/task-lists.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/tasks.md" %}
-[tasks.md](fundamentals/tasks.md)
-{% endcontent-ref %}
+Learn the fundamentals of PipeRider to get a deeper understanding of our main features:
 
 {% hint style="info" %}
 **Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
 {% endhint %}
+
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
