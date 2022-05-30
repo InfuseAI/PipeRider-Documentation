@@ -1,0 +1,2 @@
+# Firefox rules
+chrome sucks
