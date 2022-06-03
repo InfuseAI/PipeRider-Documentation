@@ -52,7 +52,7 @@ piperider-cli generate-report [Options]
 |`--debug`|none|Shows where the profiling results of the last run are|
 |`--help`|none|List command-line options|
 
-## Compare Reports
+## Compare Report
 
 ```shell
 piperider-cli compare-report [Options]
