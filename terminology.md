@@ -1,9 +1,5 @@
 ---
-description: >-
-  ( not added the descriptions from notion because they will need editing and
-  may change:
-  https://www.notion.so/infuseai/PipeRider-Terminology-cfe67b62a1744749adcd4b340aec61ff
-  )
+reference: https://www.notion.so/infuseai/PipeRider-Terminology-cfe67b62a1744749adcd4b340aec61ff
 ---
 
 # Terminology
