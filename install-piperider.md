@@ -1,12 +1,14 @@
 ---
-description: How to install PipeRider CLI
+description: PipeRider CLI installation
 ---
 
-## PipeRider CLI Installation
+# Installation
 
 ### Requirements
 
+{% hint style="info" %}
 Python 3.8+
+{% endhint %}
 
 ### Install or update the CLI
 
