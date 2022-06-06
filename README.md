@@ -1,39 +1,30 @@
 ---
 description: >-
-  PipeRider helps data professionals to assure data quality on time, so they can
-  find data problems easier, save time on debugging, and collaborate on data
-  insights.
+  PipeRider CLI automates data quality management to provide reliable data
+  products for your users.
 ---
 
 # Home
 
+## What PipeRider CLI is
 
+**PipeRider CLI** is a data quality check tool for data providers (people who generate data) and data consumers (developer, data scientist, data analyst) who want to trust their data by defining the shape of data, so they can ensure the data quality will meet the expectation in the future, save time on debugging data, easily discover & discuss any data problems from upstream, and socially collaborate across teams on the dataset through data catalog and data insights.
 
-{% hint style="info" %}
-**Good to know:** providing a brief overview of your product and its core use cases is a great place to start with product docs. Your product might seem obvious to you – you made it! However, to others, even folks who are trying your product after reading your site or getting a sales demo, it can still be unclear. This is your chance to clarify your product and set the right expectations!
-{% endhint %}
+### Supported Data Sources
 
-Here are a couple of examples of succinct overviews from products with really great docs:
+* Sqlite (by default)
+* Postgres (Optioinal)
+* Snowflake (Optional)
 
-> Loom is a video messaging tool that helps you get your message across through instantly shareable videos.
->
-> With Loom, you can record your camera, microphone, and desktop simultaneously. Your video is then instantly available to share through Loom's patented technology.
->
-> — From the [Loom Docs](https://support.loom.com/hc/en-us/articles/360002158057-What-is-Loom-)
+## What PipeRider CLI isn't
 
-> The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.
->
-> — From the [Mailchimp Marketing API docs](https://mailchimp.com/developer/marketing/docs/fundamentals/)
+## dbt Integration
+
+[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider CLI supports dbt projects. Extra manual configuration is not required. Piperider CLI will search relevant existing dbt-project files and add configurations automatically for you.
 
 ## Getting Started
 
 **Got 2 minutes?** Check out a video overview of our product:
-
-{% embed url="https://www.loom.com/share/3bfa83acc9fd41b7b98b803ba9197d90" %}
-
-{% hint style="info" %}
-**Good to know:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at [Loom](https://loom.com) as a perfect example of a succinct feature overview.
-{% endhint %}
 
 ### Guides: Get stuck in
 
@@ -58,7 +49,3 @@ Learn the fundamentals of PipeRider to get a deeper understanding of our main fe
 {% hint style="info" %}
 **Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
 {% endhint %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
