@@ -1,22 +1,26 @@
 ---
-description: How to download and install PipeRider
+description: How to install PipeRider CLI
 ---
 
-# Install/Update PipeRider CLI
+## PipeRider CLI Installation
 
-Install or update the CLI
+### Requirements
+
+Python 3.8+
+
+### Install or update the CLI
 
 ```shell
 pip install -U piperider-cli
 ```
 
-Verify the version
+### Verify the version
 
 ```shell
 piperider-cli version
 ```
 
-List all of commands
+### List all of commands
 
 ```shell
 piperider-cli --help
