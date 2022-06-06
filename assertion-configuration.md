@@ -59,7 +59,7 @@ your_table_name:
 
 ### assert\_column\_min\_in\_range
 
-* Description: The minimum value of the column must be between `min_value` and `max_value`.
+* Description: The minimum value of the column must be between _min\_value_ and _max\_value_.
 * Assert:
   * `min: [min_value, max_value]`
 * Tags:
@@ -84,7 +84,7 @@ your_table_name:
 
 ### assert\_column\_max\_in\_range
 
-* Description: The maximum value of the column must be between `min_value` and `max_value`.
+* Description: The maximum value of the column must be between _min\_value_ and _max\_value_.
 * Assert_:_
   * `max: [min_value, max_value]`
 * Tags:
@@ -202,7 +202,7 @@ your_table_name:
 
 ### assert\_row\_count
 
-* Description: The row count must be between `min_count` and `max_count`.
+* Description: The row count must be between _min\_count_ and _max\_count_.
 * Assert:
   * `count: [min_count, max_count]`
 * Tags:
