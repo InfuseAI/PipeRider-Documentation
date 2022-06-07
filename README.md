@@ -18,10 +18,6 @@ description: >-
 
 ## What PipeRider CLI isn't
 
-## dbt Integration
-
-[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider CLI supports dbt projects. Extra manual configuration is not required. Piperider CLI will search relevant existing dbt-project files and add configurations automatically for you.
-
 ## Getting Started
 
 **Got 2 minutes?** Check out a video overview of our product:
@@ -42,10 +38,14 @@ Follow our handy guides to get started on the basics as quickly as possible:
 **Good to know:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
 {% endhint %}
 
-### The Concepts behind PipeRider
+## The Concepts behind PipeRider
 
 Learn the fundamentals of PipeRider to get a deeper understanding of our main features:
 
 {% hint style="info" %}
 **Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
 {% endhint %}
+
+### dbt Integration
+
+[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider CLI supports dbt projects. Extra manual configuration is not required. Piperider CLI will search and load the `dbt-project.yml` file into `./piperider/config.yml` when `piperider-cli init` .&#x20;

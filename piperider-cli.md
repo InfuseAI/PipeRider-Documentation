@@ -54,7 +54,7 @@ piperider-cli generate-report [Options]
 | Option    | Argument              | Description                                                    |
 | --------- | --------------------- | -------------------------------------------------------------- |
 | `--input` | path/to/\<table>.json | Generate a report referring to a specified profiling json file |
-| `--debug` | none                  | Shows which run reports refer to and where reports are         |
+| `--debug` | none                  | Enable the debug mode                                          |
 | `--help`  | none                  | List command-line options                                      |
 
 ## Compare Report
@@ -69,7 +69,7 @@ piperider-cli compare-report [Options]
 | --------- | -------- | ---------------------------------------------- |
 | `--base`  | path     | Specify a profiling json as the base           |
 | `--input` | path     | Specify a profiling json comparing to the base |
-| `--debug` | none     | Shows which two reports for the comparison     |
+| `--debug` | none     | Enable the debug mode                          |
 | `--help`  | none     | List command-line options                      |
 
 ## Diagnose Project Configuration

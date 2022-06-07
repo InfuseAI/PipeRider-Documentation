@@ -12,7 +12,7 @@ Piperider CLI supports three types of data sources, _Postgres_, _Snowflake_ and 
 pip install piperider-cli
 ```
 
-### Download Sqlite example database
+### Prepare Sqlite example database
 
 You can use own Sqlite database or download the example database, `sp500.db`.
 
@@ -33,7 +33,7 @@ Prompt for a project name, please type `mydataproj`.
 What is your project name? (alphanumeric only)
 ```
 
-Prompt for a data source, please type `3` for Sqlite.
+Prompt for a data source, please select `sqlite` by ⬆⬇.
 
 ```shell
 What data source would you like to connect to?
@@ -46,7 +46,7 @@ Prompt for the path to the Sqlite database, please type `sp500.db`.
 
 ```shell
 Please enter the following fields for sqlite
-dbpath:
+Path of database file:
 ```
 
 `init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` and others according to the data source type.
