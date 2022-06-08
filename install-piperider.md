@@ -12,15 +12,15 @@ Python 3.8+ Installed
 
 ### Install or update the CLI
 
-PipeRider CLI installation comes with the _**sqlite**_ connector by default.
+Use pip to install or update PipeRider.
 
 ```shell
 pip install -U piperider
 ```
 
-Also, there are supported optional connectors, _**Postgres**_ and _**Snowflake**_.
+PipeRider CLI includes the _**SQLite**_ connector by default. Optional _**PostgreSQL**_ and _**Snowflake** connectors_ are also available.
 
-Install Piperider CLI with specified connectors.
+Install Piperider CLI with required connectors:
 
 {% tabs %}
 {% tab title="Postgres" %}
@@ -42,13 +42,13 @@ pip install piperider[postgres,snowflake]
 {% endtab %}
 {% endtabs %}
 
-### Verify the version
+### View installed PipeRider version
 
 ```shell
 piperider version
 ```
 
-### List all of commands
+### List all available commands
 
 ```shell
 piperider --help

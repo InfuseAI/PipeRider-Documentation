@@ -9,7 +9,7 @@ Piperider CLI supports three types of data sources, _Postgres_, _Snowflake_ and 
 ### Install PipeRider CLI
 
 ```shell
-pip install piperider
+pip install piperider-cli
 ```
 
 ### Prepare Sqlite example database
@@ -24,10 +24,39 @@ curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-
 ### Initiate Data Project
 
 ```shell
-piperider debug
+piperider-cli init
 ```
 
+Prompt for a project name, please type `mydataproj`.
+
 ```
+What is your project name? (alphanumeric only)
+```
+
+Prompt for a data source, please select `sqlite` by ⬆⬇.
+
+```shell
+What data source would you like to connect to?
+1. snowflake
+2. postgres
+3. sqlite
+```
+
+Prompt for the path to the Sqlite database, please type `sp500.db`.
+
+```shell
+Please enter the following fields for sqlite
+Path of database file:
+```
+
+`init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` and others according to the data source type.
+
+### Diagnose Project Configuration
+
+`debug` will diagnose the project configuration.
+
+```
+piperider-cli debug
 
 #Output
 Debugging...
@@ -62,11 +91,11 @@ Check assertion files:
 `run` will profile the data project, check data quality by assertions if any and generate outputs in _`.json`_ for each table in each run under `.piperider/outputs/`. In the example database, there are three tables, _ACTION_, _PRICE_ and _SYMBOL_.
 
 {% hint style="info" %}
-There are no assertions by default.
+There is no assertions by default.
 {% endhint %}
 
 ```shell
-piperider run
+piperider-cli run
 
 #Ouput                                                                                                                    
 DataSource: mydataproj
@@ -135,7 +164,7 @@ Table 'SYMBOL'
 `generate-report` will generate static HTML reports for each table by the profiling result of the latest `run`.
 
 ```shell
-piperider generate-report
+piperider-cli generate-report
 Generating reports from: /path/to/mydataproj/.piperider/outputs/latest
 ──────────────────────────────────────────────────────────────────────────────────────── Reports
 Table 'ACTION' /path/to/mydataproj/.piperider/reports/mydataproj-20220607111429/ACTION.html
