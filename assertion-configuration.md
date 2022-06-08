@@ -1,5 +1,5 @@
 ---
-description: The supported assertions and their usages
+description: The supported assertions and the usages
 ---
 
 # Assertion Configuration
