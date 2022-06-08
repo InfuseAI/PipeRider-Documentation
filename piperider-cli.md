@@ -11,7 +11,7 @@ description: All of commands
 It will generate a `.piperider` directory under your project directory with relevant configuration files.
 
 ```shell
-piperider-cli init [OPTIONS]
+piperider init [OPTIONS]
 ```
 
 | Option               | Argument | Description                                                         |
@@ -31,7 +31,7 @@ Regarding how to configure assertions, please check the [assertion configuration
 {% endhint %}
 
 ```shell
-piperider-cli run [OPTIONS]
+piperider run [OPTIONS]
 ```
 
 | Option              | Argument | Description                                                                      |
@@ -48,7 +48,7 @@ piperider-cli run [OPTIONS]
 `generate-report` will generate static HTML reports at `.piperider/reports/` based on, by default, profiling results of the latest `run`.
 
 ```shell
-piperider-cli generate-report [Options]
+piperider generate-report [Options]
 ```
 
 | Option    | Argument              | Description                                                    |
@@ -62,7 +62,7 @@ piperider-cli generate-report [Options]
 `compare-report` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
 
 ```shell
-piperider-cli compare-report [Options]
+piperider compare-report [Options]
 ```
 
 | Option    | Argument | Description                                    |
@@ -77,5 +77,5 @@ piperider-cli compare-report [Options]
 `debug` shows connections statuses of data sources and checks the current configuration/assertions of the project.
 
 ```shell
-piperider-cli debug
+piperider debug
 ```
