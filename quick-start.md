@@ -282,3 +282,37 @@ Table 'PRICE'  /path/to/dataproject/.piperider/reports/dataproject-2022060711142
 ```
 
 Open the HTML report in the browser to see the profiling and testing results.
+
+### Compare reports
+
+Reports are generated base on one run (profiling result), sometimes, you may want to learn if the data from the data source is changed and what changes are if any. You could execute `piperider run` to have the latest profiling results and generate reports of it.\
+By comparing two reports referring to two different runs, Piperider will generate a report of the comparison for you.
+
+```
+piperider compare-report
+```
+
+You will be prompted to select two reports for the comparison.
+
+```
+#Output
+Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm ):
+   o mydataproj->SYMBOL               #pass=  0 #fail=0   #row=505      #column=11  2022-06-09T21:29:19.309687Z
+   o mydataproj->SYMBOL               #pass=  0 #fail=0   #row=505      #column=11  2022-06-09T21:17:29.178259Z
+   X mydataproj->PRICE                #pass=  0 #fail=0   #row=157881   #column=11  2022-06-09T21:29:19.309687Z
+   X mydataproj->PRICE                #pass=  0 #fail=0   #row=157881   #column=11  2022-06-09T21:17:29.178259Z
+   o mydataproj->ACTION               #pass=  0 #fail=0   #row=1960     #column=4   2022-06-09T21:29:19.309687Z
+ > o mydataproj->ACTION               #pass=  0 #fail=0   #row=1960     #column=4   2022-06-09T21:17:29.178259Z
+```
+
+Piperider will generate a HTML report of the comparison.
+
+```
+Selected reports:
+  Base:  /path/to/dataproject/.piperider/outputs/dataproject-20220609212919/PRICE.json
+  Input: /path/to/dataproject/.piperider/outputs/dataproject-20220609211729/PRICE.json
+
+Comparison report: /path/to/dataproject/.piperider/comparisons/dataproject-PRICE-20220609214450/index.html
+```
+
+Again, open the HTML report in the browser to see if any change.
