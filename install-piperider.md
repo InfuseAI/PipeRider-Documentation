@@ -53,3 +53,5 @@ piperider version
 ```shell
 piperider --help
 ```
+
+Check PipeRider CLI for the detail of the commands.
