@@ -4,7 +4,7 @@ Piperider CLI supports three types of data sources, _Postgres_, _Snowflake_ and 
 
 ### Before you start
 
-* Python 3.8+ installed
+* Python 3.7+ installed
 
 ### Install PipeRider CLI
 

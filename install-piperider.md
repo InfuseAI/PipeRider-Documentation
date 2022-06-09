@@ -7,7 +7,7 @@ description: PipeRider CLI installation
 ### Requirements
 
 {% hint style="info" %}
-Python 3.8+ Installed
+Python 3.7+ Installed
 {% endhint %}
 
 ### Install or update the CLI

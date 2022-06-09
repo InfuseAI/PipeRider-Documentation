@@ -19,7 +19,7 @@ description: The supported assertions and the usages
 ```yaml
 your_table_name:
   columns:
-    your_column_name:
+    your_coluumn_name:
       tests:
       - name: assert_column_exist
         tags:
