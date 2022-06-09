@@ -96,7 +96,7 @@ Check connections:
 ✅ PASS
 
 Check dbt catalog files:
-  mydataproj: [SKIP] provider is not dbt
+  dataproject: [SKIP] provider is not dbt
 ✅ PASS
 
 Check assertion files:
@@ -153,7 +153,7 @@ profiling [SYMBOL.RECOMMENDATION_KEY] type=VARCHAR(16777216)
 Enter `y` or `yes` to generate an assertion templates for your datasource.
 
 ```bash
-No assertions found for datasource [ mydataproj ]
+No assertions found for datasource [ dataproject ]
 Do you want to auto generate assertion templates for this datasource [yes/no]? y
 ```
 
@@ -163,7 +163,7 @@ An assertion template YAML file for each table will be created under `.piperider
 Generating assertion template for table "ACTION" -> /path/to/dataproject/.piperider/assertions/ACTION.yml
 Generating assertion template for table "PRICE" -> /path/to/dataproject/.piperider/assertions/PRICE.yml
 Generating assertion template for table "SYMBOL" -> /path/to/dataprojectdataproject/.piperider/assertions/SYMBOL.yml
-[Skip] Executing assertion for datasource [ mydataproj ]
+[Skip] Executing assertion for datasource [ dataproject ]
 ──────────────────────────────────────────────────────────────────────────────────────── Summary ─────────────────────────────────────────────────────────────────────────────────────────
 Table 'ACTION'
   4 columns profiled
@@ -274,11 +274,11 @@ piperider generate-report
 
 ```shell
 #Output
-Generating reports from: /path/to/mydataproj/.piperider/outputs/latest
+Generating reports from: /path/to/dataproject/.piperider/outputs/latest
 ──────────────────────────────────────────────────────────────────────────────────────── Reports
-Table 'ACTION' /path/to/mydataproj/.piperider/reports/mydataproj-20220607111429/ACTION.html
-Table 'SYMBOL' /path/to/mydataproj/.piperider/reports/mydataproj-20220607111429/SYMBOL.html
-Table 'PRICE'  /path/to/mydataproj/.piperider/reports/mydataproj-20220607111429/PRICE.html
+Table 'ACTION' /path/to/dataproject/.piperider/reports/dataproject-20220607111429/ACTION.html
+Table 'SYMBOL' /path/to/dataproject/.piperider/reports/dataproject-20220607111429/SYMBOL.html
+Table 'PRICE'  /path/to/dataproject/.piperider/reports/dataproject-20220607111429/PRICE.html
 ```
 
 Open the HTML report in the browser to see the profiling and testing results.
