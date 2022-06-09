@@ -10,7 +10,7 @@ pip install piperider[snowflake]
 
 ## Prepare Credentials of Snowflake
 
-Initiate a Snowflake project by `piperider init`, it requires credentials for Snowflake connection.
+Initiate a project with Snowflake as the data source by `piperider init`, it requires credentials for Snowflake connection.
 
 These information as below are required,&#x20;
 
