@@ -200,7 +200,7 @@ your_table_name:
 
 ## Table Assertion
 
-### assert\_row\_count
+### assert\_row\_count\_in\_range
 
 * Description: The row count must be between _min\_count_ and _max\_count_.
 * Assert:
@@ -214,7 +214,7 @@ your_table_name:
 ```yaml
 your_table_name:
   tests:
-  - name: assert_row_count
+  - name: assert_row_count_in_range
     assert:
       count: [10, 20]
     tags:
