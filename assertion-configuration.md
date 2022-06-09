@@ -19,7 +19,7 @@ description: The supported assertions and the usages
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_exist
         tags:
@@ -46,7 +46,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_in_types
         assert:
@@ -71,7 +71,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_min_in_range
         assert:
@@ -96,7 +96,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_max_in_range
         assert:
@@ -120,7 +120,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_not_null
         tags:
@@ -142,7 +142,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_null
         tags:
@@ -165,7 +165,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_type
         assert:
@@ -189,7 +189,7 @@ your_table_name:
 ```yaml
 your_table_name:
   columns:
-    your_coluumn_name:
+    your_column_name:
       tests:
       - name: assert_column_unique
         tags:
