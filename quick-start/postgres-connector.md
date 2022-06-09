@@ -39,6 +39,6 @@ Schema:
 ```
 
 {% hint style="info" %}
-If you see the message `Please run 'pip install piperider[postgres]' to get the postgres connector`, please run the command.
+If you see the message `Please run 'pip install piperider[postgres]' to get the postgres connector`, it means there is no installed connector. Please run the command to install it.
 {% endhint %}
 

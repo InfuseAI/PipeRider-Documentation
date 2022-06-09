@@ -40,6 +40,6 @@ Schema:
 ```
 
 {% hint style="info" %}
-If you see the message `Please run pip install piperider[snowflake] to get the snowflake connector`, please run the command.
+If you see the message `Please run pip install piperider[snowflake] to get the snowflake connector`,  it means there is no installed connector. Please run the command to install it.
 {% endhint %}
 
