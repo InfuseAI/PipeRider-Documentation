@@ -1,76 +1,95 @@
+---
+description: Get PipeRider up and running quickly with this sample data quality project.
+---
+
 # Quick Start
 
-Piperider CLI supports three types of data sources, _Postgres_, _Snowflake_ and _Sqlite_, here we use Sqlite for the quick-start.
+This quick start guide will show you how to:
+
+* Install PipeRider
+* Initialize a new PipeRider project with SQLite data source
+* Write basic assertions
+* Test your data
+* Generate a data quality report
+
+PipeRider currently supports three data sources - SQLite, _Postgres_, and _Snowflake_.  In this quick start guide we will be using SQLite.
 
 ### Before you start
 
-* Python 3.8+ installed
+Ensure you have the following installed:
 
-### Install PipeRider CLI
+* Python 3.7+
+
+### Install PipeRider via pip
+
+PipeRider can be installed via pip with the following command.
 
 ```shell
 pip install piperider
 ```
 
-### Prepare Sqlite example database
+### Prepare SQLite database
 
-You can use own Sqlite database or download the example database, `sp500.db`.
+Create a directory for the new project then either place your own SQLite database inside or download the sample database below.
 
 ```shell
-mkdir mydataproj && cd mydataproj
+mkdir dataproject && cd dataproject
 curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-started/sp500_20220401.db
 ```
 
-### Initiate Data Project
+### Initialize a new PipeRider project
 
-`init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs.
+The `init` command creates a `.piperider` directory under the current directory where all of the project files will be stored. This includes data source configuration, data quality assertions, data profiling information, and generated report files.
 
 ```shell
 piperider init
 ```
 
-Prompt for a project name, please type `mydataproj`.
+You will be prompted to enter a project name, enter `dataproject`.
 
 ```shell
 What is your project name? (alphanumeric only)
 ```
 
-Prompt for a data source, please select `sqlite` by ⬆⬇.
+Using the arrow keys, select `sqlite` as the desired data source.
 
 ```
 What data source would you like to connect to?
-1. snowflake
-2. postgres
-3. sqlite
+  snowflake
+  postgres
+> sqlite
 ```
 
-Prompt for the path to the Sqlite database, please type `sp500.db` or yours.
+When prompted, enter the name of your SQLite database. If you downloaded the sample database from above enter `sp500.db` .
 
 ```
 Please enter the following fields for sqlite
 Path of database file:
 ```
 
-### Diagnose Project Configuration
+### Verify Project Configuration
+
+Use the `debug` command to check the project settings and ensure that the data source can be connected to.
 
 ```shell
 piperider debug
 ```
 
+Sample output:
+
 ```
-code#Output
 Debugging...
 PipeRider Version: 0.1.3.12
 Check config files:
-  Path/to/mydataproj/.piperider/config.yml: [OK]
+  /path/to/dataproject/.piperider/config.yml: [OK]
 ✅ PASS
 
 Check format of data sources:
-  mydataproj: [OK]
+  dataproject: [OK]
 ✅ PASS
 
 Check connections:
-  Name: mydataproj
+  Name: dataproject 
   Type: sqlite
   Available Tables: ['ACTION', 'PRICE', 'SYMBOL']
   Connection: [OK]
@@ -86,21 +105,20 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-### Profile and check data quality&#x20;
+### Data Profiling
 
-`run` will profile the data project, check data quality by assertions if any and generate outputs in _`.json`_ for each table in each run under `.piperider/outputs/`. In the example database, there are three tables, _ACTION_, _PRICE_ and _SYMBOL_.
+The `run` command will analyze the data source and create a data profile for each table. The data profiles will be used by PipeRider to generate a data quality report in a later step.
 
-{% hint style="info" %}
-There are no assertions by default.
-{% endhint %}
+If an assertions file is present, then the data will be tested against the specified assertions. If no assertions file is present, you will be prompted to generated assertion templates based on the structure of your data source.
 
 ```
-piperider run
+piperider run                                                                                                                 
 ```
+
+Sample output:
 
 ```shell
-#Ouput                                                                                                                    
-DataSource: mydataproj
+DataSource: dataproject
 ─────────────────────────────────────────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────────────────────────────────────────
 fetching metadata
 profiling [ACTION.SYMBOL] type=VARCHAR(16777216)
@@ -132,23 +150,19 @@ profiling [SYMBOL.RECOMMENDATION_KEY] type=VARCHAR(16777216)
 
 ```
 
-Prompt for assertion templates generation, please type `y` or `yes`.
+Enter `y` or `yes` to generate an assertion templates for your datasource.
 
 ```bash
 No assertions found for datasource [ mydataproj ]
 Do you want to auto generate assertion templates for this datasource [yes/no]? y
 ```
 
-It will generate assertion scaffoldings in `.yml` for each table under `.piperider/assertions/`.&#x20;
-
-{% hint style="info" %}
-Regarding how to configure assertions, please check the [assertion configuration](assertion-configuration.md) for the detail.
-{% endhint %}
+An assertion template YAML file for each table will be created under `.piperider/assertions/`.&#x20;
 
 ```shell
-Generating assertion template for table "ACTION" -> /path/to/mydataproj/.piperider/assertions/ACTION.yml
-Generating assertion template for table "PRICE" -> /path/to/mydataproj/.piperider/assertions/PRICE.yml
-Generating assertion template for table "SYMBOL" -> /path/to/mydataproj/.piperider/assertions/SYMBOL.yml
+Generating assertion template for table "ACTION" -> /path/to/dataproject/.piperider/assertions/ACTION.yml
+Generating assertion template for table "PRICE" -> /path/to/dataproject/.piperider/assertions/PRICE.yml
+Generating assertion template for table "SYMBOL" -> /path/to/dataprojectdataproject/.piperider/assertions/SYMBOL.yml
 [Skip] Executing assertion for datasource [ mydataproj ]
 ──────────────────────────────────────────────────────────────────────────────────────── Summary ─────────────────────────────────────────────────────────────────────────────────────────
 Table 'ACTION'
@@ -161,9 +175,98 @@ Table 'SYMBOL'
   11 columns profiled
 ```
 
+### Write basic assertions
+
+In your text editor, open `.piperider/assertions/PRICE.yml` . The auto-generated assertions file will look like this:
+
+```yaml
+# Auto-generated by Piperider CLI based on table "PRICE"
+PRICE:  # Table Name
+  # Test Cases for Table
+  tests: []
+  columns:
+    SYMBOL:  # Column Name
+      # Test Cases for Column
+      tests: []
+    DATE: # Column Name
+      # Test Cases for Column
+      tests: []
+    OPEN: # Column Name
+      # Test Cases for Column
+      tests: []
+    HIGH: # Column Name
+      # Test Cases for Column
+      tests: []
+    LOW: # Column Name
+      # Test Cases for Column
+      tests: []
+    CLOSE: # Column Name
+      # Test Cases for Column
+      tests: []
+...
+```
+
+Edit the `tests` section for the SYMBOL column like so:
+
+```yaml
+    SYMBOL:  # Column Name
+      # Test Cases for Column
+      tests:
+      - name: assert_column_in_types
+        assert:
+          type: [numeric]
+```
+
+Edit the `tests` section for the `OPEN` column like so:
+
+```yaml
+    OPEN: # Column Name
+      # Test Cases for Column
+      tests:
+      - name: assert_column_min_in_range
+        assert:
+          min: [0, 50]
+```
+
+{% hint style="info" %}
+Please check [assertion configuration](assertion-configuration.md) for detailed assertion settings
+{% endhint %}
+
+### Check data quality
+
+Now that you have created some basic assertions, execute the `run` command again to check the quality of your data against the newly updated assertion file.
+
+```
+piperider run
+```
+
+PipeRider will automatically detect the assertions and check the data. The results of the assertion checks will be displayed.
+
+```shell
+───────────────────────────────────────────────── Assertion Results ──────────────────────────────────────────────────
+[FAILED] PRICE.SYMBOL  assert_column_in_types      Expected: {'type': ['numeric']} Actual: string
+[  OK  ] PRICE.OPEN    assert_column_min_in_range  Expected: {'min': [0, 50]} Actual: {'min': 6.78}
+────────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────
+Table 'ACTION'
+  4 columns profiled
+
+Table 'PRICE'
+  11 columns profiled
+  2 test executed
+  1 of 2 tests failed:
+[FAILED] PRICE.SYMBOL  assert_column_in_types  Expected: {'type': ['numeric']} Actual: string
+
+Table 'SYMBOL'
+  11 columns profiled
+```
+
+From the results you can see that the `assert_column_in_types` assertion against the `SYMBOL` column failed as the column type is STRING, and not NUMERIC as we specified.
+
+The `assert_column_min_in_range` assertion passed our assertion of `[0, 50]` with an actual result of `6.78`.
+
 ### Generate a report
 
-`generate-report` will generate static HTML reports for each table by the profiling result of the latest `run`.
+The `generate-report` command will crrate static HTML reports for each table based on the profiling results of the latest `run`.
 
 ```
 piperider generate-report
