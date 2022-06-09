@@ -67,7 +67,7 @@ Please enter the following fields for sqlite
 Path of database file:
 ```
 
-### Verify Project Configuration
+### Verify project configuration
 
 Use the `debug` command to check the project settings and ensure that the data source can be connected to.
 
@@ -105,7 +105,7 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-### Data Profiling
+### Data profiling
 
 The `run` command will analyze the data source and create a data profile for each table. The data profiles will be used by PipeRider to generate a data quality report in a later step.
 
@@ -175,7 +175,7 @@ Table 'SYMBOL'
   11 columns profiled
 ```
 
-### Write basic assertions
+### Data assertions
 
 In your text editor, open `.piperider/assertions/PRICE.yml` . The auto-generated assertions file will look like this:
 
@@ -232,7 +232,7 @@ Edit the `tests` section for the `OPEN` column like so:
 Please check [assertion configuration](assertion-configuration.md) for detailed assertion settings
 {% endhint %}
 
-### Check data quality
+### Data quality check
 
 Now that you have created some basic assertions, execute the `run` command again to check the quality of your data against the newly updated assertion file.
 
@@ -266,7 +266,7 @@ The `assert_column_min_in_range` assertion passed our assertion of `[0, 50]` wit
 
 ### Generate a report
 
-The `generate-report` command will crrate static HTML reports for each table based on the profiling results of the latest `run`.
+The `generate-report` command will create static HTML reports for each table based on the profiling results of the latest `run`.
 
 ```
 piperider generate-report
