@@ -23,6 +23,36 @@ curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-
 
 ### Initiate Data Project
 
+`init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` and others according to user inputs.
+
+```shell
+piperider init
+```
+
+Prompt for a project name, please type `mydataproj`.
+
+```shell
+What is your project name? (alphanumeric only)
+```
+
+Prompt for a data source, please select `sqlite` by ⬆⬇.
+
+```
+What data source would you like to connect to?
+1. snowflake
+2. postgres
+3. sqlite
+```
+
+Prompt for the path to the Sqlite database, please type `sp500.db` or yours.
+
+```
+Please enter the following fields for sqlite
+Path of database file:
+```
+
+### Diagnose Project Configuration
+
 ```shell
 piperider debug
 ```
