@@ -23,7 +23,7 @@ curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-
 
 ### Initiate Data Project
 
-`init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` and others according to user inputs.
+`init` will create a `./piperider` directory and generate a few configuration files inside such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs.
 
 ```shell
 piperider init
