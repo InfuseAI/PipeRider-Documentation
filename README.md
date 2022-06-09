@@ -30,8 +30,8 @@ Follow our handy guides to get started on the basics as quickly as possible:
 [install-piperider.md](install-piperider.md)
 {% endcontent-ref %}
 
-{% content-ref url="quick-start.md" %}
-[quick-start.md](quick-start.md)
+{% content-ref url="quick-start/" %}
+[quick-start](quick-start/)
 {% endcontent-ref %}
 
 {% hint style="info" %}

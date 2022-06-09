@@ -142,7 +142,7 @@ Do you want to auto generate assertion templates for this datasource [yes/no]? y
 It will generate assertion scaffoldings in `.yml` for each table under `.piperider/assertions/`.&#x20;
 
 {% hint style="info" %}
-Regarding how to configure assertions, please check the [assertion configuration](assertion-configuration.md) for the detail.
+Regarding how to configure assertions, please check the [assertion configuration](../assertion-configuration.md) for the detail.
 {% endhint %}
 
 ```shell
