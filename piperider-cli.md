@@ -77,5 +77,5 @@ piperider compare-report [Options]
 `debug` shows connections statuses of data sources and checks the current configuration/assertions of the project.
 
 ```shell
-piperider debug
+piperider diagnose
 ```

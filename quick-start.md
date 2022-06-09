@@ -72,7 +72,7 @@ Path of database file:
 Use the `debug` command to check the project settings and ensure that the data source can be connected to.
 
 ```shell
-piperider debug
+piperider diagnose
 ```
 
 Sample output:
