@@ -5,7 +5,7 @@
 It will install the necessary Postgres connector for Piperider CLI.
 
 ```
-pip install piperider[postgres]
+pip install 'piperider[postgres]'
 ```
 
 ## Prepare Credentials of Postgres

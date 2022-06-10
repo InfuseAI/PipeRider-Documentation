@@ -5,7 +5,7 @@
 It will install the necessary Snowflake connector for Piperider CLI.
 
 ```
-pip install piperider[snowflake]
+pip install 'piperider[snowflake]'
 ```
 
 ## Prepare Credentials of Snowflake

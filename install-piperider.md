@@ -25,19 +25,19 @@ Install Piperider with required connectors:
 {% tabs %}
 {% tab title="Postgres" %}
 ```
-pip install piperider[postgres]
+pip install 'piperider[postgres]'
 ```
 {% endtab %}
 
 {% tab title="Snowflake" %}
 ```
-pip install piperider[snowflake]
+pip install 'piperider[snowflake]'
 ```
 {% endtab %}
 
 {% tab title="Multiple" %}
 ```
-pip install piperider[postgres,snowflake]
+pip install 'piperider[postgres,snowflake]'
 ```
 {% endtab %}
 {% endtabs %}
