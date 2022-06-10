@@ -11,3 +11,7 @@
 
 * [Snowflake Connector](connectors/snowflake-connector.md)
 * [Postgres Connector](connectors/postgres-connector.md)
+
+## 📑 How-To
+
+* [Generate Report](how-to/generate-report.md)
