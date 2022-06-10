@@ -6,9 +6,9 @@ description: >-
 
 # Home
 
-## What PipeRider CLI is
+## What PipeRider is
 
-**PipeRider CLI** is a data quality check tool for data providers (people who generate data) and data consumers (developer, data scientist, data analyst) who want to trust their data by defining the shape of data, so they can ensure the data quality will meet the expectation in the future, save time on debugging data, easily discover & discuss any data problems from upstream, and socially collaborate across teams on the dataset through data catalog and data insights.
+**PipeRider** is a data quality check tool for data providers (people who generate data) and data consumers (developer, data scientist, data analyst) who want to trust their data by defining the shape of data, so they can ensure the data quality will meet the expectation in the future, save time on debugging data, easily discover & discuss any data problems from upstream, and socially collaborate across teams on the dataset through data catalog and data insights.
 
 ### Supported Data Sources
 
@@ -16,7 +16,7 @@ description: >-
 * Postgres (Optioinal)
 * Snowflake (Optional)
 
-## What PipeRider CLI isn't
+## What PipeRider isn't
 
 ## Getting Started
 
@@ -36,4 +36,4 @@ Learn the fundamentals of PipeRider to get a deeper understanding of our main fe
 
 ### dbt Integration
 
-[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider CLI supports dbt projects. Extra manual configuration is not required. Piperider CLI will search and load the `dbt_project.yml` file into `./piperider/config.yml` by default when `piperider-cli init` .&#x20;
+[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider supports dbt projects. Extra manual configuration is not required. Piperider will search and load the `dbt_project.yml` file into `./piperider/config.yml` by default when `piperider-cli init` .&#x20;
