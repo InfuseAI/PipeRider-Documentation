@@ -1,7 +1,7 @@
 ---
 description: >-
-  PipeRider CLI automates data quality management to provide reliable data
-  products for your users.
+  PipeRider automates data quality management to provide reliable data products
+  for your users.
 ---
 
 # Home
