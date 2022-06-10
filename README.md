@@ -1,22 +1,18 @@
 ---
-description: >-
-  PipeRider automates data quality management to provide reliable data products
-  for your users.
+description: PipeRider - Data Reliability, Automated.
 ---
 
 # Home
 
-## What PipeRider is
+## What is PipeRider
 
 **PipeRider** is a data quality check tool for data providers (people who generate data) and data consumers (developer, data scientist, data analyst) who want to trust their data by defining the shape of data, so they can ensure the data quality will meet the expectation in the future, save time on debugging data, easily discover & discuss any data problems from upstream, and socially collaborate across teams on the dataset through data catalog and data insights.
 
 ### Supported Data Sources
 
 * Sqlite (by default)
-* Postgres (Optioinal)
+* Postgres (Optional)
 * Snowflake (Optional)
-
-## What PipeRider isn't
 
 ## Getting Started
 
