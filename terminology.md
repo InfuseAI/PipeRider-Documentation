@@ -1,5 +1,6 @@
 ---
-reference: https://www.notion.so/infuseai/PipeRider-Terminology-cfe67b62a1744749adcd4b340aec61ff
+reference: >-
+  https://www.notion.so/infuseai/PipeRider-Terminology-cfe67b62a1744749adcd4b340aec61ff
 ---
 
 # Terminology
@@ -10,11 +11,19 @@ An entry in the monitoring section, either in the normal or abnormal state.
 
 ### Assertion
 
-Assertion can capture critical aspects of data understanding that analysts and practitioners know based on its semantic meaning.
+Assertion can capture critical aspects of data understanding that analysts and practitioners know based on its semantic meaning.
+
+See also [Custom assertion](terminology.md#custom-assertion).
 
 ### Configuration YAML
 
 A config file describes what test will be run against what column.
+
+### Connector
+
+Enables PipeRider to connect to a variety of data sources, such as SQLite, PostgreSQL, Snowflake etc.
+
+Also know as data source connector.
 
 ### Custom assertion
 
@@ -34,7 +43,7 @@ Provides a standard API for accessing and interacting with data from a wide vari
 
 ### ID Token
 
-An *ID token* is a JWT token issued by Firebase auth. It’s mainly used in a browser and should be invisible to users.
+An _ID token_ is a JWT token issued by Firebase auth. It’s mainly used in a browser and should be invisible to users.
 
 [Verify ID Tokens | Firebase Documentation](https://firebase.google.com/docs/auth/admin/verify-id-tokens)
 
@@ -64,9 +73,8 @@ A web service that can be applied to trigger tests, list test history, view test
 
 ### User API Token
 
-An *user API token* is a 32 characters long string. This is usually the `PIPERIDER_API_KEY` users need to use with our [piperider-python-sdk](https://pypi.org/project/piperider-python-sdk/0.0.1/).
+An _user API token_ is a 32 characters long string. This is usually the `PIPERIDER_API_KEY` users need to use with our [piperider-python-sdk](https://pypi.org/project/piperider-python-sdk/0.0.1/).
 
 We may have other kind of tokens in the future, so to be clear, we call it `user API token` because it represents that user now.
 
 Users can manage their `user API tokens` in the [User Setting page](https://app.piperider.io/settings).
-
