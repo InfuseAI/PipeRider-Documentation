@@ -2,7 +2,7 @@
 description: All of commands
 ---
 
-# PipeRider CLI
+# Command Reference
 
 ## Initialize Project
 
@@ -51,11 +51,11 @@ piperider run [OPTIONS]
 piperider generate-report [Options]
 ```
 
-| Option    | Argument              | Description                                                    |
-| --------- | --------------------- | -------------------------------------------------------------- |
-| `--input` | path/to/\<table>.json | Generate a report referring to a specified profiling json file |
-| `--debug` | none                  | Enable the debug mode                                          |
-| `--help`  | none                  | List command-line options                                      |
+| Option    | Argument              | Description                                                       |
+| --------- | --------------------- | ----------------------------------------------------------------- |
+| `--input` | path/to/\<table>.json | Generate a report referring to a specified profiling `.json` file |
+| `--debug` | none                  | Enable the debug mode                                             |
+| `--help`  | none                  | List command-line options                                         |
 
 ## Compare Report
 
@@ -65,12 +65,12 @@ piperider generate-report [Options]
 piperider compare-report [Options]
 ```
 
-| Option    | Argument | Description                                    |
-| --------- | -------- | ---------------------------------------------- |
-| `--base`  | path     | Specify a profiling json as the base           |
-| `--input` | path     | Specify a profiling json comparing to the base |
-| `--debug` | none     | Enable the debug mode                          |
-| `--help`  | none     | List command-line options                      |
+| Option    | Argument | Description                                       |
+| --------- | -------- | ------------------------------------------------- |
+| `--base`  | path     | Specify a profiling `.json` as the base           |
+| `--input` | path     | Specify a profiling `.json` comparing to the base |
+| `--debug` | none     | Enable the debug mode                             |
+| `--help`  | none     | List command-line options                         |
 
 ## Diagnose Project Configuration
 
