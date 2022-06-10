@@ -1,5 +1,5 @@
 ---
-description: PipeRider CLI installation
+description: How to install PipeRider
 ---
 
 # Installation
@@ -10,7 +10,7 @@ description: PipeRider CLI installation
 Python 3.7+ Installed
 {% endhint %}
 
-### Install or update the CLI
+### Install or update PipeRider
 
 Use pip to install or update PipeRider.
 
@@ -18,9 +18,9 @@ Use pip to install or update PipeRider.
 pip install -U piperider
 ```
 
-PipeRider CLI includes the _**SQLite**_ connector by default. Optional _**Postgres**_ and _**Snowflake** connectors_ are also available.
+PipeRider includes the _**SQLite**_ connector by default. Optional _**Postgres**_ and _**Snowflake** connectors_ are also available.
 
-Install Piperider CLI with required connectors:
+Install Piperider with required connectors:
 
 {% tabs %}
 {% tab title="Postgres" %}
@@ -54,4 +54,4 @@ piperider version
 piperider --help
 ```
 
-Check [PipeRider CLI](piperider-cli.md) for the detail of the commands.
+Check the PipeRider [Command Reference](piperider-cli.md) for a full list of commands and options.
