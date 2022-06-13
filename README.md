@@ -38,6 +38,6 @@ Follow our handy guides to get started on the basics as quickly as possible:
 
 Learn the fundamentals of PipeRider to get a deeper understanding of our main features:
 
-### dbt Integration
 
-[dbt](https://www.getdbt.com/) is a great tool for the data transformation, and yes, Piperider supports dbt projects. Extra manual configuration is not required. Piperider will search and load the `dbt_project.yml` file into `./piperider/config.yml` by default when `piperider-cli init` .&#x20;
+
+(coming soon)

@@ -11,6 +11,7 @@
 
 * [Snowflake Connector](connectors/snowflake-connector.md)
 * [Postgres Connector](connectors/postgres-connector.md)
+* [dbt integration](connectors/dbt-integration.md)
 
 ## 📑 How-To
 
