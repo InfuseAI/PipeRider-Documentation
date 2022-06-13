@@ -283,6 +283,10 @@ Table 'PRICE'  /path/to/dataproject/.piperider/reports/dataproject-2022060711142
 
 Open the HTML report in the browser to see the profiling and testing results.
 
+{% hint style="info" %}
+For other ways of the report generation, please check [How-To: Generate Report](how-to/generate-report.md).
+{% endhint %}
+
 ### Compare reports
 
 Reports are generated base on one run (profiling result), sometimes, you may want to learn if the data from the data source is changed and what changes are if any. You could execute `piperider run` to have the latest profiling results and generate reports of it.\
