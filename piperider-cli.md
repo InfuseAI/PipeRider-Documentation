@@ -27,7 +27,7 @@ piperider init [OPTIONS]
 `run` will profile tables/columns and save profiling results at `.piperider/outputs` for each run. Also, it will check the data quality by assertions at `.piperider/assertions`.
 
 {% hint style="info" %}
-Regarding how to configure assertions, please check the [assertion configuration](data-quality-assertions/assertion-configuration.md) for the detail.
+Regarding how to configure assertions, please check the [assertion configuration](assertion-configuration.md) for the detail.
 {% endhint %}
 
 ```shell

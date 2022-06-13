@@ -17,8 +17,8 @@ PipeRider allows you to define the shape of your data once, and then use the dat
 Out-of-the-box we currently support the following data sources:
 
 * Sqlite (by default)
-* [Postgres](connectors/postgres-connector.md) (Optional)
-* [Snowflake](connectors/snowflake-connector.md) (Optional)
+* [Postgres](data-sources/postgres-connector.md) (Optional)
+* [Snowflake](data-sources/snowflake-connector.md) (Optional)
 
 Use our [Quick Start](quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
 

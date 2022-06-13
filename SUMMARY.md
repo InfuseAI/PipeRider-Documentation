@@ -7,15 +7,15 @@
 * [Project Structure](project-structure.md)
 * [Terminology](terminology.md)
 
-## Connectors
+## Data Sources
 
-* [Snowflake Connector](connectors/snowflake-connector.md)
-* [Postgres Connector](connectors/postgres-connector.md)
-* [dbt Integration](connectors/dbt-integration.md)
+* [dbt Integration](data-sources/dbt-integration.md)
+* [Postgres Connector](data-sources/postgres-connector.md)
+* [Snowflake Connector](data-sources/snowflake-connector.md)
 
 ## Data Quality Assertions
 
-* [Built-In Assertions](data-quality-assertions/assertion-configuration.md)
+* [Built-In Assertions](assertion-configuration.md)
 * [Custom Assertions](data-quality-assertions/custom-assertions.md)
 
 ## 📑 How-To
