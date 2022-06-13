@@ -38,7 +38,7 @@ dbt-related fields are
 
 `piperider run` will automatically
 
-1. Use the corresponding credentials in \~/.dbt/profiles to make the connection.
+1. Use the corresponding credentials in `~/.dbt/profiles` to make the connection.
 2. Parse `./target/catalog.json` and look for the available tables.
 3. Profile and test against these tables.
 
