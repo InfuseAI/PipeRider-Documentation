@@ -27,12 +27,12 @@ dataSources:
 
 dbt-related fields are
 
-| Field       | Description                                          | Required                      |
-| ----------- | ---------------------------------------------------- | ----------------------------- |
-| profile     | which profile to use                                 | Yes                           |
-| target      | which target to use for the given profile            | Yes                           |
-| projectDir  | the path to the directory where `dbt_project.yml` is | Yes                           |
-| profilesDir | the path to the directory where `profiles.yml` is    | `~/.dbt` by default; optional |
+| Field       | Description                                          | Required                                                                                                                              |
+| ----------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| profile     | which profile to use                                 | Yes                                                                                                                                   |
+| target      | which target to use for the given profile            | Yes                                                                                                                                   |
+| projectDir  | the path to the directory where `dbt_project.yml` is | Yes                                                                                                                                   |
+| profilesDir | the path to the directory where `profiles.yml` is    | <p><code>~/.dbt</code> by default; optional<br>It can be overwritten by the environmental variable <code>DBT_PROFILES_DIR</code>.</p> |
 
 ### Under the hood
 
