@@ -25,6 +25,35 @@ Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm )
  > o mydataproj->ACTION               #pass=  0 #fail=0   #row=1960     #column=4   2022-06-09T21:17:29.178259Z
 ```
 
+#### --base
+
+another way is to specify a profiling `.json` as the base by `--base`.
+
+```
+piperider compare-report --base /path/to/dataproject/.piperider/outputs/dataproject-20220609212919/PRICE.json
+```
+
+Then you will be prompted to select a result as the input for the comparison.
+
+```
+#Output
+Please select a report to compare ( SPACE to select, and ENTER to confirm ):
+   o mydataproj->SYMBOL               #pass=  0 #fail=0   #row=505      #column=11  2022-06-09T21:29:19.309687Z
+   o mydataproj->SYMBOL               #pass=  0 #fail=0   #row=505      #column=11  2022-06-09T21:17:29.178259Z
+   X mydataproj->PRICE                #pass=  0 #fail=0   #row=157881   #column=11  2022-06-09T21:29:19.309687Z
+   o mydataproj->PRICE                #pass=  0 #fail=0   #row=157881   #column=11  2022-06-09T21:17:29.178259Z
+   o mydataproj->ACTION               #pass=  0 #fail=0   #row=1960     #column=4   2022-06-09T21:29:19.309687Z
+ > o mydataproj->ACTION               #pass=  0 #fail=0   #row=1960     #column=4   2022-06-09T21:17:29.178259Z
+```
+
+#### --base & --input
+
+Specify two `.json` in the command for the comparison
+
+```shell
+piperider compare-report --base /path/to/<.json> --input /path/to/<.json>
+```
+
 PipeRider will generate an HTML report of the comparison.
 
 ```
