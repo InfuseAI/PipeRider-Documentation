@@ -1,8 +1,14 @@
+---
+description: >-
+  Install PipeRider with the Snowflake connector and connect to a Snowflake data
+  source.
+---
+
 # Snowflake Connector
 
 ## Installation
 
-It will install the necessary Snowflake connector for Piperider CLI.
+Install PipeRider with the Snowflake connector.
 
 ```
 pip install 'piperider[snowflake]'
@@ -10,9 +16,9 @@ pip install 'piperider[snowflake]'
 
 ## Prepare Credentials of Snowflake
 
-Initiate a project with Snowflake as the data source by `piperider init`, it requires credentials for Snowflake connection.
+Initialize a new PipeRider project using `piperider init` and when promoted select Snowflake as the data source.
 
-These information as below are required,&#x20;
+The following information is required.
 
 * Account
 * Username
@@ -40,6 +46,6 @@ Schema:
 ```
 
 {% hint style="info" %}
-If you see the message `Please run pip install piperider[snowflake] to get the snowflake connector`,  it means there is no installed connector. Please run the command to install it.
+If you see the message **`Please run pip install piperider[snowflake] to get the snowflake connector`** this means that the Snowflake connector is not installed. Please follow the [installation instructions](snowflake-connector.md#installation) above.
 {% endhint %}
 

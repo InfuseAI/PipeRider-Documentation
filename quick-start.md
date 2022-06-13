@@ -232,7 +232,7 @@ Edit the `tests` section for the `OPEN` column like so:
 ```
 
 {% hint style="info" %}
-Refer to [assertion configuration](assertion-configuration.md) for detailed assertion settings
+Refer to [assertion configuration](assertion-configuration/) for detailed assertion settings
 {% endhint %}
 
 ### Data quality check

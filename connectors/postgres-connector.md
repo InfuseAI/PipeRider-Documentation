@@ -1,8 +1,14 @@
+---
+description: >-
+  Install PipeRider with the Postgres connector and connect to a Postgres data
+  source.
+---
+
 # Postgres Connector
 
 ## Installation
 
-It will install the necessary Postgres connector for Piperider CLI.
+Install PipeRider with the Postgres connector.
 
 ```
 pip install 'piperider[postgres]'
@@ -10,13 +16,13 @@ pip install 'piperider[postgres]'
 
 ## Prepare Credentials of Postgres
 
-Initiate a project with Postgres as the data source by `piperider init`, it requires credentials for Postgres connection.
+Initialize a new PipeRider project using `piperider init` and when promoted select Postgres as the data source.
 
-These information as below are required/optional,&#x20;
+The following information is required.
 
 * Host URL
 * Port: 5432 (default)
-* Username
+* Username:
 * Password
 * Database
 * Schema (optional)
@@ -29,16 +35,14 @@ What data source would you like to connect to?:
 
 ```
 Please enter the following fields for postgres
-Account:
+Host URL:
 Username:
 Password:
-Role (optional):
 Database:
-Warehouse:
-Schema:
+Schema (optional):
 ```
 
 {% hint style="info" %}
-If you see the message `Please run 'pip install piperider[postgres]' to get the postgres connector`, it means there is no installed connector. Please run the command to install it.
+If you see the message **`Please run 'pip install piperider[postgres]' to get the postgres connector`**, this means that the Postgres connector is not installed. Please follow the [installation instructions](postgres-connector.md#installation) above.
 {% endhint %}
 
