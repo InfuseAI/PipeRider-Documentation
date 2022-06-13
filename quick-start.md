@@ -15,7 +15,7 @@ This quick start guide will show you how to:
 * [Generate a data quality report](quick-start.md#generate-a-report)
 * Next Steps: [Compare reports](quick-start.md#compare-reports)
 
-PipeRider currently supports three data sources - SQLite, _Postgres_, and _Snowflake_.  In this quick start guide we will be using SQLite.
+PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
 
 ### Before you start
 
