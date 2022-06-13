@@ -1,5 +1,5 @@
 ---
-description: The anatomy of a PipeRider project
+description: The anatomy of a PipeRider project.
 ---
 
 # Project Structure
