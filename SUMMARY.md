@@ -16,3 +16,4 @@
 ## 📑 How-To
 
 * [Generate Report](how-to/generate-report.md)
+* [Compare Reports](how-to/compare-reports.md)
