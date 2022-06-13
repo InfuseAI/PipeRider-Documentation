@@ -2,7 +2,7 @@
 description: The supported assertions and the usages
 ---
 
-# Assertion Configuration
+# Built-In Assertions
 
 ## Column Assertion
 
