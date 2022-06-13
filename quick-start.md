@@ -206,7 +206,7 @@ PRICE:  # Table Name
 ...
 ```
 
-Edit the `tests` section for the SYMBOL column like so:
+Edit the `tests` section for the `SYMBOL` column like so:
 
 ```yaml
     SYMBOL:  # Column Name
@@ -260,9 +260,10 @@ Table 'SYMBOL'
   11 columns profiled
 ```
 
-From the results you can see that the `assert_column_in_types` assertion against the `SYMBOL` column failed as the column type is STRING, and not NUMERIC as we specified.
+From the results you can see the following results:
 
-The `assert_column_min_in_range` assertion passed our assertion of `[0, 50]` with an actual result of `6.78`.
+* &#x20;The `assert_column_in_types` assertion against the `SYMBOL` column failed as the column type is `STRING`, and not `NUMERIC` as we specified.
+* The `assert_column_min_in_range` assertion passed our assertion of `[0, 50]` with an actual result of `6.78`.
 
 ### Generate a report
 
@@ -286,6 +287,12 @@ Open the HTML report in the browser to see the profiling and testing results.
 {% hint style="info" %}
 For other ways of the report generation, please check [How-To: Generate Report](how-to/generate-report.md).
 {% endhint %}
+
+
+
+\---
+
+
 
 ### Compare reports
 
