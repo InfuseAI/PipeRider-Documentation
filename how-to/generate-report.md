@@ -6,9 +6,7 @@ description: How to generate reports
 
 A generated report refers to a profiling result in a `.json` which is an artifact by `piperider run`.
 
-So `piperider generate-report` will generate reports based on the results of the latest run by default.
-
-There are also a few ways to generate reports on demand.
+`piperider generate-report` will generate reports based on the results of the latest run by default. Besides, there are also a few ways to generate reports on your demand.
 
 ### Run and generate reports
 
@@ -28,7 +26,7 @@ piperider run --table price --generate-report
 
 ### Generate a report of a specified profile
 
-Every profiling result of a table will be saved at `.piperider/outputs/<each_run>`, you can generate a report of a specified profile.
+Every profiling result of a table will be saved at `.piperider/outputs/<each_run>`, you may just want to generate a report of a specified profile in the history.
 
 E.g. Generate a report of `.piperider/outputs/dataproject-20220610154629/price.json`.
 
