@@ -63,6 +63,10 @@ The system sends a message to the subscribers when an abnormal state happens.
 
 The act of generating metrics and candidate assertion from data.
 
+### Report
+
+TBD
+
 ### Snapshot test
 
 In snapshot test, the initial run of the test saves the state of the current snapshot and compares the results of any consequent test against these saved snapshots to ensure the data persistence.
