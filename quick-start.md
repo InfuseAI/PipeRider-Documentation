@@ -293,14 +293,11 @@ Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods 
 
 ## Next Steps
 
-Once you have generated multiple reports it may be desirable to compare the&#x20;
+Once you have generated multiple reports it may be desirable to compare reports to view how your data has changed over time.
 
 ### Compare reports
 
-Reports are generated base on one run (profiling result), sometimes, you may want to learn if the data from the data source is changed and what changes are if any. You could execute `piperider run` to have the latest profiling results and generate reports of it.
-
-\
-By comparing two reports referring to two different runs, Piperider will generate a report of the comparison for you.
+`compare-report` allows you to compare two different reports by generating a comparison report.
 
 ```
 piperider compare-report
