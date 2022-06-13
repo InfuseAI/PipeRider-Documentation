@@ -5,6 +5,7 @@
 * [Quick Start](quick-start.md)
 * [Command Reference](piperider-cli.md)
 * [Assertion Configuration](assertion-configuration.md)
+* [Custom Assertions](custom-assertions.md)
 * [Project Structure](project-structure.md)
 * [Terminology](terminology.md)
 
