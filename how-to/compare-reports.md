@@ -48,7 +48,7 @@ Please select a report to compare ( SPACE to select, and ENTER to confirm ):
 
 #### --base & --input
 
-Specify two `.json` in the command for the comparison
+Specify two `.json` in the command for the comparison, one as `--base`, the other as `--input`.
 
 ```shell
 piperider compare-report --base /path/to/<.json> --input /path/to/<.json>
