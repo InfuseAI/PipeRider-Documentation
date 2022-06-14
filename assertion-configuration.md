@@ -4,6 +4,8 @@ description: The supported assertions and the usages
 
 # Built-In Assertions
 
+There are two types of assertions, one takes no parameter, the other takes parameters.
+
 ## Column Assertion
 
 ### assert\_column\_exist

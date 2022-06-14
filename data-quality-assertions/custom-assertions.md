@@ -10,7 +10,7 @@ Piperider provides a few [built-in assertions](../assertion-configuration.md) an
 
 ### Plugins
 
-Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py`. You can rename the file or create other assertion functions in python there.&#x20;
+Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py`. You can rename the file or create assertion functions in other python file there.&#x20;
 
 {% hint style="info" %}
 The search path to `plugins/` can be overwritten by the environment variable **`PIPERIDER_PLUGINS`**. Define your path by setting the variable.
@@ -46,7 +46,7 @@ if not column_metrics:
 
 ### Assertion
 
-You will be prompted by piperider run for the assertion templates generation if no assertions found. The generated assertions will be in `.yml`at `.piperider/assertions`.
+You will be prompted by `piperider run` for the assertion templates generation if no assertions found. The generated assertions will be in `.yml`at `.piperider/assertions`.
 
 ```
 No assertions found for datasource [ dataproject ]
@@ -89,9 +89,9 @@ PRICE:  # Table Name
 
 ### Scaffolding of Assertion Function
 
-This is the context of `customized_assertions.py` that contains two sample functions which always return `success()`, _assert\_nothing\_table\_example_ and _assert\_nothing\_column\_example._
+This is the context of `customized_assertions.py` that contains two sample functions, _assert\_nothing\_table\_example_ and _assert\_nothing\_column\_example_ which always return `success().`
 
-We will explain some noteworthy code in the [below](custom-assertions.md#undefined).
+We will explain some noteworthy lines in the [below](custom-assertions.md#undefined).
 
 ```python
 def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
@@ -149,6 +149,8 @@ def assert_nothing_column_example(context: AssertionContext, table: str, column:
 
 #### Explanation
 
+Read a table metrics and a value of a specified key from it.
+
 ```python
 # get a dict object of a table metrics
 table_metrics = metrics.get('tables', {}).get(table)
@@ -156,6 +158,8 @@ table_metrics = metrics.get('tables', {}).get(table)
 # get a value of a metric by a key from the dict object of the table metrics
 table_metrics.get('key')
 ```
+
+Read a column metrics and a value of a specified key from it.
 
 ```python
 # get a dict objec of a column metrics of a table 
@@ -165,18 +169,103 @@ column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get
 column_metrics.get('key')
 ```
 
+Read user input value of a parameter from a assertion yaml.
+
 ```python
-# Read the user input value of the parameter_a from the asserion yaml
 context.asserts.get('parameter_a', [])
 ```
+
+Return fail() or success() with a message
 
 ```
 context.result.fail("message")
 context.result.success("message")
 ```
 
+One thing is not mentioned in the context.
 
+{% hint style="info" %}
+The value of the _actual_ will be printed out in the format `Actual: value` when assertion is executed.
+{% endhint %}
 
+```
+context.result.actual
+```
 
+Assign `actual` any value as the actual finding that why the assertion successes or fails.&#x20;
 
-### Customization
+### Hands-On
+
+So far you already have the fundamental knowledge of the assertion, start creating your first custom assertion.
+
+Check your `./piperider/outputs/<run>.profiler.json` and select a metric as the measurement. In my case, I choose `distinct`.
+
+In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Because I know Name must be contained in a list of names which has 600 names in the total, the metric value of _distinct_ should not exceed 600 otherwise something wrong in my data.
+
+```yaml
+ "SYMBOL": {
+            "name": "SYMBOL",
+            "row_count": 505,
+            "col_count": 11,
+            "columns": {
+                "NAME": {
+                    "total": 505,
+                    "non_nulls": 505,
+                    "distinct": 505,
+```
+
+Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it belongs to the namespace, range\_check,_ in future I'll create more range-related assertions.
+
+Look for `.piperider/assertions/` I found the _SYMBOL.yml_ that contains assertions against _SYMBOL_ table. Edit the file and add my custom assertion against the column _Name_.
+
+```yaml
+SYMBOL:  # Table Name
+  # Test Cases for Table
+  tests:
+  columns:
+    NAME: # Column Name
+      # Test Cases for Column
+      tests:
+        - name: range_check.assert_distinct_in_range
+          assert:
+            range: [0, 600]
+            
+```
+
+Next I will define the corresponding assertion function. I go to `.piperider/plugins` and create a python file, _range\_check.py_ the file name is the _namespace_ I _want_. Edit the python file and add the custom assertion codes.
+
+```python
+def assert_distinct_in_range(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+    column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
+    if not column_metrics:
+        # cannot find the column in the metrics
+        return context.result.fail()
+
+    context.result.actual = column_metrics.get('distinct')
+
+    # Get user input range from the assertion
+    expected = context.asserts.get('range', [])
+    min = expected[0]
+    max = expected[1]
+ 
+    # Check if the distinct value sits in the range and return the result
+    if context.result.actual <= max and context.result.actual >= min:
+        return context.result.success("The value is {} sitting in the range".format(context.result.actual))
+
+    return context.result.fail("The value is {} exceeding the range, something wrong in my data.".format(context.result.actual))
+```
+
+I have added the custom assertion and the corresponding assertion function. Time to test it.
+
+```shell
+piperider run --table SYMBOL
+```
+
+After the running, I see the assertion result. The first custom assertions works!
+
+```shell-session
+────────────────────────────────────────────────────────────────── Assertion Results ───────────────────────────────────────────────────────────────────
+[  OK  ] SYMBOL.NAME  range_check.assert_distinct_in_range  Expected: {'range': [0, 600]} Actual: The value is 505 sitting in the range
+```
+
+The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive.
