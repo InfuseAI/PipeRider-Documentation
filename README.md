@@ -12,6 +12,10 @@ Ensuring consistent quality of data used to be difficult. Missing values, schema
 
 PipeRider allows you to define the shape of your data once, and then use the data checking functionality to alert you to changes in your data quality.
 
+{% embed url="https://www.youtube.com/watch?v=Nv9S75bUQt8" %}
+PipeRider: Data Reliability, Automated.
+{% endembed %}
+
 ### Supported Data Sources
 
 Out-of-the-box we currently support the following data sources:
