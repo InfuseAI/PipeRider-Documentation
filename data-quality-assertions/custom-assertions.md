@@ -269,3 +269,13 @@ After the running, I see the assertion result. The first custom assertions works
 ```
 
 The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive.
+
+### Debug Mode
+
+If you need to debug custom assertion functions, just enable the debug mode with `--debug`.
+
+It will print out the trackback of calls.
+
+```
+piperider run --debug
+```
