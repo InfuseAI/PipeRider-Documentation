@@ -22,3 +22,4 @@
 
 * [Generate Report](how-to/generate-report.md)
 * [Compare Reports](how-to/compare-reports.md)
+* [Convert CSV to SQLite](how-to/convert-csv-to-sqlite.md)

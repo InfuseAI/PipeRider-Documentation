@@ -1,5 +1,5 @@
 ---
-description: Compare the results of previous reports.
+description: How to compare the results of previous reports.
 ---
 
 # Compare Reports
