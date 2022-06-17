@@ -37,7 +37,11 @@ then you will be in the sqlite command mode.
 sqlite>
 ```
 
-In the command mode, run the query to create a table `sales` with the defined schema:
+In the command mode, run the query to create a table `sales` with the defined schema.
+
+{% hint style="info" %}
+Define the appropriate schema to your table. The schema will affect what types of assertions you could use.
+{% endhint %}
 
 ```sql
 sqlite> create table sales (
