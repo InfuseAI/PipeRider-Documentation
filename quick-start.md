@@ -115,7 +115,7 @@ The `run` command will analyze the data source and create a data profile for eac
 If an assertions file is present, then the data will be tested against the specified assertions. If no assertions file is present, you will be prompted to generated assertion templates based on the structure of your data source.
 
 ```
-piperider run                                                                                                                 
+piperider run
 ```
 
 Sample output:
