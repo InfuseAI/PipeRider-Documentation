@@ -4,7 +4,9 @@ description: The supported assertions and the usages
 
 # Built-In Assertions
 
-There are two types of assertions, one takes no parameter, the other takes parameters.
+You can go to `.piperider/assertions/` to add assertions in _\<table>.yml_.
+
+Here are built-in assertions, there are two types of assertions, one takes no parameter, the other takes parameters.
 
 ## Column Assertion
 
