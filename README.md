@@ -12,7 +12,7 @@ Ensuring consistent quality of data used to be difficult. Missing values, schema
 
 PipeRider allows you to define the shape of your data once, and then use the data checking functionality to alert you to changes in your data quality.
 
-{% embed url="https://youtu.be/GfSQ2ZR55rA" %}
+{% embed url="https://www.youtube.com/watch?v=48l8Tg0aCTE" %}
 PipeRider: Data Reliability, Automated.
 {% endembed %}
 
