@@ -72,7 +72,7 @@ Path of database file:
 
 ### Verify project configuration
 
-Use the `debug` command to check the project settings and ensure that the data source can be connected to.
+Use the `diagnose` command to check the project settings and ensure that the data source can be connected to.
 
 ```shell
 piperider diagnose
@@ -81,7 +81,7 @@ piperider diagnose
 Sample output:
 
 ```
-Debugging...
+diagnose...
 PipeRider Version: 0.1.3.12
 Check config files:
   /path/to/dataproject/.piperider/config.yml: [OK]
