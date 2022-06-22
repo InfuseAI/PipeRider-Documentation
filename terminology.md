@@ -46,5 +46,5 @@ The act of generating metrics and candidate assertion from data. The executions 
 
 ### Report
 
-A static HTML report based on a profiling result in a visual manner at `.piperider/reports`. See also [Project Structure](project-structure.md) and [Generate Report](how-to/generate-report.md).
+A static HTML report based on a profiling results and stored in `.piperider/output`. See also [Project Structure](project-structure.md) and [Generate Report](how-to/generate-report.md).
 
