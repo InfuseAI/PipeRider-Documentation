@@ -12,7 +12,6 @@ This quick start guide will show you how to:
 * [Perform data profiling](quick-start.md#data-profiling)
 * [Write data assertions](quick-start.md#data-assertions)
 * [Test your data](quick-start.md#data-quality-check)
-* [Generate a data quality report](quick-start.md#generate-a-report)
 * Next Steps: [Compare reports](quick-start.md#compare-reports)
 
 PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
@@ -108,7 +107,7 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-### Data profiling
+### Data profiling & report
 
 The `run` command will analyze the data source, create one data profile, `run.json` and also generate a HTML report, `index.html`. The data profiles can be used by PipeRider to generate a data quality report in a later step.
 
