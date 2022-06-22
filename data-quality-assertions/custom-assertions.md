@@ -39,7 +39,7 @@ read metrics of columns into a dict object. The column will be what you use asse
 
 ```python
 column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-if not column_metrics:
+if column_metrics is None:
   # cannot find the column in the metrics
   return context.result.fail()
 ```
@@ -123,7 +123,7 @@ def assert_nothing_table_example(context: AssertionContext, table: str, column: 
 
 def assert_nothing_column_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if not column_metrics:
+    if column_metrics is None:
         # cannot find the column in the metrics
         return context.result.fail()
 
@@ -237,7 +237,7 @@ Next I will define the corresponding assertion function. I go to `.piperider/plu
 ```python
 def assert_distinct_in_range(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if not column_metrics:
+    if column_metrics is None:
         # cannot find the column in the metrics
         return context.result.fail()
 
