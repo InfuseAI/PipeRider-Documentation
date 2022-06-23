@@ -47,23 +47,31 @@ Regarding how to configure assertions, please check the [assertion configuration
 piperider run [OPTIONS]
 ```
 
-| Option             | Argument | Description                                                    |
-| ------------------ | -------- | -------------------------------------------------------------- |
-| `--datasource`     | name     | Profile a specified data source                                |
-| `--table`          | name     | Profile a specified table only                                 |
-| `--output`         | path     | Specify the path for saving generated profiling `.json` files. |
-| `--no-interaction` | none     | Generate assertion scaffoldings by default without a prompt.   |
-| `--skip-report`    | none     | Don't generate reports                                         |
-| `--debug`          | none     | Enable the debug mode                                          |
-| `--help`           | none     | List command-line options                                      |
+| Option             | Argument | Description                                                   |
+| ------------------ | -------- | ------------------------------------------------------------- |
+| `--datasource`     | name     | Profile a specified data source                               |
+| `--table`          | name     | Profile a specified table only                                |
+| `--output`         | path     | Specify the path for saving generated profiling `.json` files |
+| `--no-interaction` | none     | Generate assertion templates by default without a prompt      |
+| `--skip-report`    | none     | Don't generate reports                                        |
+| `--debug`          | none     | Enable debugging output                                       |
+| `--help`           | none     | List command-line options                                     |
 
 ## Generate Assertions
 
 Generate recommended assertion files in `.piperider/assertions/` .
 
+
+
 ```
 piperider generate-assertions
 ```
+
+| Option    | Argument         | Description                                                                     |
+| --------- | ---------------- | ------------------------------------------------------------------------------- |
+| `--input` | path/to/run.json | Generate a recommended assertions based on a specific profiling `run.json` file |
+| `--debug` | none             | Enable debugging mode                                                           |
+| `--help`  | none             | List command-line options                                                       |
 
 ## Generate Report
 
@@ -73,11 +81,11 @@ piperider generate-assertions
 piperider generate-report [Options]
 ```
 
-| Option    | Argument         | Description                                                          |
-| --------- | ---------------- | -------------------------------------------------------------------- |
-| `--input` | path/to/run.json | Generate a report referring to a specified profiling `run.json` file |
-| `--debug` | none             | Enable the debug mode                                                |
-| `--help`  | none             | List command-line options                                            |
+| Option    | Argument         | Description                                                     |
+| --------- | ---------------- | --------------------------------------------------------------- |
+| `--input` | path/to/run.json | Generate a report based on a specific profiling `run.json` file |
+| `--debug` | none             | Enable debugging output                                         |
+| `--help`  | none             | List command-line options                                       |
 
 ## Compare Report
 
@@ -87,12 +95,12 @@ piperider generate-report [Options]
 piperider compare-report [Options]
 ```
 
-| Option    | Argument | Description                                          |
-| --------- | -------- | ---------------------------------------------------- |
-| `--base`  | path     | Specify a profiling `run.json` as the base           |
-| `--input` | path     | Specify a profiling `run.json` comparing to the base |
-| `--debug` | none     | Enable the debug mode                                |
-| `--help`  | none     | List command-line options                            |
+| Option    | Argument | Description                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `--base`  | path     | Specify a profiling `run.json` as the base report              |
+| `--input` | path     | Specify a profiling `run.json` to compare with the base report |
+| `--debug` | none     | Enable debugging output                                        |
+| `--help`  | none     | List command-line options                                      |
 
 ## Diagnose Project Configuration
 
@@ -104,6 +112,6 @@ piperider diagnose
 
 | Option    | Argument | Description               |
 | --------- | -------- | ------------------------- |
-| `--debug` | none     | Enable the debug mode     |
+| `--debug` | none     | Enable debugging output   |
 | `--help`  | none     | List command-line options |
 |           |          |                           |
