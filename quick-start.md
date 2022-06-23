@@ -26,7 +26,7 @@ Ensure you have the following installed:
 PipeRider can be installed via pip with the following command.
 
 ```shell
-pip install piperider
+pip install piperider -U
 ```
 
 ### Prepare SQLite database
