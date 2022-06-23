@@ -96,7 +96,7 @@ We will explain some noteworthy lines in the [below](custom-assertions.md#undefi
 ```python
 def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     table_metrics = metrics.get('tables', {}).get(table)
-    if not table_metrics:
+    if table_metrics is None:
         # cannot find the table in the metrics
         return context.result.fail()
 
