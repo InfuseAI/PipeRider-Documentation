@@ -59,9 +59,7 @@ piperider run [OPTIONS]
 
 ## Generate Assertions
 
-Generate recommended assertion files in `.piperider/assertions/` .
-
-
+Generate recommended assertion files in `.piperider/assertions/` . You may want to generate recommended once profiling results are changed.
 
 ```
 piperider generate-assertions

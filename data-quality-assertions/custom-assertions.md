@@ -216,7 +216,7 @@ In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Beca
 
 Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it belongs to the namespace, range\_check,_ in future I'll create more range-related assertions.
 
-At `.piperider/assertions/` I create an assertion file, _my\_assertion.yml_ and edit the file to add my custom assertion logic against the column _Name_.
+Look for `.piperider/assertions/` I found the _SYMBOL.yml_ that contains assertions against _SYMBOL_ table. Edit the file and add my custom assertion against the column _Name_.
 
 ```yaml
 SYMBOL:  # Table Name
