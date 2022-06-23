@@ -10,6 +10,10 @@ For the sake of the continuous integration, PipeRider provides the GitHub Action
 You can find the [PipeRider CLI Action](https://github.com/marketplace/actions/piperider-cli-action) from GitHub Action Marketplace
 {% endhint %}
 
+{% hint style="info" %}
+GitHub has the great documents about Actions, if you're new to it, you may want to visit [GitHub Actions Documents](https://docs.github.com/en/actions/quickstart).
+{% endhint %}
+
 ## Requirement
 
 You will need to create a yaml file e.g. `ci.yml` at `.github/workflows` and the `requirements.txt` at the root in your Git repository.
@@ -84,7 +88,7 @@ name: piperider-ci
 env:
   ACTIONS_STEP_DEBUG: true
 
-# Action taken on events
+# Action taken on events/branches
 on:
   push:
     branches: [ main ]
@@ -146,7 +150,7 @@ jobs:
 
 Finally, if you want to receive notifications when actions finish, you can use the `slack-github-action` at the bottom of the CI yaml.
 
-Before that you will need to add the environment variable, SLACK\_WEBHOOK\_URL. How to gain your Slack Webhook URI, please see [Slack Send GitHub Action](https://github.com/slackapi/slack-github-action) repo.
+Before that you will need to add the environment variable, `SLACK_WEBHOOK_URL`. How to gain your Slack Webhook URI, please see [Slack Send GitHub Action](https://github.com/slackapi/slack-github-action) repo.
 
 You may want to replace the version of `slack-github-action`.
 
