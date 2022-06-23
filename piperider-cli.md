@@ -22,9 +22,22 @@ piperider init [OPTIONS]
 | `--debug`            | none     | Enable the debug mode                                               |
 | `--help`             | none     | List command-line options                                           |
 
-## Run profiler and Check Data Quality
+## Run profiler, assertions, report
 
-`run` will profile tables/columns, save profiling results in the `run.json` and generate a report in `index.html` at `.piperider/outputs` for each run. Also, it will check the data quality by assertions at `.piperider/assertions`.&#x20;
+The `run` command performs the following functions.
+
+On first run:
+
+* Analyzes the data source and generates a data profile.
+* Offers to generate recommended assertions and check the data profile against these them. Assertion files will be generated in `.piperider/assertions`.
+* Generates blank assertion templates if recommended assertions were not created.
+* Generates a report in `.piperider/outputs`.
+
+On subsequent runs:
+
+* Analyzes the data source and generates a data profile.
+* Checks the data profile against any existing assertions located in `.piperider/assertions`.
+* Generates a report in `.piperider/outputs`.
 
 {% hint style="info" %}
 Regarding how to configure assertions, please check the [assertion configuration](data-quality-assertions/assertion-configuration.md) for the detail.
@@ -44,9 +57,17 @@ piperider run [OPTIONS]
 | `--debug`          | none     | Enable the debug mode                                          |
 | `--help`           | none     | List command-line options                                      |
 
+## Generate Assertions
+
+Generate recommended assertion files in `.piperider/assertions/` .
+
+```
+piperider generate-assertions
+```
+
 ## Generate Report
 
-`generate-report` will generate static HTML reports at `.piperider/outputs/<run>` based on, by default, profiling results of the latest `run`.
+`generate-report` will generate static HTML reports in `.piperider/outputs/<run>` based on the profiling results of the latest `run` by default.
 
 ```shell
 piperider generate-report [Options]

@@ -10,7 +10,7 @@ This quick start guide will show you how to:
 * [Prepare a SQLite data source](quick-start.md#prepare-sqlite-database)
 * [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)&#x20;
 * [Run PipeRider](quick-start.md#run-piperider-profile-data-test-assertions-generate-report)
-* [Apply data assertions](quick-start.md#data-assertions)
+* [Apply data assertions](quick-start.md#apply-data-assertions)
 * [Compare reports](quick-start.md#compare-reports)
 
 PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
@@ -294,15 +294,55 @@ To simulate a change in your data, download the following sqlite database overwr
 curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-started/sp500_20220527.db
 ```
 
-Execute `piperider run` to generate new profiling results and a report from the updated database .
+Execute `run` to generate new profiling results and a report from the updated database .
 
-Then run the `compare-report` command.
+```
+piperider run
+```
+
+As the data has changed since we generated assertions, you will notice that some assertions now fail.
+
+```
+──────────────────────────────────────────── Assertion Results ────────────────────────────────────────────
+...
+[  OK  ] SYMBOL.RECOMMENDATION_KEY  assert_column_type          Expected: {'type': 'string'} Actual: string
+[FAILED] ACTION                     assert_row_count_in_range   Expected: {'count': [1764, 2156]} Actual: 2187
+[  OK  ] ACTION.SYMBOL              assert_column_exist         Expected: {'success': True} Actual: {'success': True}
+[  OK  ] ACTION.SPLITS              assert_column_min_in_range  Expected: {'min': [0.117, 0.14300000000000002]} Actual: {'min': 0.13}
+...
+[FAILED] PRICE                      assert_row_count_in_range   Expected: {'count': [142092, 173669]} Actual: 178079
+[  OK  ] PRICE.SYMBOL               assert_column_type          Expected: {'type': 'string'} Actual: string
+...
+```
+
+The Summary also shows which tests failed.
+
+```
+──────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────
+Table 'ACTION'
+  4 columns profiled
+  9 test executed
+  1 of 9 tests failed:
+  [FAILED] ACTION assert_row_count_in_range  Expected: {'count': [1764, 2156]} Actual: 2187
+
+Table 'PRICE'
+  11 columns profiled
+  30 test executed
+  1 of 30 tests failed:
+  [FAILED] PRICE assert_row_count_in_range  Expected: {'count': [142092, 173669]} Actual: 178079
+
+Table 'SYMBOL'
+  11 columns profiled
+  14 test executed
+```
+
+Now that you have a second report, run the `compare-report` command.
 
 ```
 piperider compare-report
 ```
 
-You will be prompted to select two reports for the comparison. Please select reports with same table name but with different timestamps.
+You will be prompted to select two reports for the comparison. Select the most recent report and one report from before you downloaded the new database.
 
 ```
 [?] Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm ):
@@ -322,7 +362,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-
+![PipeRider comparison report](.gitbook/assets/compare-fs8.png)
 
 \----&#x20;
 
