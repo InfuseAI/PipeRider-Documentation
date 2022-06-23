@@ -9,9 +9,9 @@ This quick start guide will show you how to:
 * [Install PipeRider](quick-start.md#install-piperider-via-pip)
 * [Prepare a SQLite data source](quick-start.md#prepare-sqlite-database)
 * [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)&#x20;
-* [Perform data profiling, quality check and report](quick-start.md#data-profiling)
-* [Write data assertions](quick-start.md#data-assertions)
-* Next Steps: [Compare reports](quick-start.md#compare-reports)
+* [Run PipeRider](quick-start.md#run-piperider-profile-data-test-assertions-generate-report)
+* [Apply data assertions](quick-start.md#data-assertions)
+* [Compare reports](quick-start.md#compare-reports)
 
 PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
 
