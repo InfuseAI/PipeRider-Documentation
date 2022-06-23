@@ -9,9 +9,8 @@ This quick start guide will show you how to:
 * [Install PipeRider](quick-start.md#install-piperider-via-pip)
 * [Prepare a SQLite data source](quick-start.md#prepare-sqlite-database)
 * [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)&#x20;
-* [Perform data profiling](quick-start.md#data-profiling)
+* [Perform data profiling, quality check and report](quick-start.md#data-profiling)
 * [Write data assertions](quick-start.md#data-assertions)
-* [Test your data](quick-start.md#data-quality-check)
 * Next Steps: [Compare reports](quick-start.md#compare-reports)
 
 PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
@@ -107,7 +106,7 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-### Data profiling & report
+### Data profiling & quality check & report
 
 The `run` command will analyze the data source, create one data profile, `run.json` and also generate a HTML report, `index.html`. The data profiles can be used by PipeRider to generate a data quality report in a later step.
 
@@ -159,30 +158,64 @@ No assertions found for datasource [ dataproject ]
 Do you want to auto generate assertion templates for this datasource [yes/no]? y
 ```
 
-An assertion template YAML file for each table will be created under `.piperider/assertions/`.&#x20;
+Recommended assertions YAML file for each table will be created under `.piperider/assertions/`. Then you will be prompted for the execution of these assertions.
 
 ```shell
-Generating assertion template for table "ACTION" -> /path/to/dataproject/.piperider/assertions/ACTION.yml
-Generating assertion template for table "PRICE" -> /path/to/dataproject/.piperider/assertions/PRICE.yml
-Generating assertion template for table "SYMBOL" -> /path/to/dataproject/dataproject/.piperider/assertions/SYMBOL.yml
-[Skip] Executing assertion for datasource [ dataproject ]
-──────────────────────────────────────────────────────────────────────────────────────── Summary ─────────────────────────────────────────────────────────────────────────────────────────
+Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_ACTION.yml
+Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_PRICE.yml
+Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_SYMBOL.yml
+Do you want to run above recommanded assertions for this datasource [yes/no]? yes
+```
+
+PipeRider will execute these assertions for the data quality check.
+
+Sample output
+
+```shell-session
+───────────────────────────────────────────────────────────────────────────────────── Assertion Results ──────────────────────────────────────────────────────────────────────────────────────
+[  OK  ] SYMBOL                     assert_row_count_in_range   Expected: {'count': [454, 555]} Actual: 505
+[  OK  ] SYMBOL.SYMBOL              assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.NAME                assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.START_DATE          assert_column_type          Expected: {'type': 'datetime'} Actual: datetime
+[  OK  ] SYMBOL.END_DATE            assert_column_type          Expected: {'type': 'datetime'} Actual: datetime
+[  OK  ] SYMBOL.DESCRIPTION         assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.EXCHANGE_CODE       assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.MARKET              assert_column_type          Expected: {'type': 'string'} Actual: string
+...
+...
+...
+────────────────────────────────────────────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────────────────────────────────────────
 Table 'ACTION'
   4 columns profiled
+  7 test executed
+  1 of 7 tests failed:
+  [FAILED] ACTION.SPLITS  assert_column_min_in_range  Expected: {'min': [0, 0]} Actual: {'min': 0.13}
 
 Table 'PRICE'
   11 columns profiled
+  21 test executed
+  1 of 21 tests failed:
+  [FAILED] PRICE.MA60  assert_column_min_in_range  Expected: {'min': [4, 5]} Actual: {'min': 5.44}
 
 Table 'SYMBOL'
   11 columns profiled
-```
-
-In the end, you will see a generated profiling result in `run.json` and a generated HTML report in `index.html`.
-
-```shell-session
-Generating reports from:  /path/to/dataproject/.piperider/outputs/latest/run.json
+  12 test executed
+  
+Generating reports from: /path/to/dataproject/.piperider/outputs/latest/run.json
 Report generated in /path/to/dataproject/.piperider/outputs/latest/index.html
 ```
+
+From the output you can see the results in the following format:
+
+| Result | Table\[.Column] | Used Assertion                 | Justification                                     |
+| ------ | --------------- | ------------------------------ | ------------------------------------------------- |
+| OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
+| FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
+| OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
+
+Furthermore, you will see the profiling and assertions results, and with a generated `run.json` and a generated HTML report, `index.html`.
+
+Open the HTML report in the browser to see the visualized results or share it with your team.
 
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods generate reports
@@ -190,99 +223,62 @@ Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods 
 
 ### Data assertions
 
-In your text editor, open `.piperider/assertions/PRICE.yml` . The auto-generated assertions file will look like this:
+In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . The auto-generated assertions file will look like this:
 
 ```yaml
-# Auto-generated by PipeRider CLI based on table "PRICE"
+# Auto-generated by Piperider based on table "PRICE"
 PRICE:  # Table Name
   # Test Cases for Table
-  tests: []
+  tests:
+  - name: assert_row_count_in_range
+    assert:
+      count:
+      - 160271
+      - 195886
+    tags:
+    - PIPERIDER_RECOMMENDED_ASSERTION
   columns:
     SYMBOL:  # Column Name
       # Test Cases for Column
-      tests: []
+      tests:
+      - name: assert_column_type
+        assert:
+          type: string
+        tags:
+        - PIPERIDER_RECOMMENDED_ASSERTION
     DATE: # Column Name
       # Test Cases for Column
-      tests: []
+      tests:
+      - name: assert_column_type
+        assert:
+          type: datetime
+        tags:
+        - PIPERIDER_RECOMMENDED_ASSERTION
     OPEN: # Column Name
       # Test Cases for Column
-      tests: []
-    HIGH: # Column Name
-      # Test Cases for Column
-      tests: []
-    LOW: # Column Name
-      # Test Cases for Column
-      tests: []
-    CLOSE: # Column Name
-      # Test Cases for Column
-      tests: []
+      tests:
+      - name: assert_column_type
+        assert:
+          type: numeric
+        tags:
+        - PIPERIDER_RECOMMENDED_ASSERTION
+      - name: assert_column_min_in_range
+        assert:
+          min:
+          - 6
+          - 7
+        tags:
+        - PIPERIDER_RECOMMENDED_ASSERTION
+...
+...
 ...
 ```
 
-Edit the `tests` section for the `SYMBOL` column like so:
-
-```yaml
-    SYMBOL:  # Column Name
-      # Test Cases for Column
-      tests:
-      - name: assert_column_in_types
-        assert:
-          type: [numeric]
-```
-
-Edit the `tests` section for the `OPEN` column like so:
-
-```yaml
-    OPEN: # Column Name
-      # Test Cases for Column
-      tests:
-      - name: assert_column_min_in_range
-        assert:
-          min: [0, 50]
-```
+You can modify these auto-generated assertions logics or add your custom assertions. Then execute `piperider run` again.
 
 {% hint style="info" %}
-Refer to [assertion configuration](data-quality-assertions/assertion-configuration.md) for detailed assertion settings
+Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom Assertions](data-quality-assertions/custom-assertions.md) for detailed assertion settings
 {% endhint %}
-
-### Data quality check
-
-Now that you have created some basic assertions, execute the `run` command again to check the quality of your data against the newly updated assertion file with a generated a report.
-
-```
-piperider run
-```
-
-PipeRider will automatically detect the assertions and check the data. The results of the assertion checks will be displayed and also in the generated report.
-
-```shell
-───────────────────────────────────────────────────────────────────────────────────── Assertion Results ──────────────────────────────────────────────────────────────────────────────────────
-[FAILED] PRICE.OPEN  assert_column_min_in_range  Expected: {'success': True} Actual: None
-         Reason: Expect a range .
-────────────────────────────────────────────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────────────────────────────────────────
-Table 'ACTION'
-  4 columns profiled
-
-Table 'PRICE'
-  11 columns profiled
-  1 test executed
-  1 of 1 tests failed:
-[FAILED] PRICE.OPEN  assert_column_min_in_range  Expected: {'success': True} Actual: None
-         Reason: Expect a range .
-
-Table 'SYMBOL'
-  11 columns profiled
-  
-Generating reports from:  /path/to/dataproject/.piperider/outputs/latest/run.json
-Report generated in /path/to/dataproject/.piperider/outputs/latest/index.html
-```
-
-From the results you can see the following results:
-
-* &#x20;The `assert_column_in_types` assertion against the `SYMBOL` column failed as the column type is `STRING`, and not `NUMERIC` as we specified.
-* The `assert_column_min_in_range` assertion passed our assertion of `[0, 50]` with an actual result of `6.78`.
-
-Open the HTML report in the browser to see the profiling and testing results or share it with your team.
 
 ## Next Steps
 
