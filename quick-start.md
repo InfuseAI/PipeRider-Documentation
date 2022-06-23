@@ -31,7 +31,7 @@ pip install piperider
 
 ### Prepare SQLite database
 
-Create a directory for the new project then either place your own SQLite database inside or download the sample database below.
+Create a directory for the new project and download the sample database.
 
 ```shell
 mkdir dataproject && cd dataproject
@@ -40,13 +40,13 @@ curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-
 
 ### Initialize a new PipeRider project
 
-The `init` command creates a `.piperider` directory under the current directory where all of the project files will be stored. This includes data source configuration, data quality assertions, data profiling information, and generated report files.
+The `init` command creates a `.piperider` directory, inside the current directory, where all of the project files will be stored. This includes data source configuration, data quality assertions, data profiling information, and generated report files.
 
 ```shell
 piperider init
 ```
 
-You will be prompted to enter a project name, enter `dataproject`.
+Enter a a name for your project, e.g. `dataproject`.
 
 ```shell
 What is your project name? (alphanumeric only)
@@ -61,7 +61,7 @@ What data source would you like to connect to?
 > sqlite
 ```
 
-When prompted, enter the name of your SQLite database. If you downloaded the sample database from above enter `sp500.db` .
+Enter the name of the SQLite database, `sp500.db` .
 
 ```
 Please enter the following fields for sqlite
@@ -70,7 +70,7 @@ Path of database file:
 
 ### Verify project configuration
 
-Use the `diagnose` command to check the project settings and ensure that the data source can be connected to.
+Use the `diagnose` command to check the project settings and ensure PipeRider can connect to the data source.
 
 ```shell
 piperider diagnose
@@ -79,8 +79,8 @@ piperider diagnose
 Sample output:
 
 ```
-diagnose...
-PipeRider Version: 0.2.1
+Diagnosing...
+PipeRider Version: x.x.x
 Check config files:
   /path/to/dataproject/.piperider/config.yml: [OK]
 ✅ PASS
@@ -106,17 +106,30 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-### Data profiling & quality check & report
+### Run PipeRider - Profile data, test assertions, generate report
 
-The `run` command will analyze the data source, create one data profile, `run.json` and also generate a HTML report, `index.html`. The data profiles can be used by PipeRider to generate a data quality report in a later step.
+The `run` command performs the following functions.
 
-If an assertions file is present, then the data will be tested against the specified assertions. If no assertions file is present, you will be prompted to generate assertion templates based on the structure of your data source.
+On first run:
+
+* Analyzes the data source and generates a data profile.
+* Offers to generate recommended assertions and check the data profile against these assertions.
+* Generates blank assertion templates if recommended assertions were not created.
+* Generates a report.
+
+On subsequent runs:
+
+* Analyzes the data source and generates a data profile.
+* Checks the data profile against any existing assertions.
+* Generates a report.
 
 ```
 piperider run
 ```
 
-Sample output:
+#### Sample output for first run
+
+PipeRider analyzes the data source and generates a data profile.
 
 ```shell
 DataSource: dataproject
@@ -151,69 +164,60 @@ profiling [SYMBOL.RECOMMENDATION_KEY] type=VARCHAR(16777216)
 
 ```
 
-Enter `y` or `yes` to generate an assertion templates for your datasource.
+PipeRider will offer to generate recommended assertions. Answer 'yes'.
 
-```bash
-No assertions found for datasource [ dataproject ]
-Do you want to auto generate assertion templates for this datasource [yes/no]? y
+```
+No assertion found
+Do you want to auto generate recommended assertions for this datasource [Yes/no]? Yes
 ```
 
-Recommended assertions YAML file for each table will be created under `.piperider/assertions/`. Then you will be prompted for the execution of these assertions.
+A recommended assertion YAML file for each table will be created under `.piperider/assertions/` and you will be prompted to run the recommended assertions. Answer 'yes'.
 
-```shell
+```
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_ACTION.yml
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_PRICE.yml
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_SYMBOL.yml
-Do you want to run above recommanded assertions for this datasource [yes/no]? yes
+Do you want to run above recommended assertions for this datasource [yes/no]? yes
 ```
 
-PipeRider will execute these assertions for the data quality check.
-
-Sample output
+PipeRider will test the data profile against the assertions and display the results.
 
 ```shell-session
-───────────────────────────────────────────────────────────────────────────────────── Assertion Results ──────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────── Assertion Results ────────────────────────────────────────────
 [  OK  ] SYMBOL                     assert_row_count_in_range   Expected: {'count': [454, 555]} Actual: 505
 [  OK  ] SYMBOL.SYMBOL              assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.SYMBOL              assert_column_unique        Expected: {'success': True} Actual: {'success': True}
 [  OK  ] SYMBOL.NAME                assert_column_type          Expected: {'type': 'string'} Actual: string
+[  OK  ] SYMBOL.NAME                assert_column_unique        Expected: {'success': True} Actual: {'success': True}
 [  OK  ] SYMBOL.START_DATE          assert_column_type          Expected: {'type': 'datetime'} Actual: datetime
 [  OK  ] SYMBOL.END_DATE            assert_column_type          Expected: {'type': 'datetime'} Actual: datetime
-[  OK  ] SYMBOL.DESCRIPTION         assert_column_type          Expected: {'type': 'string'} Actual: string
-[  OK  ] SYMBOL.EXCHANGE_CODE       assert_column_type          Expected: {'type': 'string'} Actual: string
-[  OK  ] SYMBOL.MARKET              assert_column_type          Expected: {'type': 'string'} Actual: string
 ...
 ...
 ...
-────────────────────────────────────────────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────────────────────────────────────────
+[  OK  ] PRICE.MA60                 assert_column_max_in_range  Expected: {'max': [4959.585, 6061.715]} Actual:
+{'max': 5510.65}
+
+──────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────
 Table 'ACTION'
   4 columns profiled
-  7 test executed
-  1 of 7 tests failed:
-  [FAILED] ACTION.SPLITS  assert_column_min_in_range  Expected: {'min': [0, 0]} Actual: {'min': 0.13}
+  9 test executed
 
 Table 'PRICE'
   11 columns profiled
-  21 test executed
-  1 of 21 tests failed:
-  [FAILED] PRICE.MA60  assert_column_min_in_range  Expected: {'min': [4, 5]} Actual: {'min': 5.44}
+  30 test executed
 
 Table 'SYMBOL'
   11 columns profiled
-  12 test executed
+  14 test executed
   
 Generating reports from: /path/to/dataproject/.piperider/outputs/latest/run.json
 Report generated in /path/to/dataproject/.piperider/outputs/latest/index.html
 ```
 
-From the output you can see the results in the following format:
+A summary of the assertion tests that were executed is displayed, along with the location of two files:
 
-| Result | Table\[.Column] | Used Assertion                 | Justification                                     |
-| ------ | --------------- | ------------------------------ | ------------------------------------------------- |
-| OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
-| FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
-| OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
-
-Furthermore, you will see the profiling and assertions results, and with a generated `run.json` and a generated HTML report, `index.html`.
+* `run.json` - The data profile used for the assertions test.
+* `index.html` - The report that was generated for this run.
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
@@ -221,7 +225,7 @@ Open the HTML report in the browser to see the visualized results or share it wi
 Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods generate reports
 {% endhint %}
 
-### Data assertions
+### Apply data assertions
 
 In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . The auto-generated assertions file will look like this:
 
@@ -274,29 +278,25 @@ PRICE:  # Table Name
 ...
 ```
 
-You can modify these auto-generated assertions logics or add your custom assertions. Then execute `piperider run` again.
+You can modify these auto-generated [assertion](data-quality-assertions/assertion-configuration.md) logic or add make your own [custom assertions](data-quality-assertions/custom-assertions.md), and then execute `piperider run` again to see the results.
 
 {% hint style="info" %}
 Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom Assertions](data-quality-assertions/custom-assertions.md) for detailed assertion settings
 {% endhint %}
 
-## Next Steps
-
-Once you have generated multiple reports it may be desirable to compare reports to view how your data has changed over time.
-
 ### Compare reports
 
-`compare-report` allows you to compare two different reports by generating a comparison report.
+`compare-report` enables you to create a comparison report that compares two different reports. The comparison report is useful for seeing how your data has changed over time.&#x20;
 
-For the sake of data changed simulation, you could download another sqlite database to overwrite the existing one.
+To simulate a change in your data, download the following sqlite database overwriting the existing one.
 
 ```
 curl -o sp500.db https://piperider-data.s3.ap-northeast-1.amazonaws.com/getting-started/sp500_20220527.db
 ```
 
-Execute `piperider run`  to generate the profiling results with a report against the changed database.
+Execute `piperider run` to generate new profiling results and a report from the updated database .
 
-Then run the command.
+Then run the `compare-report` command.
 
 ```
 piperider compare-report
@@ -305,21 +305,33 @@ piperider compare-report
 You will be prompted to select two reports for the comparison. Please select reports with same table name but with different timestamps.
 
 ```
-#Output
 [?] Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm ):
-   X dataproject  #table=3      #pass=0     #fail=1     2022-06-21T23:15:20.986503Z
- > o dataproject  #table=3      #pass=0     #fail=1     2022-06-21T23:01:50.499774Z
-   X dataproject  #table=3      #pass=0     #fail=0     2022-06-21T22:58:23.500316Z
+   X dataproject  #table=3      #pass=51    #fail=2     2022-06-23T13:01:37.543978Z
+ > X dataproject  #table=3      #pass=53    #fail=0     2022-06-23T12:48:11.794525Z
 ```
 
 PipeRider will generate an HTML report of the comparison.
 
 ```
 Selected reports:
-  Base:  /path/to/dataproject/.piperider/outputs/dataproject-20220621231520/run.json
-  Input: /path/to/dataproject/.piperider/outputs/dataproject-20220621225823/run.json
+  Base:  /path/to/dataproject/.piperider/outputs/dataproject-20220623130137/run.json
+  Input: /path/to/dataproject/.piperider/outputs/dataproject-20220623124811/run.json
 
-Comparison report: /path/to/dataproject/.piperider/comparisons/20220621231618/index.html
+Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/index.html
 ```
 
-Open the HTML report in your browser to review any changes or share it with your team.
+Open the HTML comparison report in your browser to review any changes or share it with your team.
+
+
+
+\----&#x20;
+
+From the output you can see the results in the following format:
+
+Furthermore, you will see the profiling and assertions results, and with a generated `run.json` and a generated HTML report, `index.html`.
+
+| Result | Table\[.Column] | Used Assertion                 | Justification                                     |
+| ------ | --------------- | ------------------------------ | ------------------------------------------------- |
+| OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
+| FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
+| OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
