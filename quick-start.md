@@ -240,7 +240,7 @@ PRICE:  # Table Name
       - 160271
       - 195886
     tags:
-    - PIPERIDER_RECOMMENDED_ASSERTION
+    - RECOMMENDED
   columns:
     SYMBOL:  # Column Name
       # Test Cases for Column
@@ -249,7 +249,7 @@ PRICE:  # Table Name
         assert:
           type: string
         tags:
-        - PIPERIDER_RECOMMENDED_ASSERTION
+        - RECOMMENDED
     DATE: # Column Name
       # Test Cases for Column
       tests:
@@ -257,7 +257,7 @@ PRICE:  # Table Name
         assert:
           type: datetime
         tags:
-        - PIPERIDER_RECOMMENDED_ASSERTION
+        - RECOMMENDED
     OPEN: # Column Name
       # Test Cases for Column
       tests:
@@ -265,14 +265,14 @@ PRICE:  # Table Name
         assert:
           type: numeric
         tags:
-        - PIPERIDER_RECOMMENDED_ASSERTION
+        - RECOMMENDED
       - name: assert_column_min_in_range
         assert:
           min:
           - 6
           - 7
         tags:
-        - PIPERIDER_RECOMMENDED_ASSERTION
+        - RECOMMENDED
 ...
 ...
 ...
