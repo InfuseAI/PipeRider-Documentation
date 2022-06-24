@@ -2,7 +2,7 @@
 description: How to create custom assertions to check the quality of your data.
 ---
 
-# Custom Assertions
+# User-defined Assertions
 
 Piperider provides a few [built-in assertions](assertion-configuration.md) and also supports custom assertions as _plugins_ which can satisfy the data quality check on your demand. Here you will learn the magic and create your first custom assertion.
 
@@ -91,7 +91,7 @@ PRICE:  # Table Name
 
 This is the context of `customized_assertions.py` that contains two sample functions, _assert\_nothing\_table\_example_ and _assert\_nothing\_column\_example_ which always return `success().`
 
-We will explain some noteworthy lines in the [below](custom-assertions.md#undefined).
+We will explain some noteworthy lines in the [below](user-defined-assertions.md#undefined).
 
 ```python
 def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
@@ -216,7 +216,7 @@ In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Beca
 
 Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it belongs to the namespace, range\_check,_ in future I'll create more range-related assertions.
 
-Look for `.piperider/assertions/` I found the _SYMBOL.yml_ that contains assertions against _SYMBOL_ table. Edit the file and add my custom assertion against the column _Name_.
+At `.piperider/assertions/` I create an assertion file, _my\_assertion.yml_ and edit the file to add my custom assertion logic against the column _Name_.
 
 ```yaml
 SYMBOL:  # Table Name

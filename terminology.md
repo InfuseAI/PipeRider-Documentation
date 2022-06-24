@@ -4,7 +4,7 @@
 
 Assertion functions can capture critical aspects of data understanding that analysts and practitioners know based on its semantic meaning.
 
-See also [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom assertions](data-quality-assertions/custom-assertions.md).
+See also [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom assertions](data-quality-assertions/user-defined-assertions.md).
 
 ### Assertion YAML
 
@@ -26,7 +26,7 @@ Also known as data source connector. See also [Data Sources](broken-reference).
 
 ### Custom assertion
 
-Users can extend basic assertion with application-or domain-specific expectations to build the customized assertion functions. See also [Custom Assertions](data-quality-assertions/custom-assertions.md).
+Users can extend basic assertion with application-or domain-specific expectations to build the customized assertion functions. See also [Custom Assertions](data-quality-assertions/user-defined-assertions.md).
 
 ### Compare reports
 
