@@ -16,7 +16,7 @@
 ## Data Quality Assertions
 
 * [Built-In Assertions](data-quality-assertions/assertion-configuration.md)
-* [User-defined Assertions](data-quality-assertions/user-defined-assertions.md)
+* [Custom Assertions](data-quality-assertions/custom-assertions.md)
 
 ## 📑 How-To
 

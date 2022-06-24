@@ -2,7 +2,7 @@
 description: How to create custom assertions to check the quality of your data.
 ---
 
-# User-defined Assertions
+# Custom Assertions
 
 Piperider provides a few [built-in assertions](assertion-configuration.md) and also supports custom assertions as _plugins_ which can satisfy the data quality check on your demand. Here you will learn the magic and create your first custom assertion.
 
@@ -91,7 +91,7 @@ PRICE:  # Table Name
 
 This is the context of `customized_assertions.py` that contains two sample functions, _assert\_nothing\_table\_example_ and _assert\_nothing\_column\_example_ which always return `success().`
 
-We will explain some noteworthy lines in the [below](user-defined-assertions.md#undefined).
+We will explain some noteworthy lines in the [below](custom-assertions.md#undefined).
 
 ```python
 def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:

@@ -278,10 +278,10 @@ PRICE:  # Table Name
 ...
 ```
 
-You can modify these auto-generated [assertion](data-quality-assertions/assertion-configuration.md) logic or add make your own [custom assertions](data-quality-assertions/user-defined-assertions.md), and then execute `piperider run` again to see the results.
+You can modify these auto-generated [assertion](data-quality-assertions/assertion-configuration.md) logic or add make your own [custom assertions](data-quality-assertions/custom-assertions.md), and then execute `piperider run` again to see the results.
 
 {% hint style="info" %}
-Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom Assertions](data-quality-assertions/user-defined-assertions.md) for detailed assertion settings
+Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.md) and [Custom Assertions](data-quality-assertions/custom-assertions.md) for detailed assertion settings
 {% endhint %}
 
 ### Compare reports
