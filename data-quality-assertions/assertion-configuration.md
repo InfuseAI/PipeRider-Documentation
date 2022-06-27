@@ -180,6 +180,34 @@ your_table_name:
 
 </details>
 
+### assert\_column\_schema\_type
+
+* Description: The column schema type must match a specified schema type.
+* Assert:
+  * `schema_type`: `TEXT`, `DATE`, `VARCHAR(128)`, or etc...
+* Tags:
+
+<details>
+
+<summary>YAML example</summary>
+
+```yaml
+your_table_name:
+  columns:
+    your_column_name:
+      tests:
+      - name: assert_column_schema_type
+        assert:
+          schema_type: TEXT
+        tags:
+          - OPTIONAL
+```
+
+</details>
+
+\
+
+
 ### assert\_column\_unique
 
 * Description: The values of column must be unique.
@@ -203,6 +231,43 @@ your_table_name:
 </details>
 
 ## Table Assertion
+
+### assert\_row\_count
+
+* Description: The row count must be _>= min_ or _<= max_. _If min is not specified, it is assumed to be 0. If max is not specified, it is assumed to be infinity._ If min and max are both specified, min must be less than or equal to max.
+* Assert:
+  * `min: min_count`
+  * `max: max_count`
+* Tags:
+
+<details>
+
+<summary>YAML example</summary>
+
+```yaml
+# With the minimum and maximum row count in the following format
+your_table_name:
+  tests:
+  - name: assert_row_count
+    assert:
+      min: 10
+      max: 20
+    tags:
+      - OPTIONAL
+```
+
+```yaml
+# With the minimum row count only in the following format
+your_table_name:
+  tests:
+  - name: assert_row_count
+    assert:
+      min: 100
+    tags:
+      - OPTIONAL
+```
+
+</details>
 
 ### assert\_row\_count\_in\_range
 
