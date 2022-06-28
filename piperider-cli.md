@@ -87,12 +87,12 @@ piperider generate-report [Options]
 | `--debug` | none             | Enable debugging output                                         |
 | `--help`  | none             | List command-line options                                       |
 
-## Compare Report
+## Compare Reports
 
-`compare-report` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
+`compare-reports` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
 
 ```shell
-piperider compare-report [Options]
+piperider compare-reports [Options]
 ```
 
 | Option    | Argument | Description                                                    |

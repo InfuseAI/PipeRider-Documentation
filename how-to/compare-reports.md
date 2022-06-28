@@ -6,10 +6,10 @@ description: How to compare the results of previous reports.
 
 Once you have generated multiple reports it may be desirable to compare reports to view how your data has changed over time.
 
-The `compare-report` feature allows you to compare two different reports by generating a comparison report.
+The `compare-reports` feature allows you to compare two different reports by generating a comparison report.
 
 ```
-piperider compare-report
+piperider compare-reports
 ```
 
 You will be prompted to select two reports for the comparison.
@@ -27,7 +27,7 @@ You will be prompted to select two reports for the comparison.
 another way is to specify a profiling `.json` as the base by `--base`.
 
 ```
-piperider compare-report --base /path/to/dataproject/.piperider/outputs/dataproject-20220609212919/run.json
+piperider compare-reports --base /path/to/dataproject/.piperider/outputs/dataproject-20220609212919/run.json
 ```
 
 Then you will be prompted to select a result as the input for the comparison.
@@ -46,7 +46,7 @@ Then you will be prompted to select a result as the input for the comparison.
 Specify two `.json` in the command for the comparison, one as `--base`, the other as `--input`.
 
 ```shell
-piperider compare-report --base /path/to/<.json> --input /path/to/<run>/run.json
+piperider compare-reports --base /path/to/<.json> --input /path/to/<run>/run.json
 ```
 
 PipeRider will generate an HTML report of the comparison.

@@ -286,7 +286,7 @@ Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.m
 
 ### Compare reports
 
-`compare-report` enables you to create a comparison report that compares two different reports. The comparison report is useful for seeing how your data has changed over time.&#x20;
+`compare-reports` enables you to create a comparison report that compares two different reports. The comparison report is useful for seeing how your data has changed over time.&#x20;
 
 To simulate a change in your data, download the following sqlite database overwriting the existing one.
 
@@ -336,10 +336,10 @@ Table 'SYMBOL'
   14 test executed
 ```
 
-Now that you have a second report, run the `compare-report` command.
+Now that you have a second report, run the `compare-reports` command.
 
 ```
-piperider compare-report
+piperider compare-reports
 ```
 
 You will be prompted to select two reports for the comparison. Select the most recent report and one report from before you downloaded the new database.
