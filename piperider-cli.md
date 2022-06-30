@@ -22,55 +22,86 @@ piperider init [OPTIONS]
 | `--debug`            | none     | Enable the debug mode                                               |
 | `--help`             | none     | List command-line options                                           |
 
-## Run profiler and Check Data Quality
+## Run profiler, assertions, report
 
-`run` will profile tables/columns and save profiling results at `.piperider/outputs` for each run. Also, it will check the data quality by assertions at `.piperider/assertions`.
+The `run` command performs the following functions.
+
+On first run:
+
+* Analyzes the data source and generates a data profile.
+* Offers to generate recommended assertions and check the data profile against these them. Assertion files will be generated in `.piperider/assertions`.
+* Generates blank assertion templates if recommended assertions were not created.
+* Generates a report in `.piperider/outputs`.
+
+On subsequent runs:
+
+* Analyzes the data source and generates a data profile.
+* Checks the data profile against any existing assertions located in `.piperider/assertions`.
+* Generates a report in `.piperider/outputs`.
 
 {% hint style="info" %}
-Regarding how to configure assertions, please check the [assertion configuration](assertion-configuration.md) for the detail.
+Regarding how to configure assertions, please check the [assertion configuration](data-quality-assertions/assertion-configuration.md) for the detail.
 {% endhint %}
 
 ```shell
 piperider run [OPTIONS]
 ```
 
-| Option              | Argument | Description                                                                      |
-| ------------------- | -------- | -------------------------------------------------------------------------------- |
-| `--datasource`      | name     | Profile a specified data source                                                  |
-| `--table`           | name     | Profile a specified table                                                        |
-| `--output`          | path     | Specify the path for saving generated profiling `.json` files.                   |
-| `--no-interaction`  | none     | Generate assertion scaffoldings by default without a prompt.                     |
-| `--generate-report` | none     | Profile and generate static HTML reports at `.piperider/reports/` for each table |
-| `--help`            | none     | List command-line options                                                        |
+| Option             | Argument | Description                                                   |
+| ------------------ | -------- | ------------------------------------------------------------- |
+| `--datasource`     | name     | Profile a specified data source                               |
+| `--table`          | name     | Profile a specified table only                                |
+| `--output`         | path     | Specify the path for saving generated profiling `.json` files |
+| `--no-interaction` | none     | Generate assertion templates by default without a prompt      |
+| `--skip-report`    | none     | Don't generate reports                                        |
+| `--skip-recommend` | none     | Don't generate recommended assertions                         |
+| `--dbt-test`       | none     | Run dbt test                                                  |
+| `--dbt-build`      | none     | Run dbt build                                                 |
+| `--debug`          | none     | Enable debugging output                                       |
+| `--help`           | none     | List command-line options                                     |
+
+## Generate Assertions
+
+Generate recommended assertion files in `.piperider/assertions/` . You may want to generate recommended once profiling results are changed.
+
+```
+piperider generate-assertions
+```
+
+| Option    | Argument         | Description                                                                     |
+| --------- | ---------------- | ------------------------------------------------------------------------------- |
+| `--input` | path/to/run.json | Generate a recommended assertions based on a specific profiling `run.json` file |
+| `--debug` | none             | Enable debugging mode                                                           |
+| `--help`  | none             | List command-line options                                                       |
 
 ## Generate Report
 
-`generate-report` will generate static HTML reports at `.piperider/reports/` based on, by default, profiling results of the latest `run`.
+`generate-report` will generate static HTML reports in `.piperider/outputs/<run>` based on the profiling results of the latest `run` by default.
 
 ```shell
 piperider generate-report [Options]
 ```
 
-| Option    | Argument              | Description                                                       |
-| --------- | --------------------- | ----------------------------------------------------------------- |
-| `--input` | path/to/\<table>.json | Generate a report referring to a specified profiling `.json` file |
-| `--debug` | none                  | Enable the debug mode                                             |
-| `--help`  | none                  | List command-line options                                         |
+| Option    | Argument         | Description                                                     |
+| --------- | ---------------- | --------------------------------------------------------------- |
+| `--input` | path/to/run.json | Generate a report based on a specific profiling `run.json` file |
+| `--debug` | none             | Enable debugging output                                         |
+| `--help`  | none             | List command-line options                                       |
 
-## Compare Report
+## Compare Reports
 
-`compare-report` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
+`compare-reports` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
 
 ```shell
-piperider compare-report [Options]
+piperider compare-reports [Options]
 ```
 
-| Option    | Argument | Description                                       |
-| --------- | -------- | ------------------------------------------------- |
-| `--base`  | path     | Specify a profiling `.json` as the base           |
-| `--input` | path     | Specify a profiling `.json` comparing to the base |
-| `--debug` | none     | Enable the debug mode                             |
-| `--help`  | none     | List command-line options                         |
+| Option    | Argument | Description                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `--base`  | path     | Specify a profiling `run.json` as the base report              |
+| `--input` | path     | Specify a profiling `run.json` to compare with the base report |
+| `--debug` | none     | Enable debugging output                                        |
+| `--help`  | none     | List command-line options                                      |
 
 ## Diagnose Project Configuration
 
@@ -79,3 +110,9 @@ piperider compare-report [Options]
 ```shell
 piperider diagnose
 ```
+
+| Option    | Argument | Description               |
+| --------- | -------- | ------------------------- |
+| `--debug` | none     | Enable debugging output   |
+| `--help`  | none     | List command-line options |
+|           |          |                           |

@@ -1,5 +1,5 @@
 ---
-description: PipeRider - Data Reliability, Automated.
+description: PipeRider - Data Reliability Automated.
 ---
 
 # Home

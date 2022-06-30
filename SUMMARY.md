@@ -15,7 +15,7 @@
 
 ## Data Quality Assertions
 
-* [Built-In Assertions](assertion-configuration.md)
+* [Built-In Assertions](data-quality-assertions/assertion-configuration.md)
 * [Custom Assertions](data-quality-assertions/custom-assertions.md)
 
 ## 📑 How-To
@@ -26,4 +26,4 @@
 
 ***
 
-* [Changelog (v0.2.0)](https://github.com/InfuseAI/piperider/releases)
+* [Changelog (v0.3.0)](https://github.com/InfuseAI/piperider/releases)

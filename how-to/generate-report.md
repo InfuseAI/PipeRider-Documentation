@@ -4,32 +4,28 @@ description: How to generate reports
 
 # Generate Report
 
-A generated report refers to a profiling result in a `.json` which is an artifact by `piperider run`.
+A report, `index.html`, by default is generated with a profiling results, `run.json` by `piperider run`.&#x20;
 
-`piperider generate-report` will generate reports based on the results of the latest run by default. Besides, there are also a few ways to generate reports on your demand.
+`piperider generate-report` will just generate reports directly referring to the result of latest run.&#x20;
 
-### Run and generate reports
+Besides, there are also a few ways to generate reports on your demand.
 
-You can execute `piperider run` with `--generate-report`. It will generate reports after the profiling immediately. It is a short version of `piperider run && piperider generate-report` .
+### Run and generate report of a single table
 
-```
-piperider run --generate-report
-```
-
-Furthermore, you can run and generate a report of a single specified table.
+You can profile and generate a report of a single specified table.
 
 E.g. Profile the table, `price`, and generate the report
 
 ```shell
-piperider run --table price --generate-report
+piperider run --table price
 ```
 
-### Generate a report of a specified profile
+### Generate a report of a specific run
 
-Every profiling result of a table will be saved at `.piperider/outputs/<each_run>`, you may just want to generate a report of a specified profile in the history.
+Every profiling result will be saved at `.piperider/outputs/<each_run>/run.json`, you may just want to generate a report of a specified profile in the history.
 
-E.g. Generate a report of `.piperider/outputs/dataproject-20220610154629/price.json`.
+E.g. Generate a report of `.piperider/outputs/dataproject-20220610154629/run.json`.
 
 ```
-piperider generate-report --input .piperider/outputs/dataproject-20220610154629/price.json
+piperider generate-report --input .piperider/outputs/dataproject-20220610154629/run.json
 ```

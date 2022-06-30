@@ -4,7 +4,7 @@ description: How to create custom assertions to check the quality of your data.
 
 # Custom Assertions
 
-Piperider provides a few [built-in assertions](../assertion-configuration.md) and also supports custom assertions as _plugins_ which can satisfy the data quality check on your demand. Here you will learn the magic and create your first custom assertion.
+Piperider provides a few [built-in assertions](assertion-configuration.md) and also supports custom assertions as _plugins_ which can satisfy the data quality check on your demand. Here you will learn the magic and create your first custom assertion.
 
 ## How to Create an Assertion Function
 
@@ -39,7 +39,7 @@ read metrics of columns into a dict object. The column will be what you use asse
 
 ```python
 column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-if not column_metrics:
+if column_metrics is None:
   # cannot find the column in the metrics
   return context.result.fail()
 ```
@@ -96,7 +96,7 @@ We will explain some noteworthy lines in the [below](custom-assertions.md#undefi
 ```python
 def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     table_metrics = metrics.get('tables', {}).get(table)
-    if not table_metrics:
+    if table_metrics is None:
         # cannot find the table in the metrics
         return context.result.fail()
 
@@ -123,7 +123,7 @@ def assert_nothing_table_example(context: AssertionContext, table: str, column: 
 
 def assert_nothing_column_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if not column_metrics:
+    if column_metrics is None:
         # cannot find the column in the metrics
         return context.result.fail()
 
@@ -216,7 +216,7 @@ In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Beca
 
 Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it belongs to the namespace, range\_check,_ in future I'll create more range-related assertions.
 
-Look for `.piperider/assertions/` I found the _SYMBOL.yml_ that contains assertions against _SYMBOL_ table. Edit the file and add my custom assertion against the column _Name_.
+At `.piperider/assertions/` I create an assertion file, _my\_assertion.yml_ and edit the file to add my custom assertion logic against the column _Name_.
 
 ```yaml
 SYMBOL:  # Table Name
@@ -237,7 +237,7 @@ Next I will define the corresponding assertion function. I go to `.piperider/plu
 ```python
 def assert_distinct_in_range(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if not column_metrics:
+    if column_metrics is None:
         # cannot find the column in the metrics
         return context.result.fail()
 
