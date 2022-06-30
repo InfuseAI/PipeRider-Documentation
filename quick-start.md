@@ -31,7 +31,7 @@ pip install piperider -U
 
 ### Prepare SQLite database
 
-Create a directory for the new project and download the sample database.
+Create a directory for the new project then either place your own SQLite database inside or download the sample database below.
 
 ```shell
 mkdir dataproject && cd dataproject
@@ -61,11 +61,6 @@ What data source would you like to connect to?
 > sqlite
 ```
 
-Enter the name of the SQLite database, `sp500.db` .
-
-```
-Please enter the following fields for sqlite
-Path of database file:
 ```
 
 ### Verify project configuration
