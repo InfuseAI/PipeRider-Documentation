@@ -28,3 +28,4 @@
 
 * [Changelog (v0.3.0)](https://github.com/InfuseAI/piperider/releases)
 * [New page for 0.4](new-page-for-0.4.md)
+* [0.3 page edit](0.3-page-edit.md)
