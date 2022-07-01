@@ -27,3 +27,5 @@
 ***
 
 * [Changelog (v0.3.0)](https://github.com/InfuseAI/piperider/releases)
+* [0.4](0.4.md)
+* [0.3 edit](0.3-edit.md)
