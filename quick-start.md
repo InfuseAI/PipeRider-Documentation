@@ -8,12 +8,12 @@ This quick start guide will show you how to:
 
 * [Install PipeRider](quick-start.md#install-piperider-via-pip)
 * [Prepare a SQLite data source](quick-start.md#prepare-sqlite-database)
-* [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)&#x20;
+* [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)
 * [Run PipeRider](quick-start.md#run-piperider-profile-data-test-assertions-generate-report)
 * [Apply data assertions](quick-start.md#apply-data-assertions)
 * [Compare reports](quick-start.md#compare-reports)
 
-PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake.  In this guide we will be using SQLite.
+PipeRider currently supports three data sources - SQLite, Postgres, and Snowflake. In this guide we will be using SQLite.
 
 ### Before you start
 
@@ -61,13 +61,11 @@ What data source would you like to connect to?
 > sqlite
 ```
 
-```
-
-### Verify project configuration
+#### Verify project configuration
 
 Use the `diagnose` command to check the project settings and ensure PipeRider can connect to the data source.
 
-```shell
+```
 piperider diagnose
 ```
 
@@ -156,7 +154,6 @@ profiling [SYMBOL.COUNTRY] type=VARCHAR(16777216)
 profiling [SYMBOL.SECTOR] type=VARCHAR(16777216)
 profiling [SYMBOL.INDUSTRY] type=VARCHAR(16777216)
 profiling [SYMBOL.RECOMMENDATION_KEY] type=VARCHAR(16777216)
-
 ```
 
 PipeRider will offer to generate recommended assertions. Answer 'yes'.
@@ -281,7 +278,7 @@ Refer to [Built-In Assertions](data-quality-assertions/assertion-configuration.m
 
 ### Compare reports
 
-`compare-reports` enables you to create a comparison report that compares two different reports. The comparison report is useful for seeing how your data has changed over time.&#x20;
+`compare-reports` enables you to create a comparison report that compares two different reports. The comparison report is useful for seeing how your data has changed over time.
 
 To simulate a change in your data, download the following sqlite database overwriting the existing one.
 
@@ -359,7 +356,7 @@ Open the HTML comparison report in your browser to review any changes or share i
 
 ![PipeRider comparison report](.gitbook/assets/compare-fs8.png)
 
-\----&#x20;
+\----
 
 From the output you can see the results in the following format:
 
