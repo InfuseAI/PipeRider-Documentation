@@ -76,14 +76,14 @@ PRICE:  # Table Name
       # Test Cases for Column
       tests: # assertion functions
       - name: alphanumeric_only # custom assertion function without parameters
-      - name: distinct.count # custom assertion function takes a parameter
+      - name: distinct_count # custom assertion function takes a parameter
         assert:
-          distinct_count: 505
+          count: 505
 ```
 
 ### Scaffolding of Assertion Function
 
-This is the context of `customized_assertions.py`. An customized assertion function must be declared in _class_ and implement the interface, _BaseAssertionType_ and its functions, _`execute()` and `validate()`._
+This is the context of `customized_assertions.py`. A custom assertion class has to implement `BaseAssertionType` __ and its functions, `name()`, _`execute()` and `validate()`._
 
 ```python
 from piperider_cli.assertion_engine.assertion import AssertionContext, AssertionResult, ValidationResult
@@ -91,43 +91,79 @@ from piperider_cli.assertion_engine.types import BaseAssertionType, register_ass
 
 
 class AssertNothingTableExample(BaseAssertionType):
-  def name(self):
-    return 'assert_nothing_table_example'
+    def name(self):
+        return 'assert_nothing_table_example'
 
-  def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
-    table_metrics = metrics.get('tables', {}).get(table)
-    if table_metrics is None:
-      # cannot find the table in the metrics
-      return context.result.fail()
+    def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+        table_metrics = metrics.get('tables', {}).get(table)
+        if table_metrics is None:
+            # cannot find the table in the metrics
+            return context.result.fail()
 
-    # 1. Get the metric for the current table
-    # We support two metrics for table level metrics: ['row_count', 'col_count']
-    row_count = table_metrics.get('row_count')
-    # col_count = table_metrics.get('col_count')
+        # 1. Get the metric for the current table
+        # We support two metrics for table level metrics: ['row_count', 'col_count']
+        row_count = table_metrics.get('row_count')
+        # col_count = table_metrics.get('col_count')
 
-    # 2. Get expectation from assert input
-    expected = context.asserts.get('something', [])
+        # 2. Get expectation from assert input
+        expected = context.asserts.get('something', [])
 
-    # 3. Implement your logic to check requirement between expectation and actual value in the metrics
+        # 3. Implement your logic to check requirement between expectation and actual value in the metrics
 
-    # 4. send result
+        # 4. send result
 
-    # 4.1 mark it as failed result
-    # return context.result.fail('what I saw in the metric')
+        # 4.1 mark it as failed result
+        # return context.result.fail('what I saw in the metric')
 
-    # 4.2 mark it as success result
-    # return context.result.success('what I saw in the metric')
+        # 4.2 mark it as success result
+        # return context.result.success('what I saw in the metric')
 
-    return context.result.success('what I saw in the metric')
+        return context.result.success('what I saw in the metric')
 
-  def validate(self, context: AssertionContext) -> ValidationResult:
-    result = ValidationResult(context)
-    result.errors.append('explain to users why this broken')
-    return result
+    def validate(self, context: AssertionContext) -> ValidationResult:
+        result = ValidationResult(context)
+        # result.errors.append('explain to users why this broken')
+        return result
 
+
+class AssertNothingColumnExample(BaseAssertionType):
+    def name(self):
+        return "assert_nothing_column_example"
+
+    def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+        column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
+        if column_metrics is None:
+            # cannot find the column in the metrics
+            return context.result.fail()
+
+        # 1. Get the metric for the column metrics
+        total = column_metrics.get('total')
+        non_nulls = column_metrics.get('non_nulls')
+
+        # 2. Get expectation from assert input
+        expected = context.asserts.get('something', [])
+
+        # 3. Implement your logic to check requirement between expectation and actual value in the metrics
+
+        # 4. send result
+
+        # 4.1 mark it as failed result
+        # return context.result.fail('what I saw in the metric')
+
+        # 4.2 mark it as success result
+        # return context.result.success('what I saw in the metric')
+
+        return context.result.success('what I saw in the metric')
+
+    def validate(self, context: AssertionContext) -> ValidationResult:
+        result = ValidationResult(context)
+        # result.errors.append('explain to users why this broken')
+        return result
 
 # register new assertions
 register_assertion_function(AssertNothingTableExample)
+register_assertion_function(AssertNothingColumnExample)
+
 ```
 
 #### Methods&#x20;
@@ -218,7 +254,7 @@ In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Beca
                     "distinct": 505,
 ```
 
-Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it belongs to the namespace, range\_check,_ in future I'll create more range-related assertions.
+Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it is declared in range\_check.py,_ in future I'll create more range-related assertions.
 
 At `.piperider/assertions/` I create an assertion file, _my\_assertion.yml_ and edit the file to add my custom assertion logic against the column _Name_.
 
@@ -230,33 +266,52 @@ SYMBOL:  # Table Name
     NAME: # Column Name
       # Test Cases for Column
       tests:
-        - name: range_check.assert_distinct_in_range
+        - name: assert_distinct_in_range
           assert:
             range: [0, 600]
             
 ```
 
-Next I will define the corresponding assertion function. I go to `.piperider/plugins` and create a python file, _range\_check.py_ the file name is the _namespace_ I _want_. Edit the python file and add the custom assertion codes.
+Next I will define the corresponding assertion function. I go to `.piperider/plugins` and create a python file, _range\_check.py_. Edit the python file and add the custom assertion codes.
 
 ```python
-def assert_distinct_in_range(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
-    column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if column_metrics is None:
-        # cannot find the column in the metrics
-        return context.result.fail()
+from piperider_cli.assertion_engine.assertion import AssertionContext, AssertionResult, ValidationResult
+from piperider_cli.assertion_engine.types import BaseAssertionType, register_assertion_function
 
-    context.result.actual = column_metrics.get('distinct')
+class AssertDistinctInRange(BaseAssertionType):
+    def name(self):
+        return "assert_distinct_in_range"
 
-    # Get user input range from the assertion
-    expected = context.asserts.get('range', [])
-    min = expected[0]
-    max = expected[1]
- 
-    # Check if the distinct value sits in the range and return the result
-    if context.result.actual <= max and context.result.actual >= min:
-        return context.result.success("The value is {} sitting in the range".format(context.result.actual))
+    def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+        column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
+        if column_metrics is None:
+            # cannot find the column in the metrics
+            return context.result.fail()
 
-    return context.result.fail("The value is {} exceeding the range, something wrong in my data.".format(context.result.actual))
+        context.result.actual = column_metrics.get('distinct')
+
+        # Get user input range from the assertion
+        expected = context.asserts.get('range', [])
+        min = expected[0]
+        max = expected[1]
+    
+        # Check if the distinct value sits in the range and return the result
+        if context.result.actual <= max and context.result.actual >= min:
+            return context.result.success("The value is {} sitting in the range".format(context.result.actual))
+
+        return context.result.fail("The value is {} exceeding the range, something wrong in my data.".format(context.result.actual)) 
+
+    def validate(self, context: AssertionContext) -> ValidationResult:
+        expected = context.asserts.get('range')
+        result = ValidationResult(context)
+
+        # validate if the value of the parameter "range" is valid
+        if expected is None:
+            result.errors.append('Range is not defined')
+        return result
+
+register_assertion_function(AssertDistinctInRange)
+
 ```
 
 I have added the custom assertion and the corresponding assertion function. Time to test it.
@@ -269,7 +324,7 @@ After the running, I see the assertion result. The first custom assertions works
 
 ```shell-session
 ────────────────────────────────────────────────────────────────── Assertion Results ───────────────────────────────────────────────────────────────────
-[  OK  ] SYMBOL.NAME  range_check.assert_distinct_in_range  Expected: {'range': [0, 600]} Actual: The value is 505 sitting in the range
+[  OK  ] SYMBOL.NAME  assert_distinct_in_range  Expected: {'range': [0, 600]} Actual: The value is 505 sitting in the range
 ```
 
 The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive.
