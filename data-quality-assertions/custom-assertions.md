@@ -179,6 +179,10 @@ register_assertion_function(AssertNothingColumnExample)
 
 `validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameters taken by testing function are valid.
 
+`register_assertion_function()`: register the custom assertion function so that it can be recognized in the assertion yaml.
+
+
+
 #### Tips
 
 Read a table metrics and a value of a specified key from it:
