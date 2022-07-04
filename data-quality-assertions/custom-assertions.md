@@ -16,12 +16,6 @@ Piperider, by default, will load python files under `.piperider/plugins` as cust
 The search path to `plugins/` can be overwritten by the environment variable **`PIPERIDER_PLUGINS`**. Define your path by setting the variable.
 {% endhint %}
 
-### Namespace
-
-In the real world, you usually have a plenty of assertions to assure the data quality. Those assertions are designed for various functions/purposes. In order to organize assertions, Piperider supports the _namespace_ which can organize assertions into groups.
-
-The _namespace_ actually refers to the file name of assertions python file, i.e., you can create a python file, `string_validate.py`_,_ then _all of defined assertions in the file are under the namespace_, **string\_validate**_._ For the example_,_ You can use the defined assertion by `string_validate.alphanumeric_only`_._
-
 ### Metrics
 
 `piperider run` will generate profiling results containing a plenty of metrics that your assertions could refer to those metrics for the data quality measurement. Metrics are saved in the `.piperider/outputs/<run>/.profiler.json` and the context are categorized into tables/columns. Please check the files to see what metrics you can refer to.
@@ -46,14 +40,14 @@ if column_metrics is None:
 
 ### Assertion
 
-You will be prompted by `piperider run` for the assertion templates generation if no assertions found. The generated assertions will be in `.yml`at `.piperider/assertions`.
+When you first time execute `piperider run` , You will be prompted for the generation of recommended assertions, if _yes_, recommended assertions will be generated, otherwise, assertion scaffoldings will be generated at `.piperider/assertions`.
 
 ```
-No assertions found for datasource [ dataproject ]
-Do you want to auto generate assertion templates for this datasource [yes/no]? y
+No assertion found
+Do you want to auto generate recommended assertions for this datasource [Yes/no]
 ```
 
-The pattern of assertion yaml looks like below
+The scaffolding of assertion yaml looks like below
 
 ```yaml
 your_table_name:
@@ -81,7 +75,7 @@ PRICE:  # Table Name
     SYMBOL:  # Column Name
       # Test Cases for Column
       tests: # assertion functions
-      - name: string_validate.alphanumeric_only # custom assertion function without parameters
+      - name: alphanumeric_only # custom assertion function without parameters
       - name: distinct.count # custom assertion function takes a parameter
         assert:
           distinct_count: 505
@@ -89,16 +83,22 @@ PRICE:  # Table Name
 
 ### Scaffolding of Assertion Function
 
-This is the context of `customized_assertions.py` that contains two sample functions, _assert\_nothing\_table\_example_ and _assert\_nothing\_column\_example_ which always return `success().`
-
-We will explain some noteworthy lines in the [below](custom-assertions.md#undefined).
+This is the context of `customized_assertions.py`. An customized assertion function must be declared in _class_ and implement the interface, _BaseAssertionType_ and its functions, _`execute()` and `validate()`._
 
 ```python
-def assert_nothing_table_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+from piperider_cli.assertion_engine.assertion import AssertionContext, AssertionResult, ValidationResult
+from piperider_cli.assertion_engine.types import BaseAssertionType, register_assertion_function
+
+
+class AssertNothingTableExample(BaseAssertionType):
+  def name(self):
+    return 'assert_nothing_table_example'
+
+  def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
     table_metrics = metrics.get('tables', {}).get(table)
     if table_metrics is None:
-        # cannot find the table in the metrics
-        return context.result.fail()
+      # cannot find the table in the metrics
+      return context.result.fail()
 
     # 1. Get the metric for the current table
     # We support two metrics for table level metrics: ['row_count', 'col_count']
@@ -120,41 +120,41 @@ def assert_nothing_table_example(context: AssertionContext, table: str, column: 
 
     return context.result.success('what I saw in the metric')
 
+  def validate(self, context: AssertionContext) -> ValidationResult:
+    result = ValidationResult(context)
+    result.errors.append('explain to users why this broken')
+    return result
 
-def assert_nothing_column_example(context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
-    column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-    if column_metrics is None:
-        # cannot find the column in the metrics
-        return context.result.fail()
 
-    # 1. Get the metric for the column metrics
-    total = column_metrics.get('total')
-    non_nulls = column_metrics.get('non_nulls')
-
-    # 2. Get expectation from assert input
-    expected = context.asserts.get('something', [])
-
-    # 3. Implement your logic to check requirement between expectation and actual value in the metrics
-
-    # 4. send result
-
-    # 4.1 mark it as failed result
-    # return context.result.fail('what I saw in the metric')
-
-    # 4.2 mark it as success result
-    # return context.result.success('what I saw in the metric')
-
-    return context.result.success('what I saw in the metric')
+# register new assertions
+register_assertion_function(AssertNothingTableExample)
 ```
 
-#### Explanation
+#### Methods&#x20;
 
-Read a table metrics and a value of a specified key from it.
+`name()`: return the name of the testing function that will be used in assertion yaml.
+
+`execute()` : the implementation of the testing logic. PipeRider will bring arguments below to `execute` method for you:
+
+* _context_: helper object for assembling result entry to the report.
+* _table_: the table name you are asserting.
+* _column_: the column name you are checking, but it could be null when the assertion is run against a table.
+* _metrics_: the profiling results could be referred for the assertion.
+
+`validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameters taken by testing function are valid.
+
+#### Tips
+
+Read a table metrics and a value of a specified key from it:
 
 ```python
 # get a dict object of a table metrics
 table_metrics = metrics.get('tables', {}).get(table)
 
+if table_metrics is None:
+  # cannot find the table in the metrics
+  return context.result.fail()
+  
 # get a value of a metric by a key from the dict object of the table metrics
 table_metrics.get('key')
 ```
@@ -165,11 +165,15 @@ Read a column metrics and a value of a specified key from it.
 # get a dict objec of a column metrics of a table 
 column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
 
+if column_metrics is None:
+  # cannot find the column in the metrics
+  return context.result.fail()
+  
 # get a value of a metric by a key from the dict objec of the column metrics
 column_metrics.get('key')
 ```
 
-Read user input value of a parameter from a assertion yaml.
+Read user input value of a parameter from an assertion yaml.
 
 ```python
 context.asserts.get('parameter_a', [])
