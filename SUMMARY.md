@@ -26,4 +26,4 @@
 
 ***
 
-* [Changelog (v0.3.0)](https://github.com/InfuseAI/piperider/releases)
+* [Changelog (v0.4.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.4.0)
