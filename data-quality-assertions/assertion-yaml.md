@@ -22,7 +22,7 @@ Table_name_1:
       - name: assertion_function_wtihout_parameter
         tags:
         - name_your_tag_optional
-  Table_name_2:
+Table_name_2:
   description: the description will be displayed as a tool tips in the report
   # Test Cases for Table
   tests:
