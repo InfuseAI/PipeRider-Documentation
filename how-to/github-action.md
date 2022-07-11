@@ -27,7 +27,7 @@ piperider
 
 ### PipeRider Action Only
 
-This is a sample of the CI yaml which contains PipeRider action only.&#x20;
+This is a sample of the CI yaml which contains PipeRider action only.
 
 You may want to replace the version when newer `piperider-action` is released in the future.
 
@@ -56,10 +56,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: PipeRider CLI Action
-        uses: InfuseAI/piperider-action@v0.3.0
+        uses: InfuseAI/piperider-action@v0.4.0
 ```
 
-### With Snowfalke/dbt
+### With Snowflake/dbt
 
 If Snowflake is the data source of your project and be with dbt, you can have the yml file like the sample below.
 
@@ -81,7 +81,7 @@ You may want to replace the version of `dbt-snowflake` in the yaml.
 
 * `dbt-snowflake==<version>`
 
-A sample of CI yaml
+A sample of CI yaml, , [reference](https://github.com/InfuseAI/dbt-infuse-finance/blob/main/.github/workflows/ci.yml)
 
 ```yaml
 name: piperider-ci
@@ -132,7 +132,7 @@ jobs:
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
 
       - name: PipeRider CLI Action
-        uses: InfuseAI/piperider-action@v0.3.0
+        uses: InfuseAI/piperider-action@v0.4.0
         id: piperider
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
@@ -143,12 +143,11 @@ jobs:
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           DBT_PROFILES_DIR: ${{ github.workspace }}
-
 ```
 
 ### Send notifications to your Slack
 
-Finally, if you want to receive notifications when actions finish, you can use the `slack-github-action` at the bottom of the CI yaml.
+One more thing, if you want to receive notifications on Slack when actions finish, you can use the `slack-github-action` at the bottom of the CI yaml.
 
 Before that you will need to add the environment variable, `SLACK_WEBHOOK_URL`. How to gain your Slack Webhook URI, please see [Slack Send GitHub Action](https://github.com/slackapi/slack-github-action) repo.
 
