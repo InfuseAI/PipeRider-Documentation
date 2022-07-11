@@ -15,6 +15,7 @@
 
 ## Data Quality Assertions
 
+* [Assertion Yaml](data-quality-assertions/assertion-yaml.md)
 * [Built-In Assertions](data-quality-assertions/assertion-configuration.md)
 * [Custom Assertions](data-quality-assertions/custom-assertions.md)
 
@@ -23,6 +24,7 @@
 * [Generate Report](how-to/generate-report.md)
 * [Compare Reports](how-to/compare-reports.md)
 * [Convert CSV to SQLite](how-to/convert-csv-to-sqlite.md)
+* [GitHub Action](how-to/github-action.md)
 
 ***
 
