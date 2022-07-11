@@ -81,7 +81,7 @@ You may want to replace the version of `dbt-snowflake` in the yaml.
 
 * `dbt-snowflake==<version>`
 
-A sample of CI yaml, , [reference](https://github.com/InfuseAI/dbt-infuse-finance/blob/main/.github/workflows/ci.yml)
+A sample of CI yaml, [reference](https://github.com/InfuseAI/dbt-infuse-finance/blob/main/.github/workflows/ci.yml)
 
 ```yaml
 name: piperider-ci
