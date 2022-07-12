@@ -46,7 +46,7 @@ The `init` command creates a `.piperider` directory, inside the current director
 piperider init
 ```
 
-Enter a a name for your project, e.g. `dataproject`.
+Enter a name for your project, e.g. `dataproject`.
 
 ```shell
 What is your project name? (alphanumeric only)
