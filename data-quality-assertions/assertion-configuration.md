@@ -21,13 +21,13 @@ Here are built-in assertions, there are two types of assertions, one takes no pa
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:  #Table Name
   columns:
-    your_column_name:
+    country_code:
       tests:
       - name: assert_column_exist
         tags:
-          - OPTIONAL
+          - dialing code
 ```
 
 
@@ -48,15 +48,15 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:  #Table Name
   columns:
-    your_column_name:
+    country_code:
       tests:
       - name: assert_column_in_types
         assert:
-          type: [string, datetime]
+          types: [string]
         tags:
-          - OPTIONAL
+          - dialing code
 ```
 
 </details>
@@ -73,15 +73,15 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    population:
       tests:
       - name: assert_column_min_in_range
         assert:
-          min: [10, 20]
+          min: [1, 1000]
         tags:
-          - OPTIONAL
+          - small country
 ```
 
 </details>
@@ -98,15 +98,15 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    population:
       tests:
       - name: assert_column_max_in_range
         assert:
-          max: [10, 20]
+          max: [100000000, 2000000000]
         tags:
-          - OPTIONAL
+          - large country
 ```
 
 </details>
@@ -122,13 +122,13 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    name:
       tests:
       - name: assert_column_not_null
         tags:
-          - OPTIONAL
+          - city name
 ```
 
 </details>
@@ -144,13 +144,13 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    crime_rate:
       tests:
       - name: assert_column_null
         tags:
-          - OPTIONAL
+          - ToDo
 ```
 
 </details>
@@ -167,15 +167,15 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    name:
       tests:
       - name: assert_column_type
         assert:
-          type: numeric
+          type: string
         tags:
-          - OPTIONAL
+          - city name
 ```
 
 </details>
@@ -192,15 +192,15 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    country_code:
       tests:
       - name: assert_column_schema_type
         assert:
-          schema_type: TEXT
+          schema_type: CHAR(3)
         tags:
-          - OPTIONAL
+          - dialing code
 ```
 
 </details>
@@ -219,13 +219,13 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   columns:
-    your_column_name:
+    country_code:
       tests:
       - name: assert_column_unique
         tags:
-          - OPTIONAL
+          - dialing code
 ```
 
 </details>
@@ -246,25 +246,25 @@ your_table_name:
 
 ```yaml
 # With the minimum and maximum row count in the following format
-your_table_name:
+world_city:
   tests:
   - name: assert_row_count
     assert:
-      min: 10
-      max: 20
+      min: 10000
     tags:
-      - OPTIONAL
+      - United Nations
 ```
 
 ```yaml
 # With the minimum row count only in the following format
-your_table_name:
+world_city:
   tests:
   - name: assert_row_count
     assert:
-      min: 100
+      min: 10000
+      max: 100000
     tags:
-      - OPTIONAL
+      - United Nations
 ```
 
 </details>
@@ -281,13 +281,13 @@ your_table_name:
 <summary>YAML example</summary>
 
 ```yaml
-your_table_name:
+world_city:
   tests:
   - name: assert_row_count_in_range
     assert:
-      count: [10, 20]
+      count: [10000, 20000]
     tags:
-      - OPTIONAL
+      - United Nations
 ```
 
 </details>
