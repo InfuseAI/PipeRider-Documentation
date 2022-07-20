@@ -3,6 +3,7 @@
 * [Home](README.md)
 * [Installation](install-piperider.md)
 * [Quick Start](quick-start.md)
+* [Quick Start (dbt / SQLite)](quick-start-dbt-sqlite.md)
 * [Command Reference](piperider-cli.md)
 * [Project Structure](project-structure.md)
 * [Terminology](terminology.md)
