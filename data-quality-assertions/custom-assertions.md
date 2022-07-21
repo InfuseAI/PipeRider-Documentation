@@ -18,25 +18,133 @@ The search path to `plugins/` can be overwritten by the environment variable **`
 
 ### Metrics
 
-`piperider run` will generate profiling results containing a plenty of metrics that your assertions could refer to those metrics for the data quality measurement. Metrics are saved in the `.piperider/outputs/<run>/.profiler.json` and the context are categorized into tables/columns. Please check the files to see what metrics you can refer to.
+`piperider run` will generate profiling results containing a plenty of metrics that your assertions could refer to those metrics for the data quality measurement. Metrics are saved in the `.piperider/outputs/<run>/.profiler.json` and the context are categorized into tables/columns according to data types, _String_, _Datetime_, and _Numeric_.&#x20;
 
-In the assertion python code, you can read metrics of tables into a dict object. The table will be what you use assertion against.
+Here is an example of these types of profiling metrics. Table PRICE contains SYMBOL(string), DATE(datetime) and OPEN(numeric).
 
-```python
-table_metrics = metrics.get('tables', {}).get(table)
-if not table_metrics:
-  # cannot find the table in the metrics
-  return context.result.fail()
+<details>
+
+<summary>sample .profiler.json</summary>
+
+```yaml
+{
+   "PRICE": {
+      "name": "PRICE",
+      "row_count": 157881,
+      "col_count": 11,
+      "columns": {
+        "SYMBOL": {
+          "name": "SYMBOL",
+          "type": "string",
+          "schema_type": "VARCHAR(16777216)",
+          "total": 157881,
+          "non_nulls": 157881,
+          "nulls": 0,
+          "valid": 157881,
+          "mismatched": 0,
+          "distinct": 504,
+          "distribution": {
+            "type": "topk",
+            "labels": [
+              "ZTS",
+              "ZION",
+              "ZBRA",
+              ...
+            ],
+            "counts": [
+              314,
+              314,
+              314,
+              ...
+            ]
+          },
+          "profile_duration": "0.11",
+          "elapsed_milli": 107
+        },
+        "DATE": {
+          "name": "DATE",
+          "type": "datetime",
+          "schema_type": "DATE",
+          "total": 157881,
+          "non_nulls": 157881,
+          "nulls": 0,
+          "valid": 157881,
+          "mismatched": 0,
+          "distinct": 314,
+          "min": "2021-01-04",
+          "max": "2022-03-31",
+          "distribution": {
+            "type": "monthly",
+            "labels": [
+              "2021-01-01 - 2021-02-01",
+              "2021-02-01 - 2021-03-01",
+              "2021-03-01 - 2021-04-01",
+              ...
+            ],
+            "counts": [
+              9538,
+              9538,
+              11546,
+              ...
+            ],
+            "bin_edges": [
+              "2021-01-01",
+              "2021-02-01",
+              "2021-03-01",
+              ...
+            ]
+          },
+          "profile_duration": "0.34",
+          "elapsed_milli": 342
+        },
+        "OPEN": {
+          "name": "OPEN",
+          "type": "numeric",
+          "schema_type": "NUMERIC(10, 2)",
+          "total": 157881,
+          "non_nulls": 157881,
+          "nulls": 0,
+          "valid": 157881,
+          "mismatched": 0,
+          "distinct": 44653,
+          "min": 6.78,
+          "max": 5977.61,
+          "sum": 31387177.84000014,
+          "avg": 198.80275549306214,
+          "p5": 24.65,
+          "p25": 62.17,
+          "stddev": 358.8532524013725,
+          "p50": 117.81,
+          "p75": 216.9,
+          "p95": 527.44,
+          "distribution": {
+            "type": "histogram",
+            "labels": [
+              "6.78 _ 126.20",
+              "126.20 _ 245.61",
+              "245.61 _ 365.03",
+              ...
+            ],
+            "counts": [
+              83571,
+              42090,
+              15092,
+              ...
+            ],
+            "bin_edges": [
+              6.78,
+              126.1966,
+              245.6132,
+              ...
+            ]
+          },
+          "profile_duration": "1.30",
+          "elapsed_milli": 1304
+        }
+}
 ```
 
-read metrics of columns into a dict object. The column will be what you use assertion against.
-
-```python
-column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-if column_metrics is None:
-  # cannot find the column in the metrics
-  return context.result.fail()
-```
+</details>
 
 ### Assertion
 
@@ -55,7 +163,7 @@ your_table_name:
   columns:
     your_column_name_a:
       tests: []
-     your_column_name_b:
+    your_column_name_b:
       tests: []
       ...
 ```
@@ -185,7 +293,7 @@ register_assertion_function(AssertNothingColumnExample)
 
 #### Tips
 
-Read a table metrics and a value of a specified key from it:
+Read a _table metrics_ and a value of a specified key from it:
 
 ```python
 # get a dict object of a table metrics
@@ -199,7 +307,7 @@ if table_metrics is None:
 table_metrics.get('key')
 ```
 
-Read a column metrics and a value of a specified key from it.
+Read a _column metrics_ and a value of a specified key from it.
 
 ```python
 # get a dict objec of a column metrics of a table 
