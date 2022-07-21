@@ -193,6 +193,10 @@ PRICE:  # Table Name
 
 This is the context of `customized_assertions.py`. A custom assertion class has to implement `BaseAssertionType` __ and its functions, `name()`, _`execute()` and `validate()`._
 
+<details>
+
+<summary><em>Assertion function scaffolding</em></summary>
+
 ```python
 from piperider_cli.assertion_engine.assertion import AssertionContext, AssertionResult, ValidationResult
 from piperider_cli.assertion_engine.types import BaseAssertionType, register_assertion_function
@@ -274,6 +278,8 @@ register_assertion_function(AssertNothingColumnExample)
 
 ```
 
+</details>
+
 #### Methods&#x20;
 
 `name()`: return the name of the testing function that will be used in assertion yaml.
@@ -285,16 +291,18 @@ register_assertion_function(AssertNothingColumnExample)
 * _column_: the column name you are checking, but it could be null when the assertion is run against a table.
 * _metrics_: the profiling results could be referred for the assertion.
 
-`validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameters taken by testing function are valid.
+`validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameter values taken by the function are valid.
 
 `register_assertion_function()`: register the custom assertion function so that it can be recognized in the assertion yaml.
 
 
 
-#### Tips
+#### Code snippets
 
-Read a _table metrics_ and a value of a specified key from it:
+Read a _table metrics_ / _column metrics_&#x20;
 
+{% tabs %}
+{% tab title="Table metrics" %}
 ```python
 # get a dict object of a table metrics
 table_metrics = metrics.get('tables', {}).get(table)
@@ -306,9 +314,9 @@ if table_metrics is None:
 # get a value of a metric by a key from the dict object of the table metrics
 table_metrics.get('key')
 ```
+{% endtab %}
 
-Read a _column metrics_ and a value of a specified key from it.
-
+{% tab title="Column metrics" %}
 ```python
 # get a dict objec of a column metrics of a table 
 column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
@@ -320,6 +328,8 @@ if column_metrics is None:
 # get a value of a metric by a key from the dict objec of the column metrics
 column_metrics.get('key')
 ```
+{% endtab %}
+{% endtabs %}
 
 Read user input value of a parameter from an assertion yaml.
 
@@ -327,7 +337,7 @@ Read user input value of a parameter from an assertion yaml.
 context.asserts.get('parameter_a', [])
 ```
 
-Return fail() or success() with a message
+Return `fail()` or `success()` with a message
 
 ```
 context.result.fail("message")
