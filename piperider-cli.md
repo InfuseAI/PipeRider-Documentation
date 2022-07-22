@@ -55,8 +55,8 @@ piperider run [OPTIONS]
 | `--no-interaction` | none     | Generate assertion templates by default without a prompt      |
 | `--skip-report`    | none     | Don't generate reports                                        |
 | `--skip-recommend` | none     | Don't generate recommended assertions                         |
-| `--dbt-test`       | none     | Run dbt test                                                  |
-| `--dbt-build`      | none     | Run dbt build                                                 |
+| `--dbt-test`       | none     | Run dbt test prior to profiling                               |
+| `--dbt-build`      | none     | Run dbt build prior to profiling                              |
 | `--debug`          | none     | Enable debugging output                                       |
 | `--help`           | none     | List command-line options                                     |
 
