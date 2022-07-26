@@ -360,7 +360,7 @@ Assign `actual` any value as the actual finding that why the assertion successes
 
 So far you already have the fundamental knowledge of the assertion, start creating your first custom assertion.
 
-Check your `./piperider/outputs/<run>.profiler.json` and select a metric as the measurement. In my case, I choose `distinct`.
+Check your `./piperider/outputs/<run>/.profiler.json` and select a metric as the measurement. In my case, I choose `distinct`.
 
 In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Because I know Name must be contained in a list of names which has 600 names in the total, the metric value of _distinct_ should not exceed 600 otherwise something wrong in my data.
 
