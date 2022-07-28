@@ -24,6 +24,14 @@ You will be prompted to select two reports for the comparison.
 
 The first report you select is defined as the `base` report, and the second report you select is the `target` that will be compared against the `base`.
 
+### Compare the last two report
+
+Use the `--last` option to compare the last two reports, without the need to manually specify them.
+
+```
+piperider compare-reports --last
+```
+
 ### Manually specify base and target reports
 
 It is also possible to compare reports by manually specifying the `base` and `target` profiling json file.
