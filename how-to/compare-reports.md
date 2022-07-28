@@ -22,15 +22,21 @@ You will be prompted to select two reports for the comparison.
    X dataproject  #table=3      #pass=0     #fail=0     2022-06-21T22:58:23.500316Z
 ```
 
+The first report you select is defined as the `base` report, and the second report you select is the `target` that will be compared against the `base`.
+
+### Manually specify base and target reports
+
+It is also possible to compare reports by manually specifying the `base` and `target` profiling json file.
+
 #### --base
 
-another way is to specify a profiling `.json` as the base by `--base`.
+Use `--base` along with the location of the `run.json` file to specify the first report to use for the comparison:
 
 ```
 piperider compare-reports --base /path/to/dataproject/.piperider/outputs/dataproject-20220609212919/run.json
 ```
 
-Then you will be prompted to select a result as the input for the comparison.
+You will then be prompted to select the second report to compare against:
 
 ```
 #Output
@@ -41,12 +47,12 @@ Then you will be prompted to select a result as the input for the comparison.
    o dataproject  #table=3      #pass=0     #fail=0     2022-06-21T22:58:23.500316Z
 ```
 
-#### --base & --input
+#### --base & --target
 
-Specify two `.json` in the command for the comparison, one as `--base`, the other as `--input`.
+Specify both `base` and `target` reports to use for the comparison:
 
 ```shell
-piperider compare-reports --base /path/to/<.json> --input /path/to/<run>/run.json
+piperider compare-reports --base /path/to/<run>/run.json --input /path/to/<run>/run.json
 ```
 
 PipeRider will generate an HTML report of the comparison.
@@ -59,4 +65,12 @@ Selected reports:
 Comparison report: /path/to/dataproject/.piperider/comparisons/dataproject-PRICE-20220609214450/index.html
 ```
 
-Open the HTML report in your browser to review any changes.
+### Specify output location for report
+
+To specify the output location for the generated report use the `-o` or `--output` option.
+
+Generate a comparison report and store it in `~/piperider/reports`:
+
+```
+piperider compare-reports -o ~/piperider/reports
+```

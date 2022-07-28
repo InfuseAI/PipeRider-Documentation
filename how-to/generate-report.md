@@ -4,42 +4,28 @@ description: How to generate reports
 
 # Generate Report
 
-PipeRider generates HTML reports that contain the following information:
+A report, `index.html`, by default is generated with a profiling results, `run.json` by `piperider run`.&#x20;
 
-* Data source profile
-* PipeRider assertion test results
-* dbt test results (if applicable)
+`piperider generate-report` will just generate reports directly referring to the result of latest run.&#x20;
 
-Each `piperider run` creates a folder in `.piperider/outputs` that contains the profiling results and a report (unless the report was skipped with the `--skip-report` option).
+Besides, there are also a few ways to generate reports on your demand.
 
-The following methods are also available to generate reports.
+### Run and generate report of a single table
 
-### Run and generate a report for a single table
+You can profile and generate a report of a single specified table.
 
-Use the following command to profile and generate a report for a specified table.
-
-Profile the `price` table and generate a report:
+E.g. Profile the table, `price`, and generate the report
 
 ```shell
 piperider run --table price
 ```
 
-### Generate a report for a specific run
+### Generate a report of a specific run
 
-It is also possible to generate a report for a specific run by specifying the location of the `run.json` file. Profiling results can be found in the output folder for that run, E.g. `.piperider/outputs/<run>/run.json`
+Every profiling result will be saved at `.piperider/outputs/<each_run>/run.json`, you may just want to generate a report of a specified profile in the history.
 
-Generate a report based on the profiling results stored in the `dataproject-20220610154629` run folder:
+E.g. Generate a report of `.piperider/outputs/dataproject-20220610154629/run.json`.
 
 ```
 piperider generate-report --input .piperider/outputs/dataproject-20220610154629/run.json
-```
-
-### Specify output location for report
-
-To specify the output location for the generated report use the `-o` or `--output` option.
-
-Generate a report and store it in `~/piperider/reports`:
-
-```
-piperider generate-report -o ~/piperider/reports
 ```
