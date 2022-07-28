@@ -26,7 +26,7 @@ The first report you select is defined as the `base` report, and the second repo
 
 ### Compare the last two report
 
-Use the `--last` option to compare the last two reports, without the need to manually specify them.
+Use the `--last` option to compare the last two reports, without the need to manually select them.
 
 ```
 piperider compare-reports --last
