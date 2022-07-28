@@ -10,11 +10,11 @@ PipeRider generates HTML reports that contain the following information:
 * PipeRider assertion test results
 * dbt test results (if applicable)
 
-Each `piperider run` creates a folder in `.piperider/outputs` that contains the profiling results and a report (unless skipped).
+Each `piperider run` creates a folder in `.piperider/outputs` that contains the profiling results and a report (unless the report was skipped with the `--skip-report` option).
 
 The following methods are also available to generate reports.
 
-### Run and generate report of a single table
+### Run and generate a report for a single table
 
 Use the following command to profile and generate a report for a specified table.
 
@@ -36,7 +36,7 @@ piperider generate-report --input .piperider/outputs/dataproject-20220610154629/
 
 ### Specify output location for report
 
-As mentioned above, the default location for reports is the `.piperider/outputs` folder. To specifiy the output location for the generated report use the `-o` or `--output` option.
+To specify the output location for the generated report use the `-o` or `--output` option.
 
 Generate a report and store it in `~/piperider/reports`:
 
