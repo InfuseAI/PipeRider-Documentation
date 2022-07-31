@@ -30,11 +30,7 @@ world_city:  #Table Name
           - dialing code
 ```
 
-
-
 </details>
-
-
 
 ### assert\_column\_in\_types
 
@@ -89,7 +85,7 @@ world_city:
 ### assert\_column\_max\_in\_range
 
 * Description: The maximum value of the column must be between _min\_value_ and _max\_value_.
-* Assert_:_
+* Assert\_:\_
   * `max: [min_value, max_value]`
 * Tags:
 
@@ -204,9 +200,6 @@ world_city:
 ```
 
 </details>
-
-\
-
 
 ### assert\_column\_unique
 

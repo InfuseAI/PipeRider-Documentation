@@ -10,7 +10,7 @@ Piperider provides a few [built-in assertions](assertion-configuration.md) and a
 
 ### Plugins
 
-Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py`. You can rename the file or create assertion functions in other python file there.&#x20;
+Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py`. You can rename the file or create assertion functions in other python file there.
 
 {% hint style="info" %}
 The search path to `plugins/` can be overwritten by the environment variable **`PIPERIDER_PLUGINS`**. Define your path by setting the variable.
@@ -191,7 +191,7 @@ PRICE:  # Table Name
 
 ### Scaffolding of Assertion Function
 
-This is the context of `customized_assertions.py`. A custom assertion class has to implement `BaseAssertionType` __ and its functions, `name()`, _`execute()` and `validate()`._
+This is the context of `customized_assertions.py`. A custom assertion class has to implement `BaseAssertionType` \_\_ and its functions, `name()`, _`execute()` and `validate()`._
 
 <details>
 
@@ -275,12 +275,9 @@ class AssertNothingColumnExample(BaseAssertionType):
 # register new assertions
 register_assertion_function(AssertNothingTableExample)
 register_assertion_function(AssertNothingColumnExample)
-
 ```
 
-</details>
-
-#### Methods&#x20;
+#### Methods
 
 `name()`: return the name of the testing function that will be used in assertion yaml.
 
@@ -354,7 +351,7 @@ The value of the _actual_ will be printed out in the format `Actual: value` when
 context.result.actual
 ```
 
-Assign `actual` any value as the actual finding that why the assertion successes or fails.&#x20;
+Assign `actual` any value as the actual finding that why the assertion successes or fails.
 
 ### Hands-On
 
@@ -433,7 +430,6 @@ class AssertDistinctInRange(BaseAssertionType):
         return result
 
 register_assertion_function(AssertDistinctInRange)
-
 ```
 
 I have added the custom assertion and the corresponding assertion function. Time to test it.
