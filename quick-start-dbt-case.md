@@ -1,4 +1,4 @@
-# Quick Start (dbt / SQLite)
+# Quick Start (dbt case)
 
 PipeRider supports dbt projects as well, it is super easy and straightforward to init Piperider in a existing dbt project.
 
@@ -64,8 +64,10 @@ dbt will generate a template of `~/.dbt/profiles.yml`, let's edit the context li
 
 {% hint style="warning" %}
 Please replace the **path** to where the _sp500.db_ is.
+{% endhint %}
 
-Please replace the **path** to where _crypto.\*_ library is;  remove the file extension part, ~~_.so, .dylib, .dll_~~ from the path.
+{% hint style="info" %}
+Please replace the **path** to where _crypto.\*_ library is;  remove the file extension part, ~~_.so, .dylib, .dll_~~ from the path like the example below.
 {% endhint %}
 
 ```yaml
