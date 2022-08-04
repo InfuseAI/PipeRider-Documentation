@@ -29,4 +29,4 @@
 
 ***
 
-* [Changelog (v0.5.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.5.0)
+* [Changelog (v0.5.1)](https://github.com/InfuseAI/piperider/releases/tag/v0.5.1)
