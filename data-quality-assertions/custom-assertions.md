@@ -18,7 +18,7 @@ The search path to `plugins/` can be overwritten by the environment variable **`
 
 ### Metrics
 
-`piperider run` will generate profiling results containing a plenty of metrics that your assertions could refer to those metrics for the data quality measurement. Metrics are saved in the `.piperider/outputs/<run>/.profiler.json` and the context are categorized into tables/columns according to data types, _String_, _Datetime_, and _Numeric_.&#x20;
+`piperider run` will generate profiling results containing a plenty of metrics that your assertions could refer to those metrics for the data quality measurement. Metrics are saved in the `.piperider/outputs/<run>/.profiler.json` and the context are categorized into tables/columns according to data types, _String_, _Datetime_, and _Numeric_.
 
 Here is an example of these types of profiling metrics. Table PRICE contains SYMBOL(string), DATE(datetime) and OPEN(numeric).
 
@@ -277,7 +277,7 @@ register_assertion_function(AssertNothingTableExample)
 register_assertion_function(AssertNothingColumnExample)
 ```
 
-#### Methods
+**Methods**
 
 `name()`: return the name of the testing function that will be used in assertion yaml.
 
@@ -292,41 +292,11 @@ register_assertion_function(AssertNothingColumnExample)
 
 `register_assertion_function()`: register the custom assertion function so that it can be recognized in the assertion yaml.
 
+**Code snippets**
 
+Read a _table metrics_ / _column metrics_
 
-#### Code snippets
-
-Read a _table metrics_ / _column metrics_&#x20;
-
-{% tabs %}
-{% tab title="Table metrics" %}
-```python
-# get a dict object of a table metrics
-table_metrics = metrics.get('tables', {}).get(table)
-
-if table_metrics is None:
-  # cannot find the table in the metrics
-  return context.result.fail()
-  
-# get a value of a metric by a key from the dict object of the table metrics
-table_metrics.get('key')
-```
-{% endtab %}
-
-{% tab title="Column metrics" %}
-```python
-# get a dict objec of a column metrics of a table 
-column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-
-if column_metrics is None:
-  # cannot find the column in the metrics
-  return context.result.fail()
-  
-# get a value of a metric by a key from the dict objec of the column metrics
-column_metrics.get('key')
-```
-{% endtab %}
-{% endtabs %}
+\# get a dict object of a table metricstable\_metrics = metrics.get('tables', {}).get(table)if table\_metrics is None:  # cannot find the table in the metrics  return context.result.fail()  # get a value of a metric by a key from the dict object of the table metricstable\_metrics.get('key')# get a dict objec of a column metrics of a table column\_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)if column\_metrics is None:  # cannot find the column in the metrics  return context.result.fail()  # get a value of a metric by a key from the dict objec of the column metricscolumn\_metrics.get('key')
 
 Read user input value of a parameter from an assertion yaml.
 
@@ -343,9 +313,7 @@ context.result.success("message")
 
 One thing is not mentioned in the context.
 
-{% hint style="info" %}
 The value of the _actual_ will be printed out in the format `Actual: value` when assertion is executed.
-{% endhint %}
 
 ```
 context.result.actual
@@ -353,7 +321,7 @@ context.result.actual
 
 Assign `actual` any value as the actual finding that why the assertion successes or fails.
 
-### Hands-On
+#### Hands-On
 
 So far you already have the fundamental knowledge of the assertion, start creating your first custom assertion.
 
@@ -447,7 +415,7 @@ After the running, I see the assertion result. The first custom assertions works
 
 The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive.
 
-### Debug Mode
+#### Debug Mode
 
 If you need to debug custom assertion functions, just enable the debug mode with `--debug`.
 
@@ -456,3 +424,5 @@ It will print out the trackback of calls.
 ```
 piperider run --debug
 ```
+
+</details>

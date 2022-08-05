@@ -26,6 +26,7 @@
 * [Compare Reports](how-to/compare-reports.md)
 * [Convert CSV to SQLite](how-to/convert-csv-to-sqlite.md)
 * [GitHub Action](how-to/github-action.md)
+* [AWS S3 + GitHub CI](how-to/aws-s3-+-github-ci.md)
 
 ***
 
