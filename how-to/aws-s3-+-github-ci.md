@@ -9,7 +9,7 @@ description: >-
 In this HowTo, we will show the scenario
 
 1. Generate a PipeRider latest run report and upload to S3
-2. Download a previous report of PipeRider from S3
+2. Download a previously saved report from S3
 3. Compare these two report and upload the comparison report to S3
 4. Push a notification to Slack with the links of latest run report and the comparison report
 
