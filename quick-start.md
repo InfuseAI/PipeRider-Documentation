@@ -246,6 +246,8 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
+![](.gitbook/assets/0.6.0.20220804\_report.png)
+
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods generate reports
 {% endhint %}
@@ -391,7 +393,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-![PipeRider comparison report](.gitbook/assets/compare-fs8.png)
+![PipeRider comparison report](.gitbook/assets/0.6.0.20220804\_compare.png)
 
 \----
 
@@ -404,3 +406,9 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 | OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
 | FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
 | OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
+
+### Love to Hear You
+
+PipeRider are being improved, we love to hear from you. Any thoughts is appreciated. Just send us the feedback.
+
+![Send us the feedback](.gitbook/assets/0.6.0.20220804\_feedback.png)
