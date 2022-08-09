@@ -12,6 +12,19 @@ Data profile metrics that describe data at the table level.
 | Column count | The number of columns in the table | `col_count` | All             |
 |              |                                    |             |                 |
 
+
+
 ## Column Metrics
 
-Depending on the column type&#x20;
+Data profile metrics that describe the data at the column level. Depending on the column type, different metrics will be produced.
+
+### Schema
+
+In addition to logging the schema type of a column, PipeRider will also apply a generic schema type to a column that will determine how this column is treated by the profiler.
+
+| Metric       | Description                                                                                                | Column Type | Field         | Supported Since |
+| ------------ | ---------------------------------------------------------------------------------------------------------- | ----------- | ------------- | --------------- |
+| Schema Type  | The column type defined in the data source                                                                 | All         | `schema_type` |                 |
+| Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        |                 |
+|              |                                                                                                            |             |               |                 |
+
