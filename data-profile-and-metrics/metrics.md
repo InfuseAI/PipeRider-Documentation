@@ -36,6 +36,8 @@ The following metrics are produced based on the generic type that has been appli
 
 The composition of the data contained within a column. &#x20;
 
+![The type of column determines the available metrics](../.gitbook/assets/metrics-composition-fs8.png)
+
 | Metric                       | Description                                                                                                           | Column Type      | Profile Field     | Supported Since |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- |
 | Missing count                | The number of null values                                                                                             | All              | `nulls`           | 0.6.0           |
@@ -76,6 +78,8 @@ The text length statistics of a column.
 ### Uniqueness
 
 The uniqueness of a column.
+
+![How PipeRider considers a row when determining uniqueness metrics](../.gitbook/assets/metrics-uniqueness-fs8.png)
 
 | Metric              | Description                       | Column Type                        | Profile Field    | Since |
 | ------------------- | --------------------------------- | ---------------------------------- | ---------------- | ----- |
