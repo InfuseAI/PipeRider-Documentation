@@ -27,8 +27,8 @@ In addition to logging the schema type of a column, PipeRider will also apply a 
 
 | Metric       | Description                                                                                                | Column Type | Profile Field | Supported Since |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | ----------- | ------------- | --------------- |
-| Schema Type  | The column type defined in the data source                                                                 | All         | `schema_type` |                 |
-| Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        |                 |
+| Schema Type  | The column type defined in the data source                                                                 | All         | `schema_type` | All             |
+| Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        | All             |
 
 The following metrics are produced based on the generic type that has been applied to the column.
 
@@ -39,7 +39,7 @@ The composition of the data contained within a column. &#x20;
 | Metric                       | Description                                                                                                           | Column Type      | Profile Field     | Supported Since |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- |
 | Missing count                | The number of null values                                                                                             | All              | `nulls`           | 0.6.0           |
-| Non-null count               | The number of non-null values                                                                                         | All              | `non_nulls`       |                 |
+| Non-null count               | The number of non-null values                                                                                         | All              | `non_nulls`       | All             |
 | Invalid count                | The number of values that do not match the column's schema type. E.g. A string in a numeric column. (**SQLite only**) | All              | `invalids`        | 0.6.0           |
 | Valid count                  | The count of non-null values minus invalid values                                                                     | All              | `valids`          | 0.6.0           |
 | Zero count                   | The number of zeros                                                                                                   | integer, numeric | `zeros`           | 0.6.0           |
@@ -56,10 +56,10 @@ The general statistical information of a column.
 
 | Metric             | Description                      | Column Type                | Profile Field | Supported Since |
 | ------------------ | -------------------------------- | -------------------------- | ------------- | --------------- |
-| Min                | The minimum value                | integer, numeric, datetime | `min`         |                 |
-| Max                | The maximum value                | integer, numeric, datetime | `max`         |                 |
-| Average            | The column average               | integer, numeric           | `avg`         |                 |
-| Sum                | The column sum                   | integer, numeric           | `sum`         |                 |
+| Min                | The minimum value                | integer, numeric, datetime | `min`         | All             |
+| Max                | The maximum value                | integer, numeric, datetime | `max`         | All             |
+| Average            | The column average               | integer, numeric           | `avg`         | All             |
+| Sum                | The column sum                   | integer, numeric           | `sum`         | All             |
 | Standard deviation | The standard deviation of values | integer, numeric,          | `stddev`      | 0.4.0           |
 
 ### Text length statistics
@@ -79,7 +79,7 @@ The uniqueness of a column.
 
 | Metric              | Description                       | Column Type                        | Profile Field    | Since |
 | ------------------- | --------------------------------- | ---------------------------------- | ---------------- | ----- |
-| Distinct count      | The number of distinct items      | integer, string, datetime          | `distinct`       |       |
+| Distinct count      | The number of distinct items      | integer, string, datetime          | `distinct`       | All   |
 | Duplicate count     | The number of recurring items     | integer, numeric, string, datetime | `duplicates`     | 0.6.0 |
 | Non-duplicate count | The number of non-recurring items | integer, numeric, string, datetime | `non_duplicates` | 0.6.0 |
 
@@ -98,13 +98,13 @@ The calculated quantiles of a numeric or integer column.
 
 | Metric          | Description      | Column Type      | Profile Field | Supported Since |
 | --------------- | ---------------- | ---------------- | ------------- | --------------- |
-| Minimum         | 0th percentile   | integer, numeric | `min`         |                 |
+| Minimum         | 0th percentile   | integer, numeric | `min`         | All             |
 | 5th Percentile  | 5th percentile   | integer, numeric | `p5`          | 0.4.0           |
 | 25th Percentile | 25th percentile  | integer, numeric | `p25`         | 0.4.0           |
 | Median          | 50th percentile  | integer, numeric | `p50`         | 0.4.0           |
 | 75th Percentile | 75th percentile  | integer, numeric | `p75`         | 0.4.0           |
 | 95th Percentile | 95th percentile  | integer, numeric | `p95`         | 0.4.0           |
-| Maximum         | 100th percentile | integer, numeric | `max`         |                 |
+| Maximum         | 100th percentile | integer, numeric | `max`         | All             |
 
 ### Distribution
 
