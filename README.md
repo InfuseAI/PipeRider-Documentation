@@ -10,7 +10,7 @@ description: PipeRider - Data Reliability Automated.
 
 Ensuring consistent quality of data used to be difficult. Missing values, schema changes, data drift (to name just a few), could be introduced to your data at any time. Without effective data quality tools these errors will affect downstream operations and result in countless lost hours to debugging and missed revenue opportunities from unexpected downtime.
 
-PipeRider allows you to define the shape of your data once, and then use the data checking functionality to alert you to changes in your data quality.
+PipeRider allows you to define your expectations of the data once, and then use data assertion testing to alert you to changes in your data quality.
 
 {% embed url="https://www.youtube.com/watch?v=48l8Tg0aCTE" %}
 PipeRider: Data Reliability, Automated.
@@ -23,6 +23,7 @@ Out-of-the-box we currently support the following data sources:
 * Sqlite (by default)
 * [Postgres](data-sources/postgres-connector.md) (Optional)
 * [Snowflake](data-sources/snowflake-connector.md) (Optional)
+* dbt (using one of the above adapters)
 
 Use our [Quick Start](quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
 
