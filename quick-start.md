@@ -249,7 +249,7 @@ Open the HTML report in the browser to see the visualized results or share it wi
 ![](.gitbook/assets/0.6.0.20220804\_report.png)
 
 {% hint style="info" %}
-Refer to [How-To: Generate Report](how-to/generate-report.md) for other methods generate reports
+Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
 {% endhint %}
 
 ### Apply data assertions
