@@ -1,6 +1,6 @@
 # Data Profile
 
-The data profiler is at the core of how PipeRider works. PipeRider helps you understand the structure of your data by providing statistical metrics and data distribution information. When paired with [data assertions](../data-quality-assertions/assertion-configuration.md), the data profile provides a way to check the quality and reliability of your data.
+The data profiler is at the core of how PipeRider works. PipeRider helps you understand the structure of your data by providing statistical metrics and data distribution information about the table and columns in your data source. When paired with [data assertions](../data-quality-assertions/assertion-configuration.md), the data profile provides a way to check the quality and reliability of your data.
 
 Each time you run PipeRider, a new data profile is created and stored in the folder for that run. E.g. `.piperider/outputs/<run-name>/run.json`
 
