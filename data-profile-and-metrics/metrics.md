@@ -28,3 +28,10 @@ In addition to logging the schema type of a column, PipeRider will also apply a 
 | Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        |                 |
 |              |                                                                                                            |             |               |                 |
 
+The following metrics are produced based on the generic type that has been applied to the column.&#x20;
+
+| Metric        | Description | Column Type | Field | Supported Since |
+| ------------- | ----------- | ----------- | ----- | --------------- |
+| Missing Count |             |             |       |                 |
+|               |             |             |       |                 |
+|               |             |             |       |                 |
