@@ -6,7 +6,7 @@ description: >-
 
 # Metrics
 
-Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type.
+Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type (see [Schema](metrics.md#schema) below).
 
 ## Table metrics
 
