@@ -1,115 +1,116 @@
+---
+description: >-
+  PipeRider analyzes the data source and produces a data profile that contains
+  the following metrics.
+---
+
 # Metrics
 
-PipeRider analyzes the data source and produces a data profile that contains the following metrics.
+Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type.
 
-## Table Metrics
+## Table metrics
 
-Data profile metrics that describe data at the table level.
+Data profile metrics that describe the tables in a data source.
 
-| Metric       | Description                        | Field       | Supported Since |
-| ------------ | ---------------------------------- | ----------- | --------------- |
-| Row count    | The number of rows in the table    | `row_count` | All             |
-| Column count | The number of columns in the table | `col_count` | All             |
-|              |                                    |             |                 |
+| Metric       | Description                        | Profile Field | Supported Since |
+| ------------ | ---------------------------------- | ------------- | --------------- |
+| Row count    | The number of rows in the table    | `row_count`   | All             |
+| Column count | The number of columns in the table | `col_count`   | All             |
 
+## Column metrics
 
-
-## Column Metrics
-
-Data profile metrics that describe the data at the column level. Depending on the column type, different metrics will be produced.
+Data profile metrics that describe data at the column level. Depending on the column type, different metrics will be produced.
 
 ### Schema
 
 In addition to logging the schema type of a column, PipeRider will also apply a generic schema type to a column that will determine how this column is treated by the profiler.
 
-| Metric       | Description                                                                                                | Column Type | Field         | Supported Since |
+| Metric       | Description                                                                                                | Column Type | Profile Field | Supported Since |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | ----------- | ------------- | --------------- |
 | Schema Type  | The column type defined in the data source                                                                 | All         | `schema_type` |                 |
 | Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        |                 |
-|              |                                                                                                            |             |               |                 |
 
-The following metrics are produced based on the generic type that has been applied to the column.&#x20;
+The following metrics are produced based on the generic type that has been applied to the column.
 
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| Missing count | The count of null values. | All types | `nulls` | 0.6.0 |
-| Non null count | The count of non-null values. | All types | `non_nulls` |  |
-| Invalid count | The count of values that does not match the schema type. For example, a string in a numeric column. It only happen in sqlite | All types | `invalids` | 0.6.0 |
-| Valid count | The count of non-null and not invalid values | All types | `valids` | 0.6.0 |
-| Zero count | The count of zero values | integer, numeric | `zeros` | 0.6.0 |
-| Negative value count | The count of negative values | integer, numeric | `negatives` | 0.6.0 |
-| Positive value count | The count of positive values | integer, numeric | `positives` | 0.6.0 |
-| Zero length string count | The count of  empty strings | string | `zero_length` | 0.6.0 |
-| Non zero length string count | The count of non empty strings | string | `non_zero_length` | 0.6.0 |
-| True count | The count of true values | boolean | `trues` | 0.6.0 |
-| False count | The count of false values | boolean | `falses` | 0.6.0 |
+### Data composition
 
-### General Statistic
+The composition of the data contained within a column. &#x20;
 
-The general statistic of a column
+| Metric                       | Description                                                                                                           | Column Type      | Profile Field     | Supported Since |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- |
+| Missing count                | The number of null values                                                                                             | All              | `nulls`           | 0.6.0           |
+| Non-null count               | The number of non-null values                                                                                         | All              | `non_nulls`       |                 |
+| Invalid count                | The number of values that do not match the column's schema type. E.g. A string in a numeric column. (**SQLite only**) | All              | `invalids`        | 0.6.0           |
+| Valid count                  | The count of non-null values minus invalid values                                                                     | All              | `valids`          | 0.6.0           |
+| Zero count                   | The number of zeros                                                                                                   | integer, numeric | `zeros`           | 0.6.0           |
+| Negative value count         | The number of negative values                                                                                         | integer, numeric | `negatives`       | 0.6.0           |
+| Positive value count         | The number of positive values                                                                                         | integer, numeric | `positives`       | 0.6.0           |
+| Zero length string count     | The number of empty strings                                                                                           | string           | `zero_length`     | 0.6.0           |
+| Non-zero length string count | The number of non-empty strings                                                                                       | string           | `non_zero_length` | 0.6.0           |
+| True count                   | The number of true values                                                                                             | boolean          | `trues`           | 0.6.0           |
+| False count                  | The number of false values                                                                                            | boolean          | `falses`          | 0.6.0           |
 
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| Min | The value of  the minimum item | integer, numeric, datetime | `min` |  |
-| Max | The value of the maximum item | integer, numeric, datetime | `max` |  |
-| Average | The average of a column. | integer, numeric | `avg` |  |
-| Sum | The sum of a column. | integer, numeric | `sum` |  |
-| Standard deviation | The standard deviation of a column. | integer, numeric, | `stddev` | 0.4.0 |
+### General statistics
 
-### Text Length Statistic
+The general statistical information of a column.
 
-The text length statistic of a column.
+| Metric             | Description                      | Column Type                | Profile Field | Supported Since |
+| ------------------ | -------------------------------- | -------------------------- | ------------- | --------------- |
+| Min                | The minimum value                | integer, numeric, datetime | `min`         |                 |
+| Max                | The maximum value                | integer, numeric, datetime | `max`         |                 |
+| Average            | The column average               | integer, numeric           | `avg`         |                 |
+| Sum                | The column sum                   | integer, numeric           | `sum`         |                 |
+| Standard deviation | The standard deviation of values | integer, numeric,          | `stddev`      | 0.4.0           |
 
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| Min length | The minimum text length of a string column | string | `min` | 0.6.0 |
-| Max length | The maximum text length of a string column | string | `max` | 0.6.0 |
-| Average length | The average text length of a string column | string | `avg` | 0.6.0 |
-| Std. Deviation of length | The standard deviation text length of a string column | string | `stddev` | 0.6.0 |
+### Text length statistics
+
+The text length statistics of a column.
+
+| Metric             | Description                             | Column Type | Profile Field | Since |
+| ------------------ | --------------------------------------- | ----------- | ------------- | ----- |
+| Min length         | The minimum string length               | string      | `min`         | 0.6.0 |
+| Max length         | The maximum string length               | string      | `max`         | 0.6.0 |
+| Average length     | The average string length               | string      | `avg`         | 0.6.0 |
+| Standard deviation | The standard deviation of string length | string      | `stddev`      | 0.6.0 |
 
 ### Uniqueness
 
-Analyze the uniqueness of a column
+The uniqueness of a column.
 
-- Distinct: Count of distinct items
-- Duplicates: Count of recurring items
+| Metric              | Description                       | Column Type                        | Profile Field    | Since |
+| ------------------- | --------------------------------- | ---------------------------------- | ---------------- | ----- |
+| Distinct count      | The number of distinct items      | integer, string, datetime          | `distinct`       |       |
+| Duplicate count     | The number of recurring items     | integer, numeric, string, datetime | `duplicates`     | 0.6.0 |
+| Non-duplicate count | The number of non-recurring items | integer, numeric, string, datetime | `non_duplicates` | 0.6.0 |
 
-For example, if a dataset is `(NULL, a, a, b, b, c, d, e)`
+For example, the following dataset `(NULL, a, a, b, b, c, d, e)` would be categorized as so:
 
-- Distinct = 5, `(a, b, c, d, e)`
-- Duplicates = 4, `(a, a, b, b)`
-- Non-duplicates = 3, `(c, d, e)`
-- Missing = 1
+* Distinct count = 5, `(a, b, c, d, e)`
+* Duplicate count = 4, `(a, a, b, b)`
+* Non-duplicate count = 3, `(c, d, e)`
+* Missing values (nulls) = 1
 
-The total number = missing + duplicates + non-duplicates
-
-![](assets/metrics-uniqueness.png)
-
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| Distinct | Count of distinct items | integer, string, datetime,  | `distinct` |  |
-| Duplicates | Count of recurring items | integer, numeric, string, datetime | `duplicates` | 0.6.0 |
-| Non duplicates | Count of non-recurring items | integer, numeric, string, datetime | `non_duplicates` | 0.6.0 |
+Therefore, the total number of rows for a table = missing (nulls) + duplicates + non-duplicates.
 
 ### Quantiles
 
-Calculate the quantiles of a numeric or integer column
+The calculated quantiles of a numeric or integer column.
 
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| min | min, 0th percentile | integer, numeric | `min` |  |
-| 5th Percentile | 5th percentile | integer, numeric | `p5` | 0.4.0 |
-| 25th Percentile | 25th percentile | integer, numeric | `p25` | 0.4.0 |
-| Median | median, 50th percentile | integer, numeric | `p50` | 0.4.0 |
-| 75th Percentile | 75th percentile | integer, numeric | `p75` | 0.4.0 |
-| 95th Percentile | 95th percentile | integer, numeric | `p95` | 0.4.0 |
-| max | max, 100th percentile | integer, numeric | `max` |  |
+| Metric          | Description      | Column Type      | Profile Field | Supported Since |
+| --------------- | ---------------- | ---------------- | ------------- | --------------- |
+| Minimum         | 0th percentile   | integer, numeric | `min`         |                 |
+| 5th Percentile  | 5th percentile   | integer, numeric | `p5`          | 0.4.0           |
+| 25th Percentile | 25th percentile  | integer, numeric | `p25`         | 0.4.0           |
+| Median          | 50th percentile  | integer, numeric | `p50`         | 0.4.0           |
+| 75th Percentile | 75th percentile  | integer, numeric | `p75`         | 0.4.0           |
+| 95th Percentile | 95th percentile  | integer, numeric | `p95`         | 0.4.0           |
+| Maximum         | 100th percentile | integer, numeric | `max`         |                 |
 
 ### Distribution
 
-| Metric | Description | Column Type | Field | Since |
-| --- | --- | --- | --- | --- |
-| Top K | The top n frequent items and counts | integer, string | `topk` | 0.6.0 |
-| histogram | The evenly-split bins. Calculate the counts for each bin. | integer, numeric | `histogram` | 0.6.0 |
-| Text length histogram | The evenly-split bins for text length. Calculate the counts for each bin. | string | `histogram` | 0.6.0 |
-| Date histogram | The histogram of date, month, or year. Depends on the data min/max range. | datetime | `histogram` | 0.6.0 |
+| Metric                | Description                                                               | Column Type      | Profile Field | Supported Since |
+| --------------------- | ------------------------------------------------------------------------- | ---------------- | ------------- | --------------- |
+| Top K                 | The most frequently occurring n items and and counts                      | integer, string  | `topk`        | 0.6.0           |
+| Histogram             | Evenly-split bins for numerical columns and counts for each bin           | integer, numeric | `histogram`   | 0.6.0           |
+| Text length histogram | Evenly-split bins for text length and counts for each bin                 | string           | `histogram`   | 0.6.0           |
+| Date histogram        | Histogram of date, month, or year. Bin split depends on the min/max range | datetime         | `histogram`   | 0.6.0           |
