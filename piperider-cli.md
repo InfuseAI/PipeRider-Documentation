@@ -50,15 +50,16 @@ piperider run [OPTIONS]
 | Option             | Argument | Description                                              |
 | ------------------ | -------- | -------------------------------------------------------- |
 | `--datasource`     | name     | Profile a specified data source                          |
-| `--table`          | name     | Profile a specified table only                           |
-| `-o`, `--output`   | path     | Specify the output directory for the generated report    |
-| `--no-interaction` | none     | Generate assertion templates by default without a prompt |
-| `--skip-report`    | none     | Don't generate reports                                   |
-| `--skip-recommend` | none     | Don't generate recommended assertions                    |
-| `--dbt-test`       | none     | Run dbt test prior to profiling                          |
 | `--dbt-build`      | none     | Run dbt build prior to profiling                         |
+| `--dbt-test`       | none     | Run dbt test prior to profiling                          |
 | `--debug`          | none     | Enable debugging output                                  |
 | `--help`           | none     | List command-line options                                |
+| `--no-interaction` | none     | Generate assertion templates by default without a prompt |
+| `-o`, `--output`   | path     | Specify the output directory for the generated report    |
+| `--report-dir`     | path     | Specify the path to read and write reports               |
+| `--skip-recommend` | none     | Don't generate recommended assertions                    |
+| `--skip-report`    | none     | Don't generate reports                                   |
+| `--table`          | name     | Profile a specified table only                           |
 
 ## Generate Assertions
 
@@ -84,10 +85,11 @@ piperider generate-report [Options]
 
 | Option           | Argument         | Description                                                     |
 | ---------------- | ---------------- | --------------------------------------------------------------- |
-| `--input`        | path/to/run.json | Generate a report based on a specific profiling `run.json` file |
-| `-o`, `--output` | path             | Specify the output directory for the generated report           |
 | `--debug`        | none             | Enable debugging output                                         |
 | `--help`         | none             | List command-line options                                       |
+| `--input`        | path/to/run.json | Generate a report based on a specific profiling `run.json` file |
+| `-o`, `--output` | path             | Specify the output directory for the generated report           |
+| `--report-dir`   | path             | Specify the path to read and write reports                      |
 
 ## Compare Reports
 
@@ -97,15 +99,16 @@ piperider generate-report [Options]
 piperider compare-reports [Options]
 ```
 
-| Option           | Argument         | Description                                                                                                            |
-| ---------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `--base`         | path             | Specify the profiling `run.json` to use as the base report                                                             |
-| `--target`       | path             | Specify the profiling `run.json` to compare with the base report                                                       |
-| `--last`         | none             | Compare the last two reports                                                                                           |
-| `--datasource`   | data source name | <p>Specify the data source to use for the report </p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
-| `-o`, `--output` | path             | Specify the output directory for the generated report                                                                  |
-| `--debug`        | none             | Enable debugging output                                                                                                |
-| `--help`         | none             | List command-line options                                                                                              |
+| Option           | Argument         | Description                                                                                                           |
+| ---------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `--base`         | path             | Specify the profiling `run.json` to use as the base report                                                            |
+| `--datasource`   | data source name | <p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
+| `--debug`        | none             | Enable debugging output                                                                                               |
+| `--help`         | none             | List command-line options                                                                                             |
+| `--last`         | none             | Compare the last two reports                                                                                          |
+| `-o`, `--output` | path             | Specify the output directory for the generated report                                                                 |
+| `--report-dir`   | path             | Specify the path to read and write reports                                                                            |
+| `--target`       | path             | Specify the profiling `run.json` to compare with the base report                                                      |
 
 ## Diagnose Project Configuration
 
