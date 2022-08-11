@@ -42,6 +42,10 @@ pip install 'piperider[postgres,snowflake]'
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+Don't forget the single quotes when installing PIpeRider with a data source connector
+{% endhint %}
+
 ### View installed PipeRider version
 
 ```shell
