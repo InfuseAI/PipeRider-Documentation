@@ -5,7 +5,7 @@ description: How to create custom assertions to check the quality of your data.
 # Custom Assertions
 
 Piperider provides a few [built-in assertions](assertion-configuration.md) and also supports custom assertions as _plugins_ which can satisfy the data quality check on your demand. Here you will learn the magic and create your first custom assertion.
-
+ 
 ## How to Create an Assertion Function
 
 ### Plugins

@@ -18,7 +18,7 @@ In this HowTo, we will show the scenario
 ### S3 Bucket
 
 Prepare a S3 bucket. Enable _ACL_ under _Permissions_ tab and _Static website hosting_ under _Properties_ tab.
-
+ 
 ![Enable ACL](../.gitbook/assets/s3\_permission\_acl.png)
 
 ![Enable Static website hosting](../.gitbook/assets/s3\_properties\_static\_website\_hosting.png)

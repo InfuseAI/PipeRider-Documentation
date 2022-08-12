@@ -13,7 +13,7 @@ piperider compare-reports
 ```
 
 You will be prompted to select two reports for the comparison.
-
+ 
 ```
 #Output
 [?] Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm ):

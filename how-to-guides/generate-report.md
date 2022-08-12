@@ -19,7 +19,7 @@ The following methods are also available to generate reports.
 Use the following command to profile and generate a report for a specified table.
 
 Profile the `price` table and generate a report:
-
+ 
 ```shell
 piperider run --table price
 ```

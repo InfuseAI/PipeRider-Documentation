@@ -5,7 +5,7 @@ description: How to use PipeRider with dbt
 # dbt Integration
 
 Data transformations are an integral part of the modern data stack. Through PipeRider's integration with [dbt](https://www.getdbt.com/) you can run data quality checks against your transformed data and ELT pipeline. PipeRider auto-detects your dbt data warehouse settings, so no extra configuration is required.&#x20;
-
+ 
 When [initializing](../piperider-cli.md#initialize-project) a new project, PipeRider will search the current path for your `dbt_project.yml` and create a `.piperider/config.yml` file according to your dbt settings. If multiple dbt projects exist in the current path, you will be promoted to select a dbt project. Data warehouse connection settings will be sourced from `~/.dbt/profiles.yml` unless specified.
 
 Example `.piperider/config.yml` with dbt connection settings:

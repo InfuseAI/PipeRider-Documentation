@@ -9,7 +9,7 @@ description: >-
 ## Installation
 
 Install PipeRider with the Postgres connector.
-
+ 
 ```
 pip install 'piperider[postgres]'
 ```

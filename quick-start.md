@@ -3,7 +3,7 @@ description: Get PipeRider up and running quickly with this sample data quality 
 ---
 
 # Quick Start
-
+ 
 This quick start guide will show you how to:
 
 * [Install PipeRider](quick-start.md#install-piperider-via-pip)

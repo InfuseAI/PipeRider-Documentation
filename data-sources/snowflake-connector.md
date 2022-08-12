@@ -9,7 +9,7 @@ description: >-
 ## Installation
 
 Install PipeRider with the Snowflake connector.
-
+ 
 ```
 pip install 'piperider[snowflake]'
 ```

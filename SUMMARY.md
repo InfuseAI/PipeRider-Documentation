@@ -20,7 +20,7 @@
 * [Metrics](data-profile-and-metrics/metrics.md)
 
 ## Data Quality Assertions
-
+ 
 * [Assertion YAML](data-quality-assertions/assertion-yaml.md)
 * [Built-In Assertions](data-quality-assertions/assertion-configuration.md)
 * [Custom Assertions](data-quality-assertions/custom-assertions.md)

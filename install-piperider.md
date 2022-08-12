@@ -13,7 +13,7 @@ Python 3.7+ Installed
 ### Install or update PipeRider
 
 Use pip to install or update PipeRider.
-
+ 
 ```shell
 pip install -U piperider
 ```

@@ -3,7 +3,7 @@
 PipeRider will parse all yaml files at `.piperider/assertions`. Grouping assertions by files is a way to organize your assertions. Using `piperider diagnose` to verify the format of assertion yaml files.
 
 Whether recommended assertions or assertion templates, the format looks like the example below. You can use [built-in assertion](assertion-configuration.md) functions or [custom assertion](custom-assertions.md) functions against tables or columns depending on the functions.&#x20;
-
+ 
 ```yaml
 Table_name_1:
   description: the description will be displayed as a tool tips in the report

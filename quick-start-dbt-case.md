@@ -9,7 +9,7 @@ Let's create a dbt project bases on a _SQLite_ database as the data source first
 ### Before you start
 
 Ensure you have the follow installed:
-
+ 
 * Python 3.7+
 * [dbt-core](https://docs.getdbt.com/dbt-cli/install/pip#install-dbt-core-only)
 

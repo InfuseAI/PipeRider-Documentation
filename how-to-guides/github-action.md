@@ -9,7 +9,7 @@ In terms of the continuous integration, PipeRider provides the _GitHub Action_ t
 {% hint style="info" %}
 You can find the [PipeRider CLI Action](https://github.com/marketplace/actions/piperider-cli-action) from GitHub Action Marketplace
 {% endhint %}
-
+ 
 {% hint style="info" %}
 GitHub has the great documents about Actions, if you're new to it, suggest you to visit [GitHub Actions Documents](https://docs.github.com/en/actions/quickstart).
 {% endhint %}
