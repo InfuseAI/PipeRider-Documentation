@@ -47,7 +47,7 @@ The concept of PipeRider is to enable you to better **understand your data** thr
 
 PipeRider should work with your **existing data sources**, and require **minimal configuration** to set-up and use. This is demonstrated through PipeRider's automatic detection of dbt projects and recommended assertion generation.
 
-The **command line tool** should be **useful for data engineers**, while the **reporting output** should be visually appealing and **useful to non-DE stakeholders**.
+The **command line tool** should be **useful for data engineers**, while the **reporting output** should be visually appealing and **useful to non-DE stakeholders**. 
 
 
 
