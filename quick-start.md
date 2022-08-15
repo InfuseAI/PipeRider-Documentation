@@ -3,7 +3,7 @@ description: Get PipeRider up and running quickly with this sample data quality 
 ---
 
 # Quick Start
- 
+
 This quick start guide will show you how to:
 
 * [Install PipeRider](quick-start.md#install-piperider-via-pip)
@@ -409,6 +409,8 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 
 ### Love to Hear You
 
-PipeRider are being improved, we love to hear from you. Any thoughts is appreciated. Just send us the feedback.
+PipeRider is constantly being improved - If you have feedback that could help make it better, we'd love to hear from you.
 
-![Send us the feedback](.gitbook/assets/0.6.0.20220804\_feedback.png)
+To send your feedback, click the Feedback link at the bottom-left of your report and fill out the form.
+
+![Send us your feedback](<.gitbook/assets/piperider-feedback-fs8 (1).png>)
