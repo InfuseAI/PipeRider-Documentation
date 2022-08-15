@@ -407,7 +407,7 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 | FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
 | OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
 
-### Love to Hear You
+### We'd love to hear from you
 
 PipeRider is constantly being improved - If you have feedback that could help make it better, we'd love to hear from you.
 
