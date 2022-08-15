@@ -16,20 +16,9 @@ PipeRider allows you to define your expectations of the data once, and then use 
 PipeRider: Data Reliability, Automated.
 {% endembed %}
 
-### Supported Data Sources
-
-Out-of-the-box we currently support the following data sources:
-
-* Sqlite (by default)
-* [Postgres](data-sources/postgres-connector.md) (Optional)
-* [Snowflake](data-sources/snowflake-connector.md) (Optional)
-* dbt (using one of the above adapters)
-
-Use our [Quick Start](quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
-
 ## Getting Started
 
-Follow our handy guides to get started on the basics as quickly as possible:
+Use our [Quick Start](quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
 
 {% content-ref url="install-piperider.md" %}
 [install-piperider.md](install-piperider.md)
@@ -42,16 +31,9 @@ Follow our handy guides to get started on the basics as quickly as possible:
 ## The Concepts behind PipeRider
 
 PipeRider is a non-intrusive data reliability platform with reporting.
- 
+
 The concept of PipeRider is to enable you to better **understand your data** through [data profiling](data-profile-and-metrics/data-profile.md), and **ensure the quality of your data** by testing the [data profile metrics](data-profile-and-metrics/metrics.md) with [data assertions](data-quality-assertions/assertion-configuration.md). It is through this process of profiling and testing that PipeRider provides a platform for data reliability.
 
 PipeRider should work with your **existing data sources**, and require **minimal configuration** to set-up and use. This is demonstrated through PipeRider's automatic detection of dbt projects and recommended assertion generation.
 
-The **command line tool** should be **useful for data engineers**, while the **reporting output** should be visually appealing and **useful to non-DE stakeholders**. 
-
-
-
-
-
-
-
+The **command line tool** should be **useful for data engineers**, while the **reporting output** should be visually appealing and **useful to non-DE stakeholders**.
