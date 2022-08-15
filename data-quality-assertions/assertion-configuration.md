@@ -1,5 +1,5 @@
 ---
-description: The supported assertions and the usages
+description: Out-of-the-box assertions and usage examples.
 ---
 
 # Built-In Assertions
@@ -15,7 +15,7 @@ Here are built-in assertions, there are two types of assertions, one takes no pa
 * Description: The column must exit.
 * Assert: None
 * Tags:
- 
+
 <details>
 
 <summary>YAML example</summary>

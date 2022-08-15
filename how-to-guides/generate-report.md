@@ -1,5 +1,5 @@
 ---
-description: How to generate reports
+description: How to generate reports using PipeRider.
 ---
 
 # Generate Report
@@ -19,7 +19,7 @@ The following methods are also available to generate reports.
 Use the following command to profile and generate a report for a specified table.
 
 Profile the `price` table and generate a report:
- 
+
 ```shell
 piperider run --table price
 ```

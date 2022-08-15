@@ -1,5 +1,5 @@
 ---
-description: All of commands
+description: PipeRider commands and related options.
 ---
 
 # Command Reference
@@ -13,7 +13,7 @@ It will generate a `.piperider` directory and a few configuration files inside s
 ```shell
 piperider init [OPTIONS]
 ```
- 
+
 | Option               | Argument | Description                                                         |
 | -------------------- | -------- | ------------------------------------------------------------------- |
 | `--no-auto-search`   | none     | Disable the auto search for dbt projects; it is enabled by default  |

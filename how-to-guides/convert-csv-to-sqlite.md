@@ -1,5 +1,5 @@
 ---
-description: How to convert a csv file to a SQLite database
+description: How to convert a csv file to a SQLite database.
 ---
 
 # Convert CSV to SQLite
@@ -9,7 +9,7 @@ description: How to convert a csv file to a SQLite database
 You can use your own csv file or use the example data below.
 
 Copy the data and save it as a `vgsales.csv` file.
- 
+
 ```csv
 Rank,Name,Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales
 1,Wii Sports,Wii,2006,Sports,Nintendo,41.49,29.02,3.77,8.46,82.74
