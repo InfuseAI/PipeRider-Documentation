@@ -34,10 +34,11 @@ dataSources:
 
 telemetry:
   id: ABC123
+
 ```
 {% endcode %}
 
-The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
+&#x20;The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
 
 ### Data source settings
 

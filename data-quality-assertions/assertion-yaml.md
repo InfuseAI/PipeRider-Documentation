@@ -21,7 +21,7 @@ Table_name_1:
     column_name:
       # Test Cases for Column
       tests:
-      - name: assertion_function_wtihout_parameter
+      - name: assertion_function_without_parameter
         tags:
         - name_your_tag_optional
 Table_name_2:
@@ -36,7 +36,7 @@ Table_name_2:
     column_name:
       # Test Cases for Column
       tests:
-      - name: assertion_function_wtihout_parameter
+      - name: assertion_function_without_parameter
         tags:
         - name_your_tag_optional
 ```

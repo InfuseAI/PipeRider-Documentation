@@ -71,4 +71,8 @@ piperider diagnose
 
 ### gcloud authentication
 
+<<<<<<< HEAD
 If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window and you will be prompted to authenticate with your Google account.
+=======
+If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window  and you will be prompted to authenticate with your Google account.
+>>>>>>> main
