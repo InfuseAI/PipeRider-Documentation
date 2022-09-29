@@ -56,4 +56,10 @@ If multi-factor authentication (MFA) is enabled on your Snowflake account, then 
 * `piperider diagnose`
 * `piperider run`
 
-&#x20;
+#### MFA Token Caching
+
+The prompt for every query could be annoying. In this case, Snowflake allows users to [minimize the prompts by enabling caching](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in the account-level. It prompts you only once then caching it for the queries afterwards.
+
+If enabled, edit _.piperider/credentials.yml_ and add `authenticator: username_password_mfa`.
+
+If it is a dbt project, edit _\~/.dbt/profiles_ and add `authenticator: username_password_mfa` in the corresponding profile.
