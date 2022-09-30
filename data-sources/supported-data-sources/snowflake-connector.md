@@ -58,8 +58,10 @@ If multi-factor authentication (MFA) is enabled on your Snowflake account, then 
 
 #### MFA Token Caching
 
-The prompt for every query could be annoying. In this case, Snowflake allows users to [minimize the prompts by enabling caching](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in the account-level. It prompts you only once then caching it for the queries afterwards.
+The prompt for every query could be annoying. In this case, Snowflake allows users to [minimize the prompts by enabling the caching](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in the account-level. It prompts you only once then caching it for the queries afterwards.
 
-If enabled, edit _.piperider/credentials.yml_ and add `authenticator: username_password_mfa`.
+If enabled,&#x20;
 
-If it is a dbt project, edit _\~/.dbt/profiles_ and add `authenticator: username_password_mfa` in the corresponding profile.
+* Ensure the package is installed. `pip install 'snowflake-connector-python[secure-local-storage]'`
+* Projects without dbt: Edit _.piperider/credentials.yml_ and add `authenticator: username_password_mfa`.
+* Project with dbt: Edit _\~/.dbt/profiles_ and add `authenticator: username_password_mfa` in the corresponding profile.
