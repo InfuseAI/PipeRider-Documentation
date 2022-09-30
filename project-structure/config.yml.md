@@ -18,6 +18,7 @@ dataSources:
 #   table:
 #     # the maximum row count to profile. (Default unlimited)
 #     limit: 1000000
+#     duplicateRows: false   
 
 # The tables to include/exclude
 # includes: []
@@ -34,11 +35,10 @@ dataSources:
 
 telemetry:
   id: ABC123
-
 ```
 {% endcode %}
 
-&#x20;The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
+The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
 
 ### Data source settings
 
@@ -67,6 +67,21 @@ profiler:
   table:
     # the maximum row count to profile. (Default unlimited)
     limit: 10000
+...
+```
+{% endcode %}
+
+#### Profile duplicate rows
+
+Enabling it to let the profiler find the duplicate rows from the table. _It is disabled by default_ due to it could be a time-consuming process according to datasets.
+
+{% code title="config.yml" %}
+```yaml
+...
+profiler:
+  table:
+    # the maximum row count to profile. (Default unlimited)
+    duplicateRows: false
 ...
 ```
 {% endcode %}
