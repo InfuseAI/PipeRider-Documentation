@@ -251,7 +251,7 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
-<figure><img src=".gitbook/assets/pr-08-run.png" alt=""><figcaption><p>Profiling report</p></figcaption></figure>
+<figure><img src=".gitbook/assets/0.10.single.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
@@ -394,7 +394,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-<figure><img src=".gitbook/assets/pr-08-compare.png" alt=""><figcaption><p>Comparison report</p></figcaption></figure>
+<figure><img src=".gitbook/assets/0.10.compare.png" alt=""><figcaption></figcaption></figure>
 
 \----
 
