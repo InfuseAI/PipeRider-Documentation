@@ -251,7 +251,7 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
-<figure><img src=".gitbook/assets/pr-08-run.png" alt=""><figcaption><p>Profiling report</p></figcaption></figure>
+<figure><img src=".gitbook/assets/0.10.single.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
@@ -394,7 +394,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-<figure><img src=".gitbook/assets/pr-08-compare.png" alt=""><figcaption><p>Comparison report</p></figcaption></figure>
+<figure><img src=".gitbook/assets/0.10.compare.png" alt=""><figcaption></figcaption></figure>
 
 \----
 
@@ -407,6 +407,12 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 | OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
 | FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
 | OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
+
+### More Things You Can Do
+
+PipeRider provides advanced project-wise configuration that allows you to change default behaviours of the profiler. Such as to limit the amount of row which the profiler can analyze or to include/exclude specific tables in the analysis. Please check [Config.yml](project-structure/config.yml.md) for the detail.
+
+
 
 ### We'd love to hear from you
 

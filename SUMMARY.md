@@ -42,7 +42,7 @@
 
 ***
 
-* [Changelog (v0.9.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.9.0)
+* [Changelog (v0.10.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.10.0)
 
 ## Development
 

@@ -18,7 +18,7 @@ PipeRider has the following main features:
   * Built-in [data assertions](data-quality-assertions/assertion-configuration.md)
   * Extensible through [custom assertions](data-quality-assertions/custom-assertions.md)
   * Auto-generated data assertions
-* Currently supports [Postgres](data-sources/supported-data-sources/postgres-connector.md), [Snowflake](data-sources/supported-data-sources/snowflake-connector.md), SQLite, [BigQuery](data-sources/supported-data-sources/bigquery-connector.md), [Redshift](data-sources/supported-data-sources/redshift-connector.md), [DuckDB](data-sources/supported-data-sources/duckdb-connector.md), [CSV](data-sources/supported-data-sources/csv-connector.md) and [Parquet](data-sources/supported-data-sources/parquet-connector.md).
+* Currently supports [Postgres](data-sources/supported-data-sources/postgres-connector.md), [Snowflake](data-sources/supported-data-sources/snowflake-connector.md), SQLite, [BigQuery](data-sources/supported-data-sources/bigquery-connector.md), [Redshift](data-sources/supported-data-sources/redshift-connector.md), [DuckDB](data-sources/supported-data-sources/duckdb-connector.md), [CSV](data-sources/supported-data-sources/csv-connector.md), and [Parquet](data-sources/supported-data-sources/parquet-connector.md).
 * Zero-config [support for dbt](dbt-integration/) projects
 * Automation through [GitHub Actions](how-to-guides/github-action.md), [save reports in S3](how-to-guides/aws-s3-+-github-ci.md)
 
