@@ -408,6 +408,12 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 | FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
 | OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
 
+### More Things You Can Do
+
+PipeRider provides advanced project-wise configuration that allows you to change default behaviours of the profiler. Such as to limit the amount of row which the profiler can analyze or to include/exclude specific tables in the analysis. Please check [Config.yml](project-structure/config.yml.md) for the detail.
+
+
+
 ### We'd love to hear from you
 
 PipeRider is constantly being improved - If you have feedback that could help make it better, we'd love to hear from you.
