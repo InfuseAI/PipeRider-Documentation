@@ -266,11 +266,10 @@ In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . The au
 PRICE:  # Table Name
   # Test Cases for Table
   tests:
-  - name: assert_row_count_in_range
+  - metric: row_count
     assert:
-      count:
-      - 160271
-      - 195886
+      gte: 160271
+      lte: 195886
     tags:
     - RECOMMENDED
   columns:
@@ -298,11 +297,10 @@ PRICE:  # Table Name
           type: numeric
         tags:
         - RECOMMENDED
-      - name: assert_column_min_in_range
+      - metrics: assert_column_value
         assert:
-          min:
-          - 6
-          - 7
+          gte: 6
+          le: 7
         tags:
         - RECOMMENDED
 ...
