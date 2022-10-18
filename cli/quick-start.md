@@ -251,10 +251,10 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
-<figure><img src=".gitbook/assets/0.10.single.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0.10.single.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
+Refer to [How-To: Generate Report](../how-to-guides/generate-report.md) for other methods generate reports
 {% endhint %}
 
 ### Apply data assertions
@@ -394,7 +394,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-<figure><img src=".gitbook/assets/0.10.compare.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0.10.compare.png" alt=""><figcaption></figcaption></figure>
 
 \----
 
@@ -412,12 +412,10 @@ Furthermore, you will see the profiling and assertions results, and with a gener
 
 PipeRider provides advanced project-wise configuration that allows you to change default behaviours of the profiler. Such as to limit the amount of row which the profiler can analyze or to include/exclude specific tables in the analysis. Please check [Config.yml](project-structure/config.yml.md) for the detail.
 
-
-
 ### We'd love to hear from you
 
 PipeRider is constantly being improved - If you have feedback that could help make it better, we'd love to hear from you.
 
 To send your feedback, click the Feedback link at the bottom-left of your report and fill out the form.
 
-<figure><img src=".gitbook/assets/pr-08-feedback.png" alt=""><figcaption><p>Feedback</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/pr-08-feedback.png" alt=""><figcaption><p>Feedback</p></figcaption></figure>
