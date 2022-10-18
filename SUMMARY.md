@@ -40,6 +40,7 @@
 * [Development](development/README.md)
   * [Nightly Version](development/nightly-version.md)
   * [Contribution](development/contribution.md)
+  * [Roadmap](development/roadmap.md)
 
 ## Cloud
 
