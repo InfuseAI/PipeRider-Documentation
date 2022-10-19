@@ -1358,9 +1358,9 @@ The value of the _**actual**_ will be concluded to the report. It is where you c
 
 So far you already have the fundamental knowledge of the assertion, start creating your first custom assertion.
 
-Check your `./piperider/outputs/<run>/.profiler.json` and select a metric as the measurement. In my case, I choose `distinct`.
+Check your `./piperider/outputs/<run>/run.json` and select a metric as the measurement. In this show-case, I choose `distinct`.
 
-In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Because I know Name must be contained in a list of names which has 600 names in the total, the metric value of _distinct_ should not exceed 600 otherwise something wrong in my data.
+In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Because I know Name must be contained in a list of names which has 600 names in the total, the metric value of _distinct_ should not exceed 600 otherwise something wrong in the data I consume.
 
 ```yaml
  "SYMBOL": {
@@ -1374,7 +1374,7 @@ In my case, there is a table called _SYMBOL_, one of its columns is _Name_. Beca
                     "distinct": 505,
 ```
 
-Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, it is declared in range\_check.py,_ in future I'll create more range-related assertions.
+Therefore, I want an assertion function called _assert\_distinct\_in\_range which takes two parameters, min and max, furthermore, and the function is declared in range\_check.py._ In future I'll create more range-related assertions.
 
 At `.piperider/assertions/` I create an assertion file, _my\_assertion.yml_ and edit the file to add my custom assertion logic against the column _Name_.
 
@@ -1392,7 +1392,9 @@ SYMBOL:  # Table Name
             
 ```
 
-Next I will define the corresponding assertion function. I go to `.piperider/plugins` and create a python file, _range\_check.py_. Edit the python file and add the custom assertion codes.
+Above is to define what I expect to use my custom assertion. Next I will define/implement the corresponding assertion function.&#x20;
+
+I go to `.piperider/plugins` and create a python file, _range\_check.py_. Edit the python file and add the custom assertion codes.
 
 ```python
 from piperider_cli.assertion_engine.assertion import AssertionContext, AssertionResult, ValidationResult
@@ -1433,13 +1435,13 @@ class AssertDistinctInRange(BaseAssertionType):
 register_assertion_function(AssertDistinctInRange)
 ```
 
-I have added the custom assertion and the corresponding assertion function. Time to test it.
+I have created my custom assertion, _assert\_distinct\_in\_range_, and register it when Profiler loads it from _plugins/_. Time to test it.
 
 ```shell
 piperider run --table SYMBOL
 ```
 
-After the running, I see the assertion result. The first custom assertions works!
+After the running, I see the my defined assertion result. Nice, the first custom assertions works!
 
 ```shell-session
 
@@ -1454,7 +1456,7 @@ The custom assertion works, but not perfect. It needs other exception handling t
 
 If you need to debug custom assertion functions, just enable the debug mode with `--debug`.
 
-It will print out the trackback of calls.
+It will print out the traceback of calls.
 
 ```
 piperider run --debug
