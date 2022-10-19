@@ -10,7 +10,7 @@ Piperider provides a few [built-in assertions](assertion-configuration.md) and a
 
 ### Plugins
 
-Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py`. You can rename the file or create assertion functions in other python file there.
+Piperider, by default, will load python files under `.piperider/plugins` as custom assertion functions automatically. `.piperider/plugins` is created by `piperider init` with a scaffolding of a custom assertion function, `customized_assertions.py.template`. You can rename the file or create assertion functions in other python file there.
 
 {% hint style="info" %}
 The search path to `plugins/` can be overwritten by the environment variable **`PIPERIDER_PLUGINS`**. Define your path by setting the variable.
@@ -1199,22 +1199,22 @@ e.g.
 PRICE:  # Table Name
   # Test Cases for Table
   tests: # assertion functions
-    - name: assert_row_count_in_range # built-in assertion function takes a parameter
+    - metric: row_count # built-in assertion function takes a parameter
       assert:
-        count: [0, 157881]
+        lte: 157881
   columns:
     SYMBOL:  # Column Name
       # Test Cases for Column
       tests: # assertion functions
       - name: alphanumeric_only # custom assertion function without parameters
-      - name: distinct_count # custom assertion function takes a parameter
+      - name: assert_distinct_in_range # custom assertion function takes a parameter, range
         assert:
-          count: 505
+          range: [0, 600]
 ```
 
 ### Scaffolding of Assertion Function
 
-This is the context of `customized_assertions.py`. A custom assertion class has to implement `BaseAssertionType` \_\_ and its functions, `name()`, _`execute()` and `validate()`._
+This is the context of `customized_assertions.py.template`. You can find it at `.piperider/plugins.` A custom assertion class has to implement `BaseAssertionType` and its functions, `name()`, _`execute()` and `validate()`._
 
 <details>
 
@@ -1226,92 +1226,61 @@ from piperider_cli.assertion_engine.types import BaseAssertionType, register_ass
 
 
 class AssertNothingTableExample(BaseAssertionType):
-    def name(self):
-        return 'assert_nothing_table_example'
+  def name(self):
+    return 'assert_nothing_table_example'
 
-    def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
-        table_metrics = metrics.get('tables', {}).get(table)
-        if table_metrics is None:
-            # cannot find the table in the metrics
-            return context.result.fail()
+  def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
+    table_metrics = metrics.get('tables', {}).get(table)
+    if table_metrics is None:
+      # cannot find the table in the metrics
+      return context.result.fail()
 
-        # 1. Get the metric for the current table
-        # We support two metrics for table level metrics: ['row_count', 'col_count']
-        row_count = table_metrics.get('row_count')
-        # col_count = table_metrics.get('col_count')
+    # 1. Get the metric for the current table
+    # We support two metrics for table level metrics: ['row_count', 'col_count']
+    row_count = table_metrics.get('row_count')
+    # col_count = table_metrics.get('col_count')
 
-        # 2. Get expectation from assert input
-        expected = context.asserts.get('something', [])
+    # 2. Get expectation from assert input
+    expected = context.asserts.get('something', [])
 
-        # 3. Implement your logic to check requirement between expectation and actual value in the metrics
+    # 3. Implement your logic to check requirement between expectation and actual value in the metrics
 
-        # 4. send result
+    # 4. send result
 
-        # 4.1 mark it as failed result
-        # return context.result.fail('what I saw in the metric')
+    # 4.1 mark it as failed result
+    # return context.result.fail('what I saw in the metric')
 
-        # 4.2 mark it as success result
-        # return context.result.success('what I saw in the metric')
+    # 4.2 mark it as success result
+    # return context.result.success('what I saw in the metric')
 
-        return context.result.success('what I saw in the metric')
+    return context.result.success('what I saw in the metric')
 
-    def validate(self, context: AssertionContext) -> ValidationResult:
-        result = ValidationResult(context)
-        # result.errors.append('explain to users why this broken')
-        return result
+  def validate(self, context: AssertionContext) -> ValidationResult:
+    result = ValidationResult(context)
+    result.errors.append('explain to users why this broken')
+    return result
 
-
-class AssertNothingColumnExample(BaseAssertionType):
-    def name(self):
-        return "assert_nothing_column_example"
-
-    def execute(self, context: AssertionContext, table: str, column: str, metrics: dict) -> AssertionResult:
-        column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
-        if column_metrics is None:
-            # cannot find the column in the metrics
-            return context.result.fail()
-
-        # 1. Get the metric for the column metrics
-        total = column_metrics.get('total')
-        non_nulls = column_metrics.get('non_nulls')
-
-        # 2. Get expectation from assert input
-        expected = context.asserts.get('something', [])
-
-        # 3. Implement your logic to check requirement between expectation and actual value in the metrics
-
-        # 4. send result
-
-        # 4.1 mark it as failed result
-        # return context.result.fail('what I saw in the metric')
-
-        # 4.2 mark it as success result
-        # return context.result.success('what I saw in the metric')
-
-        return context.result.success('what I saw in the metric')
-
-    def validate(self, context: AssertionContext) -> ValidationResult:
-        result = ValidationResult(context)
-        # result.errors.append('explain to users why this broken')
-        return result
 
 # register new assertions
 register_assertion_function(AssertNothingTableExample)
-register_assertion_function(AssertNothingColumnExample)
 ```
+
+</details>
+
+
 
 **Methods**
 
-`name()`: return the name of the testing function that will be used in assertion yaml.
+`name()`: return the name of the testing function that will be referred in assertion YAML.
 
-`execute()` : the implementation of the testing logic. PipeRider will bring arguments below to `execute` method for you:
+`execute()` : the implementation of the assertion function. PipeRider will bring arguments below to `execute` method for you:
 
 * _context_: helper object for assembling result entry to the report.
 * _table_: the table name you are asserting.
-* _column_: the column name you are checking, but it could be null when the assertion is run against a table.
-* _metrics_: the profiling results could be referred for the assertion.
+* _column_: the column name you are checking, but it could be _null_ when the assertion runs against a table.
+* _metrics_: the profiling results could be referred by the assertion function.
 
-`validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameter values taken by the function are valid.
+`validate()` : the validation of user inputs to the assertion function, i.e., it validates if the parameter values taken by the function are valid before the assertion logic execution.
 
 `register_assertion_function()`: register the custom assertion function so that it can be recognized in the assertion yaml.
 
@@ -1319,30 +1288,71 @@ register_assertion_function(AssertNothingColumnExample)
 
 Read a _table metrics_ / _column metrics_
 
-\# get a dict object of a table metricstable\_metrics = metrics.get('tables', {}).get(table)if table\_metrics is None: # cannot find the table in the metrics return context.result.fail() # get a value of a metric by a key from the dict object of the table metricstable\_metrics.get('key')# get a dict objec of a column metrics of a table column\_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)if column\_metrics is None: # cannot find the column in the metrics return context.result.fail() # get a value of a metric by a key from the dict objec of the column metricscolumn\_metrics.get('key')
-
-Read user input value of a parameter from an assertion yaml.
-
+{% tabs %}
+{% tab title="Table-level metrics" %}
 ```python
-context.asserts.get('parameter_a', [])
+# read all of metrics of the specified table in assertion YAML
+table_metrics = metrics.get('tables', {}).get(table)
+    if table_metrics is None:
+      # cannot find the table in the metrics
+      return context.result.fail()
+
+    # 1. Get the table-related metrics
+    # Support two metrics for table-level metrics: ['row_count', 'col_count']
+    row_count = table_metrics.get('row_count')
+    # col_count = table_metrics.get('col_count')
+
+    # 2. Get the specified expectation from assert input in assertion YAML
+    expected = context.asserts.get('parameter1', [])
 ```
+
+
+{% endtab %}
+
+{% tab title="Column-level metrics" %}
+```python
+# read all of metrics of the specified table/column in assertion YAML
+column_metrics = metrics.get('tables', {}).get(table, {}).get('columns', {}).get(column)
+        if column_metrics is None:
+            # cannot find the column in the metrics
+            return context.result.fail()
+
+        # 1. Get the specific metric from the column metrics
+        total = column_metrics.get('total')
+        non_nulls = column_metrics.get('non_nulls')
+
+        # 2. Get the specified expectation from assert input in assertion YAML
+        expected = context.asserts.get('param1', [])
+
+        # 3. Implement your assertive ythylogic to check requirement between expectation and actual value in the metrics
+
+        # 4. return the result
+
+        # 4.1 mark it as failed result
+        # return context.result.fail('what I saw in the metric')
+
+        # 4.2 or mark it as success result
+        return context.result.success('what I saw in the metric')
+```
+{% endtab %}
+{% endtabs %}
 
 Return `fail()` or `success()` with a message
 
-```
+```python
 context.result.fail("message")
 context.result.success("message")
 ```
 
-One thing is not mentioned in the context.
+Conclude the result
 
-The value of the _actual_ will be printed out in the format `Actual: value` when assertion is executed.
-
-```
+```python
 context.result.actual
 ```
 
-Assign `actual` any value as the actual finding that why the assertion successes or fails.
+The value of the _**actual**_ will be concluded to the report. It is where you can add more descriptions to make the report more readable to your audiences.
+
+
 
 **Hands-On**
 
@@ -1432,11 +1442,13 @@ piperider run --table SYMBOL
 After the running, I see the assertion result. The first custom assertions works!
 
 ```shell-session
-────────────────────────────────────────────────────────────────── Assertion Results ───────────────────────────────────────────────────────────────────
-[  OK  ] SYMBOL.NAME  assert_distinct_in_range  Expected: {'range': [0, 600]} Actual: The value is 505 sitting in the range
+
+  Status     Test Subject   Assertion                  Expected              Actual
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  [  OK  ]   SYMBOL.NAME    assert_distinct_in_range   {'range': [0, 600]}   The value is 505 sitting in the range
 ```
 
-The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive.
+The custom assertion works, but not perfect. It needs other exception handling to make it more robust and more assertive according to the real business logics.
 
 **Debug Mode**
 
@@ -1447,5 +1459,3 @@ It will print out the trackback of calls.
 ```
 piperider run --debug
 ```
-
-</details>
