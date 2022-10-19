@@ -67,7 +67,7 @@ world_city:
 
 <summary>YAML example</summary>
 
-The value should be between 0 and 10000
+The value should be between \[0,10000)
 
 ```
 world_city:
@@ -77,7 +77,7 @@ world_city:
       - name: assert_column_value
         assert:
             gte: 0
-            le: 10000
+            lt: 10000
 ```
 
 The value of a datetime type column should be `>= '2022-01-01'`
