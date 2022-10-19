@@ -8,22 +8,33 @@ description: >-
 
 Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type (see [Schema](metrics.md#schema) below).
 
+Built-in assertions are not availabe for every metric. When a built-in assertion becomes available for a metric, a check mark (✔) will be added the to `Assertion Available` column.
+
+If a metric is not available, please ensure you are using the latest version of PipeRider. Check the `PipeRider Version` column to see when a metric was introduced.
+
 ## Table metrics
 
 Data profile metrics that describe the tables in a data source.
 
-| Metric                 | Description                                                                      | Profile Field  | Supported Since |
-| ---------------------- | -------------------------------------------------------------------------------- | -------------- | --------------- |
-| Row count              | The number of rows in the table                                                  | `row_count`    | All             |
-| Column count           | The number of columns in the table                                               | `col_count`    | All             |
-| Volume size _\*_       | The volume size of this table in bytes                                           | `bytes`        | \*limited       |
-| Created time _\*_      | The time that this table created at in ISO 8601 format including time zone       | `created`      | \*limited       |
-| Last altered time _\*_ | The last time that this table modified at in ISO 8601 format including time zone | `last_altered` | \*limited       |
-| Freshness _\*_         | Time differentiation between the current time and table's last altered time      | `freshness`    | \*limited       |
+| Metric                        | Description                                                                      | Profile Field      | Assertion Available | PipeRider Version |
+| ----------------------------- | -------------------------------------------------------------------------------- | ------------------ | ------------------- | ----------------- |
+| Row count                     | The number of rows in the table                                                  | `row_count`        | ✔                   | All               |
+| Column count                  | The number of columns in the table                                               | `col_count`        |                     | All               |
+| Sample count                  | The number of rows profiled                                                      | `samples`          |                     | 0.10.0            |
+| Sample percentage             | The percentage of rows profiled                                                  | `samples_p`        |                     | 0.11.0            |
+| Volume size _\*_              | The volume size of this table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
+| Created time _\*_             | The time that this table created at in ISO 8601 format including time zone       | `created`          |                     | 0.8.0             |
+| Last altered time _\*_        | The last time that this table modified at in ISO 8601 format including time zone | `last_altered`     |                     | 0.8.0             |
+| Freshness _\*_                | Time differentiation between the current time and table's last altered time      | `freshness`        | ✔                   | 0.8.0             |
+| Duplicate row count \*\*      | The number of duplicate rows in the table                                        | `duplicate_rows`   | ✔                   | 0.10.0            |
+| Duplicate row percentage \*\* | The percentage of duplicate rows in the table                                    | `duplicate_rows_p` | ✔                   | 0.11.0            |
 
-{% hint style="warning" %}
-_\* These metrics are taken out of the data sources' table metadata. All of these metadata are not offered by all data sources. Please refer to the supporting matrix below._
+{% hint style="info" %}
+\* _These metrics are only available for certain data sources.  Please refer to the **platform dependant metrics** table below for availability information._\
+__\*\* _Table-level duplicate row metrics are now enabled by default. To enable this settings please refer to the_ [_Profiler Settings_](../project-structure/config.yml.md#profiler-settings)_._
 {% endhint %}
+
+### Platform dependant metrics&#x20;
 
 | Metric            | Snowflake | BigQuery | Redshift | Others |
 | ----------------- | --------- | -------- | -------- | ------ |
@@ -31,6 +42,10 @@ _\* These metrics are taken out of the data sources' table metadata. All of thes
 | Created time      | ✔         | ✔        |          |        |
 | Last altered time | ✔         | ✔        |          |        |
 | Freshness         | ✔         | ✔        |          |        |
+
+{% hint style="info" %}
+
+{% endhint %}
 
 ## Column metrics
 
