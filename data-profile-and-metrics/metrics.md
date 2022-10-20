@@ -16,25 +16,26 @@ If a metric is not available, please ensure you are using the latest version of 
 
 Data profile metrics that describe the tables in a data source.
 
-| Metric                        | Description                                                                      | Profile Field      | Assertion Available | PipeRider Version |
-| ----------------------------- | -------------------------------------------------------------------------------- | ------------------ | ------------------- | ----------------- |
-| Row count                     | The number of rows in the table                                                  | `row_count`        | ✔                   | All               |
-| Column count                  | The number of columns in the table                                               | `col_count`        |                     | All               |
-| Sample count                  | The number of rows profiled                                                      | `samples`          |                     | 0.10.0            |
-| Sample percentage             | The percentage of rows profiled                                                  | `samples_p`        |                     | 0.11.0            |
-| Volume size _\*_              | The volume size of this table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
-| Created time _\*_             | The time that this table created at in ISO 8601 format including time zone       | `created`          |                     | 0.8.0             |
-| Last altered time _\*_        | The last time that this table modified at in ISO 8601 format including time zone | `last_altered`     |                     | 0.8.0             |
-| Freshness _\*_                | Time differentiation between the current time and table's last altered time      | `freshness`        | ✔                   | 0.8.0             |
-| Duplicate row count \*\*      | The number of duplicate rows in the table                                        | `duplicate_rows`   | ✔                   | 0.10.0            |
-| Duplicate row percentage \*\* | The percentage of duplicate rows in the table                                    | `duplicate_rows_p` | ✔                   | 0.11.0            |
+| Metric                       | Description                                                                     | Profile Field      | Assertion Available | PipeRider Version |
+| ---------------------------- | ------------------------------------------------------------------------------- | ------------------ | ------------------- | ----------------- |
+| Row count                    | The number of rows in the table                                                 | `row_count`        | ✔                   | All               |
+| Column count                 | The number of columns in the table                                              | `col_count`        |                     | All               |
+| Sample count                 | The number of rows profiled                                                     | `samples`          |                     | 0.10.0            |
+| Sample percentage            | The percentage of rows profiled                                                 | `samples_p`        |                     | 0.11.0            |
+| Volume size_\*_              | The volume size of the table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
+| Created time_\*_             | The time that the table was created, including time zone, in ISO 8601 format    | `created`          |                     | 0.8.0             |
+| Last altered time_\*_        | The last time the table was modified, including time zone, in ISO 8601 format   | `last_altered`     |                     | 0.8.0             |
+| Freshness_\*_                | The time differentiation between the current time and table's last altered time | `freshness`        | ✔                   | 0.8.0             |
+| Duplicate row count\*\*      | The number of duplicate rows in the table                                       | `duplicate_rows`   | ✔                   | 0.10.0            |
+| Duplicate row percentage\*\* | The percentage of duplicate rows in the table                                   | `duplicate_rows_p` | ✔                   | 0.11.0            |
 
 {% hint style="info" %}
-\* _These metrics are only available for certain data sources.  Please refer to the **platform dependant metrics** table below for availability information._\
-__\*\* _Table-level duplicate row metrics are now enabled by default. To enable this settings please refer to the_ [_Profiler Settings_](../project-structure/config.yml.md#profiler-settings)_._
+\* __ These metrics are only available for certain data sources.  Please refer to the **platform dependent metrics** table below for availability information.\
+\
+\*\* Table-level duplicate row metrics are now enabled by default. To enable this settings please refer to the [Profiler Settings](../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
 
-### Platform dependant metrics&#x20;
+### Platform dependent metrics&#x20;
 
 | Metric            | Snowflake | BigQuery | Redshift | Others |
 | ----------------- | --------- | -------- | -------- | ------ |
@@ -43,22 +44,18 @@ __\*\* _Table-level duplicate row metrics are now enabled by default. To enable 
 | Last altered time | ✔         | ✔        |          |        |
 | Freshness         | ✔         | ✔        |          |        |
 
-{% hint style="info" %}
-
-{% endhint %}
-
 ## Column metrics
 
 Data profile metrics that describe data at the column level. Depending on the column type, different metrics will be produced.
 
 ### Schema
 
-In addition to logging the schema type of a column, PipeRider will also apply a generic schema type to a column that will determine how this column is treated by the profiler.
+In addition to logging the **schema type** of a column as defined in the data soruce, PipeRider will also apply a **generic type** to a column that will determine how this column is treated by the PipeRider profiler.
 
-| Metric       | Description                                                                                                | Column Type | Profile Field | Supported Since |
-| ------------ | ---------------------------------------------------------------------------------------------------------- | ----------- | ------------- | --------------- |
-| Schema Type  | The column type defined in the data source                                                                 | All         | `schema_type` | All             |
-| Generic Type | A generic type of schema type. It can be be `string`, `integer`, `numeric`, `datetime`, `boolean`, `other` | All         | `type`        | All             |
+| Metric       | Description                                                                                 | Profile Field | Column Type | PipeRider Version |
+| ------------ | ------------------------------------------------------------------------------------------- | ------------- | ----------- | ----------------- |
+| Schema Type  | The column type defined in the data source                                                  | `schema_type` | All         | All               |
+| Generic Type | A generic schema type of  `string`, `integer`, `numeric`, `datetime`, `boolean`, or `other` | `type`        | All         | All               |
 
 The following metrics are produced based on the generic type that has been applied to the column.
 
@@ -66,21 +63,24 @@ The following metrics are produced based on the generic type that has been appli
 
 The composition of the data contained within a column.
 
-![The type of column determines the available metrics](../.gitbook/assets/metrics-composition-fs8.png)
+<figure><img src="../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
 
-| Metric                       | Description                                                                                                           | Column Type      | Profile Field     | Supported Since |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- |
-| Missing count                | The number of null values                                                                                             | All              | `nulls`           | 0.6.0           |
-| Non-null count               | The number of non-null values                                                                                         | All              | `non_nulls`       | All             |
-| Invalid count                | The number of values that do not match the column's schema type. E.g. A string in a numeric column. (**SQLite only**) | All              | `invalids`        | 0.6.0           |
-| Valid count                  | The count of non-null values minus invalid values                                                                     | All              | `valids`          | 0.6.0           |
-| Zero count                   | The number of zeros                                                                                                   | integer, numeric | `zeros`           | 0.6.0           |
-| Negative value count         | The number of negative values                                                                                         | integer, numeric | `negatives`       | 0.6.0           |
-| Positive value count         | The number of positive values                                                                                         | integer, numeric | `positives`       | 0.6.0           |
-| Zero length string count     | The number of empty strings                                                                                           | string           | `zero_length`     | 0.6.0           |
-| Non-zero length string count | The number of non-empty strings                                                                                       | string           | `non_zero_length` | 0.6.0           |
-| True count                   | The number of true values                                                                                             | boolean          | `trues`           | 0.6.0           |
-| False count                  | The number of false values                                                                                            | boolean          | `falses`          | 0.6.0           |
+| Metric                       | Description                                                                                                           | Column Type      | Assertion Available | Profile Field     | PipeRider Version |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------- | ----------------- | ----------------- |
+| Row count                    | The number of rows in the table                                                                                       | All              | ✔                   | `total`           | All               |
+| Sample count                 | The number of rows profiled                                                                                           | All              | ✔                   |                   |                   |
+| Sample percentage            | The percentage of rows profiled                                                                                       | All              | ✔                   |                   |                   |
+| Missing count                | The number of null values                                                                                             | All              | ✔                   | `nulls`           | 0.6.0             |
+| Non-null count               | The number of non-null values                                                                                         | All              | ✔                   | `non_nulls`       | All               |
+| Invalid count                | The number of values that do not match the column's schema type. E.g. A string in a numeric column. (**SQLite only**) | All              | ✔                   | `invalids`        | 0.6.0             |
+| Valid count                  | The count of non-null values minus invalid values                                                                     | All              | ✔                   | `valids`          | 0.6.0             |
+| Zero count                   | The number of zeros                                                                                                   | integer, numeric | ✔                   | `zeros`           | 0.6.0             |
+| Negative value count         | The number of negative values                                                                                         | integer, numeric | ✔                   | `negatives`       | 0.6.0             |
+| Positive value count         | The number of positive values                                                                                         | integer, numeric | ✔                   | `positives`       | 0.6.0             |
+| Zero length string count     | The number of empty strings                                                                                           | string           | ✔                   | `zero_length`     | 0.6.0             |
+| Non-zero length string count | The number of non-empty strings                                                                                       | string           | ✔                   | `non_zero_length` | 0.6.0             |
+| True count                   | The number of true values                                                                                             | boolean          | ✔                   | `trues`           | 0.6.0             |
+| False count                  | The number of false values                                                                                            | boolean          | ✔                   | `falses`          | 0.6.0             |
 
 ### General statistics
 
