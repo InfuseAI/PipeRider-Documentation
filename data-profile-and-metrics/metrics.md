@@ -65,57 +65,71 @@ The composition of the data contained within a column.
 
 <figure><img src="../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
 
-| Metric                       | Description                                                                                                           | Column Type      | Assertion Available | Profile Field     | PipeRider Version |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------- | ----------------- | ----------------- |
-| Row count                    | The number of rows in the table                                                                                       | All              | ✔                   | `total`           | All               |
-| Sample count                 | The number of rows profiled                                                                                           | All              | ✔                   |                   |                   |
-| Sample percentage            | The percentage of rows profiled                                                                                       | All              | ✔                   |                   |                   |
-| Missing count                | The number of null values                                                                                             | All              | ✔                   | `nulls`           | 0.6.0             |
-| Non-null count               | The number of non-null values                                                                                         | All              | ✔                   | `non_nulls`       | All               |
-| Invalid count                | The number of values that do not match the column's schema type. E.g. A string in a numeric column. (**SQLite only**) | All              | ✔                   | `invalids`        | 0.6.0             |
-| Valid count                  | The count of non-null values minus invalid values                                                                     | All              | ✔                   | `valids`          | 0.6.0             |
-| Zero count                   | The number of zeros                                                                                                   | integer, numeric | ✔                   | `zeros`           | 0.6.0             |
-| Negative value count         | The number of negative values                                                                                         | integer, numeric | ✔                   | `negatives`       | 0.6.0             |
-| Positive value count         | The number of positive values                                                                                         | integer, numeric | ✔                   | `positives`       | 0.6.0             |
-| Zero length string count     | The number of empty strings                                                                                           | string           | ✔                   | `zero_length`     | 0.6.0             |
-| Non-zero length string count | The number of non-empty strings                                                                                       | string           | ✔                   | `non_zero_length` | 0.6.0             |
-| True count                   | The number of true values                                                                                             | boolean          | ✔                   | `trues`           | 0.6.0             |
-| False count                  | The number of false values                                                                                            | boolean          | ✔                   | `falses`          | 0.6.0             |
+| Metric                            | Description                                                                                                          | Profile Field       | Column Type      | Assertion Available | PipeRider Version |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------- | ---------------- | ------------------- | ----------------- |
+| Row count                         | The number of rows in the table                                                                                      | `total`             | All              | ✔                   | All               |
+| Sample count                      | The number of rows profiled                                                                                          | `samples`           | All              | ✔                   | 0.10.0            |
+| Sample percentage                 | The percentage of rows profiled                                                                                      | `samples_p`         | All              | ✔                   | 0.11.0            |
+| Missing count                     | The number of null values                                                                                            | `nulls`             | All              | ✔                   | 0.6.0             |
+| Missing percentage                | The percentage of null values                                                                                        | `nulls_p`           | All              | ✔                   | 0.11.0            |
+| Non-null count                    | The number of non-null values                                                                                        | `non_nulls`         | All              | ✔                   | All               |
+| Non-null percentage               | The percentage of non-null values                                                                                    | `non_nulls_p`       | All              | ✔                   | 0.11.0            |
+| Invalid count                     | The number of values that do not match the column's schema type. E.g. A string in a numeric column (**SQLite only**) | `invalids`          | All              | ✔                   | 0.6.0             |
+| Invalid percentage                | The percentage of invalid values (**SQLite only**)                                                                   | `invalids_p`        | All              | ✔                   | 0.11.0            |
+| Valid count                       | The count of non-null values minus invalid values                                                                    | `valids`            | All              | ✔                   | 0.6.0             |
+| Valid percentage                  | The percentage of non-null values, minus invalid values                                                              | `valids_p`          | All              | ✔                   | 0.11.0            |
+| Zero count                        | The number of zeros                                                                                                  | `zeros`             | integer, numeric | ✔                   | 0.6.0             |
+| Zero percentage                   | The percentage of zeros                                                                                              | `zeros_p`           | integer, numeric | ✔                   | 0.11.0            |
+| Negative value count              | The number of negative values                                                                                        | `negatives`         | integer, numeric | ✔                   | 0.6.0             |
+| Negative value percentage         | The percentage of negative values                                                                                    | `negatives_p`       | integer, numeric | ✔                   | 0.11.0            |
+| Positive value count              | The number of positive values                                                                                        | `positives`         | integer, numeric | ✔                   | 0.6.0             |
+| Positive value percentage         | The percentage of positive values                                                                                    | `positives_p`       | integer, numeric | ✔                   | 0.11.0            |
+| Zero length string count          | The number of empty strings                                                                                          | `zero_length`       | string           | ✔                   | 0.6.0             |
+| Zero length string percentage     | The percentage of empty strings                                                                                      | `zero_length_p`     | string           | ✔                   | 0.11.0            |
+| Non-zero length string count      | The number of non-empty strings                                                                                      | `non_zero_length`   | string           | ✔                   | 0.6.0             |
+| Non-zero length string percentage | The percentage of non-empty strings                                                                                  | `non_zero_length_p` | string           | ✔                   | 0.11.0            |
+| True count                        | The number of true values                                                                                            | `trues`             | boolean          | ✔                   | 0.6.0             |
+| True percentage                   | The percentage of true values                                                                                        | `trues_p`           | boolean          | ✔                   | 0.11.0            |
+| False count                       | The number of false values                                                                                           | `falses`            | boolean          | ✔                   | 0.6.0             |
+| False percentage                  | The percentage of false values                                                                                       | `falses_p`          | boolean          | ✔                   | 0.11.0            |
 
 ### General statistics
 
 The general statistical information of a column.
 
-| Metric             | Description                      | Column Type                | Profile Field | Supported Since |
-| ------------------ | -------------------------------- | -------------------------- | ------------- | --------------- |
-| Min                | The minimum value                | integer, numeric, datetime | `min`         | All             |
-| Max                | The maximum value                | integer, numeric, datetime | `max`         | All             |
-| Average            | The column average               | integer, numeric           | `avg`         | All             |
-| Sum                | The column sum                   | integer, numeric           | `sum`         | All             |
-| Standard deviation | The standard deviation of values | integer, numeric,          | `stddev`      | 0.4.0           |
+| Metric             | Description                      | Column Type                | Profile Field | Assertion Available | PipeRider Version |
+| ------------------ | -------------------------------- | -------------------------- | ------------- | ------------------- | ----------------- |
+| Min                | The minimum value                | integer, numeric, datetime | `min`         | ✔                   | All               |
+| Max                | The maximum value                | integer, numeric, datetime | `max`         | ✔                   | All               |
+| Average            | The column average               | integer, numeric           | `avg`         | ✔                   | All               |
+| Sum                | The column sum                   | integer, numeric           | `sum`         | ✔                   | All               |
+| Standard deviation | The standard deviation of values | integer, numeric,          | `stddev`      | ✔                   | 0.4.0             |
 
 ### Text length statistics
 
 The text length statistics of a column.
 
-| Metric             | Description                             | Column Type | Profile Field | Since |
-| ------------------ | --------------------------------------- | ----------- | ------------- | ----- |
-| Min length         | The minimum string length               | string      | `min`         | 0.6.0 |
-| Max length         | The maximum string length               | string      | `max`         | 0.6.0 |
-| Average length     | The average string length               | string      | `avg`         | 0.6.0 |
-| Standard deviation | The standard deviation of string length | string      | `stddev`      | 0.6.0 |
+| Metric             | Description                             | Column Type | Profile Field | Assertion Available | PipeRider Version |
+| ------------------ | --------------------------------------- | ----------- | ------------- | ------------------- | ----------------- |
+| Min length         | The minimum string length               | string      | `min`         | ✔                   | 0.6.0             |
+| Max length         | The maximum string length               | string      | `max`         | ✔                   | 0.6.0             |
+| Average length     | The average string length               | string      | `avg`         | ✔                   | 0.6.0             |
+| Standard deviation | The standard deviation of string length | string      | `stddev`      | ✔                   | 0.6.0             |
 
 ### Uniqueness
 
 The uniqueness of a column.
 
-![How PipeRider considers a row when determining uniqueness metrics](../.gitbook/assets/metrics-uniqueness-fs8.png)
+<figure><img src="../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
 
-| Metric              | Description                       | Column Type                        | Profile Field    | Since |
-| ------------------- | --------------------------------- | ---------------------------------- | ---------------- | ----- |
-| Distinct count      | The number of distinct items      | integer, string, datetime          | `distinct`       | All   |
-| Duplicate count     | The number of recurring items     | integer, numeric, string, datetime | `duplicates`     | 0.6.0 |
-| Non-duplicate count | The number of non-recurring items | integer, numeric, string, datetime | `non_duplicates` | 0.6.0 |
+| Metric                   | Description                           | Profile Field      | Column Type                        | Assertion Available | PipeRider Version |
+| ------------------------ | ------------------------------------- | ------------------ | ---------------------------------- | ------------------- | ----------------- |
+| Distinct count           | The number of distinct items          | `distinct`         | integer, string, datetime          | ✔                   | All               |
+| Distinct percentage      | The percentage of distinct items      | `distinct_p`       | integer, string, datetime          | ✔                   | 0.11.0            |
+| Duplicate count          | The number of recurring items         | `duplicates`       | integer, numeric, string, datetime | ✔                   | 0.6.0             |
+| Duplicate percentage     | The percentage of duplicate items     | `duplicates_p`     | integer, numeric, string, datetime | ✔                   | 0.11.0            |
+| Non-duplicate count      | The number of non-recurring items     | `non_duplicates`   | integer, numeric, string, datetime | ✔                   | 0.6.0             |
+| Non-duplicate percentage | The percentage of non-duplicate items | `non_duplicates_p` | integer, numeric, string, datetime | ✔                   | 0.11.0            |
 
 For example, the following dataset `(NULL, a, a, b, b, c, d, e)` would be categorized as so:
 
@@ -130,21 +144,21 @@ Therefore, the total number of rows for a table = missing (nulls) + duplicates +
 
 The calculated quantiles of a numeric or integer column.
 
-| Metric          | Description      | Column Type      | Profile Field | Supported Since |
-| --------------- | ---------------- | ---------------- | ------------- | --------------- |
-| Minimum         | 0th percentile   | integer, numeric | `min`         | All             |
-| 5th Percentile  | 5th percentile   | integer, numeric | `p5`          | 0.4.0           |
-| 25th Percentile | 25th percentile  | integer, numeric | `p25`         | 0.4.0           |
-| Median          | 50th percentile  | integer, numeric | `p50`         | 0.4.0           |
-| 75th Percentile | 75th percentile  | integer, numeric | `p75`         | 0.4.0           |
-| 95th Percentile | 95th percentile  | integer, numeric | `p95`         | 0.4.0           |
-| Maximum         | 100th percentile | integer, numeric | `max`         | All             |
+| Metric          | Description      | Profile Field | Column Type      | Assertion Available | PipeRider Version |
+| --------------- | ---------------- | ------------- | ---------------- | ------------------- | ----------------- |
+| Minimum         | 0th percentile   | `min`         | integer, numeric | ✔                   | All               |
+| 5th Percentile  | 5th percentile   | `p5`          | integer, numeric | ✔                   | 0.4.0             |
+| 25th Percentile | 25th percentile  | `p25`         | integer, numeric | ✔                   | 0.4.0             |
+| Median          | 50th percentile  | `p50`         | integer, numeric | ✔                   | 0.4.0             |
+| 75th Percentile | 75th percentile  | `p75`         | integer, numeric | ✔                   | 0.4.0             |
+| 95th Percentile | 95th percentile  | `p95`         | integer, numeric | ✔                   | 0.4.0             |
+| Maximum         | 100th percentile | `max`         | integer, numeric | ✔                   | All               |
 
 ### Distribution
 
-| Metric                | Description                                                               | Column Type      | Profile Field | Supported Since |
-| --------------------- | ------------------------------------------------------------------------- | ---------------- | ------------- | --------------- |
-| Top K                 | The most frequently occurring n items and and counts                      | integer, string  | `topk`        | 0.6.0           |
-| Histogram             | Evenly-split bins for numerical columns and counts for each bin           | integer, numeric | `histogram`   | 0.6.0           |
-| Text length histogram | Evenly-split bins for text length and counts for each bin                 | string           | `histogram`   | 0.6.0           |
-| Date histogram        | Histogram of date, month, or year. Bin split depends on the min/max range | datetime         | `histogram`   | 0.6.0           |
+| Metric                | Description                                                               | Profile Field | Column Type      | PipeRider Version |
+| --------------------- | ------------------------------------------------------------------------- | ------------- | ---------------- | ----------------- |
+| Top K                 | The most frequently occurring n items and and counts                      | `topk`        | integer, string  | 0.6.0             |
+| Histogram             | Evenly-split bins for numerical columns and counts for each bin           | `histogram`   | integer, numeric | 0.6.0             |
+| Text length histogram | Evenly-split bins for text length and counts for each bin                 | `histogram`   | string           | 0.6.0             |
+| Date histogram        | Histogram of date, month, or year. Bin split depends on the min/max range | `histogram`   | datetime         | 0.6.0             |
