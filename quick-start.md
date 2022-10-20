@@ -251,7 +251,7 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
-<figure><img src=".gitbook/assets/0.10.single.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/v0.11_single.png" alt=""><figcaption><p>Profiling Report</p></figcaption></figure>
 
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
@@ -266,11 +266,10 @@ In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . The au
 PRICE:  # Table Name
   # Test Cases for Table
   tests:
-  - name: assert_row_count_in_range
+  - metric: row_count
     assert:
-      count:
-      - 160271
-      - 195886
+      gte: 160271
+      lte: 195886
     tags:
     - RECOMMENDED
   columns:
@@ -298,11 +297,10 @@ PRICE:  # Table Name
           type: numeric
         tags:
         - RECOMMENDED
-      - name: assert_column_min_in_range
+      - metrics: assert_column_value
         assert:
-          min:
-          - 6
-          - 7
+          gte: 6
+          le: 7
         tags:
         - RECOMMENDED
 ...
@@ -394,7 +392,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-<figure><img src=".gitbook/assets/0.10.compare.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/v0.11_compare.png" alt=""><figcaption></figcaption></figure>
 
 \----
 
