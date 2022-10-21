@@ -28,19 +28,7 @@
 
 ***
 
-* [Data Profile & Metrics](data-profile-and-metrics/README.md)
-  * [Data Profile](data-profile-and-metrics/data-profile.md)
-  * [Metrics](data-profile-and-metrics/metrics.md)
-* [How-To Guides](how-to-guides/README.md)
-  * [Generate Report](how-to-guides/generate-report.md)
-  * [Compare Reports](how-to-guides/compare-reports.md)
-  * [GitHub Action](how-to-guides/github-action.md)
-  * [AWS S3 + GitHub CI](how-to-guides/aws-s3-+-github-ci.md)
-* [Changelog (v0.10.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.10.0)
-* [Development](development/README.md)
-  * [Nightly Version](development/nightly-version.md)
-  * [Contribution](development/contribution.md)
-  * [Roadmap](development/roadmap.md)
+* [Changelog (v0.11.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.11.0)
 
 ## Cloud
 
