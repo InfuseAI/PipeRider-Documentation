@@ -89,8 +89,26 @@ Back to [https://cloud.piperider.io](https://cloud.piperider.io) to view reports
 
 By default, the landing page shows the context of latest report.
 
-### Switch Reports
+### Navigate Reports
 
-Click the navigation bar, pop-up list the all of upload reports
+Click the _navigation bar_, the pop-up will list the all of upload reports and comparison reports if any.
 
-<figure><img src="../.gitbook/assets/cloud_nav_report.png" alt=""><figcaption></figcaption></figure>
+Click on a run to view the report.
+
+<figure><img src="../.gitbook/assets/cloud_nav_report.png" alt=""><figcaption><p>Navigate Reports</p></figcaption></figure>
+
+### Compare Reports
+
+Select any two of reports for the comparison. Click _Cancel_ to clear the selection.
+
+<figure><img src="../.gitbook/assets/cloud_compare.png" alt=""><figcaption><p>Compare Reports</p></figcaption></figure>
+
+### Share Report
+
+Click _Share_ to toggle the sharing and gain the sharable URL.![](../.gitbook/assets/cloud\_share.png)
+
+### User Profile
+
+View the profile
+
+<figure><img src="../.gitbook/assets/cloud_profile (2).png" alt=""><figcaption><p>User Profile</p></figcaption></figure>
