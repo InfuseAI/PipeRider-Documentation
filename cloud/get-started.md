@@ -109,6 +109,6 @@ Click _Share_ to toggle the sharing and gain the sharable URL.![](../.gitbook/as
 
 ### User Profile
 
-View the profile
+View/Edit the profile and retrieve the token again.
 
 <figure><img src="../.gitbook/assets/cloud_profile (2).png" alt=""><figcaption><p>User Profile</p></figcaption></figure>
