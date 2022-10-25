@@ -136,15 +136,15 @@ PipeRider will offer to generate recommended assertions. Answer 'yes'.
 
 ```shell
 DataSource: dataproject
-──────────────────────────────────────────────────────────────────────────────────── Validating ─────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────── Validating ────────────────────────────────────────────────────────────────────────────────
 everything is OK.
-───────────────────────────────────────────────────────────────────────────────────── Profiling ─────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────────────────────────────────
 fetching metadata
 [1/3] ACTION ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   4/4 0:00:00
-[2/3] PRICE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:13
-─────────────────────────────────────────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────────────────────────────────────────
+[2/3] PRICE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:01
+[3/3] SYMBOL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:00
 No assertion found
-Do you want to auto generate recommended assertions for this datasource [Yes/no]?
+Do you want to auto generate recommended assertions for this datasource [Yes/no]? yes
 ```
 
 A recommended assertion YAML file for each table will be created under `.piperider/assertions/` and you will be prompted to run the recommended assertions. Answer 'yes'.
@@ -153,92 +153,91 @@ A recommended assertion YAML file for each table will be created under `.piperid
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_ACTION.yml
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_PRICE.yml
 Recommended Assertion: /path/to/dataproject/.piperider/assertions/recommended_SYMBOL.yml
-Do you want to run above recommended assertions for this datasource [yes/no]? yes
 ```
 
-PipeRider will test the data profile against the assertions and display the results.
+PipeRider will test the data profile against the assertions and display the result.
 
 ```shell-session
-───────────────────────────────────────────────────────────────────────────────── Assertion Results ─────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────── Assertion Results ────────────────────────────────────────────────────────────────────────────
 
-  Status     Target                      Test Function                Expected                               Actual
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  [  OK  ]   SYMBOL                      assert_row_count             {'min': 454}                           505
-  [  OK  ]   SYMBOL.SYMBOL               assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.SYMBOL               assert_column_unique         {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.SYMBOL               assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.NAME                 assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.NAME                 assert_column_unique         {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.NAME                 assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.START_DATE           assert_column_schema_type    {'schema_type': 'DATE'}                'DATE'
-  [  OK  ]   SYMBOL.START_DATE           assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.END_DATE             assert_column_schema_type    {'schema_type': 'DATE'}                'DATE'
-  [  OK  ]   SYMBOL.END_DATE             assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.DESCRIPTION          assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.DESCRIPTION          assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.EXCHANGE_CODE        assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.EXCHANGE_CODE        assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.MARKET               assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.MARKET               assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.COUNTRY              assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.COUNTRY              assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.SECTOR               assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.SECTOR               assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.INDUSTRY             assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.INDUSTRY             assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   SYMBOL.RECOMMENDATION_KEY   assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   SYMBOL.RECOMMENDATION_KEY   assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   ACTION                      assert_row_count             {'min': 1764}                          1960
-  [  OK  ]   ACTION.SYMBOL               assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   ACTION.SYMBOL               assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   ACTION.DATE                 assert_column_schema_type    {'schema_type': 'DATE'}                'DATE'
-  [  OK  ]   ACTION.DATE                 assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   ACTION.DIVIDENDS            assert_column_schema_type    {'schema_type': 'NUMERIC(8, 4)'}       'NUMERIC(8, 4)'
-  [  OK  ]   ACTION.DIVIDENDS            assert_column_max_in_range   {'max': [13.7968, 16.8628]}            {'max': 15.3298}
-  [  OK  ]   ACTION.DIVIDENDS            assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   ACTION.SPLITS               assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   ACTION.SPLITS               assert_column_max_in_range   {'max': [3.6, 4.4]}                    {'max': 4}
-  [  OK  ]   ACTION.SPLITS               assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE                       assert_row_count             {'min': 142092}                        157881
-  [  OK  ]   PRICE.SYMBOL                assert_column_schema_type    {'schema_type': 'VARCHAR(16777216)'}   'VARCHAR(16777216)'
-  [  OK  ]   PRICE.SYMBOL                assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.DATE                  assert_column_schema_type    {'schema_type': 'DATE'}                'DATE'
-  [  OK  ]   PRICE.DATE                  assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.foo                   assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.foo                   assert_column_max_in_range   {'max': [5379.849, 6575.371]}          {'max': 5977.61}
-  [  OK  ]   PRICE.foo                   assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.HIGH                  assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.HIGH                  assert_column_max_in_range   {'max': [5384.205, 6580.695]}          {'max': 5982.45}
-  [  OK  ]   PRICE.HIGH                  assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.LOW                   assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.LOW                   assert_column_max_in_range   {'max': [5295.654, 6472.466]}          {'max': 5884.06}
-  [  OK  ]   PRICE.LOW                   assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.CLOSE                 assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.CLOSE                 assert_column_max_in_range   {'max': [5363.397, 6555.263]}          {'max': 5959.33}
-  [  OK  ]   PRICE.CLOSE                 assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.VOLUME                assert_column_schema_type    {'schema_type': 'NUMERIC(38, 0)'}      'NUMERIC(38, 0)'
-  [  OK  ]   PRICE.VOLUME                assert_column_max_in_range   {'max': [287646813.0, 351568327.0]}    {'max': 319607570}
-  [  OK  ]   PRICE.VOLUME                assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.ADJCLOSE              assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.ADJCLOSE              assert_column_max_in_range   {'max': [5363.397, 6555.263]}          {'max': 5959.33}
-  [  OK  ]   PRICE.ADJCLOSE              assert_column_not_null       {'success': True}                      {'success': True}
-  [  OK  ]   PRICE.MA5                   assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.MA5                   assert_column_max_in_range   {'max': [5303.475, 6482.025]}          {'max': 5892.75}
-  [  OK  ]   PRICE.MA20                  assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.MA20                  assert_column_max_in_range   {'max': [5234.922, 6398.238]}          {'max': 5816.58}
-  [  OK  ]   PRICE.MA60                  assert_column_schema_type    {'schema_type': 'NUMERIC(10, 2)'}      'NUMERIC(10, 2)'
-  [  OK  ]   PRICE.MA60                  assert_column_max_in_range   {'max': [4959.585, 6061.715]}          {'max': 5510.65}
+  Status     Test Subject                Assertion                   Expected            Actual
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+  [  OK  ]   SYMBOL                      row count                   ≥ 454               505
+  [  OK  ]   SYMBOL.SYMBOL               assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.SYMBOL               assert_column_unique        -                   -
+  [  OK  ]   SYMBOL.SYMBOL               assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.NAME                 assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.NAME                 assert_column_unique        -                   -
+  [  OK  ]   SYMBOL.NAME                 assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.START_DATE           assert_column_schema_type   DATE                DATE
+  [  OK  ]   SYMBOL.START_DATE           assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.END_DATE             assert_column_schema_type   DATE                DATE
+  [  OK  ]   SYMBOL.END_DATE             assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.DESCRIPTION          assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.DESCRIPTION          assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.EXCHANGE_CODE        assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.EXCHANGE_CODE        assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.MARKET               assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.MARKET               assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.COUNTRY              assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.COUNTRY              assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.SECTOR               assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.SECTOR               assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.INDUSTRY             assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.INDUSTRY             assert_column_not_null      -                   -
+  [  OK  ]   SYMBOL.RECOMMENDATION_KEY   assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   SYMBOL.RECOMMENDATION_KEY   assert_column_not_null      -                   -
+  [  OK  ]   ACTION                      row count                   ≥ 1764              1960
+  [  OK  ]   ACTION.SYMBOL               assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   ACTION.SYMBOL               assert_column_not_null      -                   -
+  [  OK  ]   ACTION.DATE                 assert_column_schema_type   DATE                DATE
+  [  OK  ]   ACTION.DATE                 assert_column_not_null      -                   -
+  [  OK  ]   ACTION.DIVIDENDS            assert_column_schema_type   NUMERIC(8, 4)       NUMERIC(8, 4)
+  [  OK  ]   ACTION.DIVIDENDS            assert_column_not_null      -                   -
+  [  OK  ]   ACTION.DIVIDENDS            assert_column_value         ≤ 16.8628           [0, 15.3298]
+  [  OK  ]   ACTION.SPLITS               assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   ACTION.SPLITS               assert_column_not_null      -                   -
+  [  OK  ]   ACTION.SPLITS               assert_column_value         ≤ 4.4               [0.13, 4]
+  [  OK  ]   PRICE                       row count                   ≥ 142092            157881
+  [  OK  ]   PRICE.SYMBOL                assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   PRICE.SYMBOL                assert_column_not_null      -                   -
+  [  OK  ]   PRICE.DATE                  assert_column_schema_type   DATE                DATE
+  [  OK  ]   PRICE.DATE                  assert_column_not_null      -                   -
+  [  OK  ]   PRICE.OPEN                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.OPEN                  assert_column_not_null      -                   -
+  [  OK  ]   PRICE.OPEN                  assert_column_value         ≤ 6575.371          [6.78, 5977.61]
+  [  OK  ]   PRICE.HIGH                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.HIGH                  assert_column_not_null      -                   -
+  [  OK  ]   PRICE.HIGH                  assert_column_value         ≤ 6580.695          [6.89, 5982.45]
+  [  OK  ]   PRICE.LOW                   assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.LOW                   assert_column_not_null      -                   -
+  [  OK  ]   PRICE.LOW                   assert_column_value         ≤ 6472.466          [6.6, 5884.06]
+  [  OK  ]   PRICE.CLOSE                 assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.CLOSE                 assert_column_not_null      -                   -
+  [  OK  ]   PRICE.CLOSE                 assert_column_value         ≤ 6555.263          [6.83, 5959.33]
+  [  OK  ]   PRICE.VOLUME                assert_column_schema_type   NUMERIC(38, 0)      NUMERIC(38, 0)
+  [  OK  ]   PRICE.VOLUME                assert_column_not_null      -                   -
+  [  OK  ]   PRICE.VOLUME                assert_column_value         ≤ 351568327.0       [6318, 319607570]
+  [  OK  ]   PRICE.ADJCLOSE              assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.ADJCLOSE              assert_column_not_null      -                   -
+  [  OK  ]   PRICE.ADJCLOSE              assert_column_value         ≤ 6555.263          [6.76, 5959.33]
+  [  OK  ]   PRICE.MA5                   assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.MA5                   assert_column_value         ≤ 6482.025          [6.63, 5892.75]
+  [  OK  ]   PRICE.MA20                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.MA20                  assert_column_value         ≤ 6398.238          [6.74, 5816.58]
+  [  OK  ]   PRICE.MA60                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.MA60                  assert_column_value         ≤ 6061.715          [5.44, 5510.65]
 
-────────────────────────────────────────────────────────────────────────────────────── Summary ──────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────── Summary ─────────────────────────────────────────────────────────────────────────────────
 
   Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ACTION                       4                11               0
   PRICE                       11                29               0
   SYMBOL                      11                25               0
-  
-Generating reports from: /Users/gabriel/Workspace/github/pipe_nightly/.piperider/outputs/latest/run.json
-Report generated in /Users/gabriel/Workspace/github/pipe_nightly/.piperider/outputs/latest/index.html
+
+Generating reports from: /Users/gabriel/Workspace/github/pipe_stable/.piperider/outputs/latest/run.json
+Report generated in /Users/gabriel/Workspace/github/pipe_stable/.piperider/outputs/latest/index.html
 
 Next step:
   Please execute command 'piperider run' to generate your second report
@@ -251,7 +250,7 @@ A summary of the assertion tests that were executed is displayed, along with the
 
 Open the HTML report in the browser to see the visualized results or share it with your team.
 
-<figure><img src=".gitbook/assets/v0.11_single.png" alt=""><figcaption><p>Profiling Report</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/v0.11.single.png" alt=""><figcaption><p>Profiling Report</p></figcaption></figure>
 
 {% hint style="info" %}
 Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
@@ -259,7 +258,7 @@ Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other m
 
 ### Apply data assertions
 
-In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . The auto-generated assertions file will look like this:
+In your text editor, open `.piperider/assertions/recommended_PRICE.yml` . In column _OPEN_ section, let's modify the assertion, _assert\_column\_value with_ `gte: 6 and lt: 7`_._ This modification will be applied on the next _run_.
 
 ```yaml
 # Auto-generated by Piperider based on table "PRICE"
@@ -276,36 +275,45 @@ PRICE:  # Table Name
     SYMBOL:  # Column Name
       # Test Cases for Column
       tests:
-      - name: assert_column_type
+      - name: assert_column_schema_type
         assert:
-          type: string
+          schema_type: VARCHAR(16777216)
+        tags:
+        - RECOMMENDED
+      - name: assert_column_not_null
         tags:
         - RECOMMENDED
     DATE: # Column Name
       # Test Cases for Column
       tests:
-      - name: assert_column_type
+      - name: assert_column_schema_type
         assert:
-          type: datetime
+          schema_type: DATE
+        tags:
+        - RECOMMENDED
+      - name: assert_column_not_null
         tags:
         - RECOMMENDED
     OPEN: # Column Name
       # Test Cases for Column
       tests:
-      - name: assert_column_type
+      - name: assert_column_schema_type
         assert:
-          type: numeric
+          schema_type: NUMERIC(10, 2)
         tags:
         - RECOMMENDED
-      - metrics: assert_column_value
-        assert:
+      - name: assert_column_not_null
+        tags:
+        - RECOMMENDED
+      - name: assert_column_value
+        assert: # Modification
           gte: 6
-          le: 7
+          lt: 7
         tags:
         - RECOMMENDED
-...
-...
-...
+    ...
+    ...
+    ...
 ```
 
 You can modify these auto-generated [assertion](data-quality-assertions/assertion-configuration.md) logic or add make your own [custom assertions](data-quality-assertions/custom-assertions.md), and then execute `piperider run` again to see the results.
@@ -330,40 +338,36 @@ Execute `run` to generate new profiling results and a report from the updated da
 piperider run
 ```
 
-As the data has changed since we generated assertions, you will notice that some assertions now fail.
+As the data has changed since we modified assertions, you will notice that some assertions now fail.
 
 ```
-──────────────────────────────────────────── Assertion Results ────────────────────────────────────────────
 ...
-[  OK  ] SYMBOL.RECOMMENDATION_KEY  assert_column_type          Expected: {'type': 'string'} Actual: string
-[FAILED] ACTION                     assert_row_count_in_range   Expected: {'count': [1764, 2156]} Actual: 2187
-[  OK  ] ACTION.SYMBOL              assert_column_exist         Expected: {'success': True} Actual: {'success': True}
-[  OK  ] ACTION.SPLITS              assert_column_min_in_range  Expected: {'min': [0.117, 0.14300000000000002]} Actual: {'min': 0.13}
-...
-[FAILED] PRICE                      assert_row_count_in_range   Expected: {'count': [142092, 173669]} Actual: 178079
-[  OK  ] PRICE.SYMBOL               assert_column_type          Expected: {'type': 'string'} Actual: string
+  [  OK  ]   PRICE                       row count                   [160271, 195886]    178079
+  [  OK  ]   PRICE.SYMBOL                assert_column_schema_type   VARCHAR(16777216)   VARCHAR(16777216)
+  [  OK  ]   PRICE.SYMBOL                assert_column_not_null      -                   -
+  [  OK  ]   PRICE.DATE                  assert_column_schema_type   DATE                DATE
+  [  OK  ]   PRICE.DATE                  assert_column_not_null      -                   -
+  [  OK  ]   PRICE.OPEN                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
+  [  OK  ]   PRICE.OPEN                  assert_column_not_null      -                   -
+  [FAILED]   PRICE.OPEN                  assert_column_value         [6, 7)              [6.78, 5977.61]
+  [  OK  ]   PRICE.HIGH                  assert_column_schema_type   NUMERIC(10, 2)      NUMERIC(10, 2)
 ...
 ```
 
 The Summary also shows which tests failed.
 
 ```
-──────────────────────────────────────────────── Summary ───────────────────────────────────────────────────────
-Table 'ACTION'
-  4 columns profiled
-  9 test executed
-  1 of 9 tests failed:
-  [FAILED] ACTION assert_row_count_in_range  Expected: {'count': [1764, 2156]} Actual: 2187
+Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ACTION                       4                11               0
+  PRICE                       11                29               1
+  SYMBOL                      11                25               0
 
-Table 'PRICE'
-  11 columns profiled
-  30 test executed
-  1 of 30 tests failed:
-  [FAILED] PRICE assert_row_count_in_range  Expected: {'count': [142092, 173669]} Actual: 178079
+                              Failed Assertions
 
-Table 'SYMBOL'
-  11 columns profiled
-  14 test executed
+  Status     Test Subject   Assertion             Expected   Actual
+ ────────────────────────────────────────────────────────────────────────────
+  [FAILED]   PRICE.OPEN     assert_column_value   [6, 7)     [6.78, 5977.61]
 ```
 
 Now that you have a second report, run the `compare-reports` command.
@@ -376,8 +380,8 @@ You will be prompted to select two reports for the comparison. Select the most r
 
 ```
 [?] Please select the 2 reports to compare ( SPACE to select, and ENTER to confirm ):
-   X dataproject  #table=3      #pass=51    #fail=2     2022-06-23T13:01:37.543978Z
- > X dataproject  #table=3      #pass=53    #fail=0     2022-06-23T12:48:11.794525Z
+   X dataproject  #table=3      #pass=65    #fail=1     2022-06-23T13:01:37.543978Z
+ > X dataproject  #table=3      #pass=66    #fail=0     2022-06-23T12:48:11.794525Z
 ```
 
 PipeRider will generate an HTML report of the comparison.
@@ -392,19 +396,7 @@ Comparison report: /path/to/dataproject/.piperider/comparisons/20220623130337/in
 
 Open the HTML comparison report in your browser to review any changes or share it with your team.
 
-<figure><img src=".gitbook/assets/v0.11_compare.png" alt=""><figcaption></figcaption></figure>
-
-\----
-
-From the output you can see the results in the following format:
-
-Furthermore, you will see the profiling and assertions results, and with a generated `run.json` and a generated HTML report, `index.html`.
-
-| Result | Table\[.Column] | Used Assertion                 | Justification                                     |
-| ------ | --------------- | ------------------------------ | ------------------------------------------------- |
-| OK     | SYMBOL          | assert\_row\_count\_in\_range  | `Expected: {'count': [454, 555]} Actual: 505`     |
-| FAILED | ACTION.SPLITS   | assert\_column\_min\_in\_range | `Expected: {'min': [0, 0]} Actual: {'min': 0.13}` |
-| OK     | PRICE.SYMBOL    | assert\_column\_type           | `Expected: {'type': 'string'} Actual: string`     |
+<figure><img src="../.gitbook/assets/v0.11.compare.png" alt=""><figcaption><p>Comparing Report</p></figcaption></figure>
 
 ### More Things You Can Do
 
