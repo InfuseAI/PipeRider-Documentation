@@ -35,9 +35,9 @@ Please paste the api token from magic link. The link has been sent to your email
 [?] API token:
 ```
 
-Let's hang on there. You will receive an email from PipeRider Cloud, visit the link in the email to initiate your account.
+Let's hang on there. You will receive an email from PipeRider Cloud, visit the link in the email to initiate your account and retrieve the token.
 
-Fill in the information and copy the token, that is most important.
+Fill in the information and copy the token, that is the most important thing.
 
 <figure><img src="../.gitbook/assets/cloud_profile.png" alt=""><figcaption><p>Initiate an account</p></figcaption></figure>
 
