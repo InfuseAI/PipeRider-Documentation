@@ -62,6 +62,7 @@ world_city:
   * `gt`: the value should be greater than
   * `lte`: the value should be less than or equal to
   * `lt`: the value should be less than
+  * `in`: the value should belong to the set
 
 <details>
 
@@ -69,7 +70,7 @@ world_city:
 
 The value should be between \[0,10000)
 
-```
+```yaml
 world_city:
   columns:
     population:
@@ -82,7 +83,7 @@ world_city:
 
 The value of a datetime type column should be `>= '2022-01-01'`
 
-```
+```yaml
 world_city:
   columns:
     create_at:
@@ -90,6 +91,18 @@ world_city:
       - name: assert_column_value
         assert:
           gte: '2022-01-01;
+```
+
+The value of the column should belong to \["male", "female"] set
+
+```
+TITANIC:
+  columns:
+    Sex:
+      tests:
+      - name: assert_column_value
+        assert:
+          in: ["male", "female"]
 ```
 
 </details>
