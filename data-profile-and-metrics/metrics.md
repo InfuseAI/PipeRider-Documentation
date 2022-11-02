@@ -22,10 +22,10 @@ Data profile metrics that describe the tables in a data source.
 | Column count                 | The number of columns in the table                                              | `col_count`        |                     | All               |
 | Sample count                 | The number of rows profiled                                                     | `samples`          |                     | 0.10.0            |
 | Sample percentage            | The percentage of rows profiled                                                 | `samples_p`        |                     | 0.11.0            |
-| Volume size\*                | The volume size of the table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
-| Created time\*               | The time that the table was created, including time zone, in ISO 8601 format    | `created`          |                     | 0.8.0             |
-| Last altered time\*          | The last time the table was modified, including time zone, in ISO 8601 format   | `last_altered`     |                     | 0.8.0             |
-| Freshness\*                  | The time differentiation between the current time and table's last altered time | `freshness`        | ✔                   | 0.8.0             |
+| Volume size\\\*              | The volume size of the table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
+| Created time\\\*             | The time that the table was created, including time zone, in ISO 8601 format    | `created`          |                     | 0.8.0             |
+| Last altered time\\\*        | The last time the table was modified, including time zone, in ISO 8601 format   | `last_altered`     |                     | 0.8.0             |
+| Freshness\\\*                | The time differentiation between the current time and table's last altered time | `freshness`        | ✔                   | 0.8.0             |
 | Duplicate row count\*\*      | The number of duplicate rows in the table                                       | `duplicate_rows`   | ✔                   | 0.10.0            |
 | Duplicate row percentage\*\* | The percentage of duplicate rows in the table                                   | `duplicate_rows_p` | ✔                   | 0.11.0            |
 
