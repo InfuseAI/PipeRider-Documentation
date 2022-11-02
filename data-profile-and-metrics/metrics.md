@@ -30,7 +30,7 @@ Data profile metrics that describe the tables in a data source.
 | Duplicate row percentage \*\* | The percentage of duplicate rows in the table                                   | `duplicate_rows_p` | ✔                   | 0.11.0            |
 
 {% hint style="info" %}
-\* \_\_ These metrics are only available for certain data sources. Please refer to the **platform dependent metrics** table below for availability information.\
+\* These metrics are only available for certain data sources. Please refer to the **platform dependent metrics** table below for availability information.\
 \
 \*\* Table-level duplicate row metrics are now enabled by default. To enable this settings please refer to the [Profiler Settings](../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
