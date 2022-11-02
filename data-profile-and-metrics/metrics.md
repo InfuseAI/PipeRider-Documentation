@@ -22,20 +22,20 @@ Data profile metrics that describe the tables in a data source.
 | Column count                 | The number of columns in the table                                              | `col_count`        |                     | All               |
 | Sample count                 | The number of rows profiled                                                     | `samples`          |                     | 0.10.0            |
 | Sample percentage            | The percentage of rows profiled                                                 | `samples_p`        |                     | 0.11.0            |
-| Volume size_\*_              | The volume size of the table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
-| Created time_\*_             | The time that the table was created, including time zone, in ISO 8601 format    | `created`          |                     | 0.8.0             |
-| Last altered time_\*_        | The last time the table was modified, including time zone, in ISO 8601 format   | `last_altered`     |                     | 0.8.0             |
-| Freshness_\*_                | The time differentiation between the current time and table's last altered time | `freshness`        | ✔                   | 0.8.0             |
+| Volume size\*                | The volume size of the table in bytes                                           | `bytes`            | ✔                   | 0.8.0             |
+| Created time\*               | The time that the table was created, including time zone, in ISO 8601 format    | `created`          |                     | 0.8.0             |
+| Last altered time\*          | The last time the table was modified, including time zone, in ISO 8601 format   | `last_altered`     |                     | 0.8.0             |
+| Freshness\*                  | The time differentiation between the current time and table's last altered time | `freshness`        | ✔                   | 0.8.0             |
 | Duplicate row count\*\*      | The number of duplicate rows in the table                                       | `duplicate_rows`   | ✔                   | 0.10.0            |
 | Duplicate row percentage\*\* | The percentage of duplicate rows in the table                                   | `duplicate_rows_p` | ✔                   | 0.11.0            |
 
 {% hint style="info" %}
-\* __ These metrics are only available for certain data sources.  Please refer to the **platform dependent metrics** table below for availability information.\
+\* \_\_ These metrics are only available for certain data sources. Please refer to the **platform dependent metrics** table below for availability information.\
 \
 \*\* Table-level duplicate row metrics are now enabled by default. To enable this settings please refer to the [Profiler Settings](../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
 
-### Platform dependent metrics&#x20;
+### Platform dependent metrics
 
 | Metric            | Snowflake | BigQuery | Redshift | Others |
 | ----------------- | --------- | -------- | -------- | ------ |
@@ -52,10 +52,10 @@ Data profile metrics that describe data at the column level. Depending on the co
 
 In addition to logging the **schema type** of a column as defined in the data soruce, PipeRider will also apply a **generic type** to a column that will determine how this column is treated by the PipeRider profiler.
 
-| Metric       | Description                                                                                 | Profile Field | Column Type | PipeRider Version |
-| ------------ | ------------------------------------------------------------------------------------------- | ------------- | ----------- | ----------------- |
-| Schema Type  | The column type defined in the data source                                                  | `schema_type` | All         | All               |
-| Generic Type | A generic schema type of  `string`, `integer`, `numeric`, `datetime`, `boolean`, or `other` | `type`        | All         | All               |
+| Metric       | Description                                                                                | Profile Field | Column Type | PipeRider Version |
+| ------------ | ------------------------------------------------------------------------------------------ | ------------- | ----------- | ----------------- |
+| Schema Type  | The column type defined in the data source                                                 | `schema_type` | All         | All               |
+| Generic Type | A generic schema type of `string`, `integer`, `numeric`, `datetime`, `boolean`, or `other` | `type`        | All         | All               |
 
 The following metrics are produced based on the generic type that has been applied to the column.
 
