@@ -10,6 +10,7 @@
   * [Config.yml](project-structure/config.yml.md)
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
+* [Privacy](privacy.md)
 
 ## Data Sources
 
