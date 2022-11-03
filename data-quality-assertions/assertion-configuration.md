@@ -94,7 +94,27 @@ world_city:
 
 </details>
 
-##
+#### Set
+
+* Description: Assert the column value exists in the given set .
+* Assert:
+  * `in`: The value should exist in the set
+
+<details>
+
+<summary>YAML example</summary>
+
+```
+world_city:
+  columns:
+    country:
+      tests:
+      - name: assert_column_value
+        assert:
+            in: ['US', 'Japan', 'India']
+```
+
+</details>
 
 ## Schema Assertions
 
