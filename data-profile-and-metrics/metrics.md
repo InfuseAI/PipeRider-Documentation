@@ -37,12 +37,12 @@ Data profile metrics that describe the tables in a data source.
 
 ### Platform dependent metrics
 
-| Metric            | Snowflake | BigQuery | Redshift |
-| ----------------- | --------- | -------- | -------- |
-| Bytes             | ✔         | ✔        | ✔        |
-| Created time      | ✔         | ✔        |          |
-| Last altered time | ✔         | ✔        |          |
-| Freshness         | ✔         | ✔        |          |
+| Profile Field  | Snowflake | BigQuery | Redshift |
+| -------------- | --------- | -------- | -------- |
+| `bytes`        | ✔         | ✔        | ✔        |
+| `created`      | ✔         | ✔        |          |
+| `last_altered` | ✔         | ✔        |          |
+| `freshness`    | ✔         | ✔        |          |
 
 ## Column metrics
 
