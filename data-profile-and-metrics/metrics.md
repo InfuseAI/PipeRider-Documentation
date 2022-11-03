@@ -109,12 +109,12 @@ The general statistical information of a column.
 
 The text length statistics of a column.
 
-| Profile Field | Description                             | Column Type | Assertion Available | PipeRider Version |
-| ------------- | --------------------------------------- | ----------- | ------------------- | ----------------- |
-| `min`         | The minimum string length               | string      | ✔                   | 0.6.0             |
-| `max`         | The maximum string length               | string      | ✔                   | 0.6.0             |
-| `avg`         | The average string length               | string      | ✔                   | 0.6.0             |
-| `stddev`      | The standard deviation of string length | string      | ✔                   | 0.6.0             |
+| Profile Field   | Description                             | Column Type | Assertion Available | PipeRider Version |
+| --------------- | --------------------------------------- | ----------- | ------------------- | ----------------- |
+| `min_length`    | The minimum string length               | string      | ✔                   | 0.11.0            |
+| `max_length`    | The maximum string length               | string      | ✔                   | 0.11.0            |
+| `avg_length`    | The average string length               | string      | ✔                   | 0.11.0            |
+| `stddev_length` | The standard deviation of string length | string      | ✔                   | 0.11.0            |
 
 ### Uniqueness
 
