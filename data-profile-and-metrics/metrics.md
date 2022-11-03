@@ -50,7 +50,7 @@ Data profile metrics that describe data at the column level. Depending on the co
 
 ### Schema
 
-In addition to logging the **schema type** of a column as defined in the data soruce, PipeRider will also apply a **generic type** to a column that will determine how this column is treated by the PipeRider profiler.
+In addition to logging the **schema type** of a column as defined in the data source, PipeRider will also apply a **generic type** to a column that will determine how this column is treated by the PipeRider profiler.
 
 | Profile Field | Description                                                                                | Column Type | PipeRider Version |
 | ------------- | ------------------------------------------------------------------------------------------ | ----------- | ----------------- |
@@ -156,9 +156,9 @@ The calculated quantiles of a numeric or integer column.
 
 ### Distribution
 
-| Metric                | Profile Field | Description                                                               | Column Type      | PipeRider Version |
-| --------------------- | ------------- | ------------------------------------------------------------------------- | ---------------- | ----------------- |
-| Top K                 | `topk`        | The most frequently occurring n items and and counts                      | integer, string  | 0.6.0             |
-| Histogram             | `histogram`   | Evenly-split bins for numerical columns and counts for each bin           | integer, numeric | 0.6.0             |
-| Text length histogram | `histogram`   | Evenly-split bins for text length and counts for each bin                 | string           | 0.6.0             |
-| Date histogram        | `histogram`   | Histogram of date, month, or year. Bin split depends on the min/max range | datetime         | 0.6.0             |
+| Profile Field      | Description                                                                   | Column Type      | PipeRider Version |
+| ------------------ | ----------------------------------------------------------------------------- | ---------------- | ----------------- |
+| `topk`             | The most frequently occurring n items and and counts                          | integer, string  | 0.6.0             |
+| `histogram`        | Evenly-split bins for **numerical columns** and counts for each bin           | integer, numeric | 0.6.0             |
+| `histogram_length` | Evenly-split bins for text length and counts for each bin                     | string           | 0.6.0             |
+| `histogram`        | Histogram of **date, month, or year**. Bin split depends on the min/max range | datetime         | 0.6.0             |
