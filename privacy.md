@@ -4,13 +4,11 @@ description: About PipeRider telemetry data
 
 # Telemetry
 
-In order to provide a better user experience by understanding how users are interacting with PipeRider, we use the following anonymous tracking methods.
-
 {% hint style="info" %}
 **PipeRider does** **not store or transmit the contents of your data source**. Your data source is accessed for the sole purpose of providing your profiling report and assertion test functionality
 {% endhint %}
 
-## Telemetry
+In order to provide a better user experience by understanding how users are interacting with PipeRider, we use the following anonymous tracking methods.
 
 PipeRider telemetry data is gathered both per-user and per-project.
 
@@ -72,3 +70,5 @@ For each `user_id` the following information is stored:
   * Number of passed and failed assertions
 
 \* An event refers to a PipeRider command such as `run`, `generate-assertions`, `generate-report` etc.
+
+Please refer to our [Privacy Policy](privacy/privacy-policy.md) and [Terms of Use](privacy/terms-of-use.md) for more information.
