@@ -2,7 +2,7 @@
 description: About PipeRider telemetry data
 ---
 
-# Privacy
+# Telemetry
 
 In order to provide a better user experience by understanding how users are interacting with PipeRider, we use the following anonymous tracking methods.
 

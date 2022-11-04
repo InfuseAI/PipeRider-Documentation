@@ -10,7 +10,7 @@
   * [Config.yml](project-structure/config.yml.md)
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
-* [Telemetry](telemetry.md)
+* [Telemetry](privacy.md)
 
 ## Data Sources
 
@@ -49,3 +49,8 @@
 
 * [Nightly Version](development/nightly-version.md)
 * [Contribution](development/contribution.md)
+
+## Privacy & Terms <a href="#privacy" id="privacy"></a>
+
+* [Privacy Policy](privacy/privacy-policy.md)
+* [Terms of Use](privacy/terms-of-use.md)
