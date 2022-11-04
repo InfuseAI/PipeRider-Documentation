@@ -49,10 +49,9 @@ For each `user_id` the following information is stored:
 ### User information
 
 * First seen: The date that you first used PipeRider
-* Last seen: The last time you used PipeRider
-* Location: Country and region
-* IP address
-* Platform: OS platform
+* Last seen: The date of the last time you used PipeRider
+* Location: Country and region (via IP address)
+* Platform: Operating system
 * Device ID: A unique identifier for your device
 * Python version
 
