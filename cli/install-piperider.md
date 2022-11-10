@@ -18,14 +18,17 @@ Use pip to install or update PipeRider.
 pip install -U piperider
 ```
 
-PipeRider includes the **SQLite** connector by default. The following conectors are also available:
+PipeRider includes the **SQLite** connector by default. The following connectors are also available:
 
 * **BigQuery**
+* **CSV**
+* **DuckDB**
+* **Parquet**
 * **Postgres**
 * **Redshift**
 * **Snowflake**
 
-Use the following command to install PipeRider with your required connector:
+Use the following command to install PipeRider with your [required connector](data-sources/supported-data-sources/):
 
 ```
 pip install -U 'piperider[required_connector]'

@@ -3,6 +3,7 @@
 * [Home](README.md)
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
+* [Telemetry](privacy.md)
 
 ## CLI
 
@@ -22,14 +23,19 @@
   * [CSV Connector](cli/supported-data-sources/csv-connector.md)
   * [Redshift Connector](cli/supported-data-sources/redshift-connector.md)
 * [Data Quality Assertions](cli/data-quality-assertions/README.md)
-  * [Assertion YAML](cli/data-quality-assertions/assertion-yaml.md)
+  * [Assertion Files](cli/data-quality-assertions/assertion-yaml.md)
   * [Built-In Assertions](cli/data-quality-assertions/assertion-configuration.md)
   * [Custom Assertions](cli/data-quality-assertions/custom-assertions.md)
 
 ***
 
-* [Changelog (v0.11.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.11.0)
+* [Changelog (v0.12.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.12.0)
 
 ## Cloud
 
 * [Get Started](cloud/get-started.md)
+
+## Privacy & Terms <a href="#privacy" id="privacy"></a>
+
+* [Privacy Policy](privacy/privacy-policy.md)
+* [Terms of Use](privacy/terms-of-use.md)
