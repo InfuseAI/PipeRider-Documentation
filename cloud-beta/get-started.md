@@ -30,7 +30,7 @@ You will be prompted
 
 ```
 Please provide available email account to login
-[?] Email address: support@piperider.io
+[?] Email address: knightrider@piperider.io
 Please paste the api token from magic link. The link has been sent to your email address.
 [?] API token:
 ```
