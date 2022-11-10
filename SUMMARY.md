@@ -31,9 +31,9 @@
 
 * [Changelog (v0.12.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.12.0)
 
-## Cloud
+## Cloud (Beta)
 
-* [Get Started](cloud/get-started.md)
+* [Get Started](cloud-beta/get-started.md)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
