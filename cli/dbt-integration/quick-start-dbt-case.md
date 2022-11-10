@@ -376,6 +376,6 @@ Next step:
   Please execute command 'piperider run' to generate your second report
 ```
 
-<figure><img src="../.gitbook/assets/sp500_dbt.png" alt=""><figcaption><p>Profiling report</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/sp500_dbt.png" alt=""><figcaption><p>Profiling report</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/sp500_dbt_detail.png" alt=""><figcaption><p>Column Detail</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/sp500_dbt_detail.png" alt=""><figcaption><p>Column Detail</p></figcaption></figure>

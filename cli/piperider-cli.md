@@ -110,6 +110,57 @@ piperider compare-reports [Options]
 | `--report-dir`   | path             | Specify the path to read and write reports                                                                            |
 | `--target`       | path             | Specify the profiling `run.json` to compare with the base report                                                      |
 
+## Access Cloud
+
+`piperider cloud` is a set of commands dedicated to the PipeRider Cloud service.
+
+### login
+
+`cloud login` will lead you to signup/login the PipeRider Cloud. Using the command to have the authorization with a valid _Token_. You will receive an authorizing email by giving your email address. The _Token_ will be stored at `~/.pipeirder/profile.yml`.
+
+```
+piperider cloud login
+```
+
+| Option                  | Argument            | Description                |
+| ----------------------- | ------------------- | -------------------------- |
+| `--token`               | a string of a token | Specify the API Token      |
+| `--enable-auto-upload`  | none                | Enable the auto-uploading  |
+| `--disable-auto-upload` | none                | Disable the auto-uploading |
+| `--debug`               | none                | Enable debugging output    |
+| `--help`                | none                | List command-line options  |
+
+### logout
+
+`cloud logout` will clear up the token string stored at `~/.piperider/profile.yml`.
+
+```
+piperider cloud logout
+```
+
+| Option    | Argument | Description               |
+| --------- | -------- | ------------------------- |
+| `--debug` | none     | Enable debugging output   |
+| `--help`  | none     | List command-line options |
+|           |          |                           |
+
+### upload-report
+
+`upload-report` will lead you to select single/multiple profiling reports and upload them to the PipeRider Cloud.
+
+```
+piperider cloud upload-report
+```
+
+| Option         | Argument                 | Description                                       |
+| -------------- | ------------------------ | ------------------------------------------------- |
+| `--run`        | path/to/run.json         | Specify a profiling result file                   |
+| `--report-dir` | path/to/report directory | Use a different report directory from the default |
+| `--datasource` | datasource name          | Specify a datasource                              |
+| `--debug`      | none                     | Enable debugging output                           |
+| `--help`       | none                     | List command-line options                         |
+|                |                          |                                                   |
+
 ## Diagnose Project Configuration
 
 `debug` shows connections statuses of data sources and checks the current configuration/assertions of the project.

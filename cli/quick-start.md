@@ -136,15 +136,15 @@ PipeRider will offer to generate recommended assertions. Answer 'yes'.
 
 ```shell
 DataSource: dataproject
-──────────────────────────────────────────────────────────────────────────────────── Validating ─────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────── Validating ────────────────────────────────────────────────────────────────────────────────
 everything is OK.
-───────────────────────────────────────────────────────────────────────────────────── Profiling ─────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────────────────────────────────
 fetching metadata
 [1/3] ACTION ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   4/4 0:00:00
-[2/3] PRICE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:13
-─────────────────────────────────────────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────────────────────────────────────────
+[2/3] PRICE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:01
+[3/3] SYMBOL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11/11 0:00:00
 No assertion found
-Do you want to auto generate recommended assertions for this datasource [Yes/no]?
+Do you want to auto generate recommended assertions for this datasource [Yes/no]? yes
 ```
 
 A recommended assertion YAML file for each table will be created under `.piperider/assertions/` and you will be prompted to run the recommended assertions. Answer 'yes'.
@@ -253,7 +253,7 @@ Open the HTML report in the browser to see the visualized results or share it wi
 <figure><img src="../.gitbook/assets/v0.11.single.png" alt=""><figcaption><p>Profiling Report</p></figcaption></figure>
 
 {% hint style="info" %}
-Refer to [How-To: Generate Report](how-to-guides/generate-report.md) for other methods generate reports
+Refer to [How-To: Generate Report](../how-to-guides/generate-report.md) for other methods generate reports
 {% endhint %}
 
 ### Apply data assertions
@@ -402,12 +402,10 @@ Open the HTML comparison report in your browser to review any changes or share i
 
 PipeRider provides advanced project-wise configuration that allows you to change default behaviours of the profiler. Such as to limit the amount of row which the profiler can analyze or to include/exclude specific tables in the analysis. Please check [Config.yml](project-structure/config.yml.md) for the detail.
 
-
-
 ### We'd love to hear from you
 
 PipeRider is constantly being improved - If you have feedback that could help make it better, we'd love to hear from you.
 
 To send your feedback, click the Feedback link at the bottom-left of your report and fill out the form.
 
-<figure><img src=".gitbook/assets/pr-08-feedback.png" alt=""><figcaption><p>Feedback</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/pr-08-feedback.png" alt=""><figcaption><p>Feedback</p></figcaption></figure>
