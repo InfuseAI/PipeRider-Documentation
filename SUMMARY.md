@@ -5,6 +5,11 @@
 * [Concepts](concepts.md)
 * [Telemetry](privacy.md)
 
+## Data Profile and Metrics
+
+* [Data Profile](data-profile-and-metrics/data-profile.md)
+* [Metrics](data-profile-and-metrics/metrics.md)
+
 ## CLI
 
 * [Installation](cli/install-piperider.md)
