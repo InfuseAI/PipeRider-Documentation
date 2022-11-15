@@ -26,14 +26,20 @@ Using CLI to login as the sign-up
 piperider cloud login
 ```
 
-You will be prompted
+You will be prompted to configure the behaviour of the auto upload, email account and API token.
 
 ```
+Please select default behavior for auto upload
+[?] Auto upload reports to cloud (Y/n): Y
 Please provide available email account to login
 [?] Email address: knightrider@piperider.io
 Please paste the api token from magic link. The link has been sent to your email address.
 [?] API token:
 ```
+
+{% hint style="info" %}
+Once _Auto-upload_ is enabled, PipeRider CLI will upload every profiling result automatically.
+{% endhint %}
 
 Let's hang on there. You will receive an email from PipeRider Cloud, visit the link in the email to initiate your account and retrieve the token.
 
@@ -96,6 +102,16 @@ Click the _navigation bar_, the pop-up will list the all of upload reports and c
 Click on a run to view the report.
 
 <figure><img src="../.gitbook/assets/cloud_nav_report.png" alt=""><figcaption><p>Navigate Reports</p></figcaption></figure>
+
+### Metric Monitoring
+
+Once multiple profiling results are uploaded under the _same data source_. PipeRider Cloud will analyze and display the trending of a few metrics that it could help you monitor/capture if any considerable changes.
+
+<figure><img src="../.gitbook/assets/cloud_trend_chart.png" alt=""><figcaption><p>Metrics Trending</p></figcaption></figure>
+
+{% hint style="info" %}
+Select a metric or a timespan from drop-downs or drag/scroll on the area of the chart to zoom in/out.
+{% endhint %}
 
 ### Compare Reports
 
