@@ -32,7 +32,7 @@
   * [Built-In Assertions](cli/data-quality-assertions/assertion-configuration.md)
   * [Custom Assertions](cli/data-quality-assertions/custom-assertions.md)
 * [How-To](how-to-guides/README.md)
-  * [AWS S3 + GitHub CI](how-to-guides/aws-s3-%2B-github-ci.md)
+  * [AWS S3 + GitHub CI](how-to-guides/aws-s3-+-github-ci.md)
   * [GitHub Action](how-to-guides/github-action.md)
 
 ***
