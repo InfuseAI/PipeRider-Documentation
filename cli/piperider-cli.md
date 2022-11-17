@@ -4,181 +4,172 @@ description: PipeRider commands and related options.
 
 # Command Reference
 
-## Initialize Project
-
-`init` will lead you to configure the data project according to the type of the data source you choose. Piperider CLI currently supports _Snowflake_, _Postgres_ and _Sqlite_.
-
-It will generate a `.piperider` directory and a few configuration files inside such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs under your project directory.
+## Initialize project
 
 ```shell
 piperider init [OPTIONS]
 ```
 
+`init` will lead you through configuring a new data project according to the type of the data source selected. Refer to [Supported Data Sources](supported-data-sources/) for details of available connectors.
+
+Initializing a project will generate a `.piperider` directory containing project configuration files such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs under your project directory.
+
 | Option               | Argument | Description                                                         |
 | -------------------- | -------- | ------------------------------------------------------------------- |
-| `--no-auto-search`   | none     | Disable the auto search for dbt projects; it is enabled by default  |
+| `--no-auto-search`   |          | Disable the auto search for dbt projects                            |
 | `--dbt-project-dir`  | path     | Specify the path to the directory of a _dbt project_ configuration  |
 | `--dbt-profiles-dir` | path     | Specify the path to the directory of a _dbt profiles_ configuration |
-| `--debug`            | none     | Enable the debug mode                                               |
-| `--help`             | none     | List command-line options                                           |
+| `--debug`            |          | Enable the debug mode                                               |
+| `--help`             |          | List available commands                                             |
 
-## Run profiler, assertions, report
-
-The `run` command performs the following functions.
-
-On first run:
-
-* Analyzes the data source and generates a data profile.
-* Offers to generate recommended assertions and check the data profile against these them. Assertion files will be generated in `.piperider/assertions`.
-* Generates blank assertion templates if recommended assertions were not created.
-* Generates a report in `.piperider/outputs`.
-
-On subsequent runs:
-
-* Analyzes the data source and generates a data profile.
-* Checks the data profile against any existing assertions located in `.piperider/assertions`.
-* Generates a report in `.piperider/outputs`.
-
-{% hint style="info" %}
-Regarding how to configure assertions, please check the [assertion configuration](data-quality-assertions/assertion-configuration.md) for the detail.
-{% endhint %}
+## Run profiler
 
 ```shell
 piperider run [OPTIONS]
 ```
 
-| Option             | Argument | Description                                              |
-| ------------------ | -------- | -------------------------------------------------------- |
-| `--datasource`     | name     | Profile a specified data source                          |
-| `--dbt-build`      | none     | Run dbt build prior to profiling                         |
-| `--dbt-test`       | none     | Run dbt test prior to profiling                          |
-| `--debug`          | none     | Enable debugging output                                  |
-| `--help`           | none     | List command-line options                                |
-| `--no-interaction` | none     | Generate assertion templates by default without a prompt |
-| `-o`, `--output`   | path     | Specify the output directory for the generated report    |
-| `--report-dir`     | path     | Specify the path to read and write reports               |
-| `--skip-recommend` | none     | Don't generate recommended assertions                    |
-| `--skip-report`    | none     | Don't generate reports                                   |
-| `--table`          | name     | Profile a specified table only                           |
+The `run` command performs the following functions.
 
-## Generate Assertions
+* Analyze the data source and generate a data profile.
+* (If assertion files exist) Test the data profile against any existing assertions located in `.piperider/assertions`.
+* Generate a report in `.piperider/outputs`.
 
-Generate recommended assertion files in `.piperider/assertions/` . You may want to generate recommended once profiling results are changed.
+{% hint style="info" %}
+Check [assertion configuration](data-quality-assertions/assertion-configuration.md) for more information on built-in assertions
+{% endhint %}
+
+| Option           | Argument | Description                                           |
+| ---------------- | -------- | ----------------------------------------------------- |
+| `--datasource`   | name     | Profile a specified data source                       |
+| `--dbt-build`    |          | Run dbt build prior to profiling                      |
+| `--dbt-test`     |          | Run dbt test prior to profiling                       |
+| `--debug`        |          | Enable debugging output                               |
+| `--help`         |          | List command-line options                             |
+| `-o`, `--output` | path     | Specify the output directory for the generated report |
+| `--report-dir`   | path     | Specify the path to read and write reports            |
+| `--skip-report`  |          | Don't generate reports                                |
+| `--table`        |          | Profile a specified table only                        |
+
+## Generate assertions
 
 ```
 piperider generate-assertions
 ```
 
-| Option    | Argument         | Description                                                                     |
-| --------- | ---------------- | ------------------------------------------------------------------------------- |
-| `--input` | path/to/run.json | Generate a recommended assertions based on a specific profiling `run.json` file |
-| `--debug` | none             | Enable debugging mode                                                           |
-| `--help`  | none             | List command-line options                                                       |
+Generate recommended assertion files in `.piperider/assertions/` . You may want to generate recommended once profiling results are changed.
 
-## Generate Report
+| Option           | Argument         | Description                                                                     |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------- |
+| `--no-recommend` |                  | Generate skeleton assertion files, without recommended assertions               |
+| `--input`        | path/to/run.json | Generate a recommended assertions based on a specific profiling `run.json` file |
+| `--table`        | table name       | Generate recommended assertions for a specific table                            |
+| `--debug`        |                  | Enable debugging mode                                                           |
+| `--help`         |                  | List command-line options                                                       |
 
-`generate-report` will generate static HTML reports in `.piperider/outputs/<run>` based on the profiling results of the latest `run` by default.
+## Generate report
 
 ```shell
 piperider generate-report [Options]
 ```
 
+Generate static HTML reports in `.piperider/outputs/<run>`  based on the profiling results of the latest `run` by default.
+
 | Option           | Argument         | Description                                                     |
 | ---------------- | ---------------- | --------------------------------------------------------------- |
-| `--debug`        | none             | Enable debugging output                                         |
-| `--help`         | none             | List command-line options                                       |
+| `--debug`        |                  | Enable debugging output                                         |
+| `--help`         |                  | List command-line options                                       |
 | `--input`        | path/to/run.json | Generate a report based on a specific profiling `run.json` file |
 | `-o`, `--output` | path             | Specify the output directory for the generated report           |
 | `--report-dir`   | path             | Specify the path to read and write reports                      |
 
-## Compare Reports
-
-`compare-reports` will compare two reports by the selection and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
+## Compare reports
 
 ```shell
-piperider compare-reports [Options]
+piperider compare-reports [ptions]
 ```
+
+Compare two selected reports and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
 
 | Option           | Argument         | Description                                                                                                           |
 | ---------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `--base`         | path             | Specify the profiling `run.json` to use as the base report                                                            |
 | `--datasource`   | data source name | <p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
-| `--debug`        | none             | Enable debugging output                                                                                               |
-| `--help`         | none             | List command-line options                                                                                             |
-| `--last`         | none             | Compare the last two reports                                                                                          |
+| `--debug`        |                  | Enable debugging output                                                                                               |
+| `--help`         |                  | List command-line options                                                                                             |
+| `--last`         |                  | Compare the last two reports                                                                                          |
 | `-o`, `--output` | path             | Specify the output directory for the generated report                                                                 |
 | `--report-dir`   | path             | Specify the path to read and write reports                                                                            |
 | `--target`       | path             | Specify the profiling `run.json` to compare with the base report                                                      |
 
-## Access Cloud
+## PipeRider Cloud
 
-`piperider cloud` is a set of commands dedicated to the PipeRider Cloud service.
+PipeRider Cloud is currently in beta, for more information please refer to the [Get Started](../cloud-beta/get-started.md) guide.
 
-### login
-
-`cloud login` will lead you to signup/login the PipeRider Cloud. Using the command to have the authorization with a valid _Token_. You will receive an authorizing email by giving your email address. The _Token_ will be stored at `~/.pipeirder/profile.yml`.
+### Login
 
 ```
 piperider cloud login
 ```
 
-| Option                  | Argument            | Description                |
-| ----------------------- | ------------------- | -------------------------- |
-| `--token`               | a string of a token | Specify the API Token      |
-| `--enable-auto-upload`  | none                | Enable the auto-uploading  |
-| `--disable-auto-upload` | none                | Disable the auto-uploading |
-| `--debug`               | none                | Enable debugging output    |
-| `--help`                | none                | List command-line options  |
+`cloud login` will lead you to signup/login the PipeRider Cloud. Using the command to have the authorization with a valid _Token_. You will receive an authorizing email by giving your email address. The _Token_ will be stored at `~/.pipeirder/profile.yml`.
 
-### logout
+| Option                  | Argument     | Description                |
+| ----------------------- | ------------ | -------------------------- |
+| `--token`               | token string | Specify the API Token      |
+| `--enable-auto-upload`  |              | Enable the auto-uploading  |
+| `--disable-auto-upload` |              | Disable the auto-uploading |
+| `--debug`               |              | Enable debugging output    |
+| `--help`                |              | List command-line options  |
 
-`cloud logout` will clear up the token string stored at `~/.piperider/profile.yml`.
+### Logout
 
 ```
 piperider cloud logout
 ```
 
+`cloud logout` will clear up the token string stored at `~/.piperider/profile.yml`.
+
 | Option    | Argument | Description               |
 | --------- | -------- | ------------------------- |
-| `--debug` | none     | Enable debugging output   |
-| `--help`  | none     | List command-line options |
+| `--debug` |          | Enable debugging output   |
+| `--help`  |          | List command-line options |
 |           |          |                           |
 
-### upload-report
-
-`upload-report` will lead you to select single/multiple profiling reports and upload them to the PipeRider Cloud.
+### Upload report
 
 ```
 piperider cloud upload-report
 ```
 
+`upload-report` will lead you to select single/multiple profiling reports and upload them to the PipeRider Cloud.
+
 | Option         | Argument                 | Description                                       |
 | -------------- | ------------------------ | ------------------------------------------------- |
 | `--run`        | path/to/run.json         | Specify a profiling result file                   |
 | `--report-dir` | path/to/report directory | Use a different report directory from the default |
-| `--datasource` | datasource name          | Specify a datasource                              |
-| `--debug`      | none                     | Enable debugging output                           |
-| `--help`       | none                     | List command-line options                         |
+| `--datasource` | data source name         | Specify a data source                             |
+| `--debug`      |                          | Enable debugging output                           |
+| `--help`       |                          | List command-line options                         |
 |                |                          |                                                   |
 
-## Diagnose Project Configuration
-
-`debug` shows connections statuses of data sources and checks the current configuration/assertions of the project.
+## Diagnose project configuration
 
 ```shell
 piperider diagnose
 ```
 
+Show data source connection status and check the current configuration and data assertions format.
+
 | Option    | Argument | Description               |
 | --------- | -------- | ------------------------- |
-| `--debug` | none     | Enable debugging output   |
-| `--help`  | none     | List command-line options |
+| `--debug` |          | Enable debugging output   |
+| `--help`  |          | List command-line options |
 |           |          |                           |
 
-## Love Your Feedback
-
-We love to hear feedbacks from the community. Please don't hesitate to send the feedback that will help improve PipeRider and assure it on the right direction.
+## Submit feedback
 
 ```
 piperider feedback
 ```
+
+We love to hear feedback from the community. Help us improve PipeRider by sending your suggestions.
