@@ -93,7 +93,7 @@ Compare two selected reports and generate the following output:
 * Comparison report (HTML)
 * Comparison summary (Markdown)
 
-Comparison reports and summaries are stored in in `.piperider/comparisons/<timestamp>`.
+Comparison reports and summaries are stored in `.piperider/comparisons/<timestamp>`.
 
 | Option           | Argument         | Description                                                                                                           |
 | ---------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
