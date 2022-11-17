@@ -85,10 +85,15 @@ Generate static HTML reports in `.piperider/outputs/<run>`  based on the profili
 ## Compare reports
 
 ```shell
-piperider compare-reports [ptions]
+piperider compare-reports [Options]
 ```
 
-Compare two selected reports and generate a static HTML comparison report at `.piperider/comparisons/` for each comparison.
+Compare two selected reports and generate the following output:
+
+* Comparison report (HTML)
+* Comparison summary (Markdown)
+
+Comparison reports and summaries are stored in in `.piperider/comparisons/<timestamp>`.
 
 | Option           | Argument         | Description                                                                                                           |
 | ---------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
