@@ -4,7 +4,9 @@ description: Install PipeRider with the BigQuery connector and connect to a data
 
 # BigQuery Connector
 
-## Installation
+## BigQuery Connector
+
+### Installation
 
 Ensure you have already installed the [gcloud CLI](https://cloud.google.com/sdk/docs/install), and then install PipeRider with the BigQuery connector.
 
@@ -12,7 +14,7 @@ Ensure you have already installed the [gcloud CLI](https://cloud.google.com/sdk/
 pip install 'piperider[bigquery]'
 ```
 
-## Configure connection settings
+### Configure connection settings
 
 Initialize a new PipeRider project using `piperider init` and when prompted select BigQuery as the data source.
 
@@ -22,7 +24,7 @@ The following information is required.
 * Authentication method (oauth or service-account)
 * BigQuery dataset name
 
-### Example initialization steps
+#### Example initialization steps
 
 ```
 $ piperider init
@@ -38,7 +40,7 @@ Initialize piperider to path /path/to/your/project/.piperider
    service-account
 ```
 
-#### Oauth steps
+**Oauth steps**
 
 ```
 Please enter the following fields for bigquery
@@ -54,14 +56,14 @@ Please enter the following fields for bigquery
 If you don't see the expected project-id from the list, please modify _`~/.config/gcloud/application_default_credentials.json`_ and replace **quota\_project\_id** with \*\*\*\* the one you expect\*\*.\*\*
 {% endhint %}
 
-#### Service-account step
+**Service-account step**
 
 ```
 [?] The path of GCP Service Account Key File: /path/to/key/file
 [?] The name of BigQuery DataSet: dataset-name
 ```
 
-## Test connection settings
+### Test connection settings
 
 After configuring your connection settings, ensure that PipeRider can connect to your BigQuery data source.
 
@@ -69,10 +71,6 @@ After configuring your connection settings, ensure that PipeRider can connect to
 piperider diagnose
 ```
 
-### gcloud authentication
+#### gcloud authentication
 
-<<<<<<< HEAD
-If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window and you will be prompted to authenticate with your Google account.
-=======
-If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window  and you will be prompted to authenticate with your Google account.
->>>>>>> main
+If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window and you will be prompted to authenticate with your Google account
