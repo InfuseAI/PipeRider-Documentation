@@ -18,7 +18,7 @@ PipeRider has the following main features:
   * Built-in [data assertions](cli/data-quality-assertions/assertion-configuration.md)
   * Extensible through [custom assertions](cli/data-quality-assertions/custom-assertions.md)
   * Auto-generated data assertions
-* Currently supports [Postgres](cli/supported-data-sources/postgres-connector.md), [Snowflake](cli/snowflake-connector.md), SQLite, [BigQuery](cli/supported-data-sources/bigquery-connector.md), [Redshift](cli/supported-data-sources/redshift-connector.md), [DuckDB](cli/supported-data-sources/duckdb-connector.md), [CSV](cli/supported-data-sources/csv-connector.md), and [Parquet](cli/supported-data-sources/parquet-connector.md).
+* Currently supports [Postgres](cli/supported-data-sources/postgres-connector.md), [Snowflake](cli/supported-data-sources/snowflake-connector.md), SQLite, [BigQuery](cli/supported-data-sources/bigquery-connector.md), [Redshift](cli/supported-data-sources/redshift-connector.md), [DuckDB](cli/supported-data-sources/duckdb-connector.md), [CSV](cli/supported-data-sources/csv-connector.md), and [Parquet](cli/supported-data-sources/parquet-connector.md).
 * Zero-config [support for dbt](cli/dbt-integration/) projects
 * Automation through [GitHub Actions](how-to-guides/github-action.md), [save reports in S3](how-to-guides/aws-s3-+-github-ci.md)
 

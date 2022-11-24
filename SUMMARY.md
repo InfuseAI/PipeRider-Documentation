@@ -26,7 +26,7 @@
   * [Postgres Connector](cli/supported-data-sources/postgres-connector.md)
   * [Parquet Connector](cli/supported-data-sources/parquet-connector.md)
   * [Redshift Connector](cli/supported-data-sources/redshift-connector.md)
-* [Snowflake Connector](cli/snowflake-connector.md)
+  * [Snowflake Connector](cli/supported-data-sources/snowflake-connector.md)
 * [Data Quality Assertions](cli/data-quality-assertions/README.md)
   * [Assertion Files](cli/data-quality-assertions/assertion-yaml.md)
   * [Built-In Assertions](cli/data-quality-assertions/assertion-configuration.md)
