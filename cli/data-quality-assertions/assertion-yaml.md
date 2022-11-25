@@ -4,17 +4,17 @@ description: All about assertion files
 
 # Assertion Files
 
-Assertion files are located in  `.piperider/assertions/`  and are created as part of the `piperider init` process.
+Assertion files are located in `.piperider/assertions/` and are created using the [generate assertions](../piperider-cli.md#generate-assertions) command.
 
 ### File naming convention
 
 Assertion files are YAML files and are named according to the data source table name:
 
-&#x20; `<table>.yml`&#x20;
+`<table>.yml`
 
 If you opted to generate 'recommended assertions' during `piperider init`, then assertion files will be prepended with 'recommended\_':
 
-`recommended_<table>.yml`&#x20;
+`recommended_<table>.yml`
 
 ### Types of assertions
 
@@ -50,5 +50,4 @@ movies:  # Table Name
       - name: assert_column_not_null
         tags:
         - RECOMMENDED
-
 ```

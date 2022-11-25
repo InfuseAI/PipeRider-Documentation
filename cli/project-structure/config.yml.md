@@ -8,11 +8,9 @@ description: Using the PipeRider config.yml file
 
 An example `config.yml` file for a Postgres project:
 
-{% code title="config.yml" %}
-```yaml
-dataSources:
-- name: salesData
-  type: postgres
+<pre class="language-yaml" data-title="config.yml"><code class="lang-yaml">dataSources:
+<strong>- name: salesData
+</strong>  type: postgres
 
 # profiler:
 #   table:
@@ -34,9 +32,7 @@ dataSources:
 #         description: "this is a column description"
 
 telemetry:
-  id: ABC123
-```
-{% endcode %}
+  id: ABC123</code></pre>
 
 The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
 
