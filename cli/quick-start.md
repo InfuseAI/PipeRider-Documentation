@@ -11,7 +11,7 @@ This quick start guide will show you how to:
 * [Initialize a new PipeRider project](quick-start.md#initialize-a-new-piperider-project)
 * [Run PipeRider](quick-start.md#run-piperider-profile-data-test-assertions-generate-report)
 * [Generate Data Assertions](quick-start.md#generate-data-assertions)
-* [Adjust data assertions](quick-start.md#apply-data-assertions)
+* [Adjust data assertions](quick-start.md#adjust-data-assertions)
 * [Compare reports](quick-start.md#compare-reports)
 
 For this guide you will be using SQLite. PipeRider also supports many other [data sources](supported-data-sources/) including Snowflake, BigQuery, Redshift, and more.
