@@ -51,17 +51,23 @@ If you see the message **`Please run pip install piperider[snowflake] to get the
 
 ### Multi-Factor Authentication (MFA)
 
-If multi-factor authentication (MFA) is enabled on your Snowflake account, then you will receive a Duo push-notification prompting you to allow access to the data source when executing the following PipeRider functions:
+If multi-factor authentication (MFA) is enabled on your Snowflake account, you will receive a Duo push-notification prompting you to allow access to the data source when executing the following PipeRider functions:
 
 * `piperider diagnose`
 * `piperider run`
 
 #### MFA Token Caching
 
-The prompt for every query could be annoying. In this case, Snowflake allows users to [minimize the prompts by enabling the caching](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in the account-level. It prompts you only once then caching it for the queries afterwards.
+To reduce the number of prompts you receive, Snowflake allows users to [cache MFA tokens](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) by enabling a setting at the account level.&#x20;
 
-If enabled,&#x20;
+If MFA is enabled on your Snowflake account, please ensure the following.
 
-* Ensure the package is installed. `pip install 'snowflake-connector-python[secure-local-storage]'`
-* Projects without dbt: Edit _.piperider/credentials.yml_ and add `authenticator: username_password_mfa`.
-* Project with dbt: Edit _\~/.dbt/profiles_ and add `authenticator: username_password_mfa` in the corresponding profile.
+* The following package is installed:\
+  &#x20;`pip install 'snowflake-connector-python[secure-local-storage]'`
+*   For non-dbt projects:
+
+    Edit _.piperider/credentials.yml_ and add `authenticator: username_password_mfa`
+*   For dbt projects:
+
+    Edit `~/.dbt/profiles` and add the following line to the corresponding profile:\
+    `authenticator: username_password_mfa`&#x20;
