@@ -4,7 +4,7 @@ description: The anatomy of a PipeRider project.
 
 # Project Structure
 
-When initializing a new PipeRider project, a folder called `.piperider` will be created in the project root.
+When initializing a new PipeRider project, a folder called `.piperider` will be created in the root of your project.
 
 After using the various features of PipeRider this folder will become populated with the following files and folders.
 
