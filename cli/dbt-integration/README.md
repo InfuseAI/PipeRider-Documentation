@@ -30,20 +30,7 @@ The dbt-related data source fields are:
 | projectDir  | Path to the directory where `dbt_project.yml` is stored | Yes                                                                                                                        |
 | profilesDir | Path to the directory where `profiles.yml` is stored    | <p>No, defaults to <code>~/.dbt</code><br>Can be overwritten by the <code>DBT_PROFILES_DIR</code> environment variable</p> |
 
-### dbt test integration
-
-PipeRider has integrated the dbt test. When `piperider run` with `--dbt-build` or `--dbt-test`, PipeRider will run dbt test with following PipeRider assertions, then collect both of the test results in the PipeRider report.
-
-### What PipeRider does with dbt
-
-When `piperider run`, PipeRider will
-
-1. Traversing all of dbt resources by `dbt list --output json` e.g. descriptions of table/column and sources information.
-2. Profiling all of sources and models
-3. Testing with dbt test if given `--dbt-build` or `--dbt-test` with following PipeRider assertions.
-4. Collecting both of testing results and rendering them in the report
-
-### Specify dbt data source
+### Specifying a dbt data source
 
 If you have more than one dbt project, such as a dev and production data source, you can specify the name of the data source with the `--datasource` option.
 
@@ -73,4 +60,14 @@ Specify the data source to use:
 
 ```
 piperider run --datasource my_dbt_project_prod
+```
+
+## dbt state
+
+PipeRider supports profiling of [dbt state](https://docs.getdbt.com/guides/legacy/understanding-state). This is useful for profiling only new and changed models.&#x20;
+
+To utilize dbt state when running PipeRider, use the `--dbt-state` option and specify the t[arget-path](https://docs.getdbt.com/reference/project-configs/target-path) for your dbt project.&#x20;
+
+```
+piperider run --dbt-state target
 ```
