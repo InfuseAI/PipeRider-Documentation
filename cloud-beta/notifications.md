@@ -1,5 +1,5 @@
 ---
-description: How to enable rule-based notifications
+description: How to enable rule-based notifications in PipeRider Cloud
 ---
 
 # Notifications
