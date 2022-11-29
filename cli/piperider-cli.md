@@ -41,8 +41,6 @@ Check [assertion configuration](data-quality-assertions/assertion-configuration.
 | Option           | Argument | Description                                           |
 | ---------------- | -------- | ----------------------------------------------------- |
 | `--datasource`   | name     | Profile a specified data source                       |
-| `--dbt-build`    |          | Run dbt build prior to profiling                      |
-| `--dbt-test`     |          | Run dbt test prior to profiling                       |
 | `--debug`        |          | Enable debugging output                               |
 | `--help`         |          | List command-line options                             |
 | `-o`, `--output` | path     | Specify the output directory for the generated report |
@@ -95,16 +93,17 @@ Compare two selected reports and generate the following output:
 
 Comparison reports and summaries are stored in `.piperider/comparisons/<timestamp>`.
 
-| Option           | Argument         | Description                                                                                                           |
-| ---------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `--base`         | path             | Specify the profiling `run.json` to use as the base report                                                            |
-| `--datasource`   | data source name | <p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
-| `--debug`        |                  | Enable debugging output                                                                                               |
-| `--help`         |                  | List command-line options                                                                                             |
-| `--last`         |                  | Compare the last two reports                                                                                          |
-| `-o`, `--output` | path             | Specify the output directory for the generated report                                                                 |
-| `--report-dir`   | path             | Specify the path to read and write reports                                                                            |
-| `--target`       | path             | Specify the profiling `run.json` to compare with the base report                                                      |
+| Option           | Argument                                                  | Description                                                                                                           |
+| ---------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `--base`         | path                                                      | Specify the profiling `run.json` to use as the base report                                                            |
+| `--datasource`   | data source name                                          | <p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
+| `--debug`        |                                                           | Enable debugging output                                                                                               |
+| `--help`         |                                                           | List command-line options                                                                                             |
+| `--last`         |                                                           | Compare the last two reports                                                                                          |
+| `-o`, `--output` | path                                                      | Specify the output directory for the generated report                                                                 |
+| `--report-dir`   | path                                                      | Specify the path to read and write reports                                                                            |
+| `--tables-from`  | <p><code>base-only</code><br><code>target-only</code></p> | Specify to only compare tables that appear in either base or target reports                                           |
+| `--target`       | path                                                      | Specify the profiling `run.json` to compare with the base report                                                      |
 
 ## PipeRider Cloud
 
