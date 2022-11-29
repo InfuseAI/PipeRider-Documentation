@@ -15,7 +15,6 @@
 * [Installation](cli/install-piperider.md)
 * [Quick Start](cli/quick-start.md)
 * [dbt Integration](cli/dbt-integration/README.md)
-  * [First dbt + PipeRider](cli/dbt-integration/quick-start-dbt-case.md)
 * [Command Reference](cli/piperider-cli.md)
 * [Project Structure](cli/project-structure/README.md)
   * [Config.yml](cli/project-structure/config.yml.md)
