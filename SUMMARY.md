@@ -41,6 +41,7 @@
 ## Cloud (Beta)
 
 * [Get Started](cloud-beta/get-started.md)
+* [Notifications](cloud-beta/notifications.md)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
