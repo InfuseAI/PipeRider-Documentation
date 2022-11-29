@@ -41,7 +41,8 @@ In PipeRider Cloud, navigate to `Notifications` -> `Settings` and click on the `
 
 Copy the `Webhook URL` and `Channel` from your Slack `incoming Webhooks` settings page into the PipeRider `Add Integration` form, as shown in the above image.
 
-To test the integration, click the `Test` button on the right side of the `Webhook URL` text field. If succcesful you will see a success message, and a test notification will appear in your selected Slack channel:
+To test the integration, click the `Test` button on the right side of the `Webhook URL` text field. If successful you will see a success message, and a test notification will appear in your selected Slack channel:
 
 <figure><img src="../.gitbook/assets/piperider-notification-test.png" alt=""><figcaption><p>PipeRider Cloud - Test Notification via Slack</p></figcaption></figure>
 
+Click the `Confirm` button to save the integration.
