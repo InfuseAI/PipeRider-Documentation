@@ -131,7 +131,7 @@ Next step:
 
 If everything is configured corrected you’ll see the 'You are all set!’ message.
 
-### 3. Run PipeRider to generate a data profile report
+## 3. Run PipeRider to generate a data profile report
 
 Run PipeRider to profile the data source and create your first HTML report:
 
