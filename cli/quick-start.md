@@ -70,7 +70,7 @@ Enter the path to the SQLite database file, `sp500.db`
 Path of database file: sp500.db
 ```
 
-The contents of the PipeRider [config.yml file](project-structure/config.yml.md) will be displayed on the command line.&#x20;
+The contents of the PipeRider config.yml [file](project-structure/config.yml.md) will be displayed on the command line.&#x20;
 
 #### Verify project configuration
 
