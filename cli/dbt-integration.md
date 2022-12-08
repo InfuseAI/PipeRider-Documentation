@@ -12,6 +12,7 @@ This guide demonstrates how to use PipeRider with a dbt project by using dbt’s
 2. [Install and add PipeRider to the Jaffle Shop project](dbt-integration.md#2.-install-and-add-piperider-to-the-jaffle-shop-project)
 3. [Run PipeRider to generate a data profile report](dbt-integration.md#3.-run-piperider-to-generate-a-data-profile-report)
 4. [Use dbt node selection with PipeRider](dbt-integration.md#4.-use-dbt-node-selection-with-piperider)
+5. [Next step: Data assertions](dbt-integration.md#5.-next-step-data-assertions)
 
 ## 1. Configure the Jaffle Shop project
 
@@ -180,7 +181,7 @@ The report contains detailed data profile metrics for each of the profiled table
 
 PipeRider supports profiling and testing dbt node select and 'state', so it’s possible to build and then run PipeRider on a subset of resources.
 
-### Build a subset of sources
+### Build a subset of resources
 
 Use dbt node selection to select and build a sub-set of resources.
 
