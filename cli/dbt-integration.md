@@ -16,7 +16,7 @@ This guide demonstrates how to use PipeRider with a dbt project by using dbt’s
 
 ## 1. Configure the Jaffle Shop project
 
-dbt Labs provide the Jaffle Shop project as a way to quickly get up and running with a dbt project and familiar with the main features. This project also serves as a convenient example to demonstrate how to use PipeRider inside a non-production dbt project.
+dbt Labs provide the Jaffle Shop project as a way to quickly get up and running with a dbt project. This project also serves as a convenient example to demonstrate how to use PipeRider inside a non-production dbt project.
 
 Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project.
 
@@ -24,7 +24,7 @@ Once configured, or if you already have a dbt project you want to use, proceed t
 
 ## 2. Install and add PipeRider to the Jaffle Shop project
 
-PipeRider supports many data sources through connectors. For a full list of supported connectors, please refer to [Supported Data Sources](supported-data-sources/).
+PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](supported-data-sources/).
 
 ### Install PipeRider
 
@@ -44,7 +44,7 @@ Ensure you are inside the Jaffle Shop project directory, and then run the follow
 piperider init
 ```
 
-PipeRider will auto-detect the dbt project settings and display the contents of the default PipeRider configuration file, located at `.piperider/config.yml`
+PipeRider will auto-detect the dbt project settings and display the contents of  your PipeRider configuration file, located at `.piperider/config.yml`
 
 ```
 $ piperider init
@@ -87,12 +87,12 @@ Next step:
 ```
 
 {% hint style="info" %}
-Please details about available settings please refer to [config.yml](project-structure/config.yml.md)&#x20;
+See [config.yml](project-structure/config.yml.md) for details of available settings
 {% endhint %}
 
 ### Verify PipeRider configuration
 
-Ensure that PipeRider can connect to the data source bu running the diagnose command.
+Ensure that PipeRider can connect to the data source by running the `diagnose` command.
 
 ```bash
 piperider diagnose
@@ -129,7 +129,7 @@ Next step:
   Please execute command 'piperider run' to generate your first report
 ```
 
-If everything is configured corrected you’ll see the ‘all set’ message.
+If everything is configured corrected you’ll see the 'You are all set!’ message.
 
 ### 3. Run PipeRider to generate a data profile report
 
@@ -179,7 +179,7 @@ The report contains detailed data profile metrics for each of the profiled table
 
 ## 4. Use dbt node selection with PipeRider
 
-PipeRider supports profiling and testing dbt node select and 'state', so it’s possible to build and then run PipeRider on a subset of resources.
+PipeRider supports profiling and testing dbt 'state', so it’s possible to use node selection to build and then run PipeRider on a subset of resources.
 
 ### Build a subset of resources
 
@@ -278,7 +278,7 @@ Use the following command to generate assertions for your project:
 piperider generate-assertions
 ```
 
-Assertion files are stored in `.piperider/assertions` and are named according to table. If the generate-assertions command was used, assertion files will be prepended with `recommended_`.
+Assertion files are stored in `.piperider/assertions` and are named according to table. If the `generate-assertions` command was used, assertion files will be prepended with `recommended_`.
 
 ### Edit assertions
 
@@ -323,7 +323,7 @@ Now that you have edited the assertions to better meet your needs, run PipeRider
 piperider run --dbt-state target
 ```
 
-This time, because assertion files exist, PipeRider will profile the data source and test it against the data assertions we generated and edited in the last step.
+This time, because assertion files exist, PipeRider will profile the data source _and_ test it against the data assertions we edited in the last step.
 
 The generated report will show the failed assertion at the top.
 
