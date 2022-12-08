@@ -1267,8 +1267,6 @@ register_assertion_function(AssertNothingTableExample)
 
 </details>
 
-
-
 **Methods**
 
 `name()`: return the name of the testing function that will be referred in assertion YAML.
@@ -1305,8 +1303,6 @@ table_metrics = metrics.get('tables', {}).get(table)
     # 2. Get the specified expectation from assert input in assertion YAML
     expected = context.asserts.get('parameter1', [])
 ```
-
-
 {% endtab %}
 
 {% tab title="Column-level metrics" %}
@@ -1352,8 +1348,6 @@ context.result.actual
 
 The value of the _**actual**_ will be concluded to the report. It is where you can add more descriptions to make the report more readable to your audiences.
 
-
-
 **Hands-On**
 
 So far you already have the fundamental knowledge of the assertion, start creating your first custom assertion.
@@ -1392,7 +1386,7 @@ SYMBOL:  # Table Name
             
 ```
 
-Above is to define what I expect to use my custom assertion. Next I will define/implement the corresponding assertion function.&#x20;
+Above is to define what I expect to use my custom assertion. Next I will define/implement the corresponding assertion function.
 
 I go to `.piperider/plugins` and create a python file, _range\_check.py_. Edit the python file and add the custom assertion codes.
 
@@ -1444,7 +1438,6 @@ piperider run --table SYMBOL
 After the running, I see the my defined assertion result. Nice, the first custom assertions works!
 
 ```shell-session
-
   Status     Test Subject   Assertion                  Expected              Actual
  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   [  OK  ]   SYMBOL.NAME    assert_distinct_in_range   {'range': [0, 600]}   The value is 505 sitting in the range
