@@ -70,4 +70,4 @@ For each `user_id` the following information is stored:
 
 \* An event refers to a PipeRider command such as `run`, `generate-assertions`, `generate-report` etc.
 
-Please refer to our [Privacy Policy](privacy/privacy-policy.md) and [Terms of Use](privacy/terms-of-use.md) for more information.
+Please refer to our [Privacy Policy](privacy-policy.md) and [Terms of Use](terms-of-use.md) for more information.
