@@ -222,7 +222,7 @@ world_city:
   columns:
     country_code:
       tests:
-      - metrics: nulls_p
+      - metric: nulls_p
         assert:
           lte: 0.01
 ```
@@ -234,7 +234,7 @@ world_city:
   columns:
     country_code:
       tests:
-      - metrics: p50
+      - metric: p50
         assert:
           gte: 10
           lte: 20
