@@ -1,85 +1,126 @@
 # Get Started
 
-## What Cloud can Do
+## PipeRider Cloud features
 
-* Share a profiling report by 1-click&#x20;
+* Share reports online
 * Compare profiling reports online
-* The trend chart of profiling metrics
+* View time-series data for certain metrics
+* Create monitoring alerts and forward alert notifications to email or Slack
 
-## Access Cloud
+## How PipeRider Cloud works
 
-### Prerequisite
+PipeRider Cloud works by uploading reports via PipeRider CLI. Reports can be configured to automatically upload, or can be uploaded manually (see below).
 
-In order to have the authorization to access the cloud, the installed PipeRider CLI is required.
+## Access PipeRider Cloud
 
-Install **PipeRider CLI** if you haven't
+### Prerequisites
 
-```bash
-pip install piperider
-```
+In order to access PipeRider Cloud, you are first required to [install PipeRider CLI](../cli/install-piperider.md).&#x20;
 
-### Login as Sign-up
+### Log in/Sign up
 
-Using CLI to login as the sign-up
+Currently, the log in and sign method is the same. Use the following command to log in/sign up to PipeRider Cloud.&#x20;
 
 ```bash
 piperider cloud login
 ```
 
-You will be prompted to configure the behaviour of the auto upload, email account and API token.
+Enter your email address when prompted.
+
+{% code overflow="wrap" %}
+```
+$ piperider cloud login
+Please provide available email account to login
+[?] Email address: support@piperider.io
+Please paste the api token from magic link. The link has been sent to your email address.
+[?] API token:
+```
+{% endcode %}
+
+**Follow the link in your email** to obtain your API token.
+
+<figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
+
+Copy the API Token and paste into the terminal. If your log in was successful, you'll see your User Profile details:
+
+```
+[?] API token: abc123
+───────────────────────────── Login Successful ─────────────────────────────
+                                User Profile
+
+  Email                  Username      Full Name    Storage Location   Timezone
+ ───────────────────────────────────────────────────────────────────────────
+  support@piperider.io   Support       PipeRider    North America      Asia/Taipei
+```
+
+Select if you would like reports to be automatically uploaded to your PipeRider Cloud account.
 
 ```
 Please select default behavior for auto upload
 [?] Auto upload reports to cloud (Y/n): Y
-Please provide available email account to login
-[?] Email address: knightrider@piperider.io
-Please paste the api token from magic link. The link has been sent to your email address.
-[?] API token:
+
+[Config] Default auto upload behavior is set to True
 ```
+
+If you selected yes, the `auto_upload` configuration option will be set to `true` in your PipeRider configuration file `~/.piperider/profile.yml`
+
+{% code title="~/.piperider/profile.yml" %}
+```yaml
+user_id: user123
+...
+...
+api_token: ABC123
+cloud_config:
+  auto_upload: true
+```
+{% endcode %}
 
 {% hint style="info" %}
-Once _Auto-upload_ is enabled, PipeRider CLI will upload every profiling result automatically.
+If _Auto-upload_ is enabled, PipeRider CLI will upload every report automatically during `piperider run`
 {% endhint %}
 
-Let's hang on there. You will receive an email from PipeRider Cloud, visit the link in the email to initiate your account and retrieve the token.
+## Verify PipeRider Cloud connection
 
-Fill in the information and copy the token, that is the most important thing.
-
-<figure><img src="../.gitbook/assets/cloud_profile.png" alt=""><figcaption><p>Initiate an account</p></figcaption></figure>
-
-
-
-Back to the terminal and past the token&#x20;
+Verify your connection to PipeRider Cloud by running the diagnose command.
 
 ```
-[?] API token:<paste_your_token_here>
+piperider diagnose
 ```
 
-You can verify it by `piperider diagnose` . You should see the output containing
+If correctly configured, you should see the following message in the output.
 
 ```
 Check cloud account:
-  Run as user: knightrider@piperider.io
+  Run as user: support@infuseai.io
+    User Name: Support
+    Full Name: PipeRider Support
+  Auto Upload: True
 ✅ PASS
 ```
 
-You are all set!
+## Manually upload reports
 
-{% hint style="info" %}
-The token is stored in your local file, `~/.piperider/profile.yml`.
-{% endhint %}
-
-### Upload Profiling Results
-
-Now you have the access to the PipeRider Cloud. Let's try to upload a few profiling results.
+Use the following command to manually select reports to upload.
 
 ```
 piperider cloud upload-report
 ```
 
-To select multiple reports by _SPACE_ then _Enter_ to confirm.
+Use the arrow keys to navigate the list, and press space to select the reports you would like to upload.
 
-Back to [https://cloud.piperider.io](https://cloud.piperider.io) to view reports.
+```
+$ piperider cloud upload-report
+────────────────────────── Select Reports to Upload ───────────────────────────────
+[?] Please select the reports to upload ( SPACE to select, and ENTER to confirm ):
+   o jaffle_shop  #table=5      #pass=61    #fail=1     2022-12-14T09:37:14.342456Z
+   X jaffle_shop  #table=5      #pass=60    #fail=1     2022-12-13T11:26:33.315632Z
+   X jaffle_shop  #table=3      #pass=57    #fail=1     2022-12-08T17:04:06.084280Z
+   o jaffle_shop  #table=5      #pass=80    #fail=1     2022-12-08T17:03:32.378543Z
+```
+
+Press the return key to upload the reports.&#x20;
+
+URLs for uploaded reports will be shown in the CLI output. You can also go directly to [https://cloud.piperider.io](https://cloud.piperider.io) to view all uploaded reports.
 
 ## Cloud Overview
 

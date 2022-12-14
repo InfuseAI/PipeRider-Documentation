@@ -1,9 +1,10 @@
 # Table of contents
 
-* [Home](README.md)
+* [PipeRider Blog](https://blog.piperider.io)
+* [PipeRider on GitHub](https://github.com/infuseai/piperider)
+* [Introduction](README.md)
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
-* [Telemetry](privacy.md)
 
 ## Data Profile and Metrics
 
@@ -47,3 +48,4 @@
 
 * [Privacy Policy](privacy/privacy-policy.md)
 * [Terms of Use](privacy/terms-of-use.md)
+* [Telemetry](privacy/privacy.md)
