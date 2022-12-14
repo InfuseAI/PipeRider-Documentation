@@ -2,14 +2,14 @@
 
 ## PipeRider Cloud features
 
-* Share a reports online
+* Share reports online
 * Compare profiling reports online
 * View time-series data for certain metrics
-* Create monitoring alerts and forward to email or Slack
+* Create monitoring alerts and forward alert notifications to email or Slack
 
 ## How PipeRider Cloud works
 
-PipeRider Cloud works by uploading reports via PipeRider CLI. Reports can either be manually uploaded, or automatic uploading can be configured (see below).
+PipeRider Cloud works by uploading reports via PipeRider CLI. Reports can be configured to automatically upload, or can be uploaded manually (see below).
 
 ## Access PipeRider Cloud
 
@@ -41,7 +41,7 @@ Please paste the api token from magic link. The link has been sent to your email
 
 <figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
 
-Copy the API Token and paste into the terminal. If your log in was successful, you'll see your user Profile details:
+Copy the API Token and paste into the terminal. If your log in was successful, you'll see your User Profile details:
 
 ```
 [?] API token: abc123
@@ -87,7 +87,7 @@ Verify your connection to PipeRider Cloud by running the diagnose command.
 piperider diagnose
 ```
 
-If configured correctly, you should see the following message in the output.
+If correctly configured, you should see the following message in the output.
 
 ```
 Check cloud account:
@@ -106,7 +106,7 @@ Use the following command to manually select reports to upload.
 piperider cloud upload-report
 ```
 
-Use the arrow keys to navigate the list, and press space to select the reports youn would like to upload.
+Use the arrow keys to navigate the list, and press space to select the reports you would like to upload.
 
 ```
 $ piperider cloud upload-report
