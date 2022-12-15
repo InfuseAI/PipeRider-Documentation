@@ -60,3 +60,11 @@ If MFA is enabled on your Snowflake account, please ensure the following.
 
     Edit `~/.dbt/profiles` and add the following line to the corresponding profile:\
     `authenticator: username_password_mfa`&#x20;
+
+## Test connection settings
+
+After configuring your connection settings, ensure that PipeRider can connect to your Snowflake data source.
+
+```
+piperider diagnose
+```
