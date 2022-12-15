@@ -14,40 +14,29 @@ Install PipeRider with the Snowflake connector.
 pip install 'piperider[snowflake]'
 ```
 
-### Prepare Credentials of Snowflake
+### Initialize a new Snowflake PipeRider project
 
-Initialize a new PipeRider project using `piperider init` and when promoted select Snowflake as the data source.
+```shell-session
+$ piperider init
+[?] What is your data source name?: SnowflakeProject
+[?] Which data source would you like to connect to?:
+ > snowflake
+```
 
-The following information is required.
+### Required information
+
+After selecting Snowflake as your data source, you will be promoted for the following information:
 
 * Account
 * Username
-* Password
+* Authentication method
+  * Password
+  * Keypair (private key path, optional passphrase)
+  * SSO ('externalbrowser' or a valid Okta URL)
 * Role (optional)
 * Database
 * Warehouse
 * Schema
-
-```shell-session
-piperider init
-What data source would you like to connect to?:
-> snowflake
-```
-
-```
-Please enter the following fields for snowflake
-Account:
-Username:
-Password:
-Role (optional):
-Database:
-Warehouse:
-Schema:
-```
-
-{% hint style="info" %}
-If you see the message **`Please run pip install piperider[snowflake] to get the snowflake connector`** this means that the Snowflake connector is not installed. Please follow the [installation instructions](snowflake-connector.md#installation) above.
-{% endhint %}
 
 ### Multi-Factor Authentication (MFA)
 
