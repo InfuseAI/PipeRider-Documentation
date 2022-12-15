@@ -17,11 +17,13 @@ pip install 'piperider[snowflake]'
 ### Initialize a new Snowflake PipeRider project
 
 ```shell-session
-$ piperider init
+piperider init
 [?] What is your data source name?: SnowflakeProject
 [?] Which data source would you like to connect to?:
  > snowflake
 ```
+
+Follow the prompts entering the required information.
 
 ### Required information
 
