@@ -4,10 +4,10 @@ description: About PipeRider telemetry data
 
 # Telemetry
 
-In order to provide a better user experience, PipeRider collects telemetry data about how the software and website are used.  Telemetry gathering for PipeRider CLI and PipeRider Cloud is handled separately. Please refer to the relevant section to see what information is collected and how to opt-out.
+In order to provide a better user experience, PipeRider collects telemetry data about how the software and website are used. Telemetry gathering for PipeRider CLI and PipeRider Cloud is handled separately. Please refer to the relevant section to see what information is collected and how to opt-out.
 
-* [PipeRider CLI telemetry](privacy.md#piperider-cli-telemtry)
-* [PipeRider Cloud telemetry](privacy.md#piperider-cloud-telemetry)
+* [PipeRider CLI telemetry](telemetry.md#piperider-cli-telemtry)
+* [PipeRider Cloud telemetry](telemetry.md#piperider-cloud-telemetry)
 
 ## PipeRider CLI telemetry
 
@@ -36,7 +36,7 @@ Each time you create a PipeRider project a telemetry ID will be created. This te
 
 #### Opt-out of project telemtry
 
-To opt-out of tracking on a per-project basis, you can remove the telemetry ID located in your project's configuration file,  `.piperider/config.yml` .
+To opt-out of tracking on a per-project basis, you can remove the telemetry ID located in your project's configuration file, `.piperider/config.yml` .
 
 ```yaml
 telemetry:
@@ -79,7 +79,7 @@ When logging into PipeRider Cloud you will be presented with the Cookies notific
 
 ### Accept All
 
-Selecting Accept All will use a cookie to allow you to log in and remember your session; and also enable PipeRider Cloud telemetry. Please [see below](privacy.md#what-information-is-stored-1) for a list of information that is stored.
+Selecting Accept All will use a cookie to allow you to log in and remember your session; and also enable PipeRider Cloud telemetry. Please [see below](telemetry.md#what-information-is-stored-1) for a list of information that is stored.
 
 ### Necessary Only
 

@@ -48,4 +48,4 @@
 
 * [Privacy Policy](privacy/privacy-policy.md)
 * [Terms of Use](privacy/terms-of-use.md)
-* [Telemetry](privacy/privacy.md)
+* [Telemetry](privacy/telemetry.md)
