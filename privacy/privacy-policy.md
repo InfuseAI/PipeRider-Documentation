@@ -5,7 +5,7 @@ description: 'Effective date: April 1, 2022'
 # Privacy Policy
 
 {% hint style="info" %}
-> Please refer to the [telemetry page](telemetry.md) for information on data that is gathered when using PipeRider CLI and PipeRider Cloud.
+Please refer to the [telemetry page](telemetry.md) for information on data that is gathered when using PipeRider CLI and PipeRider Cloud.
 {% endhint %}
 
 This Privacy Policy explains how your personal information is collected, used and disclosed by InfuseAI Inc. (“InfuseAI,” “we” or “us”) when you use our website \[https://www.piperider.io/] (“Website”), online products and monitoring services (“Platform”) (collectively, “Services”), or when you otherwise interact with us. This Privacy Policy also describes your choices regarding use, access and correction of personal information collected about you through our Services.
