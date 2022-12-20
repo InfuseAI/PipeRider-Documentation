@@ -4,35 +4,39 @@ description: 'Effective date: April 1, 2022'
 
 # Privacy Policy
 
-This Privacy Policy explains how your personal information is collected, used and disclosed by InfuseAI Inc. (“InfuseAI,” “we” or “us”) when you use our website \[https://www.piperider.io/] (“Website”), online products and monitoring services (“Platform”) (collectively, “Services”), or when you otherwise interact with us.  This Privacy Policy also describes your choices regarding use, access and correction of personal information collected about you through our Services. &#x20;
+{% hint style="info" %}
+> Please refer to the [telemetry page](telemetry.md) for information on data that is gathered when using PipeRider CLI and PipeRider Cloud.
+{% endhint %}
 
-By accessing or using the Services, you acknowledge that you have read and understood the content of this Privacy Policy and consent to our collection, using and sharing of your personal information.  Please read this Privacy Policy carefully and ensure that you understand it before you start.
+This Privacy Policy explains how your personal information is collected, used and disclosed by InfuseAI Inc. (“InfuseAI,” “we” or “us”) when you use our website \[https://www.piperider.io/] (“Website”), online products and monitoring services (“Platform”) (collectively, “Services”), or when you otherwise interact with us. This Privacy Policy also describes your choices regarding use, access and correction of personal information collected about you through our Services.
 
-We reserve the right to update this Privacy Policy from time to time.  If we make changes, we will revise the date at the top of the Privacy Policy and, in some cases, we may provide you with additional notice (such as adding a statement to our homepage or sending you a notification).  We encourage you to review the Privacy Policy whenever you access the Services or otherwise interact with us to stay informed about our information practices and the ways you can help protect your privacy.
+By accessing or using the Services, you acknowledge that you have read and understood the content of this Privacy Policy and consent to our collection, using and sharing of your personal information. Please read this Privacy Policy carefully and ensure that you understand it before you start.
 
-We do not knowingly collect or solicit personal information from anyone under the age of 16. If you are under 16, please do not attempt to register for the Services or send any personal information about yourself to us.  If we learn that we have collected personal information from a child under age 16, we will delete that personal information as quickly as possible.  If you believe that a child under age 16 may have provided us personal information, please contact us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io).
+We reserve the right to update this Privacy Policy from time to time. If we make changes, we will revise the date at the top of the Privacy Policy and, in some cases, we may provide you with additional notice (such as adding a statement to our homepage or sending you a notification). We encourage you to review the Privacy Policy whenever you access the Services or otherwise interact with us to stay informed about our information practices and the ways you can help protect your privacy.
+
+We do not knowingly collect or solicit personal information from anyone under the age of 16. If you are under 16, please do not attempt to register for the Services or send any personal information about yourself to us. If we learn that we have collected personal information from a child under age 16, we will delete that personal information as quickly as possible. If you believe that a child under age 16 may have provided us personal information, please contact us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io).
 
 ## What Personal information do We Collect?
 
 ### **Personal information You Provide to Us**
 
-We collect and store any personal information you provide directly to us via the Services. Personal information submitted through the Services include the details you submit when you create an account, participate in any interactive features of the Services, fill out a form, pay for subscriptions, apply for a job, communicate with us via third party social media sites, request customer support or otherwise communicate with us.  The types of personal information we may collect and store include your name, email address, postal address, phone number and any other personal information you choose to provide.  To the extent you provide credit card personal information through the Services, that personal information is collected and processed by our third-party payment processor pursuant to their Privacy Policy and practices.
+We collect and store any personal information you provide directly to us via the Services. Personal information submitted through the Services include the details you submit when you create an account, participate in any interactive features of the Services, fill out a form, pay for subscriptions, apply for a job, communicate with us via third party social media sites, request customer support or otherwise communicate with us. The types of personal information we may collect and store include your name, email address, postal address, phone number and any other personal information you choose to provide. To the extent you provide credit card personal information through the Services, that personal information is collected and processed by our third-party payment processor pursuant to their Privacy Policy and practices.
 
-### Personal information Collected Automatically&#x20;
+### Personal information Collected Automatically
 
 When you access or use the Services, we automatically collect personal information about you, including:
 
-Log Files: We gather certain personal information about your use of the Services, including the type of browser you use, access times, pages viewed, your IP address and the page you visited before navigating to the Services, and store it in log files.&#x20;
+Log Files: We gather certain personal information about your use of the Services, including the type of browser you use, access times, pages viewed, your IP address and the page you visited before navigating to the Services, and store it in log files.
 
-Personal information Collected by Cookies and Other Tracking Technologies: We use various technologies to collect personal information including cookies.  For more information about cookies, and how to disable them, please see our Cookie Policy page [https://www.infuseai.io/document/privacy-policy#](https://www.infuseai.io/document/privacy-policy) and Your Choices below.
+Personal information Collected by Cookies and Other Tracking Technologies: We use various technologies to collect personal information including cookies. For more information about cookies, and how to disable them, please see our Cookie Policy page [https://www.infuseai.io/document/privacy-policy#](https://www.infuseai.io/document/privacy-policy) and Your Choices below.
 
 ### Personal information We Collect from Other Sources
 
-We may also obtain personal information from other sources and combine that with personal information we collect through our Services for purposes of advertising and user authentication.  For example, if you create or log into your account using your Google Apps credentials via single sign-on, we will have access to certain personal information such as your name and email address as authorized in your Google Apps profile settings.
+We may also obtain personal information from other sources and combine that with personal information we collect through our Services for purposes of advertising and user authentication. For example, if you create or log into your account using your Google Apps credentials via single sign-on, we will have access to certain personal information such as your name and email address as authorized in your Google Apps profile settings.
 
 ## Where do We Store
 
-We store your personal information by utilizing Amazon Web Services (AWS) in the US.  You can find AWS’s privacy features at  [https://aws.amazon.com/compliance/privacy-features/?nc1=h\_ls](https://aws.amazon.com/compliance/privacy-features/?nc1=h\_ls)
+We store your personal information by utilizing Amazon Web Services (AWS) in the US. You can find AWS’s privacy features at [https://aws.amazon.com/compliance/privacy-features/?nc1=h\_ls](https://aws.amazon.com/compliance/privacy-features/?nc1=h\_ls)
 
 ## Our Use of Your Personal Information
 
@@ -86,23 +90,23 @@ For the purposes of the legitimate interests pursued by us in promoting our busi
 
 ## External Links
 
-The Website may, from time to time, contain links to external sites.  If you follow a link to any of these websites, please note that these websites have their own privacy policies and that we do not accept any responsibility or liability for these policies. Please check these policies before you submit any personal information to these websites.  We are not responsible for the privacy policies or the content of such sites.
+The Website may, from time to time, contain links to external sites. If you follow a link to any of these websites, please note that these websites have their own privacy policies and that we do not accept any responsibility or liability for these policies. Please check these policies before you submit any personal information to these websites. We are not responsible for the privacy policies or the content of such sites.
 
 ## Marketing
 
-Where permitted in our legitimate interest or with your prior consent where required by law, we will use your personal information for marketing and to provide you with promotional update communications by email about our products/services.  You can object to further marketing by contacting us.
+Where permitted in our legitimate interest or with your prior consent where required by law, we will use your personal information for marketing and to provide you with promotional update communications by email about our products/services. You can object to further marketing by contacting us.
 
 ## Security
 
-We take reasonable steps, including physical, technical and organizational measures, to protect your personal information from unauthorized access and against unlawful processing, accidental loss, destruction and damage.  Although we do our best to protect your personal information, we cannot guarantee the security of your personal information submitted to us.
+We take reasonable steps, including physical, technical and organizational measures, to protect your personal information from unauthorized access and against unlawful processing, accidental loss, destruction and damage. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information submitted to us.
 
-Your personal information will be retained by us for the duration of your account and may be retained for a period after this time as necessary and relevant to our legitimate interests, our terms of agreement with you and in accordance with applicable legal obligations.  This may include retention necessary to meet our tax reporting requirements as well as time required to enforce the relevant terms of agreement or to identify, issue or resolve legal proceedings.
+Your personal information will be retained by us for the duration of your account and may be retained for a period after this time as necessary and relevant to our legitimate interests, our terms of agreement with you and in accordance with applicable legal obligations. This may include retention necessary to meet our tax reporting requirements as well as time required to enforce the relevant terms of agreement or to identify, issue or resolve legal proceedings.
 
 We may retain a record of your stated objection to the processing of your personal information, including in respect of an objection to receiving marketing communications, for the sole legitimate purpose of ensuring that we can continue to respect your wishes and not contact you further, during the term of your objection.
 
-## Your Rights&#x20;
+## Your Rights
 
-You may have the following rights pertaining to your personal information depending on the law that we are subject to:&#x20;
+You may have the following rights pertaining to your personal information depending on the law that we are subject to:
 
 1. The right to withdraw consent;
 2. The right of access;
@@ -117,13 +121,13 @@ You may have the following rights pertaining to your personal information depend
 
 ### Account Information
 
-You may access, update or change personal information you have provided by logging into the Services or emailing us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io).  You can always opt not to disclose information to us, but we would like to remind you that some personal information may be needed for registration.  Shall you decide not to provide such personal information, we might not be able to provide the Services to you.&#x20;
+You may access, update or change personal information you have provided by logging into the Services or emailing us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io). You can always opt not to disclose information to us, but we would like to remind you that some personal information may be needed for registration. Shall you decide not to provide such personal information, we might not be able to provide the Services to you.
 
-You may be able to add, update or delete your personal information, but we will maintain a copy of the unrevised personal information in our records.  You may request deletion of your account or personal information by sending a request to us.  Some personal information may remain in our records after the deletion as necessary to comply with our legal obligations or for legitimate business purposes, such as to resolve disputes or enforce our agreements.  We may also retain cached or archived copies of personal information for a certain period of time.
+You may be able to add, update or delete your personal information, but we will maintain a copy of the unrevised personal information in our records. You may request deletion of your account or personal information by sending a request to us. Some personal information may remain in our records after the deletion as necessary to comply with our legal obligations or for legitimate business purposes, such as to resolve disputes or enforce our agreements. We may also retain cached or archived copies of personal information for a certain period of time.
 
 ### Cookies
 
-Most web browsers are set to accept cookies by default.  If you prefer, you can usually choose to set your browser to remove or reject browser cookies.  Please note that if you choose to remove or reject cookies, this could affect the availability and functionality of our Services.  For more information, please see InfuseAI’s Cookie Policy at [https://www.infuseai.io/document/privacy-policy#](https://www.infuseai.io/document/privacy-policy)
+Most web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove or reject browser cookies. Please note that if you choose to remove or reject cookies, this could affect the availability and functionality of our Services. For more information, please see InfuseAI’s Cookie Policy at [https://www.infuseai.io/document/privacy-policy#](https://www.infuseai.io/document/privacy-policy)
 
 ## Promotional Communications
 
