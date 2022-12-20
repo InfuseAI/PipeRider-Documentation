@@ -18,9 +18,5 @@ With PipeRider CI integration, you can add a data profiling step to the CI proce
 
 Using this method, **developers can observe what the affect of these changes will be before they are merged into the project.**
 
-
-
-In the following pages we demonstrate some suggested guidelines for integrating PipeRider into your data project's CI process.&#x20;
-
-&#x20;basic and advanced versions.
+In the following section we demonstrate some suggested guidelines for integrating PipeRider into your data project's CI process.&#x20;
 
