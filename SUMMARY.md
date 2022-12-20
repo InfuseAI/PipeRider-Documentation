@@ -34,6 +34,10 @@
 * [How-To](how-to-guides/README.md)
   * [GitHub Action](how-to-guides/github-action.md)
   * [AWS S3 + GitHub CI](how-to-guides/aws-s3-+-github-ci.md)
+* [Continuous Integration (CI)](cli/continuous-integration-ci/README.md)
+  * [Initial Configuration](cli/continuous-integration-ci/initial-configuration.md)
+  * [Basic Example](cli/continuous-integration-ci/basic-example.md)
+  * [Advanced Example (Slim CI)](cli/continuous-integration-ci/advanced-example-slim-ci.md)
 
 ***
 

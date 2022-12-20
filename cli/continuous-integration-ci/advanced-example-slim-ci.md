@@ -1,0 +1,2 @@
+# Advanced Example (Slim CI)
+
