@@ -39,7 +39,7 @@ Please paste the api token from magic link. The link has been sent to your email
 
 **Follow the link in your email** to obtain your API token.
 
-<figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/piperider-profile-fs8 (1).png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
 
 Copy the API Token and paste into the terminal. If your log in was successful, you'll see your User Profile details:
 
