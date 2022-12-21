@@ -6,7 +6,7 @@ description: dbt and PipeRider project configuration for CI
 
 The concept of using PipeRider with your CI process is based on there being a PR (pull request) environment (schema and data source), in addition to the usual 'dev' and 'prod' environments.
 
-For instance, the following CI examples use dbt ([Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project) and Snowflake, and the configuration files for dbt and PipeRider are configured as follows.
+The following CI examples use dbt ([Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project) and Snowflake, and the configuration files for dbt and PipeRider are configured as follows.
 
 ## dbt profile
 
