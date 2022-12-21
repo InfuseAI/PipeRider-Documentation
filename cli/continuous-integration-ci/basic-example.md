@@ -108,7 +108,7 @@ piperider compare-reports \
 
 The compare reports feature outputs a Markdown formatted data profile diff that you can attach to your pull request comment, or upload to your own storage.
 
-#### Option 1 - Add the data profile diff Markdown to the PR comment&#x20;
+#### Option 1 - Use a 3rd-party Action&#x20;
 
 Use a 3rd-party action to help with this task, or build your own solution based on your requirements.
 
@@ -123,7 +123,7 @@ Use a 3rd-party action to help with this task, or build your own solution based 
 ```
 {% endcode %}
 
-#### Option 2 - Upload the  data profile diff Markdown file to your own storage
+#### Option 2 - Use your own script
 
 Upload the Markdown file to your own storage usding your own script, if required.
 
@@ -137,7 +137,7 @@ post-comparison-summary.sh /tmp/piperider/comparison/summary.md
 
 In addition to the data profile diff Markdown file, PipeRider also outputs a full comparison report. As above, you can as store this as an artifact, or upload to your own storage.
 
-#### Option 1 - Store the comparison report as a GitHub actionn artifact
+#### Option 1 - Store the comparison report as a GitHub action artifact
 
 ```
 # GitHub workflow snippet
