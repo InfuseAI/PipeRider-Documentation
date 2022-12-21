@@ -211,3 +211,9 @@ Use your own script to upload the comparison report to your own storage.
 ```
 upload-comparison-report.sh /tmp/piperider/comparison
 ```
+
+### View the Slim CI PR Job on GitHub&#x20;
+
+{% embed url="https://github.com/InfuseAI/jaffle_shop/blob/main/.github/workflows/pr-comparison-job-slim-ci.yml" %}
+PR Slim CI Job on GitHub
+{% endembed %}
