@@ -97,15 +97,16 @@ dbt-cloud job run \
   --schema-override <PR SCHEMA> \
   --wait \
   --file response.json
-run_id=$(cat response.json | jq -r '.data.id')bash
+run_id=$(cat response.json | jq -r '.data.id')
 ```
 
 #### Option 2 - Download from your own storage
 
-use your own script to download the state from your opwn storage.
+Use your own script to download the state from your storage.
 
 ```bash
-download-prod-dbt-state.sh /tmp/dbt/prod dbt build
+download-prod-dbt-state.sh /tmp/dbt/prod
+dbt build
 --target pr
 -s state:modified+
 --defer
