@@ -102,7 +102,7 @@ run_id=$(cat response.json | jq -r '.data.id')
 
 #### Option 2 - Download from your own storage
 
-use your own script to download the state from your opwn storage.
+Use your own script to download the state from your storage.
 
 ```bash
 download-prod-dbt-state.sh /tmp/dbt/prod
