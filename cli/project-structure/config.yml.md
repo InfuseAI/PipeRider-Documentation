@@ -111,6 +111,8 @@ By default, profiling views is not enabled. To allow PipeRider to profile views,
 include_views: true
 ```
 
+### Table settings
+
 #### Add table descriptions
 
 Add table and column descriptions which will be shown on your PipeRider report.
