@@ -1,17 +1,21 @@
+---
+description: Start uploading reports to PipeRider Cloud
+---
+
 # Get Started
 
 ## PipeRider Cloud features
+
+With a PipeRider Cloud account you can upload reports from PipeRider CLI and access the following features:
 
 * Share reports online
 * Compare profiling reports online
 * View time-series data for certain metrics
 * Create monitoring alerts and forward alert notifications to email or Slack
 
-## How PipeRider Cloud works
+Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually (see below).
 
-PipeRider Cloud works by uploading reports via PipeRider CLI. Reports can be configured to automatically upload, or can be uploaded manually (see below).
-
-## Access PipeRider Cloud
+## How to access PipeRider Cloud
 
 ### Prerequisites
 
@@ -25,7 +29,7 @@ A verification email will be send to your email address. Follow the link in the 
 
 ### Log in
 
-Reports are added to PipeRider Cloud via PipeRider CLI. To enable report uploading you need to add your API Token to PipeRider CLI.
+Reports are uploaded to PipeRider Cloud via PipeRider CLI. To enable report uploading you need to add your API Token to PipeRider CLI.
 
 #### Obtain your API Token
 
