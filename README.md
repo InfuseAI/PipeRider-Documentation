@@ -12,15 +12,15 @@ By coupling data profiling with data assertions, PipeRider provides a platform f
 
 PipeRider has the following main features:
 
-* [Generate an HTML Report](how-to-guides/generate-report.md) featuring your data profile and data assertion test results ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/run-0.15.1/index.html))
-* [Compare two reports](how-to-guides/compare-reports.md) to understand how your data has changed over time ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/comparison-0.15.1/index.html))
+* [Generate an HTML Report](how-to-guides/generate-report.md) featuring your data profile and data assertion test results ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/run-0.16.0/index.html))
+* [Compare two reports](how-to-guides/compare-reports.md) to understand how your data has changed over time ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/comparison-0.16.0/index.html))
 * Test your data with data assertions:
   * Built-in [data assertions](cli/data-quality-assertions/assertion-configuration.md)
   * Extensible through [custom assertions](cli/data-quality-assertions/custom-assertions.md)
   * Auto-generated data assertions
 * Currently supports [Postgres](cli/supported-data-sources/postgres-connector.md), [Snowflake](cli/supported-data-sources/snowflake-connector.md), SQLite, [BigQuery](cli/supported-data-sources/bigquery-connector.md), [Redshift](cli/supported-data-sources/redshift-connector.md), [DuckDB](cli/supported-data-sources/duckdb-connector.md), [CSV](cli/supported-data-sources/csv-connector.md), and [Parquet](cli/supported-data-sources/parquet-connector.md).
 * Zero-config [support for dbt](cli/dbt-integration.md) projects
-* Automation through [GitHub Actions](how-to-guides/github-action.md), [save reports in S3](how-to-guides/aws-s3-+-github-ci.md)
+* Automation through [GitHub Actions](broken-reference), [save reports in S3](broken-reference)
 
 Read more about the [concepts](concepts.md) behind PipeRider:
 

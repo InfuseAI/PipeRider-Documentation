@@ -38,7 +38,7 @@
 
 ***
 
-* [Changelog (v0.15.1)](https://github.com/InfuseAI/piperider/releases/tag/v0.15.1)
+* [Changelog (v0.16.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.16.0)
 
 ## Cloud (Beta)
 

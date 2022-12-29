@@ -12,15 +12,17 @@ An example `config.yml` file for a Postgres project:
 <strong>- name: salesData
 </strong>  type: postgres
 
-# profiler:
+profiler:
 #   table:
 #     # the maximum row count to profile. (Default unlimited)
 #     limit: 1000000
-#     duplicateRows: false   
+#     duplicateRows: false
 
 # The tables to include/exclude
 # includes: []
 # excludes: []
+# Include views or not
+# include_views: true
 
 # tables:
 #   my-table-name:
@@ -32,7 +34,8 @@ An example `config.yml` file for a Postgres project:
 #         description: "this is a column description"
 
 telemetry:
-  id: ABC123</code></pre>
+  id: ABC123
+</code></pre>
 
 The `config.yml` file is created when a new project is initialized, and stores the following information for your PipeRider project.
 
@@ -99,6 +102,16 @@ excludes: [stg_raw_sales]
 {% hint style="info" %}
 An empty array means no tables are specified. To profile all tables, leave these options commented.
 {% endhint %}
+
+#### Profile views
+
+By default, profiling views is not enabled. To allow PipeRider to profile views, uncomment the following line:
+
+```
+include_views: true
+```
+
+### Table settings
 
 #### Add table descriptions
 

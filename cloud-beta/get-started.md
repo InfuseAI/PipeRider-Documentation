@@ -1,31 +1,57 @@
+---
+description: Start uploading reports to PipeRider Cloud
+---
+
 # Get Started
 
 ## PipeRider Cloud features
+
+With a PipeRider Cloud account you can upload reports from PipeRider CLI and access the following features:
 
 * Share reports online
 * Compare profiling reports online
 * View time-series data for certain metrics
 * Create monitoring alerts and forward alert notifications to email or Slack
 
-## How PipeRider Cloud works
+Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually (see below).
 
-PipeRider Cloud works by uploading reports via PipeRider CLI. Reports can be configured to automatically upload, or can be uploaded manually (see below).
-
-## Access PipeRider Cloud
+## How to access PipeRider Cloud
 
 ### Prerequisites
 
-In order to access PipeRider Cloud, you are first required to [install PipeRider CLI](../cli/install-piperider.md).&#x20;
+In order to upload reports to PipeRider Cloud, you are first required to [install PipeRider CLI](../cli/install-piperider.md).&#x20;
 
-### Log in/Sign up
+### Sign up
 
-Currently, the log in and sign method is the same. Use the following command to log in/sign up to PipeRider Cloud.&#x20;
+To sign up for PipeRider Cloud account please visit the [Sign Up](https://cloud.piperider.io/signup) page and fill out the form.
+
+A verification email will be send to your email address. Follow the link in the verification email to complete your account set up.
+
+### Log in
+
+Reports are uploaded to PipeRider Cloud via PipeRider CLI. To enable report uploading you need to add your API Token to PipeRider CLI.
+
+#### Obtain your API Token
+
+An API token can be obtained from your PipeRider Cloud profile page.
+
+[Sign in](https://cloud.piperider.io/signin), or [Sign up](https://cloud.piperider.io/signup), at PipeRider Cloud. Once logged in, click the account drop-down at the top right and then click `Profile`.
+
+<figure><img src="../.gitbook/assets/profile-dropdown.png" alt=""><figcaption><p>Select Profile from the user account drop-down</p></figcaption></figure>
+
+From your Profile, click the `Copy` button next to your token at the bottom to copy your API token to the clipboard.
+
+<figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
+
+#### Log into the PipeRider Cloud from the CLI
+
+From the command line, use the following command to log into PipeRider Cloud.
 
 ```bash
 piperider cloud login
 ```
 
-Enter your email address when prompted.
+Enter your email address and API token when prompted.
 
 {% code overflow="wrap" %}
 ```
@@ -33,15 +59,11 @@ $ piperider cloud login
 Please provide available email account to login
 [?] Email address: support@piperider.io
 Please paste the api token from magic link. The link has been sent to your email address.
-[?] API token:
+[?] API token: abc123
 ```
 {% endcode %}
 
-**Follow the link in your email** to obtain your API token.
-
-<figure><img src="../.gitbook/assets/piperider-profile-fs8 (1).png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
-
-Copy the API Token and paste into the terminal. If your log in was successful, you'll see your User Profile details:
+If your log in was successful, you'll see your User Profile details:
 
 ```
 [?] API token: abc123
@@ -62,26 +84,25 @@ Please select default behavior for auto upload
 [Config] Default auto upload behavior is set to True
 ```
 
-If you selected yes, the `auto_upload` configuration option will be set to `true` in your PipeRider configuration file `~/.piperider/profile.yml`
+Your API token and default upload settings are stored in your PipeRider profile `~/.piperider/profile.yml`
 
 {% code title="~/.piperider/profile.yml" %}
 ```yaml
 user_id: user123
 ...
-...
-api_token: ABC123
+api_token: abc123
 cloud_config:
   auto_upload: true
 ```
 {% endcode %}
 
 {% hint style="info" %}
-If _Auto-upload_ is enabled, PipeRider CLI will upload every report automatically during `piperider run`
+If `auto_upload` is enabled, PipeRider CLI will automatically upload every report during `piperider run`
 {% endhint %}
 
 ## Verify PipeRider Cloud connection
 
-Verify your connection to PipeRider Cloud by running the diagnose command.
+Verify your connection to PipeRider Cloud by running the diagnose command from inside a PipeRider project.
 
 ```
 piperider diagnose
