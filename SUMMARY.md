@@ -3,6 +3,9 @@
 * [Introduction](README.md)
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
+
+## Links
+
 * [PipeRider on GitHub](https://github.com/infuseai/piperider)
 * [PipeRider Blog](https://blog.piperider.io)
 
