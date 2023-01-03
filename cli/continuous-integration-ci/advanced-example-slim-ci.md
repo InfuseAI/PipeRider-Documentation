@@ -132,41 +132,38 @@ piperider run \
   -o /tmp/piperider/pr
 ```
 
-### 3. Download the Production PipeRider report
+### 3. Compare the Production and PR reports
 
-#### Option 1 - Download the Production report from PipeRider Cloud
+Compare data profile reports from Production and PR environments on PipeRider Cloud, or locally.
 
-Use your PipeRider Cloud API token to download the production report.
+#### Option 1 - Compare reports on PipeRider Cloud
+
+Since PipeRider v0.16.0, it is possible to create comparison reports on PipeRider Cloud without needing to first download the base report.
+
+Specify the `datasource` names for  `--base` and `--target` , and the summary.md file will be downloaded to the specified location.
+
+```
+piperider cloud compare-reports \
+  --base datasource:jaffle_shop \
+  --target datasource:jaffle_shop_pr \
+  --summary-file /tmp/piperider/comparison/summary.md \
+  --tables-from target-only
+```
+
+#### Option 2 - Download the Production report to compare reports locally
+
+It is also possible to download the `--base` (production) report from your own storage and compare it locally.&#x20;
 
 ```bash
-curl -X GET \
-	-H "Authorization: Bearer $PIPERIDER_CLOUD_TOKEN_ID" \
-  "https://cloud.piperider.io/api/projects/$PIPERIDER_CLOUD_PROJECT_ID/reports?datasource=jaffle_shop" > response.json
-base_report_id=$(cat response.json | jq -r '.[-1].id')
-mkdir -p /tmp/piperider/prod/
-curl -X GET \
-  -H "Authorization: Bearer $PIPERIDER_CLOUD_TOKEN_ID" \
-  "https://cloud.piperider.io/api/projects/$PIPERIDER_CLOUD_PROJECT_ID/reports/$base_report_id" | jq -r '.report_content' > /tmp/piperider/prod/run.json
-```
-
-#### Option 2 - Download the Production report from your own storage
-
-```
 download-prod-report.sh /tmp/piperider/prod
-```
 
-### 4. Compare the Production and PR reports
-
-Use the `compare-reports` command to compare the Production and PR environment reports.
-
-```bash
 piperider compare-reports \
-         --base /tmp/piperider/prod/run.json \
-         --target /tmp/piperider/pr/run.json \
-         -o /tmp/piperider/comparison
+  --base /tmp/piperider/prod/run.json \
+  --target /tmp/piperider/pr/run.json \
+  -o /tmp/piperider/comparison
 ```
 
-### 5. Post the data profile diff to your PR comment
+### 4. Post the data profile diff to your PR comment
 
 #### Option 1 - Use a 3rd-party Action
 
@@ -185,23 +182,17 @@ piperider compare-reports \
 post-comparison-summary.sh /tmp/piperider/comparison/summary.md
 ```
 
-### 6. Store the Comparison Report
+### 5. Store the Comparison Report
 
-In addition to the data profile diff Markdown file, PipeRider also outputs a full comparison report. As above, you can as store this as an artifact, or upload to your own storage.
+In addition to the data profile diff Markdown file, PipeRider also outputs a full comparison report. As above, you can as store this as an artifact or upload to your own storage.
 
-#### Option 1 - Store the comparison report as a GitHub action artifact
+#### Option 1 - Store the comparison on PipeRider cloud
 
-```
-# GitHub workflow snippet
-- name: Create run artifact
-      run: zip -r comparison-report.zip /tmp/piperider/comparison
+If the comparison report was created using PipeRider Cloud, then the report will be immediately available to view in your account on the PipeRider Cloud website.
 
-- name: Upload profiling result
-      uses: actions/upload-artifact@v3
-      with:
-        name: comparison-report-artifact
-        path: comparison-report.zip
-```
+The comparison summary that was generated in the previous step, and added to the PR comment, also contains deep links to the corresponding report pages on PipeRider Cloud.
+
+<figure><img src="../../.gitbook/assets/piperider-comparison-summary-fs8.png" alt=""><figcaption><p>PipeRider data profile comparison summary</p></figcaption></figure>
 
 #### Option 2 - Upload to your own storage
 
