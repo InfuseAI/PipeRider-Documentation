@@ -186,7 +186,7 @@ post-comparison-summary.sh /tmp/piperider/comparison/summary.md
 
 ### 5. Store the Comparison Report
 
-In addition to the data profile diff Markdown file, PipeRider also outputs a full comparison report. As above, you can as store this as an artifact, or upload to your own storage.
+In addition to the data profile diff Markdown file, PipeRider also outputs a full comparison report. As above, you can as store this as an artifact or upload to your own storage.
 
 #### Option 1 - Store the comparison on PipeRider cloud
 
