@@ -1,2 +1,3 @@
 redirects:
   quick-start: cli/quick-start.md
+  how-to/github-action: cli/continuous-integration-ci/README.md
