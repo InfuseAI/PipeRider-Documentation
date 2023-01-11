@@ -18,7 +18,7 @@
 
 * [Installation](cli/install-piperider.md)
 * [Quick Start](cli/quick-start.md)
-* [dbt Integration](cli/dbt-integration/README.md)
+* [dbt Integration](cli/dbt-integration.md)
   * [Metrics](cli/dbt-integration/metrics.md)
 * [Command Reference](cli/piperider-cli.md)
 * [Project Structure](cli/project-structure/README.md)

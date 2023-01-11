@@ -69,3 +69,57 @@ With PipeRider's compare reports feature, you're also able to compare metrics be
 <figure><img src="../../.gitbook/assets/piperider_compare-business-metrics.png" alt=""><figcaption><p>Compare metrics</p></figcaption></figure>
 
 ### Compatibility
+
+PipeRider supports the follow dbt metric properties.
+
+| Field               | Support                                                 |
+| ------------------- | ------------------------------------------------------- |
+| name                | yes                                                     |
+| model               | yes                                                     |
+| label               | yes                                                     |
+| description         | yes                                                     |
+| calculation\_method | count, count\_distinct, sum, average, min, max, derived |
+| expression          | yes                                                     |
+| timestamp           | yes                                                     |
+| time\_grains        | yes                                                     |
+| dimensions          | Dimensions are currently not shown on metric charts     |
+| window              | No. Support for 'window' is coming soon                 |
+
+{% hint style="warning" %}
+Metrics that use the 'window' property are currently **not** supported and will not be queried. Support for 'window' is will be added in an upcoming release.
+{% endhint %}
+
+### How do metrics affect the number of queries performed?
+
+dbt metric files serve only to define the metrics, the way metrics are queried depends on the application.
+
+PipeRider queries each `time_grain` except `all_time` and, as `dimensions` are currently not considered, this results in a **maximum of 5 queries per metric**.
+
+For instance, given the following metric, PipeRider would perform three queries: `month`, `quarter`, and `year`.
+
+```yaml
+metrics:
+  - name: new_customers
+    label: New Customers
+    model: ref('dim_customers')
+    calculation_method: count_distinct
+    expression: user_id 
+    timestamp: signup_date
+    time_grains: [month, quarter, year, all_time]
+    dimensions: [country, city]
+```
+
+### Time grain range
+
+PipeRider uses the following maximum ranges for each time\_grain.
+
+| time\_grain | start\_date                   |
+| ----------- | ----------------------------- |
+| day         | current date - 30 days        |
+| week        | current week - 12 weeks       |
+| month       | current month - 12 months     |
+| quarter     | current quarter - 10 quarters |
+| year        | current year - 10 years       |
+
+
+

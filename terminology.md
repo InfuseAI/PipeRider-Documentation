@@ -37,7 +37,7 @@ Types of connector and data source integrations:
 
 * [Postgress Connector](cli/supported-data-sources/postgres-connector.md)
 * [SnowFlake Connector](cli/supported-data-sources/snowflake-connector.md)
-* [dbt Integration](cli/dbt-integration/)
+* [dbt Integration](cli/dbt-integration.md)
 
 ### Credentials file
 
