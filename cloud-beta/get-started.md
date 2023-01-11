@@ -41,7 +41,7 @@ An API token can be obtained from your PipeRider Cloud profile page.
 
 From your Profile, click the `Copy` button next to your token at the bottom to copy your API token to the clipboard.
 
-<figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/piperider-profile-fs8 (1).png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
 
 #### Log into the PipeRider Cloud from the CLI
 

@@ -63,7 +63,7 @@ As mentioned above, in addition to the production schema,  there is another 'PR'
 
 Corresponding to the dbt profile setup, PipeRider also needs additional data sources to link to the separate dbt profiles, dev, pr, and prod.&#x20;
 
-For initial dbt project configuration please refer to the [dbt integration](../dbt-integration.md) page. Additional data sources must be manually added to the PipeRider config:
+For initial dbt project configuration please refer to the [dbt integration](../dbt-integration/) page. Additional data sources must be manually added to the PipeRider config:
 
 {% code title=".piperider/config.yml" %}
 ```yaml
