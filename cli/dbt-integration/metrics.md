@@ -64,7 +64,7 @@ piperider run --dbt-state target/
 
 ### View metrics in your PipeRider Report
 
-Metrics can be accessed by click the `Business Metrics` in the left sidebar of your report.
+Metrics can be accessed by click the `Business Metrics` icon in the left sidebar of your report.
 
 <figure><img src="../../.gitbook/assets/click_business-metrics.png" alt=""><figcaption><p>Click the Business Metrics icon to view metric charts</p></figcaption></figure>
 
