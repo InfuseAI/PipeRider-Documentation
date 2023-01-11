@@ -12,7 +12,13 @@ description: Using dbt Metrics with PipeRider
 
 For PipeRider to see your metrics, you must add the `piperider` tag to the metric definition yaml file in your dbt project.&#x20;
 
-Add the following line to the metrics you wish to track in PipeRider:
+Add the following line to the metrics you wish to track in PipeRider:.
+
+```
+tags: ['piperider']
+```
+
+For example:
 
 {% code title="models/marts/<metric>.yml" %}
 ```yaml
@@ -91,9 +97,9 @@ Metrics that use the 'window' property are currently **not** supported and will 
 
 ### How do metrics affect the number of queries performed?
 
-dbt metric files serve only to define the metrics, the way metrics are queried depends on the application.
+dbt metric files serve only to _define_ the metrics, the way metrics are queried depends on the application.
 
-PipeRider queries each `time_grain` except `all_time` and, as `dimensions` are currently not considered, this results in a **maximum of 5 queries per metric**.
+PipeRider queries each `time_grain` _except_ `all_time` and, as `dimensions` are currently not considered, this results in a **maximum of 5 queries per metric**.
 
 For instance, given the following metric, PipeRider would perform three queries: `month`, `quarter`, and `year`.
 
