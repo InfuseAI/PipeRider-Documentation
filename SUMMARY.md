@@ -19,6 +19,7 @@
 * [Installation](cli/install-piperider.md)
 * [Quick Start](cli/quick-start.md)
 * [dbt Integration](cli/dbt-integration.md)
+  * [Metrics](cli/dbt-integration/metrics.md)
 * [Command Reference](cli/piperider-cli.md)
 * [Project Structure](cli/project-structure/README.md)
   * [Config.yml](cli/project-structure/config.yml.md)
@@ -41,7 +42,7 @@
 
 ***
 
-* [Changelog (v0.16.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.16.0)
+* [Changelog (v0.17.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.17.0)
 
 ## Cloud (Beta)
 

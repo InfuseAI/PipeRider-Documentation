@@ -41,7 +41,7 @@ An API token can be obtained from your PipeRider Cloud profile page.
 
 From your Profile, click the `Copy` button next to your token at the bottom to copy your API token to the clipboard.
 
-<figure><img src="../.gitbook/assets/piperider-profile-fs8.png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/piperider-profile-fs8 (1).png" alt=""><figcaption><p>PipeRider User Profile</p></figcaption></figure>
 
 #### Log into the PipeRider Cloud from the CLI
 
@@ -190,3 +190,25 @@ Click _Share_ to toggle the sharing and gain the sharable URL.![](../.gitbook/as
 View/Edit the profile and retrieve the token again.
 
 <figure><img src="../.gitbook/assets/cloud_profile (2).png" alt=""><figcaption><p>User Profile</p></figcaption></figure>
+
+
+
+### Delete your account
+
+To delete your account, and all associated data and reports, click the **Delete User Account** button at the bottom of your [User Profile](https://cloud.piperider.io/settings/profile) page.
+
+<figure><img src="../.gitbook/assets/delete-user-account-button.png" alt=""><figcaption><p>Click the Delete User Account button</p></figcaption></figure>
+
+You will be prompted to enter your account email to confirm you really want to delete the account. Click **Delete User Account** to initiate your account deletion.
+
+<figure><img src="../.gitbook/assets/delete-account_enter-email.png" alt=""><figcaption><p>Enter the email address associated with your account</p></figcaption></figure>
+
+You will be prompted to take the survey, click the **Let's Go** button to start the survey (it's only three questions).
+
+<figure><img src="../.gitbook/assets/delete-account-survey.png" alt=""><figcaption><p>Complete the survey to finalize your account deletion</p></figcaption></figure>
+
+Once the survey is complete your account will be deleted and you will receive and confirmation email.
+
+{% hint style="info" %}
+Please note that your account and data is not deleted until the survey has been submitted
+{% endhint %}
