@@ -2,7 +2,7 @@ redirects:
   quick-start: cli/quick-start.md
   how-to/github-action: cli/continuous-integration-ci/README.md
   project-structure/config.yml: cli/project-structure/config.yml.md 
-  how-to/compare-reports: cli/piperider-cli#compare-reports
+  how-to/compare-reports: cli/piperider-cli.md#compare-reports
   piperider-cli: cli/piperider-cli
   data-quality-assertions/assertion-configuration: cli/data-quality-assertions/assertion-configuration
   data-quality-assertions/custom-assertions: cli/data-quality-assertions/custom-assertions
