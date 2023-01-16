@@ -1,4 +1,4 @@
 redirects:
   quick-start: cli/quick-start.md
   how-to/github-action: cli/continuous-integration-ci/README.md
-  project-structure/config.yml: cli/project-structure/config.yml 
+  project-structure/config.yml: cli/project-structure/config.yml.md 
