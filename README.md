@@ -12,8 +12,8 @@ By coupling data profiling with data assertions, PipeRider provides a platform f
 
 PipeRider has the following main features:
 
-* [Generate an HTML Report](how-to-guides/generate-report.md) featuring your data profile and data assertion test results ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/run-0.17.0/index.html))
-* [Compare two reports](how-to-guides/compare-reports.md) to understand how your data has changed over time ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/comparison-0.17.0/index.html))
+* [Generate an HTML Report](how-to-guides/generate-report.md) featuring your data profile and data assertion test results ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/run-0.17.1/index.html))
+* [Compare two reports](how-to-guides/compare-reports.md) to understand how your data has changed over time ([interactive sample](https://piperider-github-readme.s3.ap-northeast-1.amazonaws.com/comparison-0.17.1/index.html))
 * Test your data with data assertions:
   * Built-in [data assertions](cli/data-quality-assertions/assertion-configuration.md)
   * Extensible through [custom assertions](cli/data-quality-assertions/custom-assertions.md)
