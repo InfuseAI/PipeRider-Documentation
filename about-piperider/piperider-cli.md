@@ -10,7 +10,7 @@ description: PipeRider commands and related options.
 piperider init [options]
 ```
 
-`init` will lead you through configuring a new data project according to the type of the data source selected. Refer to [Supported Data Sources](supported-data-sources/) for details of available connectors.
+`init` will lead you through configuring a new data project according to the type of the data source selected. Refer to [Supported Data Sources](../code-review-for-data/install-piperider/supported-data-sources/) for details of available connectors.
 
 Initializing a project will generate a `.piperider` directory containing project configuration files such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs under your project directory.
 
@@ -35,7 +35,7 @@ The `run` command performs the following functions.
 * Generate a report in `.piperider/outputs`.
 
 {% hint style="info" %}
-Check [assertion configuration](data-quality-assertions/assertion-configuration.md) for more information on built-in assertions
+Check [assertion configuration](broken-reference) for more information on built-in assertions
 {% endhint %}
 
 | Option           | Argument   | Description                                                                                                                                         |

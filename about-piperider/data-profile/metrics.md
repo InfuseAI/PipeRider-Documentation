@@ -4,15 +4,13 @@ description: >-
   the following metrics.
 ---
 
-# Metrics
+# Profiling Statistics
 
 Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type (see [Schema](metrics.md#schema) below).
 
-Built-in assertions are not availabe for every metric. When a built-in assertion becomes available for a metric, a check mark (✔) will be added the to `Assertion Available` column.
+If a statistic is not available, please ensure you are using the latest version of PipeRider. Check the `PipeRider Version` column to see when a statistic was introduced.
 
-If a metric is not available, please ensure you are using the latest version of PipeRider. Check the `PipeRider Version` column to see when a metric was introduced.
-
-## Table metrics
+## Table statistics
 
 Data profile metrics that describe the tables in a data source.
 
@@ -30,12 +28,12 @@ Data profile metrics that describe the tables in a data source.
 | `duplicate_rows_p` \*\* | The percentage of duplicate rows in the table                                   | ✔                   | 0.11.0            |
 
 {% hint style="info" %}
-\* These metrics are only available for certain data sources. Please refer to the **platform dependent metrics** table below for availability information.\
+\* These metrics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
 \
-\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../project-structure/config.yml.md#profiler-settings).
+\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
 
-### Platform dependent metrics
+### Platform dependent statistics
 
 | Profile Field  | Snowflake | BigQuery | Redshift |
 | -------------- | --------- | -------- | -------- |
@@ -44,7 +42,7 @@ Data profile metrics that describe the tables in a data source.
 | `last_altered` | ✔         | ✔        |          |
 | `freshness`    | ✔         | ✔        |          |
 
-## Column metrics
+## Column statistics
 
 Data profile metrics that describe data at the column level. Depending on the column type, different metrics will be produced.
 
@@ -63,7 +61,7 @@ The following metrics are produced based on the generic type that has been appli
 
 The composition of the data contained within a column.
 
-<figure><img src="../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
 
 | Profile Field       | Description                                                                                                          | Column Type      | Assertion Available | PipeRider Version |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------- | ----------------- |
@@ -120,7 +118,7 @@ The text length statistics of a column.
 
 The uniqueness of a column.
 
-<figure><img src="../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
 
 | Profile Field      | Description                           | Column Type                        | Assertion Available | PipeRider Version |
 | ------------------ | ------------------------------------- | ---------------------------------- | ------------------- | ----------------- |

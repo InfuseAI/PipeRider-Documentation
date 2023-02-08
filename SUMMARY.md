@@ -4,50 +4,46 @@
 * [Terminology](terminology.md)
 * [Concepts](concepts.md)
 
-## Links
+## Code review for data
 
-* [PipeRider on GitHub](https://github.com/infuseai/piperider)
-* [PipeRider Blog](https://blog.piperider.io)
-
-## Data Profile and Metrics
-
-* [Data Profile](data-profile-and-metrics/data-profile.md)
-* [Metrics](data-profile-and-metrics/metrics.md)
-
-## CLI
-
-* [Installation](cli/install-piperider.md)
-* [Quick Start](cli/quick-start.md)
-* [dbt Integration](cli/dbt-integration.md)
-  * [Metrics](cli/dbt-integration/metrics.md)
-* [Command Reference](cli/piperider-cli.md)
-* [Project Structure](cli/project-structure/README.md)
-  * [Config.yml](cli/project-structure/config.yml.md)
-* [Supported Data Sources](cli/supported-data-sources/README.md)
-  * [BigQuery Connector](cli/supported-data-sources/bigquery-connector.md)
-  * [CSV Connector](cli/supported-data-sources/csv-connector.md)
-  * [DuckDB Connector](cli/supported-data-sources/duckdb-connector.md)
-  * [Postgres Connector](cli/supported-data-sources/postgres-connector.md)
-  * [Parquet Connector](cli/supported-data-sources/parquet-connector.md)
-  * [Redshift Connector](cli/supported-data-sources/redshift-connector.md)
-  * [Snowflake Connector](cli/supported-data-sources/snowflake-connector.md)
-* [Data Quality Assertions](cli/data-quality-assertions/README.md)
-  * [Assertion Files](cli/data-quality-assertions/assertion-yaml.md)
-  * [Built-In Assertions](cli/data-quality-assertions/assertion-configuration.md)
-  * [Custom Assertions](cli/data-quality-assertions/custom-assertions.md)
-* [Continuous Integration (CI)](cli/continuous-integration-ci/README.md)
-  * [Initial Configuration](cli/continuous-integration-ci/initial-configuration.md)
-  * [Basic Example](cli/continuous-integration-ci/basic-example.md)
-  * [Advanced Example (Slim CI)](cli/continuous-integration-ci/advanced-example-slim-ci.md)
-
-***
-
-* [Changelog (v0.18.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.18.0)
+* [Installation](code-review-for-data/install-piperider/README.md)
+  * [Supported Data Sources](code-review-for-data/install-piperider/supported-data-sources/README.md)
+    * [BigQuery Connector](code-review-for-data/install-piperider/supported-data-sources/bigquery-connector.md)
+    * [CSV Connector](code-review-for-data/install-piperider/supported-data-sources/csv-connector.md)
+    * [DuckDB Connector](code-review-for-data/install-piperider/supported-data-sources/duckdb-connector.md)
+    * [Postgres Connector](code-review-for-data/install-piperider/supported-data-sources/postgres-connector.md)
+    * [Parquet Connector](code-review-for-data/install-piperider/supported-data-sources/parquet-connector.md)
+    * [Redshift Connector](code-review-for-data/install-piperider/supported-data-sources/redshift-connector.md)
+    * [Snowflake Connector](code-review-for-data/install-piperider/supported-data-sources/snowflake-connector.md)
+* [Quick Start](code-review-for-data/quick-start.md)
+* [dbt Integration](code-review-for-data/dbt-integration/README.md)
+  * [Metrics](code-review-for-data/dbt-integration/metrics.md)
+* [Continuous Integration (CI)](code-review-for-data/continuous-integration-ci/README.md)
+  * [Initial Configuration](code-review-for-data/continuous-integration-ci/initial-configuration.md)
+  * [Basic Example](code-review-for-data/continuous-integration-ci/basic-example.md)
+  * [Advanced Example (Slim CI)](code-review-for-data/continuous-integration-ci/advanced-example-slim-ci.md)
 
 ## Cloud (Beta)
 
 * [Get Started](cloud-beta/get-started.md)
 * [Notifications](cloud-beta/notifications.md)
+
+## About PipeRider
+
+* [Data Profile](about-piperider/data-profile/README.md)
+  * [Profiling Statistics](about-piperider/data-profile/metrics.md)
+* [Project Structure](about-piperider/project-structure/README.md)
+  * [Config.yml](about-piperider/project-structure/config.yml.md)
+* [Command Reference](about-piperider/piperider-cli.md)
+
+## Links
+
+* [PipeRider on GitHub](https://github.com/infuseai/piperider)
+* [PipeRider Blog](https://blog.piperider.io)
+
+***
+
+* [Changelog (v0.18.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.18.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
