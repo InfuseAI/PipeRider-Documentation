@@ -26,8 +26,8 @@ PipeRider automatically compares your data to highlight the difference in impact
 
 ## Getting Started
 
-Use our [Quick Start](code-review-for-data/quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
+Use our [Quick Start](cli/quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
 
-{% content-ref url="code-review-for-data/quick-start.md" %}
-[quick-start.md](code-review-for-data/quick-start.md)
+{% content-ref url="cli/quick-start.md" %}
+[quick-start.md](cli/quick-start.md)
 {% endcontent-ref %}
