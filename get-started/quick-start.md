@@ -12,7 +12,7 @@ Ensure you have the following installed:
 
 ### 1. Install PipeRider
 
-Navigate to your dbt folder, and install pipeirder.
+Navigate to your dbt folder, and install PipeRider.
 
 ```bash
 pip install piperider
@@ -89,15 +89,21 @@ Markdown summaries and reports are stored in `.piperider/comparisons/<timestamp>
 
 ### More things you can do
 
-* Make use of dbt features
-  * metrics
-  * custom schema
-  * custom database
-* Automate PipeRider in your CI/CD using GitHub Actions or PipeRider Cloud
+* Integrate [dbt metrics](../usage/run/metrics.md)
+* Specifiy which models to profile
+* Try [PipeRider Cloud](../piperider-cloud/get-started.md)
 
 ### We'd love to hear from you
 
 We're constantly striving to make PipeRider meet your needs. If you have feedback that could help make it better, we'd love to hear from you.
+
+#### Join the PIpeRider Discord community
+
+Get help using PipeRider and chat withother users in our Discord community:
+
+[InfuseAI PipeRider Discord](http://discord.gg/328QcXnkKD)
+
+#### Send feedback via the CLI
 
 To send your feedback, use the following command to submit feedback via the CLI.
 

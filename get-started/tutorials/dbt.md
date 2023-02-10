@@ -2,7 +2,7 @@
 description: How to use PipeRider with dbt
 ---
 
-# dbt Integration
+# Jaffle Shop
 
 Integrating PipeRider into your existing dbt project is easy due to PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
 
@@ -24,7 +24,7 @@ Once configured, or if you already have a dbt project you want to use, proceed t
 
 ## 2. Install and add PipeRider to the Jaffle Shop project
 
-PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../reference/supported-data-sources/).
+PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../../reference/supported-data-sources/).
 
 ### Install PipeRider
 
@@ -87,7 +87,7 @@ Next step:
 ```
 
 {% hint style="info" %}
-See [config.yml](../reference/project-structure/config.yml.md) for details of available settings
+See [config.yml](../../reference/project-structure/config.yml.md) for details of available settings
 {% endhint %}
 
 ### Verify PipeRider configuration
@@ -173,9 +173,9 @@ Next step:
 
 The report contains detailed data profile metrics for each of the profiled tables.&#x20;
 
-<figure><img src="../.gitbook/assets/jaffle-shop-tables.png" alt=""><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-tables.png" alt=""><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/jaffle-shop-profile.png" alt=""><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-profile.png" alt=""><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
 
 ## 4. Use dbt node selection with PipeRider
 
@@ -258,11 +258,11 @@ Report generated in  /path/to/jaffle-shop/.piperider/outputs/latest/index.html
 
 The resulting report contains the data profile for the three resources on the node we specified in the last step.
 
-<figure><img src="../.gitbook/assets/piperider-report-dbt-state.png" alt=""><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-dbt-state.png" alt=""><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
 
 The Assertions tab also contains the dbt test results.
 
-<figure><img src="../.gitbook/assets/piperider-report-dbt-tests.png" alt=""><figcaption><p>PipeRider Report with dbt Test Results</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-dbt-tests.png" alt=""><figcaption><p>PipeRider Report with dbt Test Results</p></figcaption></figure>
 
 ## 5. Next step: Data assertions
 
@@ -327,7 +327,7 @@ This time, because assertion files exist, PipeRider will profile the data source
 
 The generated report will show the failed assertion at the top.
 
-<figure><img src="../.gitbook/assets/piperider-report-failed-assertion.png" alt=""><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion.png" alt=""><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
 
 Check the [Data Quality Assertions](broken-reference) section for more information on PipeRider's suite of data assertions.
 

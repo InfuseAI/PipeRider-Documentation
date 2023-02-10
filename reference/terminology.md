@@ -20,7 +20,7 @@ Types of connector and data source integrations:
 
 * [Postgress Connector](supported-data-sources/postgres-connector.md)
 * [SnowFlake Connector](supported-data-sources/snowflake-connector.md)
-* [dbt Integration](../get-started/dbt.md)
+* [dbt Integration](../get-started/tutorials/dbt.md)
 
 ### Credentials file
 

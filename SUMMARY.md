@@ -7,7 +7,17 @@
 
 * [Installation](get-started/installation.md)
 * [Quick Start](get-started/quick-start.md)
-* [dbt Integration](get-started/dbt.md)
+* [Tutorials](get-started/tutorials/README.md)
+  * [Jaffle Shop](get-started/tutorials/dbt.md)
+
+## Using PipeRider <a href="#usage" id="usage"></a>
+
+* [Run](usage/run/README.md)
+  * [Profiling](usage/run/profile/README.md)
+    * [Profiling Statistics](usage/run/profile/metrics.md)
+  * [Metrics](usage/run/metrics.md)
+  * [Assertions](usage/run/assertions.md)
+* [Compare](usage/compare.md)
 
 ## Continuous Integration <a href="#ci" id="ci"></a>
 
@@ -15,14 +25,6 @@
 * [Initial Configuration](ci/initial-configuration.md)
 * [Basic Example](ci/basic-example.md)
 * [Advanced Example (Slim CI)](ci/advanced-example-slim-ci.md)
-
-## Using PipeRider <a href="#usage" id="usage"></a>
-
-* [Run](usage/run/README.md)
-  * [Metrics](usage/run/metrics.md)
-  * [Profile](usage/run/profile/README.md)
-    * [Profiling Statistics](usage/run/profile/metrics.md)
-* [Compare](usage/compare.md)
 
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
