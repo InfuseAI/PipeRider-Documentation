@@ -30,7 +30,7 @@ Data profile metrics that describe the tables in a data source.
 {% hint style="info" %}
 \* These metrics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
 \
-\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../../project-structure/config.yml.md#profiler-settings).
+\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../../../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
 
 ### Platform dependent statistics
@@ -61,7 +61,7 @@ The following metrics are produced based on the generic type that has been appli
 
 The composition of the data contained within a column.
 
-<figure><img src="../../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
 
 | Profile Field       | Description                                                                                                          | Column Type      | Assertion Available | PipeRider Version |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------- | ----------------- |
@@ -118,7 +118,7 @@ The text length statistics of a column.
 
 The uniqueness of a column.
 
-<figure><img src="../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
 
 | Profile Field      | Description                           | Column Type                        | Assertion Available | PipeRider Version |
 | ------------------ | ------------------------------------- | ---------------------------------- | ------------------- | ----------------- |

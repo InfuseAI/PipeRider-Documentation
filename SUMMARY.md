@@ -1,40 +1,48 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Terminology](terminology.md)
 * [Concepts](concepts.md)
 
-## Code review for data <a href="#get-started" id="get-started"></a>
+## Getting Started <a href="#get-started" id="get-started"></a>
 
-* [Installation](get-started/install-piperider.md)
-* [Supported Data Sources](get-started/supported-data-sources/README.md)
-  * [BigQuery Connector](get-started/supported-data-sources/bigquery-connector.md)
-  * [CSV Connector](get-started/supported-data-sources/csv-connector.md)
-  * [DuckDB Connector](get-started/supported-data-sources/duckdb-connector.md)
-  * [Postgres Connector](get-started/supported-data-sources/postgres-connector.md)
-  * [Parquet Connector](get-started/supported-data-sources/parquet-connector.md)
-  * [Redshift Connector](get-started/supported-data-sources/redshift-connector.md)
-  * [Snowflake Connector](get-started/supported-data-sources/snowflake-connector.md)
+* [Installation](get-started/installation.md)
 * [Quick Start](get-started/quick-start.md)
-* [dbt Integration](get-started/dbt-integration/README.md)
-  * [Metrics](get-started/dbt-integration/metrics.md)
-* [Continuous Integration (CI)](get-started/continuous-integration-ci/README.md)
-  * [Initial Configuration](get-started/continuous-integration-ci/initial-configuration.md)
-  * [Basic Example](get-started/continuous-integration-ci/basic-example.md)
-  * [Advanced Example (Slim CI)](get-started/continuous-integration-ci/advanced-example-slim-ci.md)
+* [dbt Integration](get-started/dbt.md)
 
-## Cloud (Beta) <a href="#cloud" id="cloud"></a>
+## Continuous Integration <a href="#ci" id="ci"></a>
 
-* [Get Started](cloud/get-started.md)
-* [Notifications](cloud/notifications.md)
+* [Introduction](ci/introduction.md)
+* [Initial Configuration](ci/initial-configuration.md)
+* [Basic Example](ci/basic-example.md)
+* [Advanced Example (Slim CI)](ci/advanced-example-slim-ci.md)
 
-## About PipeRider
+## Using PipeRider <a href="#usage" id="usage"></a>
 
-* [Data Profile](about-piperider/data-profile/README.md)
-  * [Profiling Statistics](about-piperider/data-profile/metrics.md)
-* [Project Structure](about-piperider/project-structure/README.md)
-  * [Config.yml](about-piperider/project-structure/config.yml.md)
-* [Command Reference](about-piperider/piperider-cli.md)
+* [Run](usage/run/README.md)
+  * [Metrics](usage/run/metrics.md)
+  * [Profile](usage/run/profile/README.md)
+    * [Profiling Statistics](usage/run/profile/metrics.md)
+* [Compare](usage/compare.md)
+
+## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
+
+* [Get Started](piperider-cloud/get-started.md)
+* [Notifications](piperider-cloud/notifications.md)
+
+## Reference
+
+* [Command Reference](reference/piperider-cli.md)
+* [Project Structure](reference/project-structure/README.md)
+  * [Config.yml](reference/project-structure/config.yml.md)
+* [Terminology](reference/terminology.md)
+* [Supported Data Sources](reference/supported-data-sources/README.md)
+  * [BigQuery Connector](reference/supported-data-sources/bigquery-connector.md)
+  * [CSV Connector](reference/supported-data-sources/csv-connector.md)
+  * [DuckDB Connector](reference/supported-data-sources/duckdb-connector.md)
+  * [Postgres Connector](reference/supported-data-sources/postgres-connector.md)
+  * [Parquet Connector](reference/supported-data-sources/parquet-connector.md)
+  * [Redshift Connector](reference/supported-data-sources/redshift-connector.md)
+  * [Snowflake Connector](reference/supported-data-sources/snowflake-connector.md)
 
 ## Links
 

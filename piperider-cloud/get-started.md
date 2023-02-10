@@ -19,7 +19,7 @@ Reports can be configured to automatically upload each time PipeRider is ran, or
 
 ### Prerequisites
 
-In order to upload reports to PipeRider Cloud, you are first required to [install PipeRider CLI](../get-started/install-piperider.md).&#x20;
+In order to upload reports to PipeRider Cloud, you are first required to [install PipeRider CLI](../get-started/installation.md).&#x20;
 
 ### Sign up
 

@@ -41,7 +41,7 @@ piperider init
 PipeRider will automatically fetch the data source connections from `dbt_project.yml` file. These can be overwritten in the `.piperider/config.yml`
 
 {% hint style="info" %}
-The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [project files](../about-piperider/project-structure/) will be stored, including data source configuration, data quality assertions, data profiling information, and generated report files.
+The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [project files](../reference/project-structure/) will be stored, including data source configuration, data quality assertions, data profiling information, and generated report files.
 {% endhint %}
 
 After initialization, you can verify the configuration by running `piperider diagnose`
@@ -75,7 +75,7 @@ You then can compare the branch of your new Pull Request against the main branch
 piperider compare-reports --last
 ```
 
-`\\The --last option automatically selects the last two reports for comparison. Omit this option to manually select the reports you would like to compare.\\`
+The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
 
 You can then view the downstream impact of your new model changes in the HTML report.
 

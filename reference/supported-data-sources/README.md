@@ -15,4 +15,4 @@ PipeRider supports the following data sources by installing the relevant connect
 * [Snowflake](snowflake-connector.md)
 * SQLite (Enabled by default)
 
-If the connector you require is not available, please [email us](mailto:support@piperider.io) to suggest it, or use the [PipeRider feedback](../../../about-piperider/piperider-cli.md#submit-feedback) command.
+If the connector you require is not available, please [email us](mailto:support@piperider.io) to suggest it, or use the [PipeRider feedback](../piperider-cli.md#submit-feedback) command.

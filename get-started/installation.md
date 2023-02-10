@@ -28,7 +28,7 @@ PipeRider includes the **SQLite** connector by default. The following connectors
 * **Redshift**
 * **Snowflake**
 
-Use the following command to install PipeRider with your [required connector](../../cli/data-sources/supported-data-sources/):
+Use the following command to install PipeRider with your [required connector](../cli/data-sources/supported-data-sources/):
 
 ```
 pip install -U 'piperider[required_connector]'
@@ -44,7 +44,7 @@ pip install -U 'piperider[postgres,snowflake]'
 Don't forget the single quotes when installing PipeRider with a data source connector
 {% endhint %}
 
-We are also developing more connectors, please visit [supported data sources](supported-data-sources/) and you are welcome to [submit a GitHub issue ](https://github.com/InfuseAI/piperider/issues)if you desire any new data sources.
+We are also developing more connectors, please visit [supported data sources](../reference/supported-data-sources/) and you are welcome to [submit a GitHub issue ](https://github.com/InfuseAI/piperider/issues)if you desire any new data sources.
 
 ### View installed PipeRider version
 
@@ -58,4 +58,4 @@ piperider version
 piperider --help
 ```
 
-Check the PipeRider [Command Reference](../../about-piperider/piperider-cli.md) for a full list of commands and options.
+Check the PipeRider [Command Reference](../reference/piperider-cli.md) for a full list of commands and options.
