@@ -4,8 +4,6 @@ description: Install PipeRider with the BigQuery connector and connect to a data
 
 # BigQuery Connector
 
-## BigQuery Connector
-
 ### Installation
 
 Ensure you have already installed the [gcloud CLI](https://cloud.google.com/sdk/docs/install), and then install PipeRider with the BigQuery connector.

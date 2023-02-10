@@ -39,12 +39,12 @@
 * [Terminology](reference/terminology.md)
 * [Supported Data Sources](reference/supported-data-sources/README.md)
   * [BigQuery Connector](reference/supported-data-sources/bigquery-connector.md)
-  * [CSV Connector](reference/supported-data-sources/csv-connector.md)
-  * [DuckDB Connector](reference/supported-data-sources/duckdb-connector.md)
-  * [Postgres Connector](reference/supported-data-sources/postgres-connector.md)
-  * [Parquet Connector](reference/supported-data-sources/parquet-connector.md)
-  * [Redshift Connector](reference/supported-data-sources/redshift-connector.md)
   * [Snowflake Connector](reference/supported-data-sources/snowflake-connector.md)
+  * [Redshift Connector](reference/supported-data-sources/redshift-connector.md)
+  * [Postgres Connector](reference/supported-data-sources/postgres-connector.md)
+  * [DuckDB Connector](reference/supported-data-sources/duckdb-connector.md)
+  * [CSV Connector](reference/supported-data-sources/csv-connector.md)
+  * [Parquet Connector](reference/supported-data-sources/parquet-connector.md)
 
 ## Links
 
