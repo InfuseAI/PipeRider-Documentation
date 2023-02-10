@@ -20,8 +20,8 @@ Enables PipeRider to connect to a variety of data sources, such as SQLite, Postg
 
 Types of connector and data source integrations:
 
-* [Postgress Connector](get-started/install-piperider/supported-data-sources/postgres-connector.md)
-* [SnowFlake Connector](get-started/install-piperider/supported-data-sources/snowflake-connector.md)
+* [Postgress Connector](get-started/supported-data-sources/postgres-connector.md)
+* [SnowFlake Connector](get-started/supported-data-sources/snowflake-connector.md)
 * [dbt Integration](get-started/dbt-integration/)
 
 ### Credentials file

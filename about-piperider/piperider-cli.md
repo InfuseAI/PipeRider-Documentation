@@ -10,7 +10,7 @@ description: PipeRider commands and related options.
 piperider init [options]
 ```
 
-`init` will lead you through configuring a new data project according to the type of the data source selected. Refer to [Supported Data Sources](../get-started/install-piperider/supported-data-sources/) for details of available connectors.
+`init` will lead you through configuring a new data project according to the type of the data source selected. Refer to [Supported Data Sources](../get-started/supported-data-sources/) for details of available connectors.
 
 Initializing a project will generate a `.piperider` directory containing project configuration files such as `.piperider/config.yml` , `.piperider/credentials.yml` and others according to user inputs under your project directory.
 

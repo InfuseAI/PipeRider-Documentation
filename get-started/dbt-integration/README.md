@@ -24,7 +24,7 @@ Once configured, or if you already have a dbt project you want to use, proceed t
 
 ## 2. Install and add PipeRider to the Jaffle Shop project
 
-PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../install-piperider/supported-data-sources/).
+PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../supported-data-sources/).
 
 ### Install PipeRider
 
