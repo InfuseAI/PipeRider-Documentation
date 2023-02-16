@@ -28,7 +28,7 @@ PipeRider supports the following data connectors
 PipeRider requires python 3.7+
 {% endhint %}
 
-### Initialize a PipeRider project
+### Initialize a project
 
 Go to your dbt project, and initalize PipeRider.
 
