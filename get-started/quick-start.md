@@ -60,27 +60,27 @@ PipeRider is designed for code review. You can initiate the comparison in your l
 
 1. **Run in the base branch.** Usually, it's the main branch
 
-```
-git switch main
-dbt build
-piperider run
-```
+    ```
+    git switch main
+    dbt build
+    piperider run
+    ```
 
 2. **Run in the target branch.** Usually, it's the PR branch for code reivew.
 
-```
-git switch features/my-awesome-feature
-dbt build
-piperider run
-```
+    ```
+    git switch features/my-awesome-feature
+    dbt build
+    piperider run
+    ```
 
 3. **Generate the comparison report**. You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report
 
-```bash
-piperider compare-reports --last
-```
+    ```bash
+    piperider compare-reports --last
+    ```
 
-The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
+    The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
 
 4. **Post the markdown summary to the PR comment.** Aside from an HTML report, PipeRider geerate a Markdown summary. You can add this summary of the data changes to your Pull Request comment so that your reviewer can review with impact information and merge with confidence :tada:
 
@@ -88,4 +88,4 @@ The `--last` option automatically selects the last two data profiles for compari
 
 * Integrate [dbt metrics](run/metrics.md)
 * Specify which models to profile
-* Try [PipeRider Cloud](../piperider-cloud/get-started.md)
+* Try [PipeRider Cloud](piperider-cloud/get-started.md)
