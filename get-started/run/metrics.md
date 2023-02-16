@@ -6,7 +6,7 @@ description: Query dbt Metrics with PipeRider
 
 [dbt Metrics](https://docs.getdbt.com/docs/build/metrics) provide a way to define key metrics as time series data. Using PipeRider reports you can query, visualize, compare your time-series metrics
 
-### Define the metrics
+## Define the metrics
 
 To define a metric, please see the [dbt metric document](https://docs.getdbt.com/docs/build/metrics#defining-a-metric) to see how to define a metric in your dbt project.
 
@@ -16,7 +16,7 @@ For PipeRider to see your metrics, you must add the `piperider` tag to the metri
 tags: ['piperider']
 ```
 
-For example:
+### Simple Metric
 
 {% code title="models/marts/<metric>.yml" %}
 ```yaml
@@ -37,6 +37,8 @@ metrics:
 ```
 {% endcode %}
 
+### Derived Metric
+
 PipeRider also supports querying derived metrics by adding the PipeRider tag, E.g.
 
 {% code title="models/marts/<derived-metric>.yml" %}
@@ -52,7 +54,7 @@ metrics:
 ```
 {% endcode %}
 
-### Query the metrics
+## Query the metrics
 
 Now, when you run PipeRider. metrics will be queried and included in your PipeRider report. But before it, remember to update the manifest artifact. The easiest way is to run `dbt compile`
 
@@ -100,7 +102,7 @@ PipeRider uses the following maximum ranges for each time\_grain.
 | quarter     | quarterly result for last 10 quarters |
 | year        | yearly result for last 10 years       |
 
-### Comparison reports
+## Compare metrics
 
 With PipeRider's compare reports feature, you're also able to compare metrics between reports, which is particularly useful when analyzing the impact of data model changes.
 
@@ -108,7 +110,7 @@ With PipeRider's compare reports feature, you're also able to compare metrics be
 
 
 
-### Dbt Metric Compatibility
+## Dbt Metric Compatibility
 
 PipeRider supports the follow dbt metric properties.
 
