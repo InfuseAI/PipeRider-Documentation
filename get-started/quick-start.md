@@ -25,7 +25,7 @@ PipeRider supports the following data connectors
 | duckdb     | `pip install 'piperider[duckdb]'`    |
 
 {% hint style="info" %}
-PipeRider require python 3.7+
+PipeRider requires python 3.7+
 {% endhint %}
 
 ### Initialize a PipeRider project
