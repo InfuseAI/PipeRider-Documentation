@@ -66,6 +66,9 @@ PipeRider is designed for code review. You can initiate the comparison in your l
     dbt build
     piperider run
     ```
+
+    \
+    
 2.  **Run in the target branch.** Usually, it's the PR branch for code review.\
 
 
@@ -74,6 +77,9 @@ PipeRider is designed for code review. You can initiate the comparison in your l
     dbt build
     piperider run
     ```
+
+    \
+
 3.  **Generate the comparison report**. You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report\
 
 
