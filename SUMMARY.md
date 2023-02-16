@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Concepts](concepts.md)
 
 ## Getting Started <a href="#get-started" id="get-started"></a>
 
