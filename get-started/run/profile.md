@@ -1,12 +1,16 @@
 ---
-description: >-
-  PipeRider analyzes the data source and produces a data profile that contains
-  the following metrics.
+description: The data profile provides data about your data
 ---
 
-# Profiling Statistics
+# Profiling
 
-Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type (see [Schema](metrics.md#schema) below).
+The data profiler is at the core of how PipeRider works. PipeRider helps you understand the structure of your data by providing statistical metrics and data distribution information about the table and columns in your data source. When paired with data assertions, the data profile provides a way to check the quality and reliability of your data.
+
+Each time you run PipeRider, a new data profile is created and stored in the folder for that run. E.g. `.piperider/outputs/<run-name>/run.json`
+
+## Profiling Statistics
+
+Data profile metrics are divided between table and column level, and column is further analyzed depending on the schema type and generic type (see [Schema](profile.md#schema) below).
 
 If a statistic is not available, please ensure you are using the latest version of PipeRider. Check the `PipeRider Version` column to see when a statistic was introduced.
 
@@ -28,9 +32,9 @@ Data profile metrics that describe the tables in a data source.
 | `duplicate_rows_p` \*\* | The percentage of duplicate rows in the table                                   | ✔                   | 0.11.0            |
 
 {% hint style="info" %}
-\* These metrics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
+\* These statistics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
 \
-\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../../../project-structure/config.yml.md#profiler-settings).
+\*\* Table-level duplicate row metrics are not enabled by default. To enable this settings please refer to the [Profiler Settings](../../project-structure/config.yml.md#profiler-settings).
 {% endhint %}
 
 ### Platform dependent statistics
@@ -55,13 +59,13 @@ In addition to logging the **schema type** of a column as defined in the data so
 | `schema_type` | The column type defined in the data source                                                 | All         | All               |
 | `type`        | A generic schema type of `string`, `integer`, `numeric`, `datetime`, `boolean`, or `other` | All         | All               |
 
-The following metrics are produced based on the generic type that has been applied to the column.
+The following statistics are produced based on the generic type that has been applied to the column.
 
 ### Data composition
 
 The composition of the data contained within a column.
 
-<figure><img src="../../../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available metrics</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/metrics-composition.png" alt=""><figcaption><p>The generic type of a column determines the available statistics</p></figcaption></figure>
 
 | Profile Field       | Description                                                                                                          | Column Type      | Assertion Available | PipeRider Version |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------- | ----------------- |
@@ -118,7 +122,7 @@ The text length statistics of a column.
 
 The uniqueness of a column.
 
-<figure><img src="../../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
 
 | Profile Field      | Description                           | Column Type                        | Assertion Available | PipeRider Version |
 | ------------------ | ------------------------------------- | ---------------------------------- | ------------------- | ----------------- |

@@ -89,7 +89,7 @@ Markdown summaries and reports are stored in `.piperider/comparisons/<timestamp>
 
 ### More things you can do
 
-* Integrate [dbt metrics](../usage/run/metrics.md)
+* Integrate [dbt metrics](run/metrics.md)
 * Specifiy which models to profile
 * Try [PipeRider Cloud](../piperider-cloud/get-started.md)
 

@@ -5,19 +5,14 @@
 
 ## Getting Started <a href="#get-started" id="get-started"></a>
 
-* [Installation](get-started/installation.md)
 * [Quick Start](get-started/quick-start.md)
+* [Run](get-started/run/README.md)
+  * [Profiling](get-started/run/profile.md)
+  * [Metrics](get-started/run/metrics.md)
+  * [Assertions](get-started/run/assertions.md)
+* [Compare](get-started/compare.md)
 * [Tutorials](get-started/tutorials/README.md)
   * [Jaffle Shop](get-started/tutorials/dbt.md)
-
-## Using PipeRider <a href="#usage" id="usage"></a>
-
-* [Run](usage/run/README.md)
-  * [Profiling](usage/run/profile/README.md)
-    * [Profiling Statistics](usage/run/profile/metrics.md)
-  * [Metrics](usage/run/metrics.md)
-  * [Assertions](usage/run/assertions.md)
-* [Compare](usage/compare.md)
 
 ## Continuous Integration <a href="#ci" id="ci"></a>
 
