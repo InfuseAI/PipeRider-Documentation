@@ -1,5 +1,5 @@
 ---
-description: Query dbt Metrics with PipeRider
+description: Query the metric
 ---
 
 # Metrics

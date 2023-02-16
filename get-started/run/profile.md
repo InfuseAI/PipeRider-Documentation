@@ -1,5 +1,5 @@
 ---
-description: The data profile provides data about your data
+description: Profile the model
 ---
 
 # Profiling

@@ -1,3 +1,7 @@
+---
+description: Assert the profiling statistic result
+---
+
 # Assertions
 
 Assertions are the data testing solution in PipeRider. It asserts if the profiling result fulfill a certain rule. There are two type of assertions
@@ -51,9 +55,9 @@ movies:  # Table Name
         - RECOMMENDED
 ```
 
-### Profiling-based Assertions
+### Profile Assertions
 
-Profiling-based assertions are the most common way to define an assertion. You can assert if the [profiling statistic](profile.md) result fulfill certain rule.&#x20;
+Profile assertions are the most common way to define an assertion. You can assert if the [profiling statistic](profile.md) fulfill certain rule.&#x20;
 
 <details>
 
