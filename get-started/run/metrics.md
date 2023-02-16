@@ -8,6 +8,8 @@ description: Query the metric
 
 ## Define the metrics
 
+### Example metric
+
 To define a metric, please see the [dbt metric document](https://docs.getdbt.com/docs/build/metrics#defining-a-metric) to see how to define a metric in your dbt project.
 
 For PipeRider to see your metrics, you must add the `piperider` tag to the metric definition
@@ -16,7 +18,7 @@ For PipeRider to see your metrics, you must add the `piperider` tag to the metri
 tags: ['piperider']
 ```
 
-### Simple Metric
+The full metric definition
 
 {% code title="models/marts/<metric>.yml" %}
 ```yaml
@@ -37,12 +39,12 @@ metrics:
 ```
 {% endcode %}
 
-### Derived Metric
+### Derived metric
 
 PipeRider also supports querying derived metrics by adding the PipeRider tag, E.g.
 
 {% code title="models/marts/<derived-metric>.yml" %}
-```
+```yaml
 metrics:
   - name: average_revenue_per_customer
     label: Average Revenue Per Customer
@@ -56,7 +58,7 @@ metrics:
 
 ## Query the metrics
 
-Now, when you run PipeRider. metrics will be queried and included in your PipeRider report. But before it, remember to update the manifest artifact. The easiest way is to run `dbt compile`
+After defining the metric, when you run PipeRider metrics will be queried and included in your PipeRider report. But before it, remember to update the manifest artifact. The easiest way is to run `dbt compile`
 
 ```bash
 dbt compile
@@ -72,7 +74,7 @@ View metrics in your PipeRider Report. Metric query results can be accessed by c
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-#### How do metrics affect the number of queries performed?
+### How do metrics affect the number of queries performed?
 
 dbt metric files serve only to _define_ the metrics, the way metrics are queried depends on the application.
 
@@ -102,6 +104,18 @@ PipeRider uses the following maximum ranges for each time\_grain.
 | quarter     | quarterly result for last 10 quarters |
 | year        | yearly result for last 10 years       |
 
+### Debug the Metric
+
+When developing a new metric, it is time-consuming to run through all the piperider run to test the metric result. A tip is that use the `dbt list` to test a specific metric. So development cycle would be
+
+1. Update the dbt yaml file
+2. Update the dbt manifest by `dbt compile`
+3. Run piperider by dbt list output
+
+```sh
+dbt list -s metric:active_authors | piperider run --dbt-list     
+```
+
 ## Compare metrics
 
 With PipeRider's compare reports feature, you're also able to compare metrics between reports, which is particularly useful when analyzing the impact of data model changes.
@@ -110,7 +124,7 @@ With PipeRider's compare reports feature, you're also able to compare metrics be
 
 
 
-## Dbt Metric Compatibility
+## Dbt metrics compatibility
 
 PipeRider supports the follow dbt metric properties.
 
