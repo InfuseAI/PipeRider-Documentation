@@ -1,21 +1,15 @@
 ---
-description: Get PipeRider up and running quickly with this sample data quality project.
+description: Integrate PipeRider with your dbt project in 5 mins
 ---
 
 # Quick Start
 
-### Before you start
-
-* Python 3.7+
-
-Ensure you have the following installed:
-
-### 1. Install PipeRider
+### Install PipeRider
 
 Navigate to your dbt folder, and install PipeRider.
 
 ```bash
-pip install piperider
+pip install 'piperider[<connector>]'
 ```
 
 PipeRider supports the following data connectors
@@ -30,7 +24,11 @@ PipeRider supports the following data connectors
 | csv        | `pip install 'piperider[csv]'`       |
 | duckdb     | `pip install 'piperider[duckdb]'`    |
 
-### 2. Initialize PipeRider
+{% hint style="info" %}
+PipeRider require python 3.7+
+{% endhint %}
+
+### Initialize a PipeRider project
 
 Go to your dbt project, and initalize PipeRider.
 
@@ -38,15 +36,15 @@ Go to your dbt project, and initalize PipeRider.
 piperider init
 ```
 
-PipeRider will automatically fetch the data source connections from `dbt_project.yml` file. These can be overwritten in the `.piperider/config.yml`
+PipeRider will automatically find the [dbt project file](https://docs.getdbt.com/reference/dbt\_project.yml) `dbt_project.yml` and initiate PipeRider.
 
 {% hint style="info" %}
-The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [project files](../reference/project-structure/) will be stored, including data source configuration, data quality assertions, data profiling information, and generated report files.
+The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [piperider project files](../reference/project-structure/) will be stored, including data source configuration, data quality assertions, data profiling information, and generated report files.
 {% endhint %}
 
-After initialization, you can verify the configuration by running `piperider diagnose`
+After initialization, you can verify the configuration by running `piperider diagnose`. It will use the [dbt profile file](https://docs.getdbt.com/reference/profiles.yml) `profiles.yml` to connect to the data warehouse.&#x20;
 
-### 3. Run PipeRider
+### Run PipeRider
 
 Collect profiling statistics by using
 
@@ -54,22 +52,29 @@ Collect profiling statistics by using
 piperider run
 ```
 
-The `run` command will analyze the data source and generate profiling statics \[LINK TO PAGE] such as `row_count`, `non_nulls`, `min`, `max`, `distinct`, quantiles, `topk` and more.
+The `run` command will generate profiling statistics for your table models, such as `row_count`, `non_nulls`, `min`, `max`, `distinct`, quantiles, `topk` and more.
 
-The results are stored in `.piperider/outputs/<run-name>/run.json`
+### Compare two branches
 
-### 4. Run PipeRider in another branch
+PipeRider is designed for code review. You can initiate the comparison in your local environment.
 
-Go to another branch (e.g. the `main` branch) to compare your local changes. Then, run the following:
+1. **Run in the base branch.** Usually, it's the main branch
 
 ```
+git switch main
 dbt build
-piperider run --open
+piperider run
 ```
 
-### 5. Compare your changes
+2. **Run in the target branch.** Usually, it's the PR branch for code reivew.
 
-You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report
+```
+git switch features/my-awesome-feature
+dbt build
+piperider run
+```
+
+3. **Generate the comparison report**. You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report
 
 ```bash
 piperider compare-reports --last
@@ -77,36 +82,10 @@ piperider compare-reports --last
 
 The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
 
-You can then view the downstream impact of your new model changes in the HTML report.
+4. **Post the markdown summary to the PR comment.** Aside from an HTML report, PipeRider geerate a Markdown summary. You can add this summary of the data changes to your Pull Request comment so that your reviewer can review with impact information and merge with confidence :tada:
 
-![](https://i.imgur.com/jXQVTpk.png)
-
-### 6. Add a markdown summary
-
-Aside from an HTML report, PipeRider creates a Markdown summary. You can add this summary of the data changes to your Pull Request so that your reviewer can merge with confidence.
-
-Markdown summaries and reports are stored in `.piperider/comparisons/<timestamp>`
-
-### More things you can do
+### What's next
 
 * Integrate [dbt metrics](run/metrics.md)
-* Specifiy which models to profile
+* Specify which models to profile
 * Try [PipeRider Cloud](../piperider-cloud/get-started.md)
-
-### We'd love to hear from you
-
-We're constantly striving to make PipeRider meet your needs. If you have feedback that could help make it better, we'd love to hear from you.
-
-#### Join the PIpeRider Discord community
-
-Get help using PipeRider and chat withother users in our Discord community:
-
-[InfuseAI PipeRider Discord](http://discord.gg/328QcXnkKD)
-
-#### Send feedback via the CLI
-
-To send your feedback, use the following command to submit feedback via the CLI.
-
-```
-piperider feedback
-```
