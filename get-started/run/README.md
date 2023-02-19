@@ -14,8 +14,8 @@ It will
 
 * Connect to the data warehouse by the default target in your dbt profile
 * Profile all table models in the dbt project and produce the schema information and profiling statistic
+* Query the dbt metrics
 * Assert profiling statistic to check if the value fulfill certain rule
-* Query the dbt metrics if any dbt metrics marked as piperider
 
 ### Select data source
 
@@ -53,7 +53,7 @@ dbt list --select <selector> | piperider run --dbt-list
 
 **Use tag to mark selected models**
 
-dbt allows to add [tag](https://docs.getdbt.com/reference/resource-configs/tags) on dbt reousrces. You can configure to add tag on the dbt config
+dbt allows to add [tag](https://docs.getdbt.com/reference/resource-configs/tags) on dbt resources. You can configure to add tag on the dbt config
 
 ```yaml
 #.piperider/config.yml
@@ -63,7 +63,7 @@ dbt:
   tag: 'piperider'
 ```
 
-Once the `dbt.tag` is provided, PipeRider profile only models with the specified tag
+Once the `dbt.tag` is set, PipeRider profile only models with the specified tag
 
 ```
 #models/staging/stg_payments.sql
@@ -105,10 +105,10 @@ piperider run --run-results
 
 After the execution of a run, two artifacts are generated under the output directory
 
-* Json run result (`run.json`)
-* Html report (index.html)
+* JSON run result (`run.json`)
+* HTML report (`index.html`)
 
-The default output directory is under `.piperider/outputs/<datasource>-<datetime>/` . For ease of use, the latest run would also be sym-linked to `.piperider/outputs/latest/`
+The default output directory is located at `.piperider/outputs/<datasource>-<datetime>/` . For ease of use, the latest run would also be sym-linked by `.piperider/outputs/latest`
 
 You can use the `--output` to change the output directory
 
@@ -116,11 +116,11 @@ You can use the `--output` to change the output directory
 piperider run --output /tmp/myrun
 ```
 
-## Advanced: Query metric
+## Advanced: Query metrics
 
-To be added
+Metrics&#x20;
 
-## Advanced: Define assertion
+## Advanced: Define assertions
 
 To be added
 
