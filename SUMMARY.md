@@ -29,7 +29,7 @@
 
 * [Command Reference](reference/piperider-cli.md)
 * [Project Structure](reference/project-structure/README.md)
-  * [Config.yml](reference/project-structure/config.yml.md)
+  * [config.yml](reference/project-structure/config.yml.md)
 * [Terminology](reference/terminology.md)
 * [Supported Data Sources](reference/supported-data-sources/README.md)
   * [BigQuery Connector](reference/supported-data-sources/bigquery-connector.md)
