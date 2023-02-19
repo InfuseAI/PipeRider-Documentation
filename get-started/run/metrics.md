@@ -4,20 +4,21 @@ description: Query the metric
 
 # Metrics
 
-A metric is an aggregation over a table. In general, it consist
+A metric is an aggregation over a table. In general, it consists
 
 * The model to aggregate. (e.g. `Events`)
 * The column to aggregate (e.g. `user_id`)
 * The aggregation method (e.g. distinct count)
 * The time column to group (e.g. `event_time`)
-* The time granularity method to group (e.g. `group by date_trunc('DAY', event_time)`
-* (Optional) Additional dimension to group (e.g. `group by country`)
+* The time granularity for grouping (e.g. `group by date_trunc('DAY', event_time)`
+* The dimension for grouping (e.g. `group by country`)
+* The filters
 
-So if we can define a **active users** by
+So if we can define a **daily active users** metric as
 
-> The **distinct count** of the `user_id` group by **day** of the `event_time` of the `Events` table.
+> The **daily active user** is the **distinct count** of the `user_id` in the `Events` table, and group the result by the **date** of the `event_time`
 
-The dbt metrics provide a way to define the metrics, and PipeRider implement the query of the metrics according to the dbt metrics definition.
+The dbt metrics provide a way to define the metrics, and PipeRider implements the query of the metrics according to the dbt metrics definition.
 
 ## How to use
 
@@ -76,9 +77,7 @@ View metrics in your PipeRider Report. Metric query results can is shown in the 
 
 ### How PipeRider query the dbt metric
 
-PipeRider queries each `time_grain` _except_ `all_time` and, this results in a **maximum of 5 queries per metric**.
-
-For instance, given the following metric, PipeRider would perform four queries: `daily`, `weekly`,  `monthly`, and `yearly`.
+PipeRider queries each `time_grain` _except_ `all_time.` This results in a **maximum of 5 queries per metric.** For instance, given the following metric, PipeRider would perform four queries: `daily`, `weekly`,  `monthly`, and `yearly` active users.
 
 ```yaml
 metrics:
@@ -95,7 +94,7 @@ metrics:
     tags: ['piperider']
 ```
 
-For each time grains, PipeRider only queries the last n period of the data
+For each time grains, PipeRider only queries the last n periods of the table data
 
 | time\_grain | metric query                          |
 | ----------- | ------------------------------------- |
@@ -107,7 +106,7 @@ For each time grains, PipeRider only queries the last n period of the data
 
 ### How about dimensions?
 
-PipeRider currently support only the default queries. Queries for specific dimensions and other query customization will be added in the future. Tell us if you consider it is super useful for us. It will help us to prioritize them earlier.
+PipeRider currently supports only the default queries. Queries for specific dimensions and other query customization will be added in the future. Tell us if you consider it is super useful for us. It will help us to prioritize them earlier.
 
 ### Run on single metric
 
