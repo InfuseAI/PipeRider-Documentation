@@ -119,13 +119,13 @@ You can use the `--output` to change the output directory
 piperider run --output /tmp/myrun
 ```
 
-## Advanced: Query metrics
+## Advanced: Query the metrics
 
-Metrics&#x20;
+PipeRider is more than a profiler. In a dbt project, especially for analytics purpose project, it's common to have several metrics defined for visualization. (e.g. revenue, active users). PipeRider can query the metrics are visualize it in the run report. For more detail, please see [Metrics](metrics.md).
 
-## Advanced: Define assertions
+## Advanced: Assert the profiling result
 
-To be added
+PipeRider also provides the testing mechanism to assert if the profiling statistics fulfill certain rules. For more detail, please see [Assertions](assertions.md)
 
 
 
