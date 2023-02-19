@@ -91,14 +91,17 @@ PipeRider can also integrate this information, the run will
 
 If the `dbt.tag` is configured in the PipeRider config. PipeRider only run the tagged models which is executed in the latest dbt run.
 
-A use case for the dbt run results integration is leverage the [dbt state and deferral](https://docs.getdbt.com/docs/deploy/about-state)
+A use case for the dbt run results integration is to leverage the [dbt state and deferral](https://docs.getdbt.com/docs/deploy/about-state). Dbt can run only the new and changed model then PipeRider profile only on these changed models.
 
-```
+```bash
 # Run only the new and changed models
-dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
+dbt run \
+   --select result:<status>+ state:modified+ \
+   --defer \
+   --state ./<dbt-artifact-path>
 
 # Run only the excuted models by latest dbt run
-piperider run --run-results
+piperider run --dbt-run-results
 ```
 
 ## Run artifacts
