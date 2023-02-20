@@ -44,7 +44,7 @@ pip install -U 'piperider[postgres,snowflake]'
 Don't forget the single quotes when installing PipeRider with a data source connector
 {% endhint %}
 
-We are also developing more connectors, please visit [supported data sources](broken-reference) and you are welcome to let us know if your desired connector is not listed.
+We are also developing more connectors, please visit [supported data sources](broken-reference/) and you are welcome to let us know if your desired connector is not listed.
 
 ### View installed PipeRider version
 

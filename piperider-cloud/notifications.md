@@ -37,7 +37,7 @@ To set up Slack notifications for PipeRider Cloud, you must first create a `Slac
 
 In PipeRider Cloud, navigate to `Notifications` -> `Settings` and click on the `Add Integration` button.&#x20;
 
-<figure><img src="../.gitbook/assets/piperider-cloud-add-integration-fs8.png" alt=""><figcaption><p>PipeRider Cloud - Add Integration</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/piperider-cloud-add-integration-fs8 (1).png" alt=""><figcaption><p>PipeRider Cloud - Add Integration</p></figcaption></figure>
 
 Copy the `Webhook URL` and `Channel` from your Slack `incoming Webhooks` settings page into the PipeRider `Add Integration` form, as shown in the above image.
 
