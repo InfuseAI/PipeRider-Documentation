@@ -87,7 +87,7 @@ Next step:
 ```
 
 {% hint style="info" %}
-See [config.yml](../../reference/project-structure/config.yml.md) for details of available settings
+See [config.yml](../../reference/project-structure/config.md) for details of available settings
 {% endhint %}
 
 ### Verify PipeRider configuration

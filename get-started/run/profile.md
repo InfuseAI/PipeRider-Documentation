@@ -24,7 +24,7 @@ The data profiler is at the core of how PipeRider works. PipeRider helps you und
 {% hint style="info" %}
 \* These statistics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
 \
-\*\* Table-level duplicate row are not enabled by default. To enable this settings please refer to the [profiler settings](../../reference/project-structure/config.yml.md).
+\*\* Table-level duplicate row are not enabled by default. To enable this settings please refer to the [profiler settings](../../reference/project-structure/config.md).
 {% endhint %}
 
 | Profile Field  | Snowflake | BigQuery | Redshift |
