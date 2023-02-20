@@ -6,4 +6,26 @@ redirects:
   piperider-cli: /reference/piperider-cli.md
   data-quality-assertions/assertion-configuration: get-started/run/assertions.md
   data-quality-assertions/custom-assertions: get-started/run/assertions.md
-  
+  terminology: reference/terminology.md
+  concepts: README.md
+  cli/install-piperider: get-started/quick-start.md
+  cli/quick-start: get-started/quick-start.md
+  cli/dbt-integration: get-started/tutorials/dbt.md
+  cli/dbt-integration/metrics: get-started/run/metrics.md
+  cli/piperider-cli: reference/piperider-cli.md
+  cli/project-structure: reference/project-structure.md
+  cli/project-structure/config.yml: reference/project-structure/config.md
+  cli/supported-data-sources: reference/supported-data-sources/README.md
+  cli/supported-data-sources/bigquery-connector:  reference/supported-data-sources/bigquery-connector.md
+  cli/supported-data-sources/csv-connector: reference/supported-data-sources/csv-connector.md
+  cli/supported-data-sources/duckdb-connector: reference/supported-data-sources/duckdb-connector.md
+  cli/supported-data-sources/postgres-connector: reference/supported-data-sources/postgres-connector.md
+  cli/supported-data-sources/parquet-connector: reference/supported-data-sources/parquet-connector.md
+  cli/supported-data-sources/redshift-connector: reference/supported-data-sources/redshift-connector.md
+  cli/supported-data-sources/snowflake-connector: reference/supported-data-sources/snowflake-connector.md
+  cli/continuous-integration-ci: ci/introduction.md
+  cli/continuous-integration-ci/initial-configuration: ci/initial-configuration.md
+  cli/continuous-integration-ci/basic-example: ci/basic-example.md
+  cli/continuous-integration-ci/advanced-example-slim-ci: ci/advanced-example-slim-ci.md
+  cloud-beta/get-started: piperider-cloud/get-started.md
+  cloud-beta/notifications: piperider-cloud/notifications.md
