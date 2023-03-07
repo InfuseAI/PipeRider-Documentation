@@ -47,7 +47,7 @@
 
 ***
 
-* [Changelog (v0.19.1)](https://github.com/InfuseAI/piperider/releases/tag/v0.19.1)
+* [Changelog (v0.20.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.20.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
