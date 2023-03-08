@@ -13,7 +13,7 @@ With a [PipeRider Cloud](https://cloud.piperider.io) account you can upload repo
 * Compare reports online
 * View time-series data for certain profile statistics
 
-Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually (see below).
+Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually ([see below](get-started.md#how-to-upload-reports-to-piperider-cloud)).
 
 ## Sign up for PipeRider Cloud
 
