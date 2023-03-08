@@ -23,7 +23,6 @@
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
 * [Get Started](piperider-cloud/get-started.md)
-* [Notifications](piperider-cloud/notifications.md)
 
 ## Reference
 
