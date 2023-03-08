@@ -58,36 +58,28 @@ The `run` command will generate profiling statistics for your table models, such
 
 PipeRider is designed for code review. You can initiate the comparison in your local environment.
 
-1.  **Run in the base branch.** Usually, it's the main branch\
-
+1.  **Run in the base branch.** Usually, it's the main branch.
 
     ```
     git switch main
     dbt build
     piperider run
     ```
-
-
-2.  **Run in the target branch.** Usually, it's the PR branch for code review.\
-
+2.  **Run in the target branch.** Usually, it's the PR branch for code review.
 
     ```
     git switch features/my-awesome-feature
     dbt build
     piperider run
     ```
-
-
-3.  **Generate the comparison report**. You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report\
-
+3.  **Generate the comparison report**. You then can compare the branch of your new Pull Request against the main branch and explore the impact of your changes by opening the generated HTML comparison report\\
 
     ```bash
     piperider compare-reports --last
     ```
 
     \
-    The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.\
-
+    The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
 4. **Post the markdown summary to the PR comment.** Aside from an HTML report, PipeRider generate a Markdown summary. You can add this summary of the data changes to your Pull Request comment so that your reviewer can review with impact information and merge with confidence :tada:
 
 ### What's next
