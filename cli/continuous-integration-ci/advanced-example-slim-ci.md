@@ -4,7 +4,7 @@ description: Use dbt state to only build and test the models that have changed
 
 # Advanced Example (Slim CI)
 
-Once you have a data project with many models, and a pull request only involves changing a subset of them, building all models may cost more time and computation than is necessary. This is where the concept of [Slim CI](https://docs.getdbt.com/guides/legacy/best-practices#run-only-modified-models-to-test-changes-slim-ci) comes in useful. &#x20;
+Once you have a data project with many models, and a pull request only involves changing a subset of them, building all models may cost more time and computation than is necessary. This is where the concept of [Slim CI](https://docs.getdbt.com/guides/legacy/best-practices#run-only-modified-models-to-test-changes-slim-ci) comes in useful.
 
 In this Advanced CI workflow setup, we take the advantage of dbt 'state' to prevent unnecessary transformations. Like the [Basic Example](basic-example.md), the Slim CI version has a Production and PR workflow, however, this time dbt 'state' is used to ensure only changed models are transformed and profiled.
 
@@ -16,7 +16,7 @@ In this daily job that transforms source data into transformed models, PipeRider
 
 If you a dbt Cloud and PipeRider Cloud user, follow Option 1 in the steps below to utilize storage from these services. Alternatively, follow Option 2 to use your own storage.
 
-If you choose to use your own storage, here is a good article that explains [how to use Google Cloud Storage wth dbt core](https://www.vantage-ai.com/blog/how-to-use-slim-ci-with-dbt-core). &#x20;
+If you choose to use your own storage, here is a good article that explains [how to use Google Cloud Storage wth dbt core](https://www.vantage-ai.com/blog/how-to-use-slim-ci-with-dbt-core).
 
 ### 1. Run dbt on the Production environment and upload state
 
@@ -40,7 +40,7 @@ upload-prod-dbt-state.sh target/
 
 #### Option 1 - use PipeRider Cloud
 
-Get the artifacts from the dbt job.&#x20;
+Get the artifacts from the dbt job.
 
 ```
 mkdir -p target
@@ -76,8 +76,6 @@ upload-prod-report.sh /tmp/piperider
 {% embed url="https://github.com/InfuseAI/jaffle_shop/blob/main/.github/workflows/production-daily-job-slim-ci.yml" %}
 Production Slim CI Job on Github
 {% endembed %}
-
-
 
 ## PR Job
 
