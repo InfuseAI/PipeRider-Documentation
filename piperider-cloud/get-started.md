@@ -17,7 +17,7 @@ Reports can be configured to automatically upload each time PipeRider is ran, or
 
 ## Sign up for PipeRider Cloud
 
-There are two ways to sign up for PipeRider Cloud, either via the website, or by using PipeRider CLI.&#x20;
+There are two ways to sign up for PipeRider Cloud, either via the website, or by using PipeRider CLI.
 
 It is preferable to sign up via the CLI as this will simultanously create an account and enable you to configure your API key for report uploading.
 
@@ -34,14 +34,14 @@ The PipeRider CLI signup method if geared towards users who want to obtain an AP
 3. Enter your email address.
 4. Open your email account and find the 'welcome' email.
 5. Click the 'Get API Token' button in the email.
-6. Set your account password  by filling out `New Password` and `Confirm New Password` (leave `Current Password` blank), and then click `Update Password`.
+6. Set your account password by filling out `New Password` and `Confirm New Password` (leave `Current Password` blank), and then click `Update Password`.
 7. Copy the API token.
 8. Go back to the command line and paste the API token.
 9. Your account is now created and you are logged in via PipeRider CLI
 
 ### Log in
 
-If you have already created a PipeRider Cloud account and need to log in via the CLI, you need to obtain the API token from your account.&#x20;
+If you have already created a PipeRider Cloud account and need to log in via the CLI, you need to obtain the API token from your account.
 
 1. Navigate to your [PipeRider Cloud profile page](https://cloud.piperider.io/settings/profile).
 2. Copy the Token.
@@ -60,12 +60,12 @@ If successful, your account details will be displayed in the output.
 ──────────────────────────────────────────────────────────────────────────────────
   support@piperider.io   Support       PipeRider    North America      Asia/Taipei
   
-  [Config] Default project is set to 'workspace/default'\
+  [Config] Default project is set to 'workspace/default'
 ```
 
 ### Verify PipeRider Cloud connection
 
-If you need to verify that your current PipeRider Cloud connection settings are valid, run the following command from inside your project:&#x20;
+If you need to verify that your current PipeRider Cloud connection settings are valid, run the following command from inside your project:
 
 ```
 piperider diagnose
@@ -107,7 +107,7 @@ You will be prompted to select the reports you wish to upload from a list.
 
 ### Automatically upload reports
 
-Upload settings are configured in your PipeRider profile, located at  `~/.piperider/profile.yml`.
+Upload settings are configured in your PipeRider profile, located at `~/.piperider/profile.yml`.
 
 To enable autotomatic uploading, add `auto_upload: true` to the `cloud_config` section of your PipeRider profile:
 
@@ -122,7 +122,7 @@ cloud_config:
 ```
 {% endcode %}
 
-If enabled, `auto_upload` will automatically upload reports, without prompt, as they are generated. Such as with `piperider run` or `piperider compare-reports`. &#x20;
+If enabled, `auto_upload` will automatically upload reports, without prompt, as they are generated. Such as with `piperider run` or `piperider compare-reports`.
 
 ## Cloud Overview
 
