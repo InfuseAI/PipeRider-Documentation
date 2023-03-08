@@ -94,4 +94,4 @@ PipeRider is designed for code review. You can initiate the comparison in your l
 
 * Integrate [dbt metrics](run/metrics.md)
 * Specify which models to profile
-* Try [PipeRider Cloud](piperider-cloud/get-started.md)
+* Try [PipeRider Cloud](../piperider-cloud/get-started.md)
