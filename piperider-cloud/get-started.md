@@ -8,10 +8,10 @@ description: Start uploading reports to PipeRider Cloud
 
 With a [PipeRider Cloud](https://cloud.piperider.io) account you can upload reports from PipeRider CLI and access the following features:
 
-* Create workspaces to organize reports and share with team members
-* Share reports online
+* Upload reports automatically
+* Create workspaces to organize reports&#x20;
+* Share reports with team members or publicly
 * Compare reports online
-* View time-series data for certain profile statistics
 
 Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually ([see below](get-started.md#how-to-upload-reports-to-piperider-cloud)).
 
