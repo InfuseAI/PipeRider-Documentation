@@ -30,10 +30,10 @@ PipeRider supports many data sources through connectors. For a full list, please
 
 Install PipeRider with the required connector for the data source you used to configure the Jaffle Shop project in step #1.
 
-For example, to install PipeRider with the Snowflake connector, you would use the following command:
+For example, to install PipeRider with the Postgres connector, you would use the following command:
 
 ```bash
-pip install -U 'piperider[snowflake]'
+pip install -U 'piperider[postgres]'
 ```
 
 ### Initialize PipeRider
