@@ -6,7 +6,7 @@ description: How to use PipeRider with dbt
 
 Integrating PipeRider into your existing dbt project is easy due to PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
 
-The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project as an example of how to use PipeRider with a dbt project.
+The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop) project as an example of how to use PipeRider with a dbt project.
 
 In this guide you will do the following:
 
@@ -18,7 +18,7 @@ In this guide you will do the following:
 
 ## 1. Configure the Jaffle Shop project
 
-Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project.
+Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) repository to install and configure the dbt project.
 
 Once configured, or if you already have a dbt project you want to use, proceed to step #2.
 
@@ -44,43 +44,45 @@ Ensure you are inside the Jaffle Shop project directory, and then run the follow
 piperider init
 ```
 
-PipeRider will auto-detect the dbt project settings and display the contents of  your PipeRider configuration file, located at `.piperider/config.yml`
+PipeRider will auto-detect the dbt project settings and display the contents of your PipeRider configuration file, located at `.piperider/config.yml`
 
 ```
 $ piperider init
-Initialize piperider to path /path/to/jaffle-shop/.piperider
-[ DBT ] Use the existing dbt project file: /path/to/jaffle-shop/dbt_project.yml
+Initialize piperider to path /path/to/jaffle_shop/.piperider
+[ DBT ] Use the existing dbt project file: /path/to/jaffle_shop/dbt_project.yml
 ────────────────────────────────────────────── .piperider/config.yml ───────────────────────────────────────────────
-   1 dataSources:
-   2 - name: jaffle_shop
-   3   type: postgres
-   4   dbt:
-   5     profile: jaffle_shop
-   6     target: dev
-   7     projectDir: .
-   8
-   9 profiler:
-  10 #   table:
-  11 #     # the maximum row count to profile. (Default unlimited)
-  12 #     limit: 1000000
-  13 #     duplicateRows: false
+   1 dataSources: []
+   2 dbt:
+   3   projectDir: .
+   4   # tag: 'piperider'
+   5
+   6 profiler:
+   7 #   table:
+   8 #     # the maximum row count to profile. (Default unlimited)
+   9 #     limit: 1000000
+  10 #     duplicateRows: false
+  11
+  12 telemetry:
+  13   id: abc123
   14
-  15 # The tables to include/exclude
-  16 # includes: []
-  17 # excludes: []
-  18
-  19 # tables:
-  20 #   my-table-name:
-  21 #     # description of the table
-  22 #     description: "this is a table description"
-  23 #     columns:
-  24 #       my-col-name:
-  25 #         # description of the column
-  26 #         description: "this is a column description"
-  27
-  28 telemetry:
-  29   id: abc123
-  30
+
+───────────────────────────────────── Recipe: .piperider/compare/default.yml ────────────────────────────────────────
+   1 base:
+   2   branch: main
+   3   dbt:
+   4     commands:
+   5     - dbt deps
+   6     - dbt build
+   7   piperider:
+   8     command: piperider run
+   9 target:
+  10   dbt:
+  11     commands:
+  12     - dbt deps
+  13     - dbt build
+  14   piperider:
+  15     command: piperider run
+  16
 
 Next step:
   Please execute command 'piperider diagnose' to verify configuration
@@ -103,19 +105,18 @@ $ piperider diagnose
 Diagnosing...
 PipeRider Version: 0.14.0
 Check config files:
-  /path/to/jaffle-shop/.piperider/config.yml: [OK]
+  /path/to/jaffle_shop/.piperider/config.yml: [OK]
 ✅ PASS
 
 Check format of data sources:
-  jaffle_shop: [OK]
+  dev: [OK]
 ✅ PASS
 
 Check connections:
   DBT: postgres > jaffle_shop > dev [OK]
-  Name: jaffle_shop
+  Name: dev
   Type: postgres
   connector: [OK]
-  Available Tables: ['raw_customers', 'orders', 'raw_orders', 'raw_payments', 'customers']
   Connection: [OK]
 ✅ PASS
 
@@ -143,29 +144,22 @@ PipeRider will profile the available tables and output the link for the HTML rep
 
 ```
 $ piperider run
-DataSource: jaffle_shop
-──────────────────────────────────────────────────── Validating ────────────────────────────────────────────────────
+DataSource: dev
+───────────────────────────────────────────────── Validating ──────────────────────────────────────────────────
 everything is OK.
-──────────────────────────────────────────────────── Profiling ─────────────────────────────────────────────────────
-Fetch metadata  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   5/5 0:00:00
+────────────────────────────────────────────────── Profiling ──────────────────────────────────────────────────
+[0/2] METADATA  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   2/2 0:00:00
+[1/2] customers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
+[2/2] orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
+─────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────
 
-[1/5] raw_customers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   3/3 0:00:00
-[2/5] raw_payments  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   4/4 0:00:00
-[3/5] customers     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   7/7 0:00:00
-[4/5] orders        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   9/9 0:00:00
-[5/5] raw_orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   4/4 0:00:00
-───────────────────────────────────────────────────── Summary ──────────────────────────────────────────────────────
+  Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  customers                    7                 0               0
+  orders                       9                 0               0
 
-  Table Name      #Columns Profiled   #Tests Executed   #Tests Failed
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  raw_customers                   3                 0               0
-  raw_payments                    4                 0               0
-  customers                       7                 0               0
-  orders                          9                 0               0
-  raw_orders                      4                 0               0
-
-Generating reports from: /path/to/jaffle-shop/.piperider/outputs/latest/run.json
-Report generated in /path/to/jaffle-shop/.piperider/outputs/latest/index.html
+Generating reports from: /path/to/jaffle_shop/.piperider/outputs/latest/run.json
+Report generated in /path/to/jaffle_shop/.piperider/outputs/latest/index.html
 
 Next step:
   Please execute command 'piperider run' to generate your second report
@@ -186,10 +180,10 @@ PipeRider supports profiling and testing dbt 'state', so it’s possible to use 
 Use dbt node selection to select and build a sub-set of resources.
 
 ```bash
-dbt build -s raw_orders+
+dbt build -s orders+
 ```
 
-dbt will seed, build, and test the `raw_orders` table and any children.
+dbt will seed, build, and test the `orders` table and any children.
 
 ### Run PipeRider on the dbt state
 
@@ -199,70 +193,33 @@ Run PipeRider again, this time specifying the location of the dbt state (the def
 piperider run --dbt-state target
 ```
 
-PipeRider will now only run on the `raw_orders` table, and the two child models, `customers` and `orders`.
+PipeRider will now only run on the `orders` table, and the two child models, `customers` and `orders`.
 
 ```
 $ piperider run --dbt-state target
-DataSource: jaffle_shop
-─────────────────────────────────────────────────── Validating ───────────────────────────────────────────────────
+DataSource: dev
+───────────────────────────────────────────────── Validating ──────────────────────────────────────────────────
 everything is OK.
-─────────────────────────────────────────────────── Profiling ────────────────────────────────────────────────────
-Fetch metadata  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   3/3 0:00:00
-
-[1/3] raw_orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   4/4 0:00:00
-[2/3] customers     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   7/7 0:00:00
-[3/3] orders        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   9/9 0:00:00
-─────────────────────────────────────────────── Assertion Results ────────────────────────────────────────────────
-────────────────────────────────────────────────────── dbt ───────────────────────────────────────────────────────
-
-  Status     Test Subject                  Assertion                                                     Message
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  [  OK  ]   stg_orders.status             accepted_values_stg_orders_status__placed__shipped__comple…
-  [  OK  ]   stg_orders.order_id           not_null_stg_orders_order_id
-  [  OK  ]   stg_orders.order_id           unique_stg_orders_order_id
-  [  OK  ]   customers.customer_id         not_null_customers_customer_id
-  [  OK  ]   customers.customer_id         unique_customers_customer_id
-  [  OK  ]   orders.status                 accepted_values_orders_status__placed__shipped__completed_…
-  [  OK  ]   orders.amount                 not_null_orders_amount
-  [  OK  ]   orders.bank_transfer_amount   not_null_orders_bank_transfer_amount
-  [  OK  ]   orders.coupon_amount          not_null_orders_coupon_amount
-  [  OK  ]   orders.credit_card_amount     not_null_orders_credit_card_amount
-  [  OK  ]   orders.customer_id            not_null_orders_customer_id
-  [  OK  ]   orders.gift_card_amount       not_null_orders_gift_card_amount
-  [  OK  ]   orders.order_id               not_null_orders_order_id
-  [  OK  ]   customers.customer_id         relationships_orders_customer_id__customer_id__ref_custome…
-  [  OK  ]   orders.order_id               unique_orders_order_id
-
-──────────────────────────────────────────────────── Summary ─────────────────────────────────────────────────────
-────────────────────────────────────────────────────── dbt ───────────────────────────────────────────────────────
-
-  Table Name   #DBT Tests Executed   #DBT Tests Failed
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  stg_orders                     3                   0
-  customers                      3                   0
-  orders                         9                   0
-
-─────────────────────────────────────────────────── PipeRider ────────────────────────────────────────────────────
+────────────────────────────────────────────────── Profiling ──────────────────────────────────────────────────
+[0/2] METADATA  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   2/2 0:00:00
+[1/2] customers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
+[2/2] orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
+─────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────
 
   Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  raw_orders                   4                 0               0
   customers                    7                 0               0
   orders                       9                 0               0
 
-Generating reports from: /path/to/jaffle-shop/.piperider/outputs/latest/run.json
-Report generated in  /path/to/jaffle-shop/.piperider/outputs/latest/index.html
+Generating reports from: /path/to/jaffle_shop/.piperider/outputs/latest/run.json
+Report generated in  /path/to/jaffle_shop/.piperider/outputs/latest/index.html
 ```
 
 ### View report and dbt test results
 
 The resulting report contains the data profile for the three resources on the node we specified in the last step.
 
-<figure><img src="../../.gitbook/assets/piperider-report-dbt-state.png" alt=""><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
-
-The Assertions tab also contains the dbt test results.
-
-<figure><img src="../../.gitbook/assets/piperider-report-dbt-tests.png" alt=""><figcaption><p>PipeRider Report with dbt Test Results</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-dbt-state2.png" alt=""><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
 
 ## 5. Next step: Data assertions
 
@@ -327,7 +284,6 @@ This time, because assertion files exist, PipeRider will profile the data source
 
 The generated report will show the failed assertion at the top.
 
-<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion.png" alt=""><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion2.png" alt=""><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
 
 Check the [Data Quality Assertions](broken-reference) section for more information on PipeRider's suite of data assertions.
-
