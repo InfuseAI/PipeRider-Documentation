@@ -167,9 +167,9 @@ Next step:
 
 The report contains detailed data profile metrics for each of the profiled tables.&#x20;
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-tables.png" alt=""><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-tables2.png" alt=""><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-profile.png" alt=""><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-profile2.png" alt=""><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
 
 ## 4. Use dbt node selection with PipeRider
 
