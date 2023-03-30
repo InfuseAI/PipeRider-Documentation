@@ -52,4 +52,5 @@
 
 * [Privacy Policy](privacy/privacy-policy.md)
 * [Terms of Use](privacy/terms-of-use.md)
+* [Refund Policy](privacy/refund-policy.md)
 * [Telemetry](privacy/telemetry.md)

@@ -14,7 +14,7 @@ By accessing or using the Services, you acknowledge that you have read and under
 
 We reserve the right to update this Privacy Policy from time to time. If we make changes, we will revise the date at the top of the Privacy Policy and, in some cases, we may provide you with additional notice (such as adding a statement to our homepage or sending you a notification). We encourage you to review the Privacy Policy whenever you access the Services or otherwise interact with us to stay informed about our information practices and the ways you can help protect your privacy.
 
-We do not knowingly collect or solicit personal information from anyone under the age of 16. If you are under 16, please do not attempt to register for the Services or send any personal information about yourself to us. If we learn that we have collected personal information from a child under age 16, we will delete that personal information as quickly as possible. If you believe that a child under age 16 may have provided us personal information, please contact us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io).
+We do not knowingly collect or solicit personal information from anyone under the age of 16. If you are under 16, please do not attempt to register for the Services or send any personal information about yourself to us. If we learn that we have collected personal information from a child under age 16, we will delete that personal information as quickly as possible. If you believe that a child under age 16 may have provided us personal information, please contact us at [product@piperider.io](mailto:product@piperider.io).
 
 ## What Personal information do We Collect?
 
@@ -121,7 +121,7 @@ You may have the following rights pertaining to your personal information depend
 
 ### Account Information
 
-You may access, update or change personal information you have provided by logging into the Services or emailing us at [hi@InfuseAI.io](mailto:hi@InfuseAI.io). You can always opt not to disclose information to us, but we would like to remind you that some personal information may be needed for registration. Shall you decide not to provide such personal information, we might not be able to provide the Services to you.
+You may access, update or change personal information you have provided by logging into the Services or emailing us at [product@piperider.io](mailto:product@piperider.io). You can always opt not to disclose information to us, but we would like to remind you that some personal information may be needed for registration. Shall you decide not to provide such personal information, we might not be able to provide the Services to you.
 
 You may be able to add, update or delete your personal information, but we will maintain a copy of the unrevised personal information in our records. You may request deletion of your account or personal information by sending a request to us. Some personal information may remain in our records after the deletion as necessary to comply with our legal obligations or for legitimate business purposes, such as to resolve disputes or enforce our agreements. We may also retain cached or archived copies of personal information for a certain period of time.
 
@@ -135,4 +135,4 @@ You may opt out of receiving promotional emails from infuseAI by following the i
 
 ## Contact Us
 
-If you have questions or concerns about this Privacy Policy, please send us a detailed message to [hi@InfuseAI.io](mailto:hi@InfuseAI.io).
+If you have questions or concerns about this Privacy Policy, please send us a detailed message to [product@piperider.io](mailto:product@piperider.io).
