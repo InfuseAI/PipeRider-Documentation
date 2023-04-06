@@ -4,7 +4,7 @@ description: How to use PipeRider with dbt
 
 # Jaffle Shop
 
-Integrating PipeRider into your existing dbt project is easy due to PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
+Integrating PipeRider into your existing dbt project is easy with PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
 
 The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project as an example of how to use PipeRider with a dbt project.
 
