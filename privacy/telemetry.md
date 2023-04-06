@@ -75,7 +75,7 @@ For each `user_id` the following information is stored:
 
 When logging into PipeRider Cloud you will be presented with the Cookies notification. There are two options, Accept All, and Necessary Only.
 
-<figure><img src="../.gitbook/assets/piperider-cookie-notification.png" alt=""><figcaption><p>PipeRider Cloud cookie notification</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/piperider-cookie-notification-fs8.png" alt=""><figcaption><p>PipeRider Cloud cookie notification</p></figcaption></figure>
 
 ### Accept All
 
