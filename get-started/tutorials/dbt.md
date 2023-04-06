@@ -6,7 +6,7 @@ description: How to use PipeRider with dbt
 
 Integrating PipeRider into your existing dbt project is easy due to PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
 
-The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop) project as an example of how to use PipeRider with a dbt project.
+The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project as an example of how to use PipeRider with a dbt project.
 
 In this guide you will do the following:
 
@@ -18,7 +18,7 @@ In this guide you will do the following:
 
 ## 1. Configure the Jaffle Shop project
 
-Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) repository to install and configure the dbt project.
+Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project.
 
 Once configured, or if you already have a dbt project you want to use, proceed to step #2.
 
@@ -165,11 +165,11 @@ Next step:
   Please execute command 'piperider run' to generate your second report
 ```
 
-The report contains detailed data profile metrics for each of the profiled tables.&#x20;
+The report contains detailed data profile statistics for each of the profiled tables.
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-tables2.png" alt=""><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-tables2.jpg" alt="PipeRider Jaffle Shop Report Overview"><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-profile2.png" alt=""><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-profile2.jpg" alt="PipeRider Jaffle Shop Data Profile Sample"><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
 
 ## 4. Use dbt node selection with PipeRider
 
@@ -219,7 +219,7 @@ Report generated in  /path/to/jaffle_shop/.piperider/outputs/latest/index.html
 
 The resulting report contains the data profile for the three resources on the node we specified in the last step.
 
-<figure><img src="../../.gitbook/assets/piperider-report-dbt-state2.png" alt=""><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-dbt-state2.jpg" alt="PipeRider Report based on dbt State"><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
 
 ## 5. Next step: Data assertions
 
@@ -284,6 +284,6 @@ This time, because assertion files exist, PipeRider will profile the data source
 
 The generated report will show the failed assertion at the top.
 
-<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion2.png" alt=""><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion2.jpg" alt="PipeRider Report with Failed Assertion"><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
 
-Check the [Data Quality Assertions](broken-reference) section for more information on PipeRider's suite of data assertions.
+Check the [Data Quality Assertions](broken-reference/) section for more information on PipeRider's suite of data assertions.
