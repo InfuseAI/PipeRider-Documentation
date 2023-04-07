@@ -12,9 +12,17 @@ Install PipeRider with the DuckDB connector.
 pip install 'piperider[duckdb]'
 ```
 
-## Configure connection settings
+## Configuration (DBT)
 
-### Example initialization steps
+Run the initialization command in the dbt project
+
+```
+piperider init
+```
+
+If you can successfully connect to DuckDB using dbt, PipeRider can also connect to DuckDB using the same profile settings. For details, please refer to the dbt [DuckDB adapter](https://docs.getdbt.com/reference/warehouse-setups/duckdb-setup) documentation.
+
+## Configuration (Non-DBT)
 
 ```
 $ piperider init

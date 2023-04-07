@@ -12,7 +12,7 @@ Under the hood, PipeRider loads CSV files by DuckDB, so please install PipeRider
 pip install 'piperider[csv]'
 ```
 
-## Configure connection settings
+## Configuration
 
 ### Example initialization steps
 

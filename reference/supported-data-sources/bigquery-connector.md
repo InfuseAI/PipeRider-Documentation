@@ -4,13 +4,25 @@ description: Install PipeRider with the BigQuery connector and connect to a data
 
 # BigQuery Connector
 
-### Installation
-
-Ensure you have already installed the [gcloud CLI](https://cloud.google.com/sdk/docs/install), and then install PipeRider with the BigQuery connector.
+## Installation
 
 ```
 pip install 'piperider[bigquery]'
 ```
+
+## Configuration (DBT)
+
+Run the initialization command in the dbt project
+
+```
+piperider init
+```
+
+If you can successfully connect to BigQuery using dbt, PipeRider can also connect to BigQuery using the same profile settings. For details, please refer to the dbt [BigQuery adapter](https://docs.getdbt.com/reference/warehouse-setups/bigquery-setup) documentation.
+
+## Configuration (Non-DBT)
+
+Ensure you have already installed the [gcloud CLI](https://cloud.google.com/sdk/docs/install)
 
 ### Configure connection settings
 
@@ -22,7 +34,7 @@ The following information is required.
 * Authentication method (oauth or service-account)
 * BigQuery dataset name
 
-#### Example initialization steps
+### Example initialization steps
 
 ```
 $ piperider init
@@ -38,7 +50,7 @@ Initialize piperider to path /path/to/your/project/.piperider
    service-account
 ```
 
-**Oauth steps**
+### **Oauth steps**
 
 ```
 Please enter the following fields for bigquery
@@ -54,14 +66,14 @@ Please enter the following fields for bigquery
 If you don't see the expected project-id from the list, please modify _`~/.config/gcloud/application_default_credentials.json`_ and replace **quota\_project\_id** with \*\*\*\* the one you expect\*\*.\*\*
 {% endhint %}
 
-**Service-account step**
+### **Service-account step**
 
 ```
 [?] The path of GCP Service Account Key File: /path/to/key/file
 [?] The name of BigQuery DataSet: dataset-name
 ```
 
-### Test connection settings
+## Test connection settings
 
 After configuring your connection settings, ensure that PipeRider can connect to your BigQuery data source.
 
@@ -69,6 +81,6 @@ After configuring your connection settings, ensure that PipeRider can connect to
 piperider diagnose
 ```
 
-#### gcloud authentication
+### gcloud authentication
 
 If you have not previously authenticated with gcloud, the output of `diagnose` will prompt you to execute a gcloud command to authenticate. This will open a new browser window and you will be prompted to authenticate with your Google account
