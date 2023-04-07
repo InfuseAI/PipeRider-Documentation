@@ -35,7 +35,7 @@
   * [BigQuery Connector](reference/supported-data-sources/bigquery-connector.md)
   * [Postgres Connector](reference/supported-data-sources/postgres-connector.md)
   * [Redshift Connector](reference/supported-data-sources/redshift-connector.md)
-  * [Athena Connector](reference/supported-data-sources/snowflake-connector-1.md)
+  * [Athena Connector](reference/supported-data-sources/athena-connector.md)
   * [SQLite connector](reference/supported-data-sources/sqlite-connector.md)
   * [DuckDB Connector](reference/supported-data-sources/duckdb-connector.md)
   * [CSV Connector](reference/supported-data-sources/csv-connector.md)
