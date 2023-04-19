@@ -20,6 +20,7 @@ PipeRider supports the following data connectors
 | postgres   | `pip install 'piperider[postgres]'`  |
 | bigquery   | `pip install 'piperider[bigquery]'`  |
 | redshift   | `pip install 'piperider[redshift]'`  |
+| athena     | `pip install 'piperider[athena]'`    |
 | parquet    | `pip install 'piperider[parquet]'`   |
 | csv        | `pip install 'piperider[csv]'`       |
 | duckdb     | `pip install 'piperider[duckdb]'`    |
