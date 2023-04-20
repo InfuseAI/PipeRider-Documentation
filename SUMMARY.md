@@ -46,9 +46,11 @@
 * [PipeRider on GitHub](https://github.com/infuseai/piperider)
 * [PipeRider Blog](https://blog.piperider.io)
 
-***
+## Release Notes
 
-* [Changelog (v0.22.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.22.0)
+* [PipeRider](release-notes/piperider.md)
+* [PipeRider Cloud](release-notes/piperider-cloud.md)
+* [Changelog (v0.23.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.23.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
