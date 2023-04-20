@@ -12,7 +12,7 @@ PipeRider supports the following data sources by installing the relevant connect
 * [BigQuery](bigquery-connector.md)
 * [Postgres](postgres-connector.md)
 * [Redshift](redshift-connector.md)
-* Athena
+* [Athena](athena-connector.md)
 
 ### Embedded Databases
 
