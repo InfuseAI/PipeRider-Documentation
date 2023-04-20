@@ -12,7 +12,9 @@ Release date: 2023-04-20
 
 * **AWS Athena Support**: PipeRider now supports querying and profiling data stored in AWS Athena.
 * **Skipped model reasons**: We have added the ability to display the reason why certain models were skipped during profiling and metric queries, making it easier for users to understand and improve their data pipeline.
-* **Compare Recipe Enhancements**: Our Compare recipe has been enhanced to support both file and Jinja formats, allowing users to template values from environment variables for more dynamic comparisons.
+* **Compare Recipe Enhancements**:&#x20;
+  * Our Compare recipe has been enhanced to support both file and Jinja formats, allowing users to template values from environment variables for more dynamic comparisons.
+  * The `compare` command now supports [comparing to a file](../get-started/compare.md#recipe-example-base-is-from-file). This means you can manually set the baseline to an existing report, and then use that in future comparisons without the need to run the baseline profile each time.
 * **Other Enhancements and Bug Fixes**: We have also made several other enhancements and bug fixes, including the addition of buttons for GitHub, Discord, and documentation feedback, ensuring users have an easy and efficient way to provide feedback and suggestions for future improvements.
 
 ## PipeRider OSS v0.22.0
