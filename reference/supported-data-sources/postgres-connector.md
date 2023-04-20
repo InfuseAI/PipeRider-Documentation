@@ -14,7 +14,17 @@ Install PipeRider with the Postgres connector.
 pip install 'piperider[postgres]'
 ```
 
-## Prepare Credentials of Postgres
+## Configuration (DBT)
+
+Run the initialization command in the dbt project
+
+```
+piperider init
+```
+
+If you can successfully connect to Postgres using dbt, PipeRider can also connect to Postgres using the same profile settings. For details, please refer to the dbt [Postgres adapter](https://docs.getdbt.com/reference/warehouse-setups/postgres-setup) documentation.
+
+## Configuration (Non-DBT)
 
 Initialize a new PipeRider project using `piperider init` and when promoted select Postgres as the data source.
 
@@ -45,3 +55,11 @@ Schema (optional):
 {% hint style="info" %}
 If you see the message **`Please run 'pip install piperider[postgres]' to get the postgres connector`**, this means that the Postgres connector is not installed. Please follow the [installation instructions](postgres-connector.md#installation) above.
 {% endhint %}
+
+## Test connection settings
+
+After configuring your connection settings, ensure that PipeRider can connect to your Postgres data source.
+
+```
+piperider diagnose
+```

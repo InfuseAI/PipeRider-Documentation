@@ -12,7 +12,7 @@ Under the hood, PipeRider loads Parquet files by DuckDB, so please install PipeR
 pip install 'piperider[parquet]'
 ```
 
-## Configure connection settings
+## Configuration
 
 ### Example initialization steps
 

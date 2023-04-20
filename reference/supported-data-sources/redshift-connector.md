@@ -10,7 +10,17 @@ description: Install PipeRider with the Redshift connector and connect to a data
 pip install 'piperider[redshift]'
 ```
 
-## Configure connection settings
+## Configuration (DBT)
+
+Run the initialization command in the dbt project
+
+```
+piperider init
+```
+
+If you can successfully connect to Redshift using dbt, PipeRider can also connect to Redshift using the same profile settings. For details, please refer to the dbt [Redshift adapter](https://docs.getdbt.com/reference/warehouse-setups/redshift-setup) documentation.
+
+## Configuration (Non-DBT)
 
 Initialize a new PipeRider project using `piperider init` and when prompted select **Redshift** as the data source.
 

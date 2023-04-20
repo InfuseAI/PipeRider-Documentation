@@ -6,13 +6,22 @@ description: The list of supported data sources
 
 PipeRider supports the following data sources by installing the relevant connector:
 
-* [BigQuery](bigquery-connector.md)
-* [CSV](csv-connector.md)
-* [DuckDB](duckdb-connector.md)
-* [Postgres](postgres-connector.md)
-* [Parquet](parquet-connector.md)
-* [Redshift](redshift-connector.md)
-* [Snowflake](snowflake-connector.md)
-* SQLite (Enabled by default)
+### Data Warehouses
 
-If the connector you require is not available, please [email us](mailto:support@piperider.io) to suggest it, or use the [PipeRider feedback](../piperider-cli.md#submit-feedback) command.
+* [Snowflake](snowflake-connector.md)
+* [BigQuery](bigquery-connector.md)
+* [Postgres](postgres-connector.md)
+* [Redshift](redshift-connector.md)
+* [Athena](athena-connector.md)
+
+### Embedded Databases
+
+* [SQLite](sqlite-connector.md)
+* [DuckDB](duckdb-connector.md)
+
+### Files
+
+* [CSV](csv-connector.md)
+* [Parquet](parquet-connector.md)
+
+If the connector you require is not available, please [email us](mailto:support@piperider.io) to suggest it, or fill out the [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSe0J8qC78lqMVxSAJFPub6QXx2NcVY8WLvIVEGthOeQcJHxFQ/viewform?usp=sf\_link).

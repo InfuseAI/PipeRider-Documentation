@@ -6,13 +6,23 @@ description: >-
 
 # Snowflake Connector
 
-### Installation
-
-Install PipeRider with the Snowflake connector.
+## Installation
 
 ```
 pip install 'piperider[snowflake]'
 ```
+
+## Configuration (DBT)
+
+Run the initialization command in the dbt project
+
+```
+piperider init
+```
+
+If you can successfully connect to Snowflake using dbt, PipeRider can also connect to Snowflake using the same profile settings. For details, please refer to the dbt [Snowflake adapter](https://docs.getdbt.com/reference/warehouse-setups/snowflake-setup) documentation.
+
+## Configuration (Non-DBT)
 
 ### Initialize a new Snowflake PipeRider project
 
@@ -47,7 +57,7 @@ If multi-factor authentication (MFA) is enabled on your Snowflake account, you w
 * `piperider diagnose`
 * `piperider run`
 
-#### MFA Token Caching
+### MFA Token Caching
 
 To reduce the number of prompts you receive, Snowflake allows users to [cache MFA tokens](https://docs.snowflake.com/en/user-guide/security-mfa.html#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) by enabling a setting at the account level.&#x20;
 

@@ -98,7 +98,7 @@ piperider compare-reports --last
 
 To streamline the process, PipeRider has a higher-level command `piperider command` and it can run a comparison recipe.
 
-### Comparison Recipe
+## Comparison Recipe
 
 Comparison recipe is a yaml description to describe how to run a compare. Here is an example of a recipe
 
@@ -133,4 +133,59 @@ The recipe is defined at `.piperider/compare/<recipe>.yml`. To define a recipe, 
 
 ```
 piperider compare --recipe <recipe>
+```
+
+### Recipe Example: Base is from file
+
+A common practice is to provide a base run and then use the "compare" command to compare subsequent runs against this base.
+
+To begin, you can save the output of the base run to `/tmp/base` using the following command:
+
+```
+piperider run -o /tmp/base
+```
+
+Then you prepare the comparison recipe at `.piperider/compare/compare_from_file.yml`
+
+```yaml
+# location: .piperider/compare/compare_from_file.yml
+base:
+  file: /tmp/base/run.json
+target:
+  dbt:
+    commands:
+    - dbt deps
+    - dbt build
+  piperider:
+    command: piperider run
+
+```
+
+Next, you can use the following "compare" command, which will only run the target's dbt and Piperider, while the base results will come from the file:
+
+```
+piperider compare --recipe compare_from_file
+```
+
+### Recipe Example: Use environment variable
+
+Continuing with the previous example, we can also use Jinja templates in the recipe. A common use case is to use environment variables. Here's an example recipe:
+
+```yaml
+base:
+  file: "{{ env_var('BASE') }}"
+target:
+  dbt:
+    commands:
+    - dbt deps
+    - dbt build
+  piperider:
+    command: piperider run
+
+```
+
+Later, when running the "compare" command, you can pass in your environment variables like this:
+
+```
+BASE=/tmp/base/run.json piperider compare --recipe compare_from_file
 ```
