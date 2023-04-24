@@ -215,11 +215,11 @@ jobs:
       uses: InfuseAI/piperider-compare-action@v1
 ```
 
-This workflow is triggered on every pull request and runs the `InfuseAI/piperider-compare-action`, which compares the current pull request with the target branch. It automatically installs any required packages and related connectors and provides a comment on the pull request with the comparison output. Additionally, it grants `write` Permission to allow the action to add the comparison output as a comment.
+This workflow is triggered on every pull request and runs the `InfuseAI/piperider-compare-action`, which compares the current pull request with the target branch. It automatically installs any required packages and related connectors and provides a comment on the pull request with the comparison output. To use this feature, please grant the action **write** permission so that it can add the comparison output as a comment on the pull request.
 
 ![](<../.gitbook/assets/image (3).png>)
 
-For more information about the `InfuseAI/piperider-compare-action`, please visit its [GitHub repository](https://github.com/InfuseAI/piperider-compare-action).
+For more information about the `InfuseAI/piperider-compare-action`, please visit our [GitHub repository](https://github.com/InfuseAI/piperider-compare-action).
 
 
 
