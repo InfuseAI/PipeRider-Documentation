@@ -124,7 +124,7 @@ dbt list -s metric:active_users | piperider run --dbt-list
 
 With PipeRider's **compare** feature, you're also able to compare metrics between reports, which is particularly useful when analyzing the impact of data model or metric definition changes.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 
 
