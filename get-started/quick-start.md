@@ -31,7 +31,7 @@ PipeRider requires python 3.7+
 
 ### Initialize a project
 
-Go to your dbt project, and initalize PipeRider.
+Go to your dbt project, and initialize PipeRider.
 
 ```bash
 piperider init
@@ -44,6 +44,18 @@ The `init` command creates a `.piperider` directory inside the current directory
 {% endhint %}
 
 After initialization, you can verify the configuration by running `piperider diagnose`. It will use the [dbt profile file](https://docs.getdbt.com/reference/profiles.yml) `profiles.yml` to connect to the data warehouse.
+
+### **Apply PipeRider tag**
+
+PipeRider will profile the models and metrics only with `piperider` tag by default. [Apply `piperider` tag to your models](https://docs.getdbt.com/reference/resource-configs/tags).
+
+Or comment out `tag: piperider` in `.piperider/config.yml` to profile all table models.
+
+```
+dbt:
+  projectDir: .
+  # tag: piperider
+```
 
 ### Run PipeRider
 
