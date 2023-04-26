@@ -189,3 +189,37 @@ Later, when running the "compare" command, you can pass in your environment vari
 ```
 BASE=/tmp/base/run.json piperider compare --recipe compare_from_file
 ```
+
+
+
+## Github Action for Comparison Recipe
+
+Running the recipe using GitHub Actions is a straightforward way to facilitate the review of pull requests in your GitHub repository.
+
+You can use the following workflow to enable PipeRider comparison on pull requests with a minimal setup:
+
+```
+name: PR with PipeRider
+
+on: [pull_request]
+
+jobs:
+  piperider-compare:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: PipeRider Compare
+      uses: InfuseAI/piperider-compare-action@v1
+```
+
+This workflow is triggered on every pull request and runs the `InfuseAI/piperider-compare-action`, which compares the current pull request with the target branch. It automatically installs any required packages and related connectors and provides a comment on the pull request with the comparison output. To use this feature, please grant the action **write** permission so that it can add the comparison output as a comment on the pull request.
+
+![](<../.gitbook/assets/image (3).png>)
+
+For more information about the `InfuseAI/piperider-compare-action`, please visit our [GitHub repository](https://github.com/InfuseAI/piperider-compare-action).
+
+
+

@@ -1,6 +1,6 @@
 # Run
 
-Run is the single invocation of the piperider on the dbt project. It produces observed results of the dbt project such as profiling statistic, metric query results, and test results (assertions)
+"Run" is a single execution of PipeRider on a dbt project. It generates observed results of the dbt project, such as profiling statistics, metric query results, and test results (assertions).
 
 ## Execute a run
 
@@ -12,10 +12,10 @@ piperider run
 
 It will
 
-* Connect to the data warehouse by the default target in your dbt profile
-* Profile all table models in the dbt project and produce the schema information and profiling statistic
-* Query the dbt metrics
-* Assert profiling statistic to check if the value fulfill certain rule
+* Connect to the data warehouse using the default target specified in your dbt profile.
+* Profile all models (with the `piperider` tag) and generate schema information and profiling statistics.
+* Query the dbt metrics (with the `piperider` tag) using the default query logic.
+* Assert the profiling statistics to check if their values satisfy certain rules.
 
 ### Select data source
 
@@ -33,7 +33,27 @@ Data source is explicitly defined in the [config.yml](../../reference/project-st
 
 ### Select models to profile
 
-By default, PipeRider provide all the table models in your dbt project. However, profiling is an expansive and time consuming operation.  PipeRider provides several mechanism to control the models to profile.
+**Use 'piperider' tag to mark selected models**
+
+By default, PipeRider profiles all models with the `piperider` tag  in your dbt project. Here is an example of how to add the `piperider` tag to a model
+
+```
+--models/staging/stg_customers.sql
+{{ config(
+    tags=["piperider"]
+) }}
+
+select ...
+
+```
+
+You can also add it in [profile file or config yaml](https://docs.getdbt.com/reference/resource-configs/tags). Then, check if the model is well-configured. The following command would list the model you just modified.
+
+```
+ dbt list -s tag:piperider --resource-type model       
+```
+
+Afterwards, when running `piperider run`, all models with the `piperider` tag will be profiled by default.
 
 **Profile one model**
 
@@ -49,30 +69,6 @@ piperider run --table <you-model-name>
 
 ```
 dbt list --select <selector> | piperider run --dbt-list
-```
-
-**Use tag to mark selected models**
-
-dbt allows to add [tag](https://docs.getdbt.com/reference/resource-configs/tags) on dbt resources. You can configure to add tag on the dbt config
-
-```yaml
-#.piperider/config.yml
-dataSources: []
-dbt:
-  projectDir: .
-  tag: 'piperider'
-```
-
-Once the `dbt.tag` is set, PipeRider profile only models with the specified tag
-
-```
-#models/staging/stg_payments.sql
-{{ config(
-    tags=["piperider"]
-) }}
-
-select ...
-
 ```
 
 ### Integrate with run results

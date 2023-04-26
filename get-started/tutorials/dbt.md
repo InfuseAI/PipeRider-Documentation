@@ -134,13 +134,30 @@ If everything is configured corrected you’ll see the 'You are all set!’ mess
 
 ## 3. Run PipeRider to generate a data profile report
 
+By default, PipeRider will run profile on the models with `piperider` tag, we can add all models with `piperider` tag in the `dbt_project.yml`
+
+```
+models:
+  jaffle_shop:
+      +tags: piperider
+      materialized: table
+      staging:      
+        materialized: view
+```
+
+Check all the models are well-configured
+
+```
+dbt list -s tag:piperider --resource-type model  
+```
+
 Run PipeRider to profile the data source and create your first HTML report:
 
 ```bash
 piperider run
 ```
 
-PipeRider will profile the available tables and output the link for the HTML report.
+PipeRider will profile all the models and output the link for the HTML report.
 
 ```
 $ piperider run
@@ -148,15 +165,17 @@ DataSource: dev
 ───────────────────────────────────────────────── Validating ──────────────────────────────────────────────────
 everything is OK.
 ────────────────────────────────────────────────── Profiling ──────────────────────────────────────────────────
-[0/2] METADATA  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   2/2 0:00:00
-[1/2] customers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
-[2/2] orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
+[0/7] METADATA                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   7/7 0:00:00
+[1/7] int_order_payments_pivoted        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
+[2/7] int_customer_order_history_joined ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
+...
 ─────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────
 
-  Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  customers                    7                 0               0
-  orders                       9                 0               0
+  Table Name                          #Columns Profiled   #Tests Executed   #Tests Failed
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  int_order_payments_pivoted                          9                 0               0
+  int_customer_order_history_joined                   7                 0               0
+  ...
 
 Generating reports from: /path/to/jaffle_shop/.piperider/outputs/latest/run.json
 Report generated in /path/to/jaffle_shop/.piperider/outputs/latest/index.html
