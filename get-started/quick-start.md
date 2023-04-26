@@ -4,7 +4,7 @@ description: Integrate PipeRider with your dbt project in 5 mins
 
 # Quick Start
 
-### Install PipeRider
+## Install PipeRider
 
 Navigate to your dbt folder, and install PipeRider.
 
@@ -29,7 +29,7 @@ PipeRider supports the following data connectors
 PipeRider requires python 3.7+
 {% endhint %}
 
-### Initialize a project
+## Initialize a project
 
 Go to your dbt project, and initialize PipeRider.
 
@@ -45,7 +45,11 @@ The `init` command creates a `.piperider` directory inside the current directory
 
 After initialization, you can verify the configuration by running `piperider diagnose`. It will use the [dbt profile file](https://docs.getdbt.com/reference/profiles.yml) `profiles.yml` to connect to the data warehouse.
 
-### Run PipeRider
+## Run PipeRider
+
+To profile models in your project, you need to specify which models to run on. This can be done in the following ways.
+
+### Specify single model via CLI parameter
 
 The fastest way to run PipeRider is to generate a report for a single model using the **`--table <model-name>`** option. Here is an example:
 
@@ -55,7 +59,7 @@ piperider run --table stg_customers
 
 PipeRider will perform profiling on the **`stg_customers`** model and generate a html report. You can find the report in the last line of the output.
 
-### Configure the default models to run
+### Configure multiple models via dbt tags
 
 Of course, we don't want to specify the table to run every time. In this case, we can manually specify which models should be profiled by PipeRider using [dbt tags](https://docs.getdbt.com/reference/resource-configs/tags).
 
@@ -81,7 +85,7 @@ Now, it will profile your model by default
 piperider run
 ```
 
-### Compare two branches
+## Compare two branches
 
 PipeRider is designed for code review. You can initiate the comparison in your local environment.
 
@@ -109,7 +113,7 @@ PipeRider is designed for code review. You can initiate the comparison in your l
     The `--last` option automatically selects the last two data profiles for comparison. Omit this option to manually select the profiles you would like to compare.
 4. **Post the markdown summary to the PR comment.** Aside from an HTML report, PipeRider generate a Markdown summary. You can add this summary of the data changes to your Pull Request comment so that your reviewer can review with impact information and merge with confidence :tada:
 
-### What's next
+## What's next
 
 * Integrate [dbt metrics](run/metrics.md)
 * Specify which models to profile
