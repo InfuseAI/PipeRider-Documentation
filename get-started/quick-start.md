@@ -40,32 +40,46 @@ piperider init
 PipeRider will automatically find the [dbt project file](https://docs.getdbt.com/reference/dbt\_project.yml) `dbt_project.yml` and initiate PipeRider.
 
 {% hint style="info" %}
-The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [piperider project files](../reference/project-structure/) will be stored, including data source configuration, data quality assertions, data profiling information, and generated report files.
+The `init` command creates a `.piperider` directory inside the current directory. This is where all of the [piperider project files](../reference/project-structure/) will be stored, including project configuration file, and generated report files.
 {% endhint %}
 
 After initialization, you can verify the configuration by running `piperider diagnose`. It will use the [dbt profile file](https://docs.getdbt.com/reference/profiles.yml) `profiles.yml` to connect to the data warehouse.
 
-### **Apply PipeRider tag**
-
-PipeRider will profile the models and metrics only with `piperider` tag by default. [Apply `piperider` tag to your models](https://docs.getdbt.com/reference/resource-configs/tags).
-
-Or comment out `tag: piperider` in `.piperider/config.yml` to profile all table models.
-
-```
-dbt:
-  projectDir: .
-  # tag: piperider
-```
-
 ### Run PipeRider
 
-Collect profiling statistics by using
+The fastest way to run PipeRider is to generate a report for a single model using the **`--table <model-name>`** option. Here is an example:
+
+```bash
+piperider run --table stg_customers
+```
+
+PipeRider will perform profiling on the **`stg_customers`** model and generate a html report. You can find the report in the last line of the output.
+
+### Configure the default models to run
+
+Of course, we don't want to specify the table to run every time. In this case, we can manually specify which models should be profiled by PipeRider using [dbt tags](https://docs.getdbt.com/reference/resource-configs/tags).
+
+To enable profiling for a specific model, add the `piperider` tag to your model. This will instruct PipeRider to perform profiling on this model.
+
+```yaml
+-- models/staging/stg_customers.sql
+
+{{config(tags='piperider')}}
+
+select ...
+```
+
+Check if the tag is well-configured. The following command will list the models that you have just modified.
+
+```
+dbt list -s tag:piperider --resource-type model
+```
+
+Now, it will profile your model by default
 
 ```
 piperider run
 ```
-
-The `run` command will generate profiling statistics for your table models, such as `row_count`, `non_nulls`, `min`, `max`, `distinct`, quantiles, `topk` and more.
 
 ### Compare two branches
 

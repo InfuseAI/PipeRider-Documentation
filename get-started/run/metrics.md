@@ -53,12 +53,12 @@ metrics:
 To tell PipeRider to query your metrics, you must add the `piperider` tag. The tag name can be changed in the `config.yml`
 {% endhint %}
 
-### Update the manifest
+### Check if the metric is well-configured
 
-PipeRider use the [dbt manifest](https://docs.getdbt.com/reference/artifacts/manifest-json) to integrate with the dbt project. So any change in you dbt project, please run any commands which would change the manifest. In the development time, you can use  `compile`
+The following command will list the metrics that you have just modified.
 
 ```
-dbt compile
+dbt list -s tag:piperider --resource-type metric
 ```
 
 ### Run PipeRider
