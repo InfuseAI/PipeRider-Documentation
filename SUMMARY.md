@@ -16,9 +16,7 @@
 ## Continuous Integration <a href="#ci" id="ci"></a>
 
 * [Introduction](ci/introduction.md)
-* [Initial Configuration](ci/initial-configuration.md)
-* [Basic Example](ci/basic-example.md)
-* [Advanced Example (Slim CI)](ci/advanced-example-slim-ci.md)
+* [ Example](ci/example.md)
 
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
