@@ -12,9 +12,14 @@ Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperi
 
 Release date: next
 
-#### Deprecated
+#### Feature deprecation notice
 
-* Starting from version 0.25.0 of PipeRider, **non-dbt projects** and **assertions** will be deprecated and, although they will still be supported and usable for now, they are not recommended for use.
+The following features are now deprecated and will be removed from a future version of PipeRider:
+
+* &#x20;Using PipeRider in **non-dbt projects**&#x20;
+* **PipeRider assertions**
+
+These features are still included in PipeRider for the time being, but are not recommended for continued use.
 
 ## PipeRider OSS v0.24.1
 
