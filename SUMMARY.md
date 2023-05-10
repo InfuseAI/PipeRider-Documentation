@@ -8,7 +8,7 @@
 * [Run](get-started/run/README.md)
   * [Profiling](get-started/run/profile.md)
   * [Metrics](get-started/run/metrics.md)
-  * [Assertions](get-started/run/assertions.md)
+  * [Assertions (deprecated)](get-started/run/assertions.md)
 * [Compare](get-started/compare.md)
 * [Tutorials](get-started/tutorials/README.md)
   * [Jaffle Shop](get-started/tutorials/dbt.md)

@@ -242,6 +242,8 @@ The resulting report contains the data profile for the three resources on the no
 
 ## 5. Next step: Data assertions
 
+> <mark style="color:red;">Starting from version 0.25.0 of PipeRider,</mark> <mark style="color:red;"></mark><mark style="color:red;">**non-dbt projects**</mark> <mark style="color:red;"></mark><mark style="color:red;">and</mark> <mark style="color:red;"></mark><mark style="color:red;">**assertions**</mark> <mark style="color:red;"></mark><mark style="color:red;">will be deprecated and, although they will still be supported and usable for now, they are not recommended for use.</mark>
+
 In addition to showing dbt test results on the PipeRider report, PipeRider also features its own suite of data assertions.
 
 ### Recommended assertions

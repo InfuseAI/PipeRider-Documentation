@@ -6,6 +6,18 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Released page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+
+
+## PipeRider OSS v0.25.0
+
+Release date: next
+
+#### Deprecated
+
+* Starting from version 0.25.0 of PipeRider, **non-dbt projects** and **assertions** will be deprecated and, although they will still be supported and usable for now, they are not recommended for use.
+
+
+
 ## PipeRider OSS v0.23.0
 
 Release date: 2023-04-20

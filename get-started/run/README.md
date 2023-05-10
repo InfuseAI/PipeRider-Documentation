@@ -119,9 +119,7 @@ piperider run --output /tmp/myrun
 
 PipeRider is more than a profiler. In a dbt project, especially for analytics purpose project, it's common to have several metrics defined for visualization. (e.g. revenue, active users). PipeRider can query the metrics are visualize it in the run report. For more detail, please see [Metrics](metrics.md).
 
-## Advanced: Assert the profiling result
 
-PipeRider also provides the testing mechanism to assert if the profiling statistics fulfill certain rules. For more detail, please see [Assertions](assertions.md)
 
 
 
