@@ -10,7 +10,15 @@ Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperi
 
 ## PipeRider OSS v0.25.0
 
-Release date: next
+Release date: [2023-05-18](https://github.com/InfuseAI/piperider/releases/tag/v0.25.0)
+
+Increased focus on dbt project integration.
+
+* It's no longer required to run `piperider init` inside dbt projects, just install PipeRider and run
+* The report sidebar has been redesigned to follow closely with the layout of the dbt docs sidebar, making it easier to navigate for dbt users
+* Tracking schema changes: Previously, the profiling was a one-time scan of models with tags, including metadata fetching and execution profiling. Now, in the new version, we have separated the metadata collection and profiling into two distinct phases:
+  1. PipeRider will gather all metadata to track schema changes for models, seeds, and sources.
+  2. PipeRider will continue to profile only those models that have been tagged for profiling.
 
 #### Feature deprecation notice
 
@@ -20,19 +28,6 @@ The following features are now deprecated and will be removed from a future vers
 * **PipeRider assertions**
 
 These features are still included in PipeRider for the time being, but are not recommended for continued use.
-
-
-
-#### Features
-
-*   **Tracking schema changes**: &#x20;
-
-    We have updated the Piperider profiling behavior to integrate it with the DBT project. Previously, the profiling was a one-time scan of models with tags, including metadata fetching and execution profiling. Now, in the new version, we have separated the metadata collection and profiling into two distinct phases:
-
-    * Piperider will gather all metadata to track schema changes for models, seeds, and sources.
-    * Piperider will continue to profile only those models that have been tagged for profiling.
-
-
 
 ## PipeRider OSS v0.24.1
 
