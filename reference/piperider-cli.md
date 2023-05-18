@@ -50,22 +50,6 @@ Check [assertion configuration](broken-reference) for more information on built-
 | `--debug`        | N/A        | Enable debugging output                                                                                                                             |
 | `--help`         | N/A        | List command-line options                                                                                                                           |
 
-## Generate assertions
-
-```
-piperider generate-assertions
-```
-
-Generate recommended assertion files in `.piperider/assertions/` . You may want to generate recommended once profiling results are changed.
-
-| Option           | Argument                    | Description                                                                     |
-| ---------------- | --------------------------- | ------------------------------------------------------------------------------- |
-| `--no-recommend` | N/A                         | Generate skeleton assertion files, without recommended assertions               |
-| `--input`        | Path to the `run.json` file | Generate a recommended assertions based on a specific profiling `run.json` file |
-| `--table`        | Table name                  | Generate recommended assertions for a specific table                            |
-| `--debug`        | N/A                         | Enable debugging mode                                                           |
-| `--help`         | N/A                         | List command-line options                                                       |
-
 ## Generate report
 
 ```shell

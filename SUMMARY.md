@@ -8,7 +8,7 @@
 * [Run](get-started/run/README.md)
   * [Profiling](get-started/run/profile.md)
   * [Metrics](get-started/run/metrics.md)
-  * [Assertions](get-started/run/assertions.md)
+  * [Assertions (deprecated)](get-started/run/assertions.md)
 * [Compare](get-started/compare.md)
 * [Tutorials](get-started/tutorials/README.md)
   * [Jaffle Shop](get-started/tutorials/dbt.md)
@@ -16,9 +16,7 @@
 ## Continuous Integration <a href="#ci" id="ci"></a>
 
 * [Introduction](ci/introduction.md)
-* [Initial Configuration](ci/initial-configuration.md)
-* [Basic Example](ci/basic-example.md)
-* [Advanced Example (Slim CI)](ci/advanced-example-slim-ci.md)
+* [ Example](ci/example.md)
 
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
@@ -50,7 +48,7 @@
 
 * [PipeRider](release-notes/piperider.md)
 * [PipeRider Cloud](release-notes/piperider-cloud.md)
-* [Changelog (v0.24.1)](https://github.com/InfuseAI/piperider/releases/tag/v0.24.1)
+* [Changelog (v0.25.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.25.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 

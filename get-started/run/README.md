@@ -1,6 +1,23 @@
+---
+description: Make a schema outline and profile the model
+---
+
 # Run
 
 "Run" is a single execution of PipeRider on a dbt project. It generates observed results of the dbt project, such as profiling statistics, metric query results, and test results (assertions).
+
+
+
+> The `run` command can divide the process into two phases:
+>
+> * Metadata collection
+> * Profiling
+>
+> During the metadata collection phase, the schema outline of all models is scanned. This provides information about table names and column details prior to actual profiling. This phase is particularly useful when only the schema, and not the data metrics, is of concern.
+>
+> On the other hand, during the profiling phase, data metrics are checked in the model, which allows you to examine the data shape in greater depth.
+
+
 
 ## Execute a run
 
@@ -13,6 +30,7 @@ piperider run
 It will
 
 * Connect to the data warehouse using the default target specified in your dbt profile.
+* Scan all resources and make a schema outline. The resources include source, seed and model.
 * Profile all models (with the `piperider` tag) and generate schema information and profiling statistics.
 * Query the dbt metrics (with the `piperider` tag) using the default query logic.
 * Assert the profiling statistics to check if their values satisfy certain rules.
@@ -119,9 +137,7 @@ piperider run --output /tmp/myrun
 
 PipeRider is more than a profiler. In a dbt project, especially for analytics purpose project, it's common to have several metrics defined for visualization. (e.g. revenue, active users). PipeRider can query the metrics are visualize it in the run report. For more detail, please see [Metrics](metrics.md).
 
-## Advanced: Assert the profiling result
 
-PipeRider also provides the testing mechanism to assert if the profiling statistics fulfill certain rules. For more detail, please see [Assertions](assertions.md)
 
 
 

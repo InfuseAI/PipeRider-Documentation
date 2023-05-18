@@ -4,11 +4,51 @@ description: Release notes for PipeRider OSS
 
 # PipeRider
 
-Please refer to the [PipeRider Released page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
+Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
+
+
+
+## PipeRider OSS v0.25.0
+
+Release date: [2023-05-18](https://github.com/InfuseAI/piperider/releases/tag/v0.25.0)
+
+Increased focus on dbt project integration.
+
+* It's no longer required to run `piperider init` inside dbt projects, just install PipeRider and run
+* The report sidebar has been redesigned to follow closely with the layout of the dbt docs sidebar, making it easier to navigate for dbt users
+* Tracking schema changes: Previously, the profiling was a one-time scan of models with tags, including metadata fetching and execution profiling. Now, in the new version, we have separated the metadata collection and profiling into two distinct phases:
+  1. PipeRider will gather all metadata to track schema changes for models, seeds, and sources.
+  2. PipeRider will continue to profile only those models that have been tagged for profiling.
+
+#### Feature deprecation notice
+
+The following features are now deprecated and will be removed from a future version of PipeRider:
+
+* &#x20;Using PipeRider in **non-dbt projects**&#x20;
+* **PipeRider assertions**
+
+These features are still included in PipeRider for the time being, but are not recommended for continued use.
+
+## PipeRider OSS v0.24.1
+
+Release date: [2023-05-04](https://github.com/InfuseAI/piperider/releases/tag/v0.24.1)
+
+Bug fix:
+
+* Piperider bug with PipeRider using the wrong schema when using the `--table` option
+
+## PipeRider OSS v0.24.0
+
+Release date: [2023-05-04](https://github.com/InfuseAI/piperider/releases/tag/v0.24.0)
+
+Bug fixes, including:
+
+* Fix issue when loading dbt project yaml
+* Fix PiperRider Cloud report URL in CLI output
 
 ## PipeRider OSS v0.23.0
 
-Release date: 2023-04-20
+Release date: [2023-04-20](https://github.com/InfuseAI/piperider/releases/tag/v0.23.0)
 
 * **AWS Athena Support**: PipeRider now supports querying and profiling data stored in AWS Athena.
 * **Skipped model reasons**: We have added the ability to display the reason why certain models were skipped during profiling and metric queries, making it easier for users to understand and improve their data pipeline.
@@ -19,7 +59,7 @@ Release date: 2023-04-20
 
 ## PipeRider OSS v0.22.0
 
-Release date: 2023-03-30
+Release date: [2023-03-30](https://github.com/InfuseAI/piperider/releases/tag/v0.22.0)
 
 * We are excited to announce the release of our new Compare GitHub Action! This powerful new feature allows you to easily compare code changes and send summary to your PR comment. For more information, please visit our [**GitHub Marketplace page**](https://github.com/marketplace/actions/piperider-compare-action).
 * We have made some layout adjustments to our application to improve its responsiveness and overall user experience.
@@ -27,16 +67,16 @@ Release date: 2023-03-30
 
 ## PipeRider OSS v0.21.0&#x20;
 
-Release date 03-16-2023
+Release date [03-16-2023](https://github.com/InfuseAI/piperider/releases/tag/v0.21.0)
 
 * Changed to using 'three-dot compare' (instead of two-dot) when running `piperider compare`. Refer to the GitHub documentation for more information on [two-dot and three-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons).&#x20;
 
 ## PipeRider OSS v0.20.0
 
-Release date: 2023-03-07
+Release date: [2023-03-07](https://github.com/InfuseAI/piperider/releases/tag/v0.20.0)
 
 * Improved the cloud signup process.
-* `piperirder compare` now supports PipeRider cloud.
+* `piperider compare` now supports PipeRider cloud.
 
 
 
