@@ -13,7 +13,7 @@ In this guide you will do the following:
 1. [Configure the Jaffle Shop project](dbt.md#1.-configure-the-jaffle-shop-project)
 2. [Install and add PipeRider to the Jaffle Shop project](dbt.md#2.-install-and-add-piperider-to-the-jaffle-shop-project)
 3. [Run PipeRider](dbt.md#3.-run-piperider)
-4. [Compare for your pull request](dbt.md#3.-compare-for-a-pull-request.)
+4. [Add PipeRider to your development workflow](dbt.md#4.-add-piperider-to-your-development-workflow)
 5. [Next step: Automate the process in the CI](dbt.md#4.-automate-the-procss-in-the-ci)
 
 ## 1. Configure the Jaffle Shop project
@@ -219,7 +219,7 @@ git add '.piperider/*' dbt_project.yml models/revenue.yml
 git commit -s -m 'Integrate with PipeRider'
 ```
 
-## 3. Compare for a pull request.
+## 4. Add PipeRider to your development workflow
 
 When you want to develop a new feature, you likely follow the [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow), which contains the following steps:
 
@@ -340,7 +340,7 @@ The report will show the following changes to your projectL
 
 <figure><img src="../../.gitbook/assets/jaffle-shop-metric-change.png" alt=""><figcaption><p>Metric change</p></figcaption></figure>
 
-## 4. Add comparison summary to your pull request comment
+### Add the comparison summary to your pull request comment
 
 The compre command also outputs a markdown file, `summary.md` which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
 
