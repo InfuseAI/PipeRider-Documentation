@@ -4,7 +4,7 @@ description: How to use PipeRider with dbt
 
 # Jaffle Shop
 
-t be Incorporating PipeRider into your current dbt project is a seamless process, thanks to PipeRider's built-in zero-configuration support for dbt.
+Incorporating PipeRider into your current dbt project is a seamless process, thanks to PipeRider's built-in, almost zero-configuration, support for dbt.
 
 This guide utilizes the [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project from dbt as a practical illustration of how to effectively employ PipeRider in conjunction with a dbt project.
 
