@@ -32,8 +32,8 @@ There are three steps to&#x20;
 
 To define a metric, please see the [dbt metric document](https://docs.getdbt.com/docs/build/metrics#defining-a-metric) to see how to define a metric in your dbt project
 
-{% code title="models/marts/<metric>.yml" %}
-```yaml
+{% code title="models/marts/metrics.yml" %}
+```diff
 metrics:
   - name: active_users
     label: Active Users
@@ -45,7 +45,7 @@ metrics:
 
     timestamp: event_time
     time_grains: [day, week, month, year]
-    tags: ['piperider']
++   tags: ['piperider']
 ```
 {% endcode %}
 

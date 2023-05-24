@@ -4,6 +4,10 @@ description: Install PipeRider with the CSV connector and load the CSV file .
 
 # CSV Connector
 
+{% hint style="warning" %}
+non-dbt use case is deprecated since v0.25.0
+{% endhint %}
+
 ## Installation
 
 Under the hood, PipeRider loads CSV files by DuckDB, so please install PipeRider with DuckDB.

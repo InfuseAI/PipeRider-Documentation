@@ -12,15 +12,19 @@ pip install 'piperider[redshift]'
 
 ## Configuration (DBT)
 
-Run the initialization command in the dbt project
+Run the diagnose command in the dbt project
 
 ```
-piperider init
+piperider diagnose
 ```
 
 If you can successfully connect to Redshift using dbt, PipeRider can also connect to Redshift using the same profile settings. For details, please refer to the dbt [Redshift adapter](https://docs.getdbt.com/reference/warehouse-setups/redshift-setup) documentation.
 
 ## Configuration (Non-DBT)
+
+{% hint style="warning" %}
+non-dbt use case is deprecated since v0.25.0
+{% endhint %}
 
 Initialize a new PipeRider project using `piperider init` and when prompted select **Redshift** as the data source.
 

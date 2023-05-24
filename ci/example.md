@@ -52,9 +52,9 @@ piperider compare -o /tmp/piperider/comparison --summary-file /tmp/piperider/com
 ```
 {% endcode %}
 
-### 3. Post the data profile diff to your PR comment
+### 3. Post the comparison report to your PR comment
 
-The compare feature outputs a Markdown-formatted data profile diff that you can attach to your pull request comment or upload to your own storage.
+The compare feature outputs a Markdown-formatted comparison summary that you can attach to your pull request comment or upload to your own storage.
 
 #### Option 1 - Use PipeRider Compare Action
 

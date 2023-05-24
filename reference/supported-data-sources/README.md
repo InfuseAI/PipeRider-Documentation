@@ -21,7 +21,7 @@ PipeRider supports the following data sources by installing the relevant connect
 
 ### Files
 
-* [CSV](csv-connector.md)
-* [Parquet](parquet-connector.md)
+* [CSV (Deprecated)](csv-connector.md)
+* [Parquet (Depecated)](parquet-connector.md)
 
 If the connector you require is not available, please [email us](mailto:support@piperider.io) to suggest it, or fill out the [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSe0J8qC78lqMVxSAJFPub6QXx2NcVY8WLvIVEGthOeQcJHxFQ/viewform?usp=sf\_link).

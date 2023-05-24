@@ -56,3 +56,4 @@
 * [Terms of Use](privacy/terms-of-use.md)
 * [Refund Policy](privacy/refund-policy.md)
 * [Telemetry](privacy/telemetry.md)
+* [Deprecation](privacy/deprecation.md)

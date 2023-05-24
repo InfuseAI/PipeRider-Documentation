@@ -1,25 +1,83 @@
 ---
-description: Profile the model
+description: Profile statistics
 ---
 
 # Profiling
 
-The data profiler is at the core of how PipeRider works. PipeRider helps you understand the structure of your data by providing profile statistics and data distribution information about the table and columns in your data source. When paired with data assertions, the data profile provides a way to check the quality and reliability of your data.
+PipeRider helps you understand of your data by providing profile statistics and data distribution information about the table and columns in your data source. When paired with data assertions, the data profile provides a way to check the quality and reliability of your data.
+
+{% hint style="warning" %}
+Assertion is deprecated since v0.25.0
+{% endhint %}
+
+## Enable Profiling
+
+Profiling is supported for dbt models, seeds, and sources. To enable the profiling, please add `piperider` tag on the corresponding resources.
+
+{% tabs %}
+{% tab title="Config Block" %}
+```diff
+--- models/staging/stg_customers.sql
++{{ config(
++    tags=["piperider"]
++)}}
+
+select ...
+
+```
+{% endtab %}
+
+{% tab title="Project file" %}
+```diff
+# dbt_project.yml
+models:
+  jaffle_shop:
++     +tags: [piperider]
+      materialized: table
+      staging:
+        materialized: view
+seeds:
+  jaffle_shop:
++   +tags: [piperider]
+```
+{% endtab %}
+
+{% tab title="Config property" %}
+```diff
+# models/resources.yml
+version: 2
+
+models:
+  - name: customers
+    description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
++   config:
++      tags: [piperider]
+```
+{% endtab %}
+{% endtabs %}
+
+and run the command to check if it is configured correectly.
+
+```
+ dbt list -s tag:piperider
+```
+
+
 
 ## Table statistics
 
-| Profile Field           | Description                                                                     | Assertion Available |
-| ----------------------- | ------------------------------------------------------------------------------- | ------------------- |
-| `row_count`             | The number of rows in the table                                                 | ✔                   |
-| `col_count`             | The number of columns in the table                                              |                     |
-| `samples`               | The number of rows profiled                                                     |                     |
-| `samples_p`             | The percentage of rows profiled                                                 |                     |
-| `bytes` \*              | The volume size of the table in bytes                                           | ✔                   |
-| `created` \*            | The time that the table was created, including time zone, in ISO 8601 format    |                     |
-| `last_altered` \*       | The last time the table was modified, including time zone, in ISO 8601 format   |                     |
-| `freshness` \*          | The time differentiation between the current time and table's last altered time | ✔                   |
-| `duplicate_rows` \*\*   | The number of duplicate rows in the table                                       | ✔                   |
-| `duplicate_rows_p` \*\* | The percentage of duplicate rows in the table                                   | ✔                   |
+| Profile Field           | Description                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| `row_count`             | The number of rows in the table                                                 |
+| `col_count`             | The number of columns in the table                                              |
+| `samples`               | The number of rows profiled                                                     |
+| `samples_p`             | The percentage of rows profiled                                                 |
+| `bytes` \*              | The volume size of the table in bytes                                           |
+| `created` \*            | The time that the table was created, including time zone, in ISO 8601 format    |
+| `last_altered` \*       | The last time the table was modified, including time zone, in ISO 8601 format   |
+| `freshness` \*          | The time differentiation between the current time and table's last altered time |
+| `duplicate_rows` \*\*   | The number of duplicate rows in the table                                       |
+| `duplicate_rows_p` \*\* | The percentage of duplicate rows in the table                                   |
 
 {% hint style="info" %}
 \* These statistics are only available for certain data sources. Please refer to the **platform dependent statistics** table below for availability information.\
