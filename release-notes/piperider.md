@@ -6,7 +6,11 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+## PipeRider OSS v0.25.1
 
+Release date: [2023-05-19](https://github.com/InfuseAI/piperider/releases/tag/v0.25.1)
+
+* Bug fixes
 
 ## PipeRider OSS v0.25.0
 
