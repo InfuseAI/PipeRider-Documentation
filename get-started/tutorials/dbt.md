@@ -4,7 +4,7 @@ description: How to use PipeRider with dbt
 
 # Jaffle Shop
 
-Incorporating PipeRider into your current dbt project is a seamless process, thanks to PipeRider's built-in zero-configuration support for dbt.
+t be Incorporating PipeRider into your current dbt project is a seamless process, thanks to PipeRider's built-in zero-configuration support for dbt.
 
 This guide utilizes the [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project from dbt as a practical illustration of how to effectively employ PipeRider in conjunction with a dbt project.
 
@@ -18,14 +18,14 @@ In this guide you will do the following:
 
 ## 1. Configure the Jaffle Shop project
 
-Clone the jaffle shop repository
+Clone the Jaffle Shop repository
 
 ```
 git clone https://github.com/dbt-labs/jaffle_shop.git
 cd jaffle_shop
 ```
 
-Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project or you can follow the following instruction to setup project on [DuckDB](https://duckdb.org/).
+Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project, or use the instructions below to setup the project using [DuckDB](https://duckdb.org/).
 
 <details>
 
@@ -56,7 +56,7 @@ jaffle_shop:
       path: jaffle_shop.duckdb
 ```
 
-Run dbt and make sure everything works
+Run dbt build and ensure the process completes without error.
 
 ```
 dbt build
@@ -64,15 +64,11 @@ dbt build
 
 </details>
 
-Once configured, or if you already have a dbt project you want to use, proceed to step #2.
-
 ## 2. Install and add PipeRider to the Jaffle Shop project
 
 ### Install PipeRider
 
-PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../../reference/supported-data-sources/).&#x20;
-
-Install PipeRider with the required connector for the data source you used to configure the Jaffle Shop project in step #1.
+Install PipeRider with the [required connector](../../reference/supported-data-sources/) for the data source you used to configure the Jaffle Shop project in step #1.
 
 For example, to install PipeRider with the **DuckDB** connector, you would use the following command:
 
@@ -113,21 +109,19 @@ Check assertion files:
 🎉 You are all set!
 ```
 
-If everything is configured corrected you’ll see the '_You are all set!_’ message.
+If everything is configured corrected you’ll see the _**You are all set!**_ message.
 
 ## 3. Run PipeRider
 
-Run your first report
+You can now run PipeRider to generate your first report, which will list all of the sources, seeds, models, and schema definition. However, **to profile your models you will need to add the PipeRider tag**. Skip to the next section to do this.
 
 ```
 piperider run
 ```
 
-It will list all the sources, seeds, and models and the schema definition. However, at this step, the report doesn't contain much information. You can add model profiling and metric querying in the subsequent steps.
+### Tag models to enable profiling
 
-### Enable profiling on your models
-
-By default, PipeRider does not profile any models. However, you can enable profiling by adding the `piperider` tag to the models you wish to be profiled. Here's an example of how to add tags in the project file
+Enable profiling by adding the `piperider` tag to the models you wish to be profiled. Here's an example of how to add tags in the project file:
 
 ```diff
 # dbt_project.yml
@@ -139,13 +133,21 @@ models:
         materialized: view
 ```
 
-Check all the models are well-configured
+Alternatively, you can also add the tag config to the top of individual model files, e.g:
+
+```
+# models/my_model.sql
+{{ config(tags=['piperider']) }}
+...
+```
+
+After tagging models, verify your configuration by listing the tagged models.
 
 ```
 dbt list -s tag:piperider --resource-type model  
 ```
 
-Run PipeRider again
+Run PipeRider again. This time, the report will be filled with the data profiling statistics of your tagged models.
 
 ```bash
 piperider run
@@ -155,11 +157,11 @@ The report contains profiling statistics for each of the profiled models.
 
 <figure><img src="../../.gitbook/assets/jaffle-shop-profiling.png" alt=""><figcaption></figcaption></figure>
 
-### Add metric to query
+### Add metrics to query
 
 In dbt, you have the ability to define metrics that specify how to query your time series data. PipeRider offers automatic report generation based on these defined metrics.
 
-To add a metric to your project, you can include the following content in the `models/revenue.yml` file. Note that the metric has the `piperider` tag, indicating that PipeRider should automatically query this metric:
+To add a metric to your project, create a new file, `models/revenue.yml`, with the following content.
 
 ```
 # models/revenue.yml
@@ -187,7 +189,11 @@ metrics:
 
 ```
 
-Check the metric is well-configured
+{% hint style="info" %}
+Note that **metrics also require the `piperider` tag**, indicating that PipeRider should automatically query this metric.
+{% endhint %}
+
+Check the metric is well-configured.
 
 ```
 dbt list -s tag:piperider --resource-type metric  
@@ -205,7 +211,7 @@ The report includes metric queries for your data. However, please note that sinc
 
 ### Commit the change
 
-In order for compare tutorial below, we need to commit current changes.
+In order to follow the compare tutorial below, you will need to first commit the current changes.
 
 ```sh
 git add profiles.yml # If you configure the dbt profiles in your project
@@ -215,7 +221,7 @@ git commit -s -m 'Integrate with PipeRider'
 
 ## 3. Compare for a pull request.
 
-When we want to develop a new feature, we may follow the [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow), which contains the following steps
+When you want to develop a new feature, you likely follow the [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow), which contains the following steps:
 
 1. Create a branch
 2. Make changes
@@ -223,9 +229,9 @@ When we want to develop a new feature, we may follow the [GitHub workflow](https
 4. Address review comments
 5. Merge your pull request
 
-PipeRider can help you generate the compare report for code review in your dbt project.
+Based on these steps, PipeRider can integrate with your process and generate a comparison report to aid with code review in your dbt project.
 
-### Create a branch for develop
+### Create a branch for development
 
 ```
 git checkout -b feature/change-my-project
@@ -233,7 +239,7 @@ git checkout -b feature/change-my-project
 
 ### Make changes
 
-First, we add a new column to the `customers` table
+Add a new column to the `customers` table.
 
 ```diff
 # models/customers.sql
@@ -254,7 +260,7 @@ First, we add a new column to the `customers` table
 ...
 ```
 
-Next, we add a filter to the orders table.
+Add a filter to the orders table.
 
 ```diff
 # models/customers.sql
@@ -289,19 +295,25 @@ final as (
 ...
 ```
 
-Test your changes, make sure it can run successfully
+### Build the project
+
+Test your changes, and ensure that the project can be built without error.
 
 ```
 dbt build
 ```
 
-You can also run PipeRider again to see the report
+### Generate a report
+
+if you wish to view the PipeRider report before comparing, you can run PipeRider st this stage:&#x20;
 
 ```
 piperider run
 ```
 
-Commit your changes
+### Commit your changes
+
+Add your recent changes to source control.
 
 ```
 git add 'models/*'
@@ -310,27 +322,31 @@ git commit -s -m 'Test PipeRide compare'
 
 ### Create the compare report
 
+The PipeRider compare command will compare your data before and after making dbt project changes.&#x20;
+
 ```
 piperider compare
 ```
 
-You can find the change in the report
+The report will show the following changes to your projectL
 
-1. Add new column
-2. The row counts change in the orders table
-3. The metric change because the orders table definition change.
+1. Added a new column
+2. Row counts change in the orders table
+3. Metric change due to the orders table definition change
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-schema-change.png" alt=""><figcaption><p>Add new column</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-schema-change.png" alt=""><figcaption><p>Added a new column</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-stats-change.png" alt=""><figcaption><p>The row count changes</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-stats-change.png" alt=""><figcaption><p>Row count changed</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-metric-change.png" alt=""><figcaption><p>The metric change</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/jaffle-shop-metric-change.png" alt=""><figcaption><p>Metric change</p></figcaption></figure>
 
-### Add comparison summary to your pull request comment
+## 4. Add comparison summary to your pull request comment
 
-You can also paste the comparison summary `summary.md` to a PR comment.
+The compre command also outputs a markdown file, `summary.md` which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
 
 <figure><img src="../../.gitbook/assets/jaffle-shop-compare-summary.png" alt=""><figcaption></figcaption></figure>
+
+The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process, and helps ensure that unexpected changes do not make their way into production.&#x20;
 
 ## Next Step: Automate the process in the CI
 
