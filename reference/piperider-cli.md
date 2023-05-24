@@ -22,7 +22,7 @@ Initializing a project will generate a `.piperider` directory containing project
 | `--debug`            | N/A      | Enable the debug mode                                               |
 | `--help`             | N/A      | List available commands                                             |
 
-## Run profiler
+## Run
 
 ```shell
 piperider run [options]

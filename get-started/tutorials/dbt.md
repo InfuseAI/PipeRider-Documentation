@@ -4,93 +4,77 @@ description: How to use PipeRider with dbt
 
 # Jaffle Shop
 
-Integrating PipeRider into your existing dbt project is easy with PipeRider's zero-config support for dbt. Just initialize PipeRider inside your dbt project folder and your data source settings will be automatically configured.
+Incorporating PipeRider into your current dbt project is a seamless process, thanks to PipeRider's built-in, almost zero-configuration, support for dbt.
 
-The following guide uses dbt's [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project as an example of how to use PipeRider with a dbt project.
+This guide utilizes the [Jaffle Shop](https://github.com/dbt-labs/jaffle\_shop) project from dbt as a practical illustration of how to effectively employ PipeRider in conjunction with a dbt project.
 
 In this guide you will do the following:
 
 1. [Configure the Jaffle Shop project](dbt.md#1.-configure-the-jaffle-shop-project)
 2. [Install and add PipeRider to the Jaffle Shop project](dbt.md#2.-install-and-add-piperider-to-the-jaffle-shop-project)
-3. [Run PipeRider to generate a data profile report](dbt.md#3.-run-piperider-to-generate-a-data-profile-report)
-4. [Use dbt node selection with PipeRider](dbt.md#4.-use-dbt-node-selection-with-piperider)
-5. [Next step: Data assertions](dbt.md#5.-next-step-data-assertions)
+3. [Run PipeRider](dbt.md#3.-run-piperider)
+4. [Compare for your pull request](dbt.md#3.-compare-for-a-pull-request.)
+5. [Next step: Automate the process in the CI](dbt.md#4.-automate-the-procss-in-the-ci)
 
 ## 1. Configure the Jaffle Shop project
 
-Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project.
+Clone the Jaffle Shop repository
 
-Once configured, or if you already have a dbt project you want to use, proceed to step #2.
+```
+git clone https://github.com/dbt-labs/jaffle_shop.git
+cd jaffle_shop
+```
+
+Follow the ‘[Running this project](https://github.com/dbt-labs/jaffle\_shop#running-this-project)’ instructions in the [Jaffle shop](https://github.com/dbt-labs/jaffle\_shop) repository to install and configure the dbt project, or use the instructions below to setup the project using [DuckDB](https://duckdb.org/).
+
+<details>
+
+<summary>Use DuckDB</summary>
+
+(Optional) Setup the virtual env
+
+```
+python -m venv ./venv
+source ./venv/bin/activate 
+```
+
+Install [`dbt-duckdb`](https://docs.getdbt.com/reference/warehouse-setups/duckdb-setup)
+
+```bash
+pip install dbt-duckdb
+```
+
+Copy the following content to `profiles.yml` and place it under the jaffle\_shop directory.
+
+```yaml
+# ./profiles.yml
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: jaffle_shop.duckdb
+```
+
+Run dbt build and ensure the process completes without error.
+
+```
+dbt build
+```
+
+</details>
 
 ## 2. Install and add PipeRider to the Jaffle Shop project
 
-PipeRider supports many data sources through connectors. For a full list, please refer to [Supported Data Sources](../../reference/supported-data-sources/).
-
 ### Install PipeRider
 
-Install PipeRider with the required connector for the data source you used to configure the Jaffle Shop project in step #1.
+Install PipeRider with the [required connector](../../reference/supported-data-sources/) for the data source you used to configure the Jaffle Shop project in step #1.
 
-For example, to install PipeRider with the Postgres connector, you would use the following command:
-
-```bash
-pip install -U 'piperider[postgres]'
-```
-
-### Initialize PipeRider
-
-Ensure you are inside the Jaffle Shop project directory, and then run the following command to initialize a new PipeRider project.
+For example, to install PipeRider with the **DuckDB** connector, you would use the following command:
 
 ```bash
-piperider init
+pip install -U 'piperider[duckdb]'
 ```
-
-PipeRider will auto-detect the dbt project settings and display the contents of your PipeRider configuration file, located at `.piperider/config.yml`
-
-```
-$ piperider init
-Initialize piperider to path /path/to/jaffle_shop/.piperider
-[ DBT ] Use the existing dbt project file: /path/to/jaffle_shop/dbt_project.yml
-────────────────────────────────────────────── .piperider/config.yml ───────────────────────────────────────────────
-   1 dataSources: []
-   2 dbt:
-   3   projectDir: .
-   4   # tag: 'piperider'
-   5
-   6 profiler:
-   7 #   table:
-   8 #     # the maximum row count to profile. (Default unlimited)
-   9 #     limit: 1000000
-  10 #     duplicateRows: false
-  11
-  12 telemetry:
-  13   id: abc123
-  14
-
-───────────────────────────────────── Recipe: .piperider/compare/default.yml ────────────────────────────────────────
-   1 base:
-   2   branch: main
-   3   dbt:
-   4     commands:
-   5     - dbt deps
-   6     - dbt build
-   7   piperider:
-   8     command: piperider run
-   9 target:
-  10   dbt:
-  11     commands:
-  12     - dbt deps
-  13     - dbt build
-  14   piperider:
-  15     command: piperider run
-  16
-
-Next step:
-  Please execute command 'piperider diagnose' to verify configuration
-```
-
-{% hint style="info" %}
-See [config.yml](../../reference/project-structure/config.md) for details of available settings
-{% endhint %}
 
 ### Verify PipeRider configuration
 
@@ -101,11 +85,10 @@ piperider diagnose
 ```
 
 ```
-$ piperider diagnose
 Diagnosing...
-PipeRider Version: 0.14.0
+PipeRider Version: 0.25.0.dev
 Check config files:
-  /path/to/jaffle_shop/.piperider/config.yml: [OK]
+  /private/tmp/jaffle_shop/.piperider/config.yml: [OK]
 ✅ PASS
 
 Check format of data sources:
@@ -113,9 +96,9 @@ Check format of data sources:
 ✅ PASS
 
 Check connections:
-  DBT: postgres > jaffle_shop > dev [OK]
+  DBT: duckdb > jaffle_shop > dev [OK]
   Name: dev
-  Type: postgres
+  Type: duckdb
   connector: [OK]
   Connection: [OK]
 ✅ PASS
@@ -124,187 +107,250 @@ Check assertion files:
 ✅ PASS
 
 🎉 You are all set!
-
-
-Next step:
-  Please execute command 'piperider run' to generate your first report
 ```
 
-If everything is configured corrected you’ll see the 'You are all set!’ message.
+If everything is configured corrected you’ll see the _**You are all set!**_ message.
 
-## 3. Run PipeRider to generate a data profile report
+## 3. Run PipeRider
 
-By default, PipeRider will run profile on the models with `piperider` tag, we can add all models with `piperider` tag in the `dbt_project.yml`
+You can now run PipeRider to generate your first report, which will list all of the sources, seeds, models, and schema definition. However, **to profile your models you will need to add the PipeRider tag**. Skip to the next section to do this.
 
 ```
+piperider run
+```
+
+### Tag models to enable profiling
+
+Enable profiling by adding the `piperider` tag to the models you wish to be profiled. Here's an example of how to add tags in the project file:
+
+```diff
+# dbt_project.yml
 models:
   jaffle_shop:
-      +tags: piperider
++     +tags: piperider
       materialized: table
       staging:      
         materialized: view
 ```
 
-Check all the models are well-configured
+Alternatively, you can also add the tag config to the top of individual model files, e.g:
+
+```
+# models/my_model.sql
+{{ config(tags=['piperider']) }}
+...
+```
+
+After tagging models, verify your configuration by listing the tagged models.
 
 ```
 dbt list -s tag:piperider --resource-type model  
 ```
 
-Run PipeRider to profile the data source and create your first HTML report:
+Run PipeRider again. This time, the report will be filled with the data profiling statistics of your tagged models.
 
 ```bash
 piperider run
 ```
 
-PipeRider will profile all the models and output the link for the HTML report.
+The report contains profiling statistics for each of the profiled models.
+
+<figure><img src="../../.gitbook/assets/jaffle-shop-profiling.png" alt=""><figcaption></figcaption></figure>
+
+### Add metrics to query
+
+In dbt, you have the ability to define metrics that specify how to query your time series data. PipeRider offers automatic report generation based on these defined metrics.
+
+To add a metric to your project, create a new file, `models/revenue.yml`, with the following content.
 
 ```
-$ piperider run
-DataSource: dev
-───────────────────────────────────────────────── Validating ──────────────────────────────────────────────────
-everything is OK.
-────────────────────────────────────────────────── Profiling ──────────────────────────────────────────────────
-[0/7] METADATA                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   7/7 0:00:00
-[1/7] int_order_payments_pivoted        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
-[2/7] int_customer_order_history_joined ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
+# models/revenue.yml
+version: 2
+
+metrics:
+  - name: revenue
+    label: Revenue
+    model: ref('orders')
+    description: "The total revenue of our jaffle business"
+
+    calculation_method: sum
+    expression: amount 
+
+    timestamp: order_date
+    time_grains: [day, week, month, year]
+
+    filters:
+      - field: status
+        operator: '='
+        value: "'completed'"
+
+    tags: ['piperider']
+
+
+```
+
+{% hint style="info" %}
+Note that **metrics also require the `piperider` tag**, indicating that PipeRider should automatically query this metric.
+{% endhint %}
+
+Check the metric is well-configured.
+
+```
+dbt list -s tag:piperider --resource-type metric  
+```
+
+Run PipeRider again
+
+```
+piperider run
+```
+
+The report includes metric queries for your data. However, please note that since the Jaffle Shop data is only available for the year 2018, you will only be able to view the data in the yearly report. This report displays the data for the last 10 years.
+
+<figure><img src="../../.gitbook/assets/jaffle-shop-metric.png" alt=""><figcaption></figcaption></figure>
+
+### Commit the change
+
+In order to follow the compare tutorial below, you will need to first commit the current changes.
+
+```sh
+git add profiles.yml # If you configure the dbt profiles in your project
+git add '.piperider/*' dbt_project.yml models/revenue.yml
+git commit -s -m 'Integrate with PipeRider'
+```
+
+## 3. Compare for a pull request.
+
+When you want to develop a new feature, you likely follow the [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow), which contains the following steps:
+
+1. Create a branch
+2. Make changes
+3. Create a pull review
+4. Address review comments
+5. Merge your pull request
+
+Based on these steps, PipeRider can integrate with your process and generate a comparison report to aid with code review in your dbt project.
+
+### Create a branch for development
+
+```
+git checkout -b feature/change-my-project
+```
+
+### Make changes
+
+Add a new column to the `customers` table.
+
+```diff
+# models/customers.sql
+...  
+  final as (
+
+      select
+          customers.customer_id,
+          customers.first_name,
+          customers.last_name,
+          customer_orders.first_order,
+          customer_orders.most_recent_order,
++         customer_payments.total_amount / customer_orders.number_of_orders as average_value_per_order,
+          customer_orders.number_of_orders,
+          customer_payments.total_amount as customer_lifetime_value
+
+      from customers
 ...
-─────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────
-
-  Table Name                          #Columns Profiled   #Tests Executed   #Tests Failed
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  int_order_payments_pivoted                          9                 0               0
-  int_customer_order_history_joined                   7                 0               0
-  ...
-
-Generating reports from: /path/to/jaffle_shop/.piperider/outputs/latest/run.json
-Report generated in /path/to/jaffle_shop/.piperider/outputs/latest/index.html
-
-Next step:
-  Please execute command 'piperider run' to generate your second report
 ```
 
-The report contains detailed data profile statistics for each of the profiled tables.
+Add a filter to the orders table.
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-tables2.jpg" alt="PipeRider Jaffle Shop Report Overview"><figcaption><p>PipeRider Jaffle Shop Report Overview</p></figcaption></figure>
+```diff
+# models/customers.sql
+...
+final as (
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-profile2.jpg" alt="PipeRider Jaffle Shop Data Profile Sample"><figcaption><p>PipeRider Jaffle Shop Data Profile Sample</p></figcaption></figure>
+    select
+        orders.order_id,
+        orders.customer_id,
+        orders.order_date,
+        orders.status,
 
-## 4. Use dbt node selection with PipeRider
+        {% raw %}
+{% for payment_method in payment_methods -%}
 
-PipeRider supports profiling and testing dbt 'state', so it’s possible to use node selection to build and then run PipeRider on a subset of resources.
+        order_payments.{{ payment_method }}_amount,
 
-### Build a subset of resources
+        {% endfor -%}
+{% endraw %}
 
-Use dbt node selection to select and build a sub-set of resources.
+        order_payments.total_amount as amount
 
-```bash
-dbt build -s orders+
+    from orders
+
+
+    left join order_payments
+        on orders.order_id = order_payments.order_id
+    
++   where orders.order_id > 50
+)
+
+...
 ```
 
-dbt will seed, build, and test the `orders` table and any children.
+### Build the project
 
-### Run PipeRider on the dbt state
-
-Run PipeRider again, this time specifying the location of the dbt state (the default folder for dbt artifacts is `target`).
-
-```bash
-piperider run --dbt-state target
-```
-
-PipeRider will now only run on the `orders` table, and the two child models, `customers` and `orders`.
+Test your changes, and ensure that the project can be built without error.
 
 ```
-$ piperider run --dbt-state target
-DataSource: dev
-───────────────────────────────────────────────── Validating ──────────────────────────────────────────────────
-everything is OK.
-────────────────────────────────────────────────── Profiling ──────────────────────────────────────────────────
-[0/2] METADATA  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   2/2 0:00:00
-[1/2] customers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   8/8 0:00:00
-[2/2] orders    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:00
-─────────────────────────────────────────────────── Summary ───────────────────────────────────────────────────
-
-  Table Name   #Columns Profiled   #Tests Executed   #Tests Failed
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  customers                    7                 0               0
-  orders                       9                 0               0
-
-Generating reports from: /path/to/jaffle_shop/.piperider/outputs/latest/run.json
-Report generated in  /path/to/jaffle_shop/.piperider/outputs/latest/index.html
+dbt build
 ```
 
-### View report and dbt test results
+### Generate a report
 
-The resulting report contains the data profile for the three resources on the node we specified in the last step.
+if you wish to view the PipeRider report before comparing, you can run PipeRider st this stage:&#x20;
 
-<figure><img src="../../.gitbook/assets/piperider-report-dbt-state2.jpg" alt="PipeRider Report based on dbt State"><figcaption><p>PipeRider Report based on dbt State</p></figcaption></figure>
-
-## 5. Next step: Data assertions
-
-> <mark style="color:red;">Starting from version 0.25.0 of PipeRider,</mark> <mark style="color:red;"></mark><mark style="color:red;">**non-dbt projects**</mark> <mark style="color:red;"></mark><mark style="color:red;">and</mark> <mark style="color:red;"></mark><mark style="color:red;">**assertions**</mark> <mark style="color:red;"></mark><mark style="color:red;">will be deprecated and, although they will still be supported and usable for now, they are not recommended for use.</mark>
-
-In addition to showing dbt test results on the PipeRider report, PipeRider also features its own suite of data assertions.
-
-### Recommended assertions
-
-To save time writing data assertions from scratch, you can use the `generate-assertions` command to auto-generate assertions based on the current state of the data.
-
-Use the following command to generate assertions for your project:
-
-```bash
-piperider generate-assertions
+```
+piperider run
 ```
 
-Assertion files are stored in `.piperider/assertions` and are named according to table. If the `generate-assertions` command was used, assertion files will be prepended with `recommended_`.
+### Commit your changes
 
-### Edit assertions
+Add your recent changes to source control.
 
-If you ran PipeRider now, the assertions would all pass, so we'll first make a change to one of the assertions.
-
-The `customers` model has some entries for customers without any orders. These rows have `null` values in the order related columns. Let's pretend that we only wanted customers who had actually placed an order to appear in this table, so we can add an assertion to alert us if any customers have zero (null) orders.
-
-Open `.piperider/recommended_customers.yml` in your text editor.
-
-Find the `number_of_orders` table, it should look like this:
-
-```bash
-number_of_orders:
-  tests:
-  - name: assert_column_schema_type
-    assert:
-      schema_type: BIGINT
-    tags:
-    - RECOMMENDED
+```
+git add 'models/*'
+git commit -s -m 'Test PipeRide compare'
 ```
 
-Add a new test to assert that this **column must not be null:**
+### Create the compare report
 
-```bash
-number_of_orders:
-  tests:
-  - name: assert_column_schema_type
-    assert:
-      schema_type: BIGINT
-    tags:
-    - RECOMMENDED
-  - name: assert_column_not_null
+The PipeRider compare command will compare your data before and after making dbt project changes.&#x20;
+
+```
+piperider compare
 ```
 
-Save the file.
+The report will show the following changes to your projectL
 
-#### Run PipeRider
+1. Added a new column
+2. Row counts change in the orders table
+3. Metric change due to the orders table definition change
 
-Now that you have edited the assertions to better meet your needs, run PipeRider again.
+<figure><img src="../../.gitbook/assets/jaffle-shop-schema-change.png" alt=""><figcaption><p>Added a new column</p></figcaption></figure>
 
-```bash
-piperider run --dbt-state target
-```
+<figure><img src="../../.gitbook/assets/jaffle-shop-stats-change.png" alt=""><figcaption><p>Row count changed</p></figcaption></figure>
 
-This time, because assertion files exist, PipeRider will profile the data source _and_ test it against the data assertions we edited in the last step.
+<figure><img src="../../.gitbook/assets/jaffle-shop-metric-change.png" alt=""><figcaption><p>Metric change</p></figcaption></figure>
 
-The generated report will show the failed assertion at the top.
+## 4. Add comparison summary to your pull request comment
 
-<figure><img src="../../.gitbook/assets/piperider-report-failed-assertion2.jpg" alt="PipeRider Report with Failed Assertion"><figcaption><p>PipeRider Report with Failed Assertion</p></figcaption></figure>
+The compre command also outputs a markdown file, `summary.md` which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
 
-Check the [Data Quality Assertions](broken-reference/) section for more information on PipeRider's suite of data assertions.
+<figure><img src="../../.gitbook/assets/jaffle-shop-compare-summary.png" alt=""><figcaption></figcaption></figure>
+
+The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process, and helps ensure that unexpected changes do not make their way into production.&#x20;
+
+## Next Step: Automate the process in the CI
+
+The process mentioned above is also manual. However, if you wish to automate this action, you can [integrate PipeRider in your CI workflow](../../ci/introduction.md).
+
+
+

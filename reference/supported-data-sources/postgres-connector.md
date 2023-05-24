@@ -16,15 +16,19 @@ pip install 'piperider[postgres]'
 
 ## Configuration (DBT)
 
-Run the initialization command in the dbt project
+Run the diagnose command in the dbt project
 
 ```
-piperider init
+piperider diagnose
 ```
 
 If you can successfully connect to Postgres using dbt, PipeRider can also connect to Postgres using the same profile settings. For details, please refer to the dbt [Postgres adapter](https://docs.getdbt.com/reference/warehouse-setups/postgres-setup) documentation.
 
 ## Configuration (Non-DBT)
+
+{% hint style="warning" %}
+non-dbt use case is deprecated since v0.25.0
+{% endhint %}
 
 Initialize a new PipeRider project using `piperider init` and when promoted select Postgres as the data source.
 

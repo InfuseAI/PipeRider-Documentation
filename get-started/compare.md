@@ -1,10 +1,14 @@
+---
+description: Compare the changes
+---
+
 # Compare
 
 The compare feature is to compare two runs and generate the comparison report.  You can use it to:
 
-* **Compare models transformed by main branch and PR branch.** This is just the main use cse of PipeRider
-* **Compare profiling result for two snapshots.** In the dbt daily or period job, you can run PipeRider after running dbt. It allows you to visualize the change for two time points later on.
-* **Compare two data sources**. You can compare staging and production envronments, or migration source and destingation.
+* **Compare the changes from base branch to pull request branch.** This is just the main use case of PipeRider
+* **Compare the changes between two time points.** In the dbt daily or period job, you can run PipeRider after running dbt. It allows you to visualize the change for two time points later on.
+* **Compare two data sources**. You can compare staging and production environments, or migration source and destination.
 
 ## Compare two runs
 
@@ -20,15 +24,9 @@ You can also compare two runs by specifying two run JSON results
 piperider compare-reports --base /tmp/base/run.json --target /tmp/target/run.json
 ```
 
-You can show only partial tables of the comparison.
+### Comparison artifacts
 
-```
-piperider compare-ports --last --tables-from target-only
-```
-
-## Compare artifacts
-
-Just like [executing a run](run/), compare generate two artifacts are generated under the comparison output directory
+Compare generate two artifacts are generated under the comparison output directory
 
 * Compare HTML report (`index.html`)
 * Compare Markdown summary (`summary.md`). This markdown file is used to post on your PR comment for review.
@@ -47,23 +45,41 @@ From [github document](https://docs.github.com/en/pull-requests/collaborating-wi
 
 > Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
 
-In a dbt project, it is a challenge to visualize the data impact for a pull request. By using PipeRider, it streamline the process to understand the impact of the PR. Here is the general step
+In a dbt project, it is a challenge to visualize the data impact for a pull request. By using PipeRider, it streamline the process to understand the impact of the PR.&#x20;
 
-1. Switch to base branch, run dbt, and run PipeRider
-2. Switch to PR branch, run dbt, and run PipeRider
+### How to use
+
+To compare a pull requests, you have to be in a branch and the change set should be committed. Then use the command
+
+```
+piperider compare
+```
+
+It will run corresponding git, dbt, pipoerider operations and generate the comparison report.
+
+### How it works
+
+The pull request is to compare the change of `git diff <base>...<branch>`.  The following diagram illustrates the two commits which a pull request compares. Assuming our branch `features/add-my-dashboard` originates from `v1`, when a PR is created, it actually compares `v1.3` with `v1`, rather than `v1.3` with `v5`.
+
+<figure><img src="../.gitbook/assets/compare-merge-base.png" alt=""><figcaption></figcaption></figure>
+
+The steps  `piperider compare` executes are
+
+1. Switch to merge base of the two branch, run dbt, and run PipeRider
+2. Switch back to PR branch, run dbt, and run PipeRider
 3. Compare these two runs
 
 For the detailed comments, it would looks like this one
 
 ```sh
-# Main branch
-git switch main
+# Merge base from base branch
+git switch --detach $(git merge-base main features/add-my-dashboard)
 dbt deps
 dbt build
 piperider run
 
 # PR branch
-git switch features/my-awesome-feature
+git switch features/add-my-dashboard
 dbt deps
 dbt build
 piperider run
@@ -71,32 +87,6 @@ piperider run
 # Compare
 piperider compare-reports --last
 ```
-
-It's a batch of commands to run. In additions, there is a problem here. By default, the PR compare is use the three-way diff rather than two-way diff. From [github document](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons)
-
-> There are two comparison methods for the `git diff` command; two-dot (`git diff A..B`) and three-dot (`git diff A...B`). By default, pull requests on GitHub show a three-dot diff.
-
-So the better way is
-
-```sh
-
-# Merge base of base branch and PR barnch
-git switch --detach $(git merge-base features/my-awesome-feature main)
-dbt deps
-dbt build
-piperider run
-
-# PR branch
-git switch features/my-awesome-feature
-dbt deps
-dbt build
-piperider run
-
-# Compare
-piperider compare-reports --last
-```
-
-To streamline the process, PipeRider has a higher-level command `piperider command` and it can run a comparison recipe.
 
 ## Comparison Recipe
 

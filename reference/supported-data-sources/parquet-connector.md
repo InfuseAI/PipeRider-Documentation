@@ -4,6 +4,10 @@ description: Install PipeRider with the Parquet connector and load the Parquet f
 
 # Parquet Connector
 
+{% hint style="warning" %}
+non-dbt use case is deprecated since v0.25.0
+{% endhint %}
+
 ## Installation
 
 Under the hood, PipeRider loads Parquet files by DuckDB, so please install PipeRider with DuckDB.

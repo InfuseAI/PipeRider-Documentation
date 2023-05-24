@@ -4,6 +4,10 @@ description: Install PipeRider with the SQLite connector and connect to a data s
 
 # SQLite connector
 
+{% hint style="warning" %}
+non-dbt use case is deprecated since v0.25.0
+{% endhint %}
+
 ## Installation
 
 Install PipeRider. SQLite connector is enabled by default in PipeRider
