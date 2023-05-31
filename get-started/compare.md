@@ -1,7 +1,3 @@
----
-description: Compare the changes
----
-
 # Compare
 
 The compare feature is to compare two runs and generate the comparison report.  You can use it to:
@@ -180,7 +176,13 @@ Later, when running the "compare" command, you can pass in your environment vari
 BASE=/tmp/base/run.json piperider compare --recipe compare_from_file
 ```
 
+## **Simulating and interacting for troubleshooting**
 
+To explore the simulation and interact with Piperider Compare, you can use `--dry-run` and `--interactive`.
+
+The `--dry-run` option makes the Recipe executions do nothing but display all commands that might change your working directory.
+
+The `--interactive` option makes the Recipe execution proceed to the next step only after receiving your confirmation by typing "yes". If you respond with "no", it will stop immediately.
 
 ## Github Action for Comparison Recipe
 

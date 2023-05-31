@@ -38,17 +38,7 @@ The `run` command performs the following functions.
 Check [assertion configuration](broken-reference) for more information on built-in assertions
 {% endhint %}
 
-| Option           | Argument   | Description                                                                                                                                         |
-| ---------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--datasource`   | Name       | Profile a specified data source                                                                                                                     |
-| `-o`, `--output` | Path       | Specify the output directory for the generated report                                                                                               |
-| `--open`         | N/A        | Automatically opens the report in your default browser. If the report was uploaded to PipeRider Cloud, then the PipeRider Cloud URL will be opened  |
-| `--report-dir`   | Path       | Specify the path to read and write reports                                                                                                          |
-| `--skip-report`  | N/A        | Don't generate reports                                                                                                                              |
-| `--upload`       | N/A        | For PipeRider Cloud users - uploads the generated report to PipeRider Cloud (overrides the global profile.yml setting)                              |
-| `--table`        | Table name | Profile a specified table only                                                                                                                      |
-| `--debug`        | N/A        | Enable debugging output                                                                                                                             |
-| `--help`         | N/A        | List command-line options                                                                                                                           |
+<table><thead><tr><th width="222">Option</th><th width="173">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--datasource</code></td><td>Name</td><td>Profile a specified data source</td></tr><tr><td><code>-o</code>, <code>--output</code></td><td>Path</td><td>Specify the output directory for the generated report</td></tr><tr><td><code>--open</code></td><td>N/A</td><td>Automatically opens the report in your default browser. If the report was uploaded to PipeRider Cloud, then the PipeRider Cloud URL will be opened </td></tr><tr><td><code>--report-dir</code></td><td>Path</td><td>Specify the path to read and write reports</td></tr><tr><td><code>--skip-report</code></td><td>N/A</td><td>Don't generate reports</td></tr><tr><td><code>--upload</code></td><td>N/A</td><td>For PipeRider Cloud users - uploads the generated report to PipeRider Cloud (overrides the global profile.yml setting) </td></tr><tr><td><code>--table</code></td><td>Table name</td><td>Profile a specified table only</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
 
 ## Generate report
 
@@ -79,17 +69,53 @@ Compare two selected reports and generate the following output:
 
 Comparison reports and summaries are stored in `.piperider/comparisons/<timestamp>`.
 
-| Option           | Argument                                                  | Description                                                                                                           |
-| ---------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `--base`         | Path to the `run.json` file                               | Specify the profiling `run.json` to use as the base report                                                            |
-| `--datasource`   | Data source name                                          | <p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p> |
-| `--last`         | N/A                                                       | Compare the last two reports                                                                                          |
-| `-o`, `--output` | Path                                                      | Specify the output directory for the generated report                                                                 |
-| `--report-dir`   | Path                                                      | Specify the path to read and write reports                                                                            |
-| `--tables-from`  | <p><code>base-only</code><br><code>target-only</code></p> | Specify to only compare tables that appear in either base or target reports                                           |
-| `--target`       | Path to the `run.json` file                               | Specify the profiling `run.json` to compare with the base report                                                      |
-| `--debug`        | N/A                                                       | Enable debugging output                                                                                               |
-| `--help`         | N/A                                                       | List command-line options                                                                                             |
+<table><thead><tr><th>Option</th><th width="188.33333333333331">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--base</code></td><td>Path to the <code>run.json</code> file</td><td>Specify the profiling <code>run.json</code> to use as the base report</td></tr><tr><td><code>--datasource</code></td><td>Data source name</td><td><p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p></td></tr><tr><td><code>--last</code></td><td>N/A</td><td>Compare the last two reports</td></tr><tr><td><code>-o</code>, <code>--output</code></td><td>Path</td><td>Specify the output directory for the generated report</td></tr><tr><td><code>--report-dir</code></td><td>Path</td><td>Specify the path to read and write reports</td></tr><tr><td><code>--tables-from</code></td><td><code>base-only</code><br><code>target-only</code></td><td>Specify to only compare tables that appear in either base or target reports</td></tr><tr><td><code>--target</code></td><td>Path to the <code>run.json</code> file</td><td>Specify the profiling <code>run.json</code> to compare with the base report</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
+
+## Compare recipe
+
+```
+piperider compare [options]
+```
+
+The comparison by recipe is achieved by executing the `piperider and dbt` commands by recipe configuration. The first run utilizes the base configuration, while the second run uses the target configuration. Subsequently, a comparison report is generated by the results obtained from both runs.
+
+The default configuration will be generated while the project was initialized at `.piperider/compare/default.yml`.
+
+For configuration details, please see the[ link](../get-started/compare.md#comparison-recipe).
+
+```
+base:
+  branch: main
+  dbt:
+    commands:
+    - dbt deps
+    - dbt build
+  piperider:
+    command: piperider run
+target:
+  dbt:
+    commands:
+    - dbt deps
+    - dbt build
+  piperider:
+    command: piperider run
+```
+
+The `--recipe` option can pick up another configuration at `.piperider/compare/<recipe>.yml`.
+
+| Option           | Argument       | Description                                                 |
+| ---------------- | -------------- | ----------------------------------------------------------- |
+| `--recipe`       | `recipe-name`  | Select a different recipe.                                  |
+| `--upload`       |                | Upload the report to PipeRider Cloud.                       |
+| `--share`        |                | Enable public share of the report to PipeRider Cloud.       |
+| `-o, --output`   | `Path`         | Directory to save the results.                              |
+| `--summary-file` | `Path`         | Output the comparison summary markdown file.                |
+| `--project`      | `PROJECT_NAME` | Specify the default project name.                           |
+| `--open`         |                | Opens the generated report in the system's default browser. |
+| `--dry-run`      | N/A            | Display the run details without actually executing it.      |
+| `--interactive`  | N/A            | Prompt for confirmation to proceed with the run (Y/N).      |
+| `--debug`        | N/A            | Enable debug mode.                                          |
+| `--help`         | N/A            | Show the help message and exit.                             |
 
 ## PipeRider Cloud
 
@@ -103,13 +129,7 @@ piperider cloud login
 
 `cloud login` will lead you to signup/login the PipeRider Cloud. Using the command to have the authorization with a valid _Token_. You will receive an authorizing email by giving your email address. The _Token_ will be stored at `~/.pipeirder/profile.yml`.
 
-| Option                  | Argument     | Description                |
-| ----------------------- | ------------ | -------------------------- |
-| `--token`               | Token string | Specify the API Token      |
-| `--enable-auto-upload`  | N/A          | Enable the auto-uploading  |
-| `--disable-auto-upload` | N/A          | Disable the auto-uploading |
-| `--debug`               | N/A          | Enable debugging output    |
-| `--help`                | N/A          | List command-line options  |
+<table><thead><tr><th width="274.3333333333333">Option</th><th width="163">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--token</code></td><td>Token string</td><td>Specify the API Token</td></tr><tr><td><code>--enable-auto-upload</code></td><td>N/A</td><td>Enable the auto-uploading</td></tr><tr><td><code>--disable-auto-upload</code></td><td>N/A</td><td>Disable the auto-uploading</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
 
 ### Logout
 
@@ -119,10 +139,7 @@ piperider cloud logout
 
 `cloud logout` will clear up the token string stored at `~/.piperider/profile.yml`.
 
-| Option    | Argument | Description               |
-| --------- | -------- | ------------------------- |
-| `--debug` | N/A      | Enable debugging output   |
-| `--help`  | N/A      | List command-line options |
+<table><thead><tr><th width="271">Option</th><th width="168.33333333333331">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
 
 ### Upload report
 
