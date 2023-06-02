@@ -309,6 +309,10 @@ dbt build #or dbt test
 piperider run --dbt-run-results
 ```
 
+{% hint style="info" %}
+From version 0.26.0 dbt test results are included by default and it is not neccessary to use the `--dbt-run-results` option.&#x20;
+{% endhint %}
+
 
 
 

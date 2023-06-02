@@ -6,6 +6,29 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+
+
+## PipeRider OSS v0.26.0
+
+Release date: [2023-06-01](https://github.com/InfuseAI/piperider/releases/tag/v0.26.0)
+
+### Features
+
+* **Support for dry run and interactive mode**: The `piperider compare` command now includes the new options `--dry-run` and `--interactive`.&#x20;
+* **Improvements to the Report UI**: Sidebar enhancements including column orders, a modified state indicator, overview item, and hide column nodes for no-profiling models.
+
+### Fixes
+
+* Fixed an issue where the table list displayed incorrect entries.
+* Addressed a key error in `compare-reports` when using the `--tables-from` option.
+* Resolved an error that occurred when using the `--table` option in reports.
+
+### Changes
+
+* **dbt test results are now included by default:** It's no longer neccessary to use  `--dbt-run-results`, but it can still be specified without error.
+
+
+
 ## PipeRider OSS v0.25.1
 
 Release date: [2023-05-19](https://github.com/InfuseAI/piperider/releases/tag/v0.25.1)
