@@ -342,11 +342,11 @@ The report will show the following changes to your projectL
 
 ### Add the comparison summary to your pull request comment
 
-The compre command also outputs a markdown file, `summary.md` which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
+The compare command also outputs a markdown file, [`summary.md`](https://gist.github.com/infuseai-dev/9919580952751a47798198402ddb2339) which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
 
-<figure><img src="../../.gitbook/assets/jaffle-shop-compare-summary.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>summary.md</p></figcaption></figure>
 
-The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process, and helps ensure that unexpected changes do not make their way into production.&#x20;
+The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process and helps ensure that unexpected changes do not make their way into production.&#x20;
 
 ## Next Step: Automate the process in the CI
 

@@ -71,7 +71,7 @@ piperider run
 
 View metrics in your PipeRider Report. Metric query results can is shown in the `Metrics`  page
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ## More about metric queries
 
@@ -96,13 +96,7 @@ metrics:
 
 For each time grains, PipeRider only queries the last n periods of the table data
 
-| time\_grain | metric query                          |
-| ----------- | ------------------------------------- |
-| day         | daily result for last 30 days         |
-| week        | weekly result for last 12 week        |
-| month       | monthly result for last 12 months     |
-| quarter     | quarterly result for last 10 quarters |
-| year        | yearly result for last 10 years       |
+<table><thead><tr><th width="255">time_grain</th><th>metric query</th></tr></thead><tbody><tr><td>day</td><td>daily result for last 30 days</td></tr><tr><td>week</td><td>weekly result for last 12 week</td></tr><tr><td>month</td><td>monthly result for last 12 months</td></tr><tr><td>quarter</td><td>quarterly result for last 10 quarters</td></tr><tr><td>year</td><td>yearly result for last 10 years</td></tr></tbody></table>
 
 ### How about dimensions?
 
