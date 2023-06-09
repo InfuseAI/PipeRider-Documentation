@@ -107,10 +107,7 @@ Column statistics are profiling statistics of a column. Some statistics are only
 
 In addition to logging the **schema type** of a column as defined in the data source, PipeRider will also apply a **generic type** to a column that will determine how this column is treated by the PipeRider profiler.
 
-| Profile Field | Description                                                                                | Column Type | PipeRider Version |
-| ------------- | ------------------------------------------------------------------------------------------ | ----------- | ----------------- |
-| `schema_type` | The column type defined in the data source                                                 | All         | All               |
-| `type`        | A generic schema type of `string`, `integer`, `numeric`, `datetime`, `boolean`, or `other` | All         | All               |
+<table><thead><tr><th>Profile Field</th><th>Description</th><th width="137">Column Type</th><th>PipeRider Version</th></tr></thead><tbody><tr><td><code>schema_type</code></td><td>The column type defined in the data source</td><td>All</td><td>All</td></tr><tr><td><code>type</code></td><td>A generic schema type of <code>string</code>, <code>integer</code>, <code>numeric</code>, <code>datetime</code>, <code>boolean</code>, or <code>other</code></td><td>All</td><td>All</td></tr></tbody></table>
 
 The following statistics are produced based on the generic type that has been applied to the column.
 
@@ -164,12 +161,7 @@ The general statistical information of a column.
 
 The text length statistics of a column.
 
-| Profile Field   | Description                             | Column Type | Assertion Available |
-| --------------- | --------------------------------------- | ----------- | ------------------- |
-| `min_length`    | The minimum string length               | string      | ✔                   |
-| `max_length`    | The maximum string length               | string      | ✔                   |
-| `avg_length`    | The average string length               | string      | ✔                   |
-| `stddev_length` | The standard deviation of string length | string      | ✔                   |
+<table><thead><tr><th width="184">Profile Field</th><th>Description</th><th>Column Type</th><th>Assertion Available</th></tr></thead><tbody><tr><td><code>min_length</code></td><td>The minimum string length</td><td>string</td><td>✔</td></tr><tr><td><code>max_length</code></td><td>The maximum string length</td><td>string</td><td>✔</td></tr><tr><td><code>avg_length</code></td><td>The average string length</td><td>string</td><td>✔</td></tr><tr><td><code>stddev_length</code></td><td>The standard deviation of string length</td><td>string</td><td>✔</td></tr></tbody></table>
 
 ### Uniqueness
 
@@ -177,14 +169,7 @@ The uniqueness of a column.
 
 <figure><img src="../../.gitbook/assets/metrics-uniqueness.png" alt=""><figcaption><p>Column uniqueness</p></figcaption></figure>
 
-| Profile Field      | Description                           | Column Type                        | Assertion Available |
-| ------------------ | ------------------------------------- | ---------------------------------- | ------------------- |
-| `distinct`         | The number of distinct items          | integer, string, datetime          | ✔                   |
-| `distinct_p`       | The percentage of distinct items      | integer, string, datetime          | ✔                   |
-| `duplicates`       | The number of recurring items         | integer, numeric, string, datetime | ✔                   |
-| `duplicates_p`     | The percentage of duplicate items     | integer, numeric, string, datetime | ✔                   |
-| `non_duplicates`   | The number of non-recurring items     | integer, numeric, string, datetime | ✔                   |
-| `non_duplicates_p` | The percentage of non-duplicate items | integer, numeric, string, datetime | ✔                   |
+<table><thead><tr><th>Profile Field</th><th>Description</th><th width="175">Column Type</th><th>Assertion Available</th></tr></thead><tbody><tr><td><code>distinct</code></td><td>The number of distinct items</td><td>integer, string, datetime</td><td>✔</td></tr><tr><td><code>distinct_p</code></td><td>The percentage of distinct items</td><td>integer, string, datetime</td><td>✔</td></tr><tr><td><code>duplicates</code></td><td>The number of recurring items</td><td>integer, numeric, string, datetime</td><td>✔</td></tr><tr><td><code>duplicates_p</code></td><td>The percentage of duplicate items</td><td>integer, numeric, string, datetime</td><td>✔</td></tr><tr><td><code>non_duplicates</code></td><td>The number of non-recurring items</td><td>integer, numeric, string, datetime</td><td>✔</td></tr><tr><td><code>non_duplicates_p</code></td><td>The percentage of non-duplicate items</td><td>integer, numeric, string, datetime</td><td>✔</td></tr></tbody></table>
 
 For example, the following dataset `(NULL, a, a, b, b, c, d, e)` would be categorized as so:
 
@@ -211,9 +196,4 @@ The calculated quantiles of a numeric or integer column.
 
 ### Distribution
 
-| Profile Field      | Description                                                                   | Column Type      |
-| ------------------ | ----------------------------------------------------------------------------- | ---------------- |
-| `topk`             | The most frequently occurring n items and and counts                          | integer, string  |
-| `histogram`        | Evenly-split bins for **numerical columns** and counts for each bin           | integer, numeric |
-| `histogram_length` | Evenly-split bins for text length and counts for each bin                     | string           |
-| `histogram`        | Histogram of **date, month, or year**. Bin split depends on the min/max range | datetime         |
+<table><thead><tr><th width="233">Profile Field</th><th>Description</th><th width="159">Column Type</th></tr></thead><tbody><tr><td><code>topk</code></td><td>The most frequently occurring n items and and counts</td><td>integer, string</td></tr><tr><td><code>histogram</code></td><td>Evenly-split bins for <strong>numerical columns</strong> and counts for each bin</td><td>integer, numeric</td></tr><tr><td><code>histogram_length</code></td><td>Evenly-split bins for text length and counts for each bin</td><td>string</td></tr><tr><td><code>histogram</code></td><td>Histogram of <strong>date, month, or year</strong>. Bin split depends on the min/max range</td><td>datetime</td></tr></tbody></table>
