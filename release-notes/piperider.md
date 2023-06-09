@@ -8,6 +8,26 @@ Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperi
 
 
 
+## PipeRider OSS v0.26.2
+
+Release date: [2023-06-07](https://github.com/InfuseAI/piperider/releases/tag/v0.26.2)
+
+### Fixes
+
+* Fix wrong source table name when users specify identifier in dbt schema
+
+
+
+## PipeRider OSS v0.26.1
+
+Release date: [2023-06-06](https://github.com/InfuseAI/piperider/releases/tag/v0.26.1)
+
+### Fixes
+
+* Fix PipeRider compare action helper for init-less flow
+
+
+
 ## PipeRider OSS v0.26.0
 
 Release date: [2023-06-01](https://github.com/InfuseAI/piperider/releases/tag/v0.26.0)
