@@ -6,6 +6,10 @@ description: PipeRider commands and related options.
 
 ## Initialize project
 
+{% hint style="info" %}
+From PipeRider 0.25.0 it is not longer necessary to run `piperider init` in a dbt project. Just install and run.
+{% endhint %}
+
 ```shell
 piperider init [options]
 ```
@@ -38,7 +42,7 @@ The `run` command performs the following functions.
 Check [assertion configuration](broken-reference) for more information on built-in assertions
 {% endhint %}
 
-<table><thead><tr><th width="222">Option</th><th width="173">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--datasource</code></td><td>Name</td><td>Profile a specified data source</td></tr><tr><td><code>-o</code>, <code>--output</code></td><td>Path</td><td>Specify the output directory for the generated report</td></tr><tr><td><code>--open</code></td><td>N/A</td><td>Automatically opens the report in your default browser. If the report was uploaded to PipeRider Cloud, then the PipeRider Cloud URL will be opened </td></tr><tr><td><code>--report-dir</code></td><td>Path</td><td>Specify the path to read and write reports</td></tr><tr><td><code>--skip-report</code></td><td>N/A</td><td>Don't generate reports</td></tr><tr><td><code>--upload</code></td><td>N/A</td><td>For PipeRider Cloud users - uploads the generated report to PipeRider Cloud (overrides the global profile.yml setting) </td></tr><tr><td><code>--table</code></td><td>Table name</td><td>Profile a specified table only</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
+<table><thead><tr><th width="222">Option</th><th width="173">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--datasource</code></td><td>Name</td><td>Profile a specified data source</td></tr><tr><td><code>-o</code>, <code>--output</code></td><td>Path</td><td>Specify the output directory for the generated report</td></tr><tr><td><code>--open</code></td><td>N/A</td><td>Automatically opens the report in your default browser. If the report was uploaded to PipeRider Cloud, then the PipeRider Cloud URL will be opened </td></tr><tr><td><code>--report-dir</code></td><td>Path</td><td>Specify the path to read and write reports</td></tr><tr><td><code>--skip-report</code></td><td>N/A</td><td>Don't generate reports</td></tr><tr><td><code>--upload</code></td><td>N/A</td><td>For PipeRider Cloud users - uploads the generated report to PipeRider Cloud (overrides the global profile.yml setting) </td></tr><tr><td><code>--table</code></td><td>Table name</td><td>Profile a specified table only</td></tr><tr><td><code>--select</code></td><td>model, directory</td><td>Specific dbt model or folder to run on</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
 
 ## Generate report
 
@@ -71,7 +75,7 @@ Comparison reports and summaries are stored in `.piperider/comparisons/<timestam
 
 <table><thead><tr><th>Option</th><th width="188.33333333333331">Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>--base</code></td><td>Path to the <code>run.json</code> file</td><td>Specify the profiling <code>run.json</code> to use as the base report</td></tr><tr><td><code>--datasource</code></td><td>Data source name</td><td><p>Specify the data source to use for the report</p><p>comparison (defined in <code>.piperider/config.yml</code>)</p></td></tr><tr><td><code>--last</code></td><td>N/A</td><td>Compare the last two reports</td></tr><tr><td><code>-o</code>, <code>--output</code></td><td>Path</td><td>Specify the output directory for the generated report</td></tr><tr><td><code>--report-dir</code></td><td>Path</td><td>Specify the path to read and write reports</td></tr><tr><td><code>--tables-from</code></td><td><code>base-only</code><br><code>target-only</code></td><td>Specify to only compare tables that appear in either base or target reports</td></tr><tr><td><code>--target</code></td><td>Path to the <code>run.json</code> file</td><td>Specify the profiling <code>run.json</code> to compare with the base report</td></tr><tr><td><code>--debug</code></td><td>N/A</td><td>Enable debugging output</td></tr><tr><td><code>--help</code></td><td>N/A</td><td>List command-line options</td></tr></tbody></table>
 
-## Compare recipe
+## Compare
 
 ```
 piperider compare [options]
@@ -103,19 +107,20 @@ target:
 
 The `--recipe` option can pick up another configuration at `.piperider/compare/<recipe>.yml`.
 
-| Option           | Argument       | Description                                                 |
-| ---------------- | -------------- | ----------------------------------------------------------- |
-| `--recipe`       | `recipe-name`  | Select a different recipe.                                  |
-| `--upload`       |                | Upload the report to PipeRider Cloud.                       |
-| `--share`        |                | Enable public share of the report to PipeRider Cloud.       |
-| `-o, --output`   | `Path`         | Directory to save the results.                              |
-| `--summary-file` | `Path`         | Output the comparison summary markdown file.                |
-| `--project`      | `PROJECT_NAME` | Specify the default project name.                           |
-| `--open`         |                | Opens the generated report in the system's default browser. |
-| `--dry-run`      | N/A            | Display the run details without actually executing it.      |
-| `--interactive`  | N/A            | Prompt for confirmation to proceed with the run (Y/N).      |
-| `--debug`        | N/A            | Enable debug mode.                                          |
-| `--help`         | N/A            | Show the help message and exit.                             |
+| Option           | Argument          | Description                                                 |
+| ---------------- | ----------------- | ----------------------------------------------------------- |
+| `--recipe`       | `recipe-name`     | Select a different recipe.                                  |
+| `--upload`       |                   | Upload the report to PipeRider Cloud.                       |
+| `--share`        |                   | Enable public share of the report to PipeRider Cloud.       |
+| `-o, --output`   | `Path`            | Directory to save the results.                              |
+| `--summary-file` | `Path`            | Output the comparison summary markdown file.                |
+| `--project`      | `PROJECT_NAME`    | Specify the default project name.                           |
+| `--select`       | model, directory  | Specific dbt model or folder to run on                      |
+| `--open`         |                   | Opens the generated report in the system's default browser. |
+| `--dry-run`      | N/A               | Display the run details without actually executing it.      |
+| `--interactive`  | N/A               | Prompt for confirmation to proceed with the run (Y/N).      |
+| `--debug`        | N/A               | Enable debug mode.                                          |
+| `--help`         | N/A               | Show the help message and exit.                             |
 
 ## PipeRider Cloud
 
