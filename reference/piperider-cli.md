@@ -7,7 +7,7 @@ description: PipeRider commands and related options.
 ## Initialize project
 
 {% hint style="info" %}
-From PipeRider 0.25.0 it is not longer necessary to run `piperider init` in a dbt project. Just install and run.
+From PipeRider 0.25.0 it is not longer necessary to initialize with `piperider init` in a dbt project - Just install and run
 {% endhint %}
 
 ```shell
