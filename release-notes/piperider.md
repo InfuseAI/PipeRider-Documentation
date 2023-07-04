@@ -6,7 +6,39 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.
 
+## PipeRider OSS v0.28.0
+
+Release date: [2023-06-29](https://github.com/InfuseAI/piperider/releases/tag/v0.28.0)
+
+### Features
+
+* **Run and compare command support dbt selector**: just like `dbt run -s <selector>`, you can use selector in the `run` and `compare` ([#739](https://github.com/InfuseAI/piperider/pull/739))
+* **Add cloud config to local project config**: the default cloud project config is not set to project level instead of user level. It allow you to upload to different cloud project for different dbt repositories. ([#748](https://github.com/InfuseAI/piperider/pull/748))
+* **Add metric hierarchy in the sidebar menu**: The project sidebar tree adds the metric hierarchy. ([#750](https://github.com/InfuseAI/piperider/pull/750) [#758](https://github.com/InfuseAI/piperider/pull/758))
+
+### Fixes
+
+* **M**ake sure the dbt-helper working with the dbt-core 1.3 ([#740](https://github.com/InfuseAI/piperider/pull/740))
+* Fix metric date range display ([#746](https://github.com/InfuseAI/piperider/pull/746))
+* Fix required project’s target path ([#753](https://github.com/InfuseAI/piperider/pull/753))
+
+## PipeRider OSS v0.27.0
+
+Release date: [2023-06-15](https://github.com/InfuseAI/piperider/releases/tag/v0.27.0)
+
+### Features
+
+* Improvements to formatting and information contained in the **comparison summary markdown** for pull request comments
+* PipeRider compare now profiles models based on piperider tags contained in the development/target branch
+* Removed unnecessary files in the `.piperider/` when executing the PipeRider commands. Please refer to the following pull requests [#723](https://github.com/InfuseAI/piperider/pull/723) [#725](https://github.com/InfuseAI/piperider/pull/725) [#729](https://github.com/InfuseAI/piperider/pull/729)
+
+### Fixes
+
+* Fixed wrong source table name when users specify identifier in dbt schema [#724](https://github.com/InfuseAI/piperider/pull/724)
+* If the run result and manifest do not match, it would cause an error [#726](https://github.com/InfuseAI/piperider/pull/726)
+* Add warning to auto-upload when not logged in instead of raising an exception [#734](https://github.com/InfuseAI/piperider/pull/734)
 
 ## PipeRider OSS v0.26.2
 
