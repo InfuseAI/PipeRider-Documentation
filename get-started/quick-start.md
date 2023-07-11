@@ -115,16 +115,7 @@ Edit `models/customers.sql` and add a new column to _customers_.&#x20;
 Run dbt command again to ensure that the changes have been applied correctly and the build completes without error.
 
 ```
-dbt build
-```
-
-### Commit the change
-
-Commit this code change to your branch.
-
-```bash
-git add models/customers.sql
-git commit -m 'Add average_value_per_order to customers'
+dbt build 
 ```
 
 ## Compare your branch with main
