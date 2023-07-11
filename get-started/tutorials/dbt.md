@@ -303,23 +303,6 @@ Test your changes, and ensure that the project can be built without error.
 dbt build
 ```
 
-### Generate a report
-
-if you wish to view the PipeRider report before comparing, you can run PipeRider st this stage:&#x20;
-
-```
-piperider run
-```
-
-### Commit your changes
-
-Add your recent changes to source control.
-
-```
-git add 'models/*'
-git commit -s -m 'Test PipeRide compare'
-```
-
 ### Create the compare report
 
 The PipeRider compare command will compare your data before and after making dbt project changes.&#x20;
