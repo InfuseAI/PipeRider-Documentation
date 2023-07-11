@@ -59,9 +59,16 @@ pip install 'piperider[duckdb]'
 &#x20;PipeRider requires Python 3.7+
 {% endhint %}
 
-## (optional) Specify models to profile
+## Specify models to profile
 
-To enable PipeRider to profile your dbt models, and perform data profile comparisons, you must first tag the models. **Without tagging models, PipeRider will only detect schema changes.**&#x20;
+There are two methods to specify which models PipeRider should profile:
+
+* Tag models with the 'piperider' tag
+* Use the `--select` option
+
+{% hint style="info" %}
+If you don't specify models to profile, PipeRider will only be able to detect schema changes
+{% endhint %}
 
 ### Tag models
 
@@ -70,6 +77,8 @@ Add the following line to the top of `models/customers.sql` and `models/orders.s
 ```
 {{ config(tags=['piperider']) }}
 ```
+
+Refer to the dbt documentation for more information on how to use tags.
 
 ### Commit changes
 
