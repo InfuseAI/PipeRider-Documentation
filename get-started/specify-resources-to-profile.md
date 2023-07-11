@@ -10,8 +10,8 @@ This can be done in the following ways:
 
 * Tag resources
 * Use the `--specify` option
-* use the `--modified` options
-* use the `--table` option (deprecated, for non-dbt projects)
+* Use the `--modified` option
+* Use the `--table` option (deprecated, for non-dbt projects)
 
 ## Tag resources
 
