@@ -25,6 +25,7 @@
 ## Reference
 
 * [Command Reference](reference/piperider-cli.md)
+* [Specify resources to profile](reference/specify-resources-to-profile.md)
 * [Project Structure](reference/project-structure/README.md)
   * [config.yml](reference/project-structure/config.md)
 * [Terminology](reference/terminology.md)

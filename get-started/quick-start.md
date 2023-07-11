@@ -59,37 +59,22 @@ pip install 'piperider[duckdb]'
 &#x20;PipeRider requires Python 3.7+
 {% endhint %}
 
-## Specify models to profile
+## Tag models to profile
 
-There are two methods to specify which models PipeRider should profile:
+Use a config block to add the 'piperider tag to the following models:&#x20;
 
-* Tag models with the 'piperider' tag
-* Use the `--select` option
-
-{% hint style="info" %}
-If you don't specify models to profile, PipeRider will only be able to detect schema changes
-{% endhint %}
-
-### Tag models
-
-Add the following line to the top of `models/customers.sql` and `models/orders.sql`.
+* &#x20;`models/customers.sql`&#x20;
+* &#x20;`models/orders.sql`.
 
 ```
 {{ config(tags=['piperider']) }}
 ```
 
-Refer to the dbt documentation for more information on how to use tags.
+Refer to [Specify resources to profile](../reference/specify-resources-to-profile.md) for other methods of selecting resources.
 
-### Commit changes
-
-After adding the PipeRider tag to the models, commit the changes to the repository.
-
-```
-git add .
-git commit -m "Added PipeRider tags"
-```
-
-
+{% hint style="info" %}
+If you don't specify models to profile, PipeRider will only be able to detect schema changes
+{% endhint %}
 
 ## Make a change to the project
 
