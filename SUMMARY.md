@@ -10,6 +10,7 @@
   * [Metrics](get-started/run/metrics.md)
   * [Assertions (deprecated)](get-started/run/assertions.md)
 * [Compare](get-started/compare.md)
+* [Specify resources to profile](get-started/specify-resources-to-profile.md)
 * [Tutorials](get-started/tutorials/README.md)
   * [Jaffle Shop](get-started/tutorials/dbt.md)
 
@@ -25,7 +26,6 @@
 ## Reference
 
 * [Command Reference](reference/piperider-cli.md)
-* [Specify resources to profile](reference/specify-resources-to-profile.md)
 * [Project Structure](reference/project-structure/README.md)
   * [config.yml](reference/project-structure/config.md)
 * [Terminology](reference/terminology.md)

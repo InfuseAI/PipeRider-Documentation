@@ -70,7 +70,7 @@ Use a config block to add the 'piperider tag to the following models:&#x20;
 {{ config(tags=['piperider']) }}
 ```
 
-Refer to [Specify resources to profile](../reference/specify-resources-to-profile.md) for other methods of selecting resources.
+Refer to [Specify resources to profile](specify-resources-to-profile.md) for other methods of selecting resources.
 
 {% hint style="info" %}
 If you don't specify models to profile, PipeRider will only be able to detect schema changes
