@@ -10,6 +10,7 @@ This can be done in the following ways:
 
 * Tag resources
 * Use the `--specify` option
+* use the `--modified` options
 * use the `--table` option (deprecated, for non-dbt projects)
 
 ## Tag resources
@@ -35,7 +36,7 @@ The `--specify` option can be used to select individual resources or groups of r
 Run PipeRider on a single model.&#x20;
 
 ```
-piperider run --select path/to/model
+piperider run --select path/to/model.sql
 ```
 
 ### Specify a group of resources
@@ -43,20 +44,39 @@ piperider run --select path/to/model
 Run PipeRider on all models in the staging folder.
 
 ```
-piperider compare --select 'models/staging'
+piperider compare --select 'models/staging/'
 ```
 
-## Use the `--table` option (deprecated)
+{% hint style="info" %}
+`Using --specify` overrides tags&#x20;
+{% endhint %}
 
-The `--table` option is used for profiling individual tables in non-dbt projects. It now deprecated in favor of the `--select` option.
+## Use the `--modified` option
+
+The `--modified` option will run PipeRider on only nodes that have been modified, and their children. This is equivalent to the `modified+` in dbt.
+
+By default, `--modified` will **only apply to resources that have already been** [**tagged**](specify-resources-to-profile.md#tag-resources)**.**&#x20;
+
+E.g. compare modified models that are tagged with the 'piperider' tag:
+
+```
+piperider compare --modified
+```
+
+Override tags by pairing `--modified` with `--select`.&#x20;
+
+E.g. compare modified staging models:
+
+```
+piperider compare --modified --select '/models/staging/'
+```
+
+## &#x20;Use the `--table` option (deprecated)
+
+The `--table` option is used for **profiling individual tables in non-dbt projects**. It now deprecated in favor of the `--select` option as PipeRider shifts focus to dbt projects.
 
 Select an individual table to profile.
 
 ```
 piperider run --table <table>
 ```
-
-## Examples
-
-
-
