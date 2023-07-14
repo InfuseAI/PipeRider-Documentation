@@ -263,7 +263,7 @@ Add a new column to the `customers` table.
 Add a filter to the orders table.
 
 ```diff
-# models/customers.sql
+# models/orders.sql
 ...
 final as (
 
@@ -273,7 +273,8 @@ final as (
         orders.order_date,
         orders.status,
 
-        {% raw %}
+        
+{% raw %}
 {% for payment_method in payment_methods -%}
 
         order_payments.{{ payment_method }}_amount,
@@ -305,7 +306,7 @@ dbt build
 
 ### Create the compare report
 
-The PipeRider compare command will compare your data before and after making dbt project changes.&#x20;
+The PipeRider compare command will compare your data before and after making dbt project changes.
 
 ```
 piperider compare
@@ -325,15 +326,12 @@ The report will show the following changes to your projectL
 
 ### Add the comparison summary to your pull request comment
 
-The compare command also outputs a markdown file, [`summary.md`](https://gist.github.com/infuseai-dev/9919580952751a47798198402ddb2339) which is specifically designed to be pasted into a GitHub pull request (PR) comment.&#x20;
+The compare command also outputs a markdown file, [`summary.md`](https://gist.github.com/infuseai-dev/9919580952751a47798198402ddb2339) which is specifically designed to be pasted into a GitHub pull request (PR) comment.
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>summary.md</p></figcaption></figure>
 
-The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process and helps ensure that unexpected changes do not make their way into production.&#x20;
+The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process and helps ensure that unexpected changes do not make their way into production.
 
 ## Next Step: Automate the process in the CI
 
 The process mentioned above is also manual. However, if you wish to automate this action, you can [integrate PipeRider in your CI workflow](../../ci/introduction.md).
-
-
-
