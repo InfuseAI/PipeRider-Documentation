@@ -4,11 +4,7 @@ description: Profile statistics
 
 # Profiling
 
-PipeRider helps you understand of your data by providing profile statistics and data distribution information about the table and columns in your data source. When paired with data assertions, the data profile provides a way to check the quality and reliability of your data.
-
-{% hint style="warning" %}
-Assertion is deprecated since v0.25.0
-{% endhint %}
+PipeRider helps you understand of your data by providing profile statistics and data distribution information about the table and columns in your data source.&#x20;
 
 ## Enable Profiling
 

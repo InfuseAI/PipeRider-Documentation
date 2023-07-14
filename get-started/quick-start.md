@@ -59,28 +59,22 @@ pip install 'piperider[duckdb]'
 &#x20;PipeRider requires Python 3.7+
 {% endhint %}
 
-## (optional) Specify models to profile
+## Tag models to profile
 
-To enable PipeRider to profile your dbt models, and perform data profile comparisons, you must first tag the models. **Without tagging models, PipeRider will only detect schema changes.**&#x20;
+Use a config block to add the 'piperider tag to the following models:&#x20;
 
-### Tag models
-
-Add the following line to the top of `models/customers.sql` and `models/orders.sql`.
+* &#x20;`models/customers.sql`&#x20;
+* &#x20;`models/orders.sql`.
 
 ```
 {{ config(tags=['piperider']) }}
 ```
 
-### Commit changes
+Refer to [Specify resources to profile](specify-resources-to-profile.md) for other methods of selecting resources.
 
-After adding the PipeRider tag to the models, commit the changes to the repository.
-
-```
-git add .
-git commit -m "Added PipeRider tags"
-```
-
-
+{% hint style="info" %}
+If you don't specify models to profile, PipeRider will only be able to detect schema changes
+{% endhint %}
 
 ## Make a change to the project
 
@@ -121,16 +115,7 @@ Edit `models/customers.sql` and add a new column to _customers_.&#x20;
 Run dbt command again to ensure that the changes have been applied correctly and the build completes without error.
 
 ```
-dbt build
-```
-
-### Commit the change
-
-Commit this code change to your branch.
-
-```bash
-git add models/customers.sql
-git commit -m 'Add average_value_per_order to customers'
+dbt build 
 ```
 
 ## Compare your branch with main

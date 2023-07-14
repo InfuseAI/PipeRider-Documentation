@@ -10,6 +10,7 @@
   * [Metrics](get-started/run/metrics.md)
   * [Assertions (deprecated)](get-started/run/assertions.md)
 * [Compare](get-started/compare.md)
+* [Specify resources to profile](get-started/specify-resources-to-profile.md)
 * [Tutorials](get-started/tutorials/README.md)
   * [Jaffle Shop](get-started/tutorials/dbt.md)
 
@@ -48,7 +49,7 @@
 
 * [PipeRider](release-notes/piperider.md)
 * [PipeRider Cloud](release-notes/piperider-cloud.md)
-* [Changelog (v0.28.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.28.0)
+* [Changelog (v0.29.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.29.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 

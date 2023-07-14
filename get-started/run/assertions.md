@@ -5,7 +5,7 @@ description: Assert the profiling statistic result
 # Assertions (deprecated)
 
 {% hint style="warning" %}
-Assertion is deprecated since v0.25.0. The assertion functionality overlaps too much with **dbt test**. Please replace the assertions with the relevant functionalities offered by **dbt test**.
+PipeRider Assertions are deprecated since v0.25.0.  Please replace assertions with the relevant testing methods offered by [dbt tests](https://docs.getdbt.com/docs/build/tests).
 {% endhint %}
 
 Assertions are the data testing solution in PipeRider. It asserts if the profiling result fulfill a certain rule. There are two types of assertions
