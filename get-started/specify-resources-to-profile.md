@@ -31,6 +31,10 @@ Tags can also be applied in your project file or as a config property. Refer to 
 
 The `--specify` option can be used to select individual resources or groups of resources, and can be used with both `piperider run` and `piperider compare`.&#x20;
 
+{% hint style="info" %}
+`--specify` overrides the need for tagging resources
+{% endhint %}
+
 ### Specify a single resource  &#x20;
 
 Run PipeRider on a single model.&#x20;
@@ -50,6 +54,28 @@ piperider compare --select 'models/staging/'
 {% hint style="info" %}
 `Using --specify` overrides tags&#x20;
 {% endhint %}
+
+### Advanced examples
+
+PipeRider supports all of the `--select` criteria that you're used to from dbt, so you can pass resources to PipeRider with advanced commands like these.
+
+Select all modified staging resources and children that are tagged with the 'piperider' tag:
+
+```
+piperider compare --select state:modified+, staging, tag:piperider
+```
+
+Select all modified resources that are materialized as tables:
+
+```
+piperider compare --select state:modified+, config.materialized:table
+```
+
+Select all modified staging resources:
+
+```
+piperider compare -s state:modified+, staging
+```
 
 ## Use the `--modified` option
 
