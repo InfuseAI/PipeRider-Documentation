@@ -51,10 +51,6 @@ Run PipeRider on all models in the staging folder.
 piperider compare --select 'models/staging/'
 ```
 
-{% hint style="info" %}
-`Using --specify` overrides tags&#x20;
-{% endhint %}
-
 ### Advanced examples
 
 PipeRider supports all of the `--select` criteria that you're used to from dbt, so you can pass resources to PipeRider with advanced commands like these.
