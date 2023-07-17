@@ -4,7 +4,7 @@ description: Start uploading reports to PipeRider Cloud
 
 # Get Started
 
-## [upload-reports.md](upload-reports.md "mention")[upload-reports.md](upload-reports.md "mention")PipeRider Cloud features
+## PipeRider Cloud features
 
 With a [PipeRider Cloud](https://cloud.piperider.io) account you can upload reports from PipeRider CLI and access the following features:
 
