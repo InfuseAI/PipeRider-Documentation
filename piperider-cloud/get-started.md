@@ -4,7 +4,7 @@ description: Start uploading reports to PipeRider Cloud
 
 # Get Started
 
-## PipeRider Cloud features
+## [upload-reports.md](upload-reports.md "mention")[upload-reports.md](upload-reports.md "mention")PipeRider Cloud features
 
 With a [PipeRider Cloud](https://cloud.piperider.io) account you can upload reports from PipeRider CLI and access the following features:
 
@@ -12,12 +12,14 @@ With a [PipeRider Cloud](https://cloud.piperider.io) account you can upload repo
 * Create workspaces to organize reports&#x20;
 * Share reports with team members or publicly
 * Compare reports online
-
-Reports can be configured to automatically upload each time PipeRider is ran, or can be uploaded individually ([see below](get-started.md#how-to-upload-reports-to-piperider-cloud)).
+* View the Lineage Diff between reports&#x20;
 
 ## Sign up for PipeRider Cloud
 
-There are two ways to sign up for PipeRider Cloud, either by using PipeRider CLI, or via the website.
+There are two ways to sign up for PipeRider Cloud:
+
+* PipeRider CLI
+* PipeRider website
 
 It is preferable to sign up via the CLI, as this will simultaneously create an account and enable you to configure your API token for report uploading.
 
@@ -35,7 +37,7 @@ To sign up for PipeRider Cloud using PipeRider CLI, follow the steps below.
 8. Go back to the command line and paste the API token.
 9. Your account is now created and you are logged in via PipeRider CLI
 
-### Website
+### PipeRider Website
 
 To sign up for PipeRider Cloud via the website navigate to the [sign up page](https://cloud.piperider.io/signup) and fill out the sign up form.
 
@@ -83,43 +85,4 @@ Check cloud account:
 ✅ PASS
 ```
 
-By default, Auto Upload is not configured, see below for instructions on how to enable [automatically uploading reports](get-started.md#automatically-upload-reports).
-
-## How to upload reports to PipeRider Cloud
-
-Reports can either be uploaded on a per-report basis, or PipeRider can be configured to automatically upload all reports.
-
-### Manually upload reports to PipeRider Cloud
-
-Reports can be uploaded on a per-run basis using the `--upload` option.
-
-```
-piperider run --upload
-```
-
-Existing reports can also be uploaded with the following command:
-
-```
-piperider cloud upload-report
-```
-
-You will be prompted to select the reports you wish to upload from a list.
-
-### Automatically upload reports
-
-Upload settings are configured in your PipeRider profile, located at `~/.piperider/profile.yml`.
-
-To enable automatic uploading, add `auto_upload: true` to the `cloud_config` section of your PipeRider profile:
-
-{% code title="~/.piperider/profile.yml" %}
-```yaml
-user_id: user123
-...
-api_token: abc123
-cloud_config:
-  default_project: workspace-name/project-name
-  auto_upload: true
-```
-{% endcode %}
-
-If enabled, `auto_upload` will automatically upload reports, without prompt, as they are generated. Such as with `piperider run` or `piperider compare-reports`.
+Now you're ready to start [uploading reports](upload-reports.md) to PipeRider Cloud.

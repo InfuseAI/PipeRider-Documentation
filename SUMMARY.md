@@ -17,11 +17,13 @@
 ## Continuous Integration <a href="#ci" id="ci"></a>
 
 * [Introduction](ci/introduction.md)
-* [ Example](ci/example.md)
+* [Example](ci/example.md)
 
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
 * [Get Started](piperider-cloud/get-started.md)
+* [Upload Reports](piperider-cloud/upload-reports.md)
+* [Lineage Diff](piperider-cloud/lineage-diff.md)
 
 ## Reference
 
