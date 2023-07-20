@@ -328,7 +328,7 @@ The report will show the following changes to your projectL
 
 The compare command also outputs a markdown file, [`summary.md`](https://gist.github.com/infuseai-dev/9919580952751a47798198402ddb2339) which is specifically designed to be pasted into a GitHub pull request (PR) comment.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>summary.md</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/summary.png" alt=""><figcaption><p>summary report</p></figcaption></figure>
 
 The pull request comment now contains detailed information about how your code changes have affected the data. This improves the code review process and helps ensure that unexpected changes do not make their way into production.
 
