@@ -9,7 +9,7 @@ To use the data profiling and comparison features of PipeRider, you will need to
 This can be done in the following ways:
 
 * Tag resources
-* Use the `--specify` option
+* Use the `--select` option
 * Use the `--modified` option
 * Use the `--table` option (deprecated, for non-dbt projects)
 
@@ -27,12 +27,12 @@ By default PipeRider looks for then 'piperider' tag when discovering resources t
 
 Tags can also be applied in your project file or as a config property. Refer to the [dbt documentation](https://docs.getdbt.com/reference/resource-configs/tags) for more information on tags configuration.
 
-## Use the `--specify` option
+## Use the `--select` option
 
-The `--specify` option can be used to select individual resources or groups of resources, and can be used with both `piperider run` and `piperider compare`.&#x20;
+The `--select` option can be used to select individual resources or groups of resources, and can be used with both `piperider run` and `piperider compare`.&#x20;
 
 {% hint style="info" %}
-`--specify` overrides the need for tagging resources
+`--select` overrides the need for tagging resources
 {% endhint %}
 
 ### Specify a single resource  &#x20;
