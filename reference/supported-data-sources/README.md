@@ -8,16 +8,17 @@ PipeRider supports the following data sources by installing the relevant connect
 
 ### Data Warehouses
 
-* [Snowflake](snowflake-connector.md)
+* [Athena](athena-connector.md)
 * [BigQuery](bigquery-connector.md)
+* [Databricks](databricks.md)
 * [Postgres](postgres-connector.md)
 * [Redshift](redshift-connector.md)
-* [Athena](athena-connector.md)
+* [Snowflake](snowflake-connector.md)
 
 ### Embedded Databases
 
-* [SQLite](sqlite-connector.md)
 * [DuckDB](duckdb-connector.md)
+* [SQLite](sqlite-connector.md)
 
 ### Files
 

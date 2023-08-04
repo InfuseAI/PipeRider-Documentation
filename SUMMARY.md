@@ -41,6 +41,7 @@
   * [DuckDB Connector](reference/supported-data-sources/duckdb-connector.md)
   * [CSV Connector](reference/supported-data-sources/csv-connector.md)
   * [Parquet Connector](reference/supported-data-sources/parquet-connector.md)
+  * [Databricks](reference/supported-data-sources/databricks.md)
 
 ## Links
 
@@ -51,7 +52,7 @@
 
 * [PipeRider](release-notes/piperider.md)
 * [PipeRider Cloud](release-notes/piperider-cloud.md)
-* [Changelog (v0.29.3)](https://github.com/InfuseAI/piperider/releases/tag/v0.29.3)
+* [Changelog (v0.30.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.30.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
