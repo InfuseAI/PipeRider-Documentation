@@ -1,33 +1,34 @@
 ---
-description: PipeRider - Data Reliability Automated.
+description: Code review for data in dbt
 ---
 
 # Introduction
 
-## Code review for data in dbt
+[quick-start.md](get-started/quick-start.md "mention")[quick-start.md](get-started/quick-start.md "mention")[quick-start.md](get-started/quick-start.md "mention")PipeRider is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
 
-**PipeRider** is an open-source data quality toolkit for data professionals.
+PipeRider provides column-level data comparison and lineage diffs that visualize the impact radius of your code-change with side-by-side data profiling statistics and impact summaries to help you review dbt project updates.
 
-PipeRider automatically compares your data to highlight the difference in impacted downstream dbt models so you can merge your Pull Requests with confidence.
+Features include:
 
-## How it works:
+* **PipeRider Data Profile Reports**\
+  Perform **data reconnaissance** and get a holistic view of your data. Know what you’re dealing with before making changes.
+*   **PipeRider Data Impact Report**
 
-1. Easy to connect your data source -> PipeRider leverages the [connection profiles in your dbt project](https://docs.getdbt.com/docs/get-started/connection-profiles) to connect to the data warehouse
-2. Generate profiling statistics of your models to get a high-level overview of your data
-3. Compare local changes with the main branch in an HTML report
-4. Post a quick summary of the data changes to your PR, so others can be confident too
-5. Integrate PipeRider in your CI/CD process through GitHub actions or using PipeRider Cloud
+    See the **before-and-after impact** of your code changes, with lineage diff and data profile side-by-side comparison.
+*   **Pull Request Impact Summary**
 
-## Core concepts
+    Get an overview of the **points-of-impact** from of your code changes right in your pull-request comments. Includes deep-linking into your Code-Change Impact Report, so **code-reviewers can find more information** easily. Variations of Impact Summaries are available in the following places:
 
-* **Easy to install**: Leveraging dbt's configuration settings, PipeRider can be installed within 2 minutes
-* **Fast comparison**: by collecting profiling statistics (e.g. uniqueness, averages, quantiles, histogram) and metric queries, comparing downstream data impact takes little time, speeding up your team's review time
-* **Valuable insights**: various profiling statistics displayed in the HTML report give fast insights into your data
+    * Command line
+    * Impact Reports
+    * Pull request/merge request comments
+
+## How it works
+
+1. **Zero-config installation** in your dbt project - just install and compare to get an Impact Report off your code changes.
+2. **Compare code-changes** **during development** to make sure your code is having the desired impact.
+3. **Automate it in your CI process**, with PipeRider’s GitHub Action, to get an Impact Summary in your pull request comment.&#x20;
 
 ## Getting Started
 
-Use our [Quick Start](get-started/quick-start.md) tutorial and learn how to connect your first data source and get started checking the quality of your data.
-
-{% content-ref url="get-started/quick-start.md" %}
-[quick-start.md](get-started/quick-start.md)
-{% endcontent-ref %}
+Find out how to [install PipeRider](get-started/install-piperider.md) and get your first Impact Report, or follow our Quick Start for sample project that dbt’s Jaffle Shop.
