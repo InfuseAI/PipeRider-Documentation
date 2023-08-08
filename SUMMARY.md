@@ -4,6 +4,7 @@
 
 ## Getting Started <a href="#get-started" id="get-started"></a>
 
+* [Install PipeRider](get-started/install-piperider.md)
 * [Quick Start](get-started/quick-start.md)
 * [Run](get-started/run/README.md)
   * [Profiling](get-started/run/profile.md)
