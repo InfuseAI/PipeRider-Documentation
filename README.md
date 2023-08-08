@@ -4,7 +4,7 @@ description: Code review for data in dbt
 
 # Introduction
 
-[quick-start.md](get-started/quick-start.md "mention")[quick-start.md](get-started/quick-start.md "mention")[quick-start.md](get-started/quick-start.md "mention")PipeRider is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
+PipeRider is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
 
 PipeRider provides column-level data comparison and lineage diffs that visualize the impact radius of your code-change with side-by-side data profiling statistics and impact summaries to help you review dbt project updates.
 
@@ -31,4 +31,4 @@ Features include:
 
 ## Getting Started
 
-Find out how to [install PipeRider](get-started/install-piperider.md) and get your first Impact Report, or follow our Quick Start for sample project that dbt’s Jaffle Shop.
+Find out how to [install PipeRider](get-started/install-piperider.md) and get your first Impact Report, or follow our [Quick Start](get-started/quick-start.md) for sample project that dbt’s Jaffle Shop.
