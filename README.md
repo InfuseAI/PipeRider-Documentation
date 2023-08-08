@@ -4,7 +4,7 @@ description: Data impact assessment for code-change in dbt projects
 
 # Introduction
 
-PipeRider is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
+[PipeRider](https://github.com/infuseai/piperider) is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
 
 PipeRider provides data profile comparison and column lineage diffs that visualize the impact radius of your code-change with side-by-side data profiling statistics and impact summaries to help you review dbt project updates.
 
