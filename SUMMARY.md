@@ -53,7 +53,7 @@
 
 * [PipeRider](release-notes/piperider.md)
 * [PipeRider Cloud](release-notes/piperider-cloud.md)
-* [Changelog (v0.30.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.30.0)
+* [Changelog (v0.32.0)](https://github.com/InfuseAI/piperider/releases/tag/v0.32.0)
 
 ## Privacy & Terms <a href="#privacy" id="privacy"></a>
 
