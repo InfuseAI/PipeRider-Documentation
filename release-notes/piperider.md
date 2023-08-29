@@ -6,7 +6,44 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
-Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.
+
+
+## PipeRider OSS v0.32.0
+
+Release date: [2023-08-24](https://github.com/InfuseAI/piperider/releases/tag/v0.32.0)
+
+### Features
+
+* The default resource selection behavior of `piperider run` and `piperider compare` has been updated:
+  * `piperider run` now selects ALL resources by default.
+  * `piperider compare` now selects `state:modified+` by default.
+* Support for dbt-core 1.6
+
+## PipeRider OSS v0.31.0
+
+Release date: [2023-08-10](https://github.com/InfuseAI/piperider/releases/tag/v0.31.0)
+
+### Features
+
+* Improved CLI and Report hints when PipeRider detects that no resources have been profiled
+
+## PipeRider OSS v0.30.0
+
+Release date: [2023-08.02](https://github.com/InfuseAI/piperider/releases/tag/v0.30.0)
+
+### Features
+
+* Databricks now supported as a data source
+* Updated Impact Summary on CLI, and in Markdown summary and HTML report
+* When the `--modified` option is used, PipeRider will run `dbt build` with `state:modified+`
+* [PipeRider Compare Action](https://github.com/marketplace/actions/piperider-compare-action) now supports `--modified` and `--select`
+
+## PipeRider OSS v0.29.0
+
+Release date: [2023-07-13](https://github.com/InfuseAI/piperider/releases/tag/v0.29.0)
+
+* `piperider compare` now works in an uncommited Git repository. Previously, you were required to commit your changes, before running `piperider compare`. This requirement is no longer neccessary, and `compare` now works in a 'dirty repository'.
+* `--modified` option added to `piperider compare` to enable profiling only modified resources.
 
 ## PipeRider OSS v0.28.0
 
@@ -20,7 +57,7 @@ Release date: [2023-06-29](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 ### Fixes
 
-* **M**ake sure the dbt-helper working with the dbt-core 1.3 ([#740](https://github.com/InfuseAI/piperider/pull/740))
+* Make sure the dbt-helper working with the dbt-core 1.3 ([#740](https://github.com/InfuseAI/piperider/pull/740))
 * Fix metric date range display ([#746](https://github.com/InfuseAI/piperider/pull/746))
 * Fix required project’s target path ([#753](https://github.com/InfuseAI/piperider/pull/753))
 
@@ -114,7 +151,7 @@ Release date: [2023-05-04](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 Bug fix:
 
-* Piperider bug with PipeRider using the wrong schema when using the `--table` option
+* PipeRider bug with PipeRider using the wrong schema when using the `--table` option
 
 ## PipeRider OSS v0.24.0
 

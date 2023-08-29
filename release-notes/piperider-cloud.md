@@ -6,6 +6,31 @@ description: Release notes for PipeRider Cloud
 
 [PipeRider Cloud](broken-reference/) accompanies [PipeRider OSS](../get-started/quick-start.md) and provides a convenient online service to store, share, and compare PipeRider reports online with your team.
 
+## 2023-08-24
+
+* PipeRider Impact Reports (Comparison reports) now contain back-links to the pull request that they were created for.
+
+## 2023-08-10
+
+* PipeRider reports now display hints when no profiled resources are detected.
+
+## 2023-08-02
+
+* Improved Impact Summaries in reports
+* Branch information is now displayed in reports
+
+## 2023-06-15
+
+* Lineage-Diff added to Impact Reports (Comparison reports) stored in PipeRider Cloud
+
+## 2023-06-01
+
+* Report UI improvements
+
+## 3023-05-18
+
+* Report UI improvements
+
 ## 2023-04-20
 
 * **Developer Plan**: PipeRider Cloud now features **Developer** and **Pro** plans.
