@@ -1,165 +1,144 @@
 ---
-description: Query the metric
+description: Using dbt Metrics with PipeRider
 ---
 
 # Metrics
 
-A metric is an aggregation over a table. In general, it consists
+{% hint style="warning" %}
+From dbt 1.6, support for the dbt\_metrics package was deprecated and replaced by the Semantic Layer. Likewise, from version 0.33.0 of PipeRider, support for the legacy metric config has also been discontinued. Metrics defined using the old configuration will now be automatically skipped by PipeRider.
+{% endhint %}
 
-* The model to aggregate. (e.g. `Events`)
-* The column to aggregate (e.g. `user_id`)
-* The aggregation method (e.g. distinct count)
-* The time column to group (e.g. `event_time`)
-* The time granularity for grouping (e.g. `group by date_trunc('DAY', event_time)`
-* The dimension for grouping (e.g. `group by country`)
-* The filters
-
-So if we can define a **daily active users** metric as
-
-> The **daily active user** is the **distinct count** of the `user_id` in the `Events` table, and group the result by the **date** of the `event_time`
-
-The dbt metrics provide a way to define the metrics, and PipeRider implements the query of the metrics according to the dbt metrics definition.
+PipeRider supports querying [dbt metrics](https://docs.getdbt.com/docs/build/metrics-overview) and analyzing the impact on metrics between two branches.
 
 ## How to use
 
-There are three steps to&#x20;
+1. Define semantic models and metrics in your dbt project
+2. Validate metric configuration
+3. Run PipeRider
 
-* define metrics in your dbt project
-* update the dbt manfests
-* run piperider
+### 1. Define semantic models and metrics
 
-### Define a metric
+For full details on how to define metrics, please refer to the official dbt documentation on the[ semantic model](https://docs.getdbt.com/docs/build/semantic-models) and [creating metrics](https://docs.getdbt.com/docs/build/metrics-overview).&#x20;
 
-To define a metric, please see the [dbt metric document](https://docs.getdbt.com/docs/build/metrics#defining-a-metric) to see how to define a metric in your dbt project
+The following serves as a basic example on how to define a metric. Here, we define a metric **revenue**, which is the sum of the **amount** column with a **status** of **completed**.
 
-{% code title="models/marts/metrics.yml" %}
+{% code title="models/marts/orders.yml" %}
 ```diff
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    model: ref('orders')
+    entities:
+      - name: order_id
+        type: primary
+      - name: customer
+        type: foreign
+        expr: customer_id
+    dimensions:
+      - name: order_date
+        expr: order_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: status
+        type: categorical
+    measures:
+      - name: revenue
+        description: "The total revenue of our jaffle business"
+        agg: sum
+        expr: amount
+
 metrics:
-  - name: active_users
-    label: Active Users
-    model: ref('stg_events')
-    description: "The active user"
-
-    calculation_method: count_distinct
-    expression: user_id 
-
-    timestamp: event_time
-    time_grains: [day, week, month, year]
-+   tags: ['piperider']
+  - name: revenue
+    description: "The total revenue of our jaffle business"
+    type: simple
+    label: Revenue
+    type_params:
+      measure: revenue
+    filter: |
+      {{ Dimension('order_id__status') }} = 'completed'
 ```
 {% endcode %}
 
-{% hint style="info" %}
-To tell PipeRider to query your metrics, you must add the `piperider` tag. The tag name can be changed in the `config.yml`
-{% endhint %}
+### 2. Validate metric configuration
 
-### Check if the metric is well-configured
-
-The following command will list the metrics that you have just modified.
+The fastest way to validate the configuration of your dbt project is the [dbt-parse](https://docs.getdbt.com/reference/commands/parse) command:
 
 ```
-dbt list -s tag:piperider --resource-type metric
+$ dbt-parse
 ```
 
-### Run PipeRider
-
-Now, you can try if the metric is successfully queried
+dbt has also released a powerful tool, [MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli#validate-configs) that, among other features, can also validate your metric configuration:
 
 ```
-piperider run
+$ mf validate-configs
 ```
 
-View metrics in your PipeRider Report. Metric query results can is shown in the `Metrics`  page
+MetricFlow CLI can also query the metric to ensure it is functional:
+
+```
+$ mf query --metrics revenue --group-by metric_time__month
+✔ Success 🦄 - query completed after 0.12 seconds
+| metric_time__month   |   revenue |
+|:---------------------|----------:|
+| 2023-05-01           |     69.00 |
+| 2023-06-01           |    420.00 |
+| 2023-07-01           |    478.00 |
+| 2023-08-01           |    136.00 |
+```
+
+### 3. Run PipeRider
+
+Once your metrics are correctly configured, run PipeRider:
+
+```
+$ piperider run
+```
+
+View metrics in your PipeRider Report by selecting the  `metrics` page form the project sidebar:
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ## More about metric queries
 
-### How PipeRider query the dbt metric
+### How PipeRider queries the dbt metric
 
-PipeRider queries each `time_grain` _except_ `all_time.` This results in a **maximum of 5 queries per metric.** For instance, given the following metric, PipeRider would perform four queries: `daily`, `weekly`,  `monthly`, and `yearly` active users.
+PipeRider can run daily, monthly, and yearly queries for your metrics. If the [time\_granularity](https://docs.getdbt.com/docs/build/dimensions#time) is defined, the queries will adhere to these  settings. For example, if the `time_granularity` is `month`, then PipeRider only run the monthly and yearly queries.
 
-```yaml
-metrics:
-  - name: active_users
-    label: Active Users
-    model: ref('stg_events')
-    description: "The active user"
+For each time grains, PipeRider only queries the last n periods
 
-    calculation_method: count_distinct
-    expression: user_id 
+<table><thead><tr><th width="255">time_grain</th><th>metric query</th></tr></thead><tbody><tr><td>day</td><td>daily result for last 30 days</td></tr><tr><td>month</td><td>monthly result for last 12 months</td></tr><tr><td>year</td><td>yearly result for last 10 years</td></tr></tbody></table>
 
-    timestamp: event_time
-    time_grains: [day, week, month, year]
-    tags: ['piperider']
+The behavior is identical to the following command in MetricFlow.
+
+```bash
+$ mf query --metrics revenue --group-by metric_time__day --start-time <30d ago>
+$ mf query --metrics revenue --group-by metric_time__month --start-time <12m ago>
+$ mf query --metrics revenue --group-by metric_time__year --start-time <10y ago>
 ```
 
-For each time grains, PipeRider only queries the last n periods of the table data
+### Limited Support of DBT Metrics
 
-<table><thead><tr><th width="255">time_grain</th><th>metric query</th></tr></thead><tbody><tr><td>day</td><td>daily result for last 30 days</td></tr><tr><td>week</td><td>weekly result for last 12 week</td></tr><tr><td>month</td><td>monthly result for last 12 months</td></tr><tr><td>quarter</td><td>quarterly result for last 10 quarters</td></tr><tr><td>year</td><td>yearly result for last 10 years</td></tr></tbody></table>
+* PipeRider no longer supports metric specification prior to dbt v1.6. dbt provides official documentation on [how to migrate metrics configs to the new spec](https://docs.getdbt.com/guides/migration/sl-migration).
+* PipeRider doesn't support metrics that use measures with `agg` , such as `sum_boolean`, `median`, and `percentile`
+* PipeRider doesn't support metrics that use [filters](https://docs.getdbt.com/docs/build/metrics-overview#filters) with jinja macros other than `Dimension`&#x20;
+* PipeRider doesn't support metrics that use [filters](https://docs.getdbt.com/docs/build/metrics-overview#filters) with `Dimension` macros that require [joins](https://docs.getdbt.com/docs/build/join-logic). Referencing the above metrics example:&#x20;
+  * `{{ Dimension('order_id__status') }} = 'completed'` _is_ supported because `order_id` is type of `primary`
+  * `{{ Dimension('customer__type') }} = 'vip'` is _not_ supported because `customer` is type of `foreign`, and so requires additional join
+* PipeRider doesn't support [derived metrics](https://docs.getdbt.com/docs/build/derived) with `offset_window`
+* PipeRider doesn't support [cumulative metrics](https://docs.getdbt.com/docs/build/cumulative).
 
-### How about dimensions?
+## Query single metric
 
-PipeRider currently supports only the default queries. Queries for specific dimensions and other query customization will be added in the future. Tell us if you consider it is super useful for us. It will help us to prioritize them earlier.
-
-### Run on single metric
-
-When developing a new metric, it is time-consuming to run through all the piperider run to test the metric result. A tip is that use the `dbt list` to shorten the development cycle
-
-1. Update the dbt yaml file
-2. Update the dbt manifest by `dbt compile`
-3. Run piperider by dbt list output
+When developing a new metric, it is time-consuming to run through all the piperider run to test the metric result. PipeRider support dbt [node selection](https://docs.getdbt.com/reference/node-selection/syntax) to run on single metric
 
 ```sh
-dbt list -s metric:active_users | piperider run --dbt-list     
+$ piperider run -s 'metric:jaffle_shop.revenue'
 ```
 
 ## Compare metrics
 
 With PipeRider's **compare** feature, you're also able to compare metrics between reports, which is particularly useful when analyzing the impact of data model or metric definition changes.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-
-
-## Dbt metrics compatibility
-
-PipeRider supports the follow dbt metric properties.
-
-| Field               | Support                                                 |
-| ------------------- | ------------------------------------------------------- |
-| name                | yes                                                     |
-| model               | yes                                                     |
-| label               | yes                                                     |
-| description         | yes                                                     |
-| calculation\_method | count, count\_distinct, sum, average, min, max, derived |
-| expression          | yes                                                     |
-| timestamp           | yes                                                     |
-| time\_grains        | yes                                                     |
-| dimensions          | Dimensions are currently not shown on metric charts     |
-| window              | No. Support for `window` is coming soon                 |
-
-{% hint style="warning" %}
-Metrics that use the 'window' property are currently **not** supported and will not be queried. Support for 'window' is will be added in an upcoming release.
-{% endhint %}
-
-### Derived metric
-
-PipeRider supports querying [derived metrics](https://docs.getdbt.com/docs/build/metrics#derived-metrics). It's useful for
-
-* ratios
-* subtractions
-* any arbitrary calculation
-
-{% code title="models/marts/<derived-metric>.yml" %}
-```yaml
-metrics:
-  - name: average_revenue_per_customer
-    label: Average Revenue Per Customer
-    description: "The average revenue received per customer"
-
-    calculation_method: derived
-    expression: "{{metric('total_revenue')}} / {{metric('count_of_customers')}}"
-    tags: ['piperider']
-```
-{% endcode %}
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Metric comparison in a PipeRider Impact Report</p></figcaption></figure>
