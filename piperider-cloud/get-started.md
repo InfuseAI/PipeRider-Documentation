@@ -85,4 +85,4 @@ Check cloud account:
 ✅ PASS
 ```
 
-Now you're ready to start [uploading reports](upload-reports.md) to PipeRider Cloud.
+Now you're ready to start [uploading reports](upload-data-reports.md) to PipeRider Cloud.

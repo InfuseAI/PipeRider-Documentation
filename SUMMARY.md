@@ -23,7 +23,7 @@
 ## PipeRider Cloud (Beta) <a href="#piperider-cloud" id="piperider-cloud"></a>
 
 * [Get Started](piperider-cloud/get-started.md)
-* [Upload Reports](piperider-cloud/upload-reports.md)
+* [Upload Data Reports](piperider-cloud/upload-data-reports.md)
 * [Lineage Diff](piperider-cloud/lineage-diff.md)
 
 ## Reference
