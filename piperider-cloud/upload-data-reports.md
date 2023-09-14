@@ -9,7 +9,7 @@ How you will upload reports to PipeRider Cloud depends on how you are using Pipe
 | Using PipeRider for | Upload method                   |
 | ------------------- | ------------------------------- |
 | Development         | PipeRider OSS                   |
-| Deployment /CI      | PipeRider Compare GitHub Action |
+| Deployment/CI       | PipeRider Compare GitHub Action |
 
 {% hint style="info" %}
 If you are new to PipeRider, please refer to the [PipeRider Introduction](../), which explains the main use-cases for how PipeRider fits into your data reliability strategy.
