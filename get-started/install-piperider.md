@@ -1,5 +1,5 @@
 ---
-description: How to install PipeRider with basic usage examples
+description: Zero-config Data Impact Assessment for dbt Projects
 ---
 
 # Install PipeRider
@@ -58,24 +58,20 @@ pip install -U 'piperider[snowflake]'
 {% endtab %}
 {% endtabs %}
 
-
-
-## Zero-config dbt usage
-
-PipeRider does not require any further configuration to use inside a dbt project.
+PipeRider does not require any configuration to use inside a dbt project.
 
 ### Create a Data Impact Report (Comparison)
 
-If you are working on feature branch of your dbt project and want to compare your current code changes to merge base, run `piperider compare` passing `state:modified+:`
+If you are working on feature branch of your dbt project, use the following command to compare your current code changes to merge base:&#x20;
 
 ```
-piperider compare --select state:modified+
+$ piperider compare
 ```
 
 The `compare` command compares the before-and-after impact of your current code changes and generates a Data Impact Report containing an impact summary and side-by-side data profiling results.&#x20;
 
 {% hint style="info" %}
-Running `piperider compare` _without_ passing a resource selector will **only detect schema changes**, _unless_ you have already tagged resources. Find out more about [specifying resources to profile](specify-resources-to-profile.md).&#x20;
+By default, `piperider compare` assesses modified resources and children (`state:modified+).`Read more about [specifying resources to profile](specify-resources-to-profile.md).&#x20;
 {% endhint %}
 
 ###
