@@ -1,5 +1,5 @@
 ---
-description: Zero-config Data Impact Assessment  for dbt Projects
+description: Zero-config Data Impact Assessment for dbt Projects
 ---
 
 # Install PipeRider
