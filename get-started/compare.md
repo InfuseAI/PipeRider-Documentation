@@ -1,6 +1,6 @@
 # Compare
 
-The compare feature is to compare two runs and generate the comparison report.  You can use it to:
+Compare two runs and generate an Impact Report. This feature is useful when you want to:
 
 * **Compare the changes from base branch to pull request branch** - This is the main use case of PipeRider
 * **Compare the changes between two time points,** such as following a daily or periodic dbt job.&#x20;
@@ -8,13 +8,13 @@ The compare feature is to compare two runs and generate the comparison report.  
 
 ## Compare two runs
 
-The easiest way to compare is to compare the last two runs
+The easiest way to compare is to compare the last two runs:
 
 ```
 piperider compare-reports --last
 ```
 
-You can also compare two runs by specifying two run JSON results
+You can also compare two runs by specifying two run JSON results:
 
 ```
 piperider compare-reports --base /tmp/base/run.json --target /tmp/target/run.json
@@ -22,14 +22,14 @@ piperider compare-reports --base /tmp/base/run.json --target /tmp/target/run.jso
 
 ### Comparison artifacts
 
-Compare generate two artifacts are generated under the comparison output directory
+Compare generates two artifacts in the output directory `.piperider/comparisons/<datetime>`
 
-* Compare HTML report (`index.html`)
-* Compare Markdown summary (`summary.md`). This markdown file is used to post on your PR comment for review.
+* Impact Report - HTML (`index.html`)
+* Impact Summary - Markdown (`summary.md`). This markdown file is used to post on your PR comment for review.
 
-The default comparison output directory is located at `.piperider/comparisons/<datetime>/` . The latest comparison would also be sym-linked at `.piperider/outputs/latest`
+The latest comparison is also sym-linked at `.piperider/outputs/latest`
 
-You can use the `--output` to change the output directory
+Use the `--output` option to change the output directory:
 
 ```
 piperider compare-reports --last --output /tmp/mycompare
