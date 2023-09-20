@@ -111,8 +111,8 @@ piperider compare v0.32.0
 
 ### Compare between two git references
 
-In addition to comparing the. current working tree and a reference, \
-PipeRider can also perform comparisons of any two commit references. To achieve this, PipeRider employs a three-dot notation similar to `git diff <commit>...<commit>`&#x20;
+In addition to comparing the current working tree with a reference, \
+PipeRider can also perform comparisons of _any_ two commit references. To achieve this, PipeRider employs a three-dot notation similar to `git diff <commit>...<commit>`&#x20;
 
 ```
 piperider compare <base-ref>...<target-ref>
