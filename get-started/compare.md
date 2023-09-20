@@ -1,20 +1,20 @@
 # Compare
 
-The compare feature is to compare two runs and generate the comparison report.  You can use it to:
+Compare two runs and generate an Impact Report. This feature is useful when you want to:
 
-* **Compare the changes from base branch to pull request branch.** This is just the main use case of PipeRider
-* **Compare the changes between two time points.** In the dbt daily or period job, you can run PipeRider after running dbt. It allows you to visualize the change for two time points later on.
-* **Compare two data sources**. You can compare staging and production environments, or migration source and destination.
+* **Compare the changes from base branch to pull request branch** - This is the main use case of PipeRider
+* **Compare the changes between two time points,** such as following a daily or periodic dbt job.&#x20;
+* **Compare two data sources**, such as staging and production environments, or a migration source and destination.
 
 ## Compare two runs
 
-The most easy way to compare is to compare the last two runs
+The easiest way to compare is to compare the last two runs:
 
 ```
 piperider compare-reports --last
 ```
 
-You can also compare two runs by specifying two run JSON results
+You can also compare two runs by specifying two run JSON results:
 
 ```
 piperider compare-reports --base /tmp/base/run.json --target /tmp/target/run.json
@@ -22,14 +22,14 @@ piperider compare-reports --base /tmp/base/run.json --target /tmp/target/run.jso
 
 ### Comparison artifacts
 
-Compare generate two artifacts are generated under the comparison output directory
+Compare generates two artifacts in the output directory `.piperider/comparisons/<datetime>`
 
-* Compare HTML report (`index.html`)
-* Compare Markdown summary (`summary.md`). This markdown file is used to post on your PR comment for review.
+* Impact Report - HTML (`index.html`)
+* Impact Summary - Markdown (`summary.md`). This markdown file is used to post on your PR comment for review.
 
-The default comparison output directory is located at `.piperider/comparisons/<datetime>/` . The latest comparison would also be sym-linked at `.piperider/outputs/latest`
+The latest comparison is also sym-linked at `.piperider/outputs/latest`
 
-You can use the `--output` to change the output directory
+Use the `--output` option to change the output directory:
 
 ```
 piperider compare-reports --last --output /tmp/mycompare
@@ -45,37 +45,44 @@ In a dbt project, it is a challenge to visualize the data impact for a pull requ
 
 ### How to use
 
-To compare a pull requests, you have to be in a branch and the change set should be committed. Then use the command
+To compare a pull requests, run the following code from the branch that is to be merged:
 
 ```
 piperider compare
 ```
 
-It will run corresponding git, dbt, pipoerider operations and generate the comparison report.
+PipeRider will automatically run the necessary git, dbt, and PipeRider commands to generate an Impact Report.
 
 ### How it works
 
-The pull request is to compare the change of `git diff <base>...<branch>`.  The following diagram illustrates the two commits which a pull request compares. Assuming our branch `features/add-my-dashboard` originates from `v1`, when a PR is created, it actually compares `v1.3` with `v1`, rather than `v1.3` with `v5`.
+PipeRider Compare performs a comparison equivalent to the way that  `git diff <base>...<branch>` (three-dot diff) works.&#x20;
+
+Given the following example in which the branch `features/add-my-dashboard` originated from main  `v1` , `piperider compare` would **compare the feature branch v1.3 with main v1**, as opposed to comparing v1.3 with main v5 (a two-dot compare). &#x20;
+
+
 
 <figure><img src="../.gitbook/assets/compare-merge-base.png" alt=""><figcaption></figcaption></figure>
 
-The steps  `piperider compare` executes are
+The steps `piperider compare` executes are:
 
-1. Switch to merge base of the two branch, run dbt, and run PipeRider
-2. Switch back to PR branch, run dbt, and run PipeRider
-3. Compare these two runs
+1. Switch to the merge base of the current branch and main (or master)&#x20;
+   1. Run dbt
+   2. Run PipeRider
+2. Switch back to the current working directory. (working tree)
+   1. Run dbt
+   2. Run PipeRider
+3. Compare the two runs from each version of the code
 
-For the detailed comments, it would looks like this one
+The actual command process looks as follows:
 
 ```sh
-# Merge base from base branch
-git switch --detach $(git merge-base main features/add-my-dashboard)
+# Run dbt and piperider against the merge-base commit.
+git archive -o /path/to/temp $(git merge-base main features/add-my-dashboard)
 dbt deps
 dbt build
 piperider run
 
-# PR branch
-git switch features/add-my-dashboard
+# Working tree
 dbt deps
 dbt build
 piperider run
@@ -84,14 +91,65 @@ piperider run
 piperider compare-reports --last
 ```
 
+Please note that the comparison is made between the **working tree** and the **default base** (main or master). It differs slightly from `main....HEAD`
+
+### Compare with the specific branch or git reference
+
+If you have a specific branch other than the default base branch (`main` or the `master`), you can specify a different branch by using the `--base-branch` option.&#x20;
+
+```
+piperider compare --base-branch <branch-name>
+```
+
+Or any supported git reference in the first argument, such as HEAD, commit hash, or a tag.
+
+```
+piperider compare <git-ref>
+```
+
+For example:
+
+```
+piperider compare --base-branch develop
+piperider compare develop
+piperider compare HEAD
+piperider compare 9ed4e5f
+piperider compare v0.32.0
+```
+
+### Compare between two git references
+
+In addition to comparing the current working tree with a reference, PipeRider can also perform comparisons of _any_ two commit references. To achieve this, PipeRider employs a three-dot notation similar to `git diff <commit>...<commit>`&#x20;
+
+```
+piperider compare <base-ref>...<target-ref>
+```
+
+For example:
+
+```
+piperider compare develop...feature/my-featur
+piperider compare 9ed4e5f...06ec1ef
+piperider compare feature/abc...v0.32.0
+piperider compare HEAD~1...HEAD
+```
+
+The following table illustrates how `compare` works by using the `git diff` equivalents as an example.
+
+| piperider compare                       | git                          |
+| --------------------------------------- | ---------------------------- |
+| piperider compare                       | git diff --merge-base main   |
+| piperider compare --base-branch \<base> | git diff --merge-base base   |
+| piperider compare \<base>               | git diff --merge-base base   |
+| piperider compare \<base>...\<target>   | git diff \<base>...\<target> |
+
 ## Comparison Recipe
 
-Comparison recipe is a yaml description to describe how to run a compare. Here is an example of a recipe
+A Comparison Recipe is a yaml file that details the commands to be executed as part of the  compare process. The following is an example of a basic recipe:
 
 ```yaml
-# .piperider/compare/default.yml
 base:
-  branch: main
+  ref: <git-ref>
   dbt:
     commands:
     - dbt deps
@@ -107,15 +165,11 @@ target:
     command: piperider run
 ```
 
-The recipe is generated when initiating the PipeRider project, it will compare current branch with the main branch.
-
-```
-piperider compare
-```
+It is not necessary to create a Compare Recipe as a default recipe will be generated on-the-fly when you executing `piperider compare`.  The default Compare Recipe will compare the current working tree with the base branch `<git-ref>`, either `main` or `master`.
 
 ### Custom Recipe
 
-The recipe is defined at `.piperider/compare/<recipe>.yml`. To define a recipe, just add a yaml file with the recipe name. Run the recipe by specifying the recipe.
+Recipe files should be placed in `.piperider/compare/<recipe>.yml`, then specify the recipe when running `compare`:
 
 ```
 piperider compare --recipe <recipe>
@@ -147,7 +201,7 @@ target:
 
 ```
 
-Next, you can use the following "compare" command, which will only run the target's dbt and Piperider, while the base results will come from the file:
+Next, you can use the following "compare" command, which will only run the target's dbt and PipeRider, while the base results will come from the file:
 
 ```
 piperider compare --recipe compare_from_file
@@ -155,7 +209,7 @@ piperider compare --recipe compare_from_file
 
 ### Recipe Example: Use environment variable
 
-Continuing with the previous example, we can also use Jinja templates in the recipe. A common use case is to use environment variables. Here's an example recipe:
+Jinja templates can also be used recipe files. A common use case is for inserting environment variables:
 
 ```yaml
 base:
@@ -170,7 +224,7 @@ target:
 
 ```
 
-Later, when running the "compare" command, you can pass in your environment variables like this:
+You can then pass in your environment variable when running the `compare` command:&#x20;
 
 ```
 BASE=/tmp/base/run.json piperider compare --recipe compare_from_file
@@ -178,17 +232,17 @@ BASE=/tmp/base/run.json piperider compare --recipe compare_from_file
 
 ## **Simulating and interacting for troubleshooting**
 
-To explore the simulation and interact with Piperider Compare, you can use `--dry-run` and `--interactive`.
+To simulate, or step through, the the `piperider compare` process, you can use `--dry-run` and `--interactive` options.
 
-The `--dry-run` option makes the Recipe executions do nothing but display all commands that might change your working directory.
+The `--dry-run` option displays the commands that will be executed when running `piperider compare`, without executing them.
 
-The `--interactive` option makes the Recipe execution proceed to the next step only after receiving your confirmation by typing "yes". If you respond with "no", it will stop immediately.
+The `--interactive` option will execute the commands, but only proceed to the next step upon confirmation by typing "yes". Typing "no" will terminate the process.
 
-## Github Action for Comparison Recipe
+## PipeRider Compare GitHub Action
 
-Running the recipe using GitHub Actions is a straightforward way to facilitate the review of pull requests in your GitHub repository.
+To run `compare` as part of a GitHub Actions workflow, use the official [PipeRider Compare GitHub Action](https://github.com/InfuseAI/piperider-compare-action).&#x20;
 
-You can use the following workflow to enable PipeRider comparison on pull requests with a minimal setup:
+The following workflow is a basic example or how to use the Compare action:
 
 ```
 name: PR with PipeRider
@@ -207,11 +261,13 @@ jobs:
       uses: InfuseAI/piperider-compare-action@v1
 ```
 
-This workflow is triggered on every pull request and runs the `InfuseAI/piperider-compare-action`, which compares the current pull request with the target branch. It automatically installs any required packages and related connectors and provides a comment on the pull request with the comparison output. To use this feature, please grant the action **write** permission so that it can add the comparison output as a comment on the pull request.
+The above workflow will be triggered on every pull request and run the `InfuseAI/piperider-compare-action.`&#x20;
 
-![](<../.gitbook/assets/image (3) (1).png>)
+This will compare the current pull request with the target branch, and automatically post an Impact Summary in the comments of the pull request (**Note**: To use this feature, please grant the action **write** permission).
 
-For more information about the `InfuseAI/piperider-compare-action`, please visit our [GitHub repository](https://github.com/InfuseAI/piperider-compare-action).
+<figure><img src="../.gitbook/assets/截圖 2023-09-18 下午3.33.34.png" alt=""><figcaption><p>Example Impact Summary in GitHub pull request comment</p></figcaption></figure>
+
+
 
 
 
