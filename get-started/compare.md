@@ -45,7 +45,7 @@ In a dbt project, it is a challenge to visualize the data impact for a pull requ
 
 ### How to use
 
-To compare a pull requests, you have to be in a branch and the change set should be committed. Then use the command
+To compare a pull requests, you have to be in the branch to be merged, and run the command
 
 ```
 piperider compare
@@ -61,21 +61,20 @@ The pull request is to compare the change of `git diff <base>...<branch>`.  The 
 
 The steps  `piperider compare` executes are
 
-1. Switch to merge base of the two branch, run dbt, and run PipeRider
-2. Switch back to PR branch, run dbt, and run PipeRider
+1. Switch to the merge base of the current branch and main (or master), run dbt, and run PipeRider
+2. Run dbt, and run PipeRider in the current working directory (working tree)
 3. Compare these two runs
 
-For the detailed comments, it would looks like this one
+For the detailed commands, it would looks like this one
 
 ```sh
-# Merge base from base branch
-git switch --detach $(git merge-base main features/add-my-dashboard)
+# Run dbt and piperider against the merge-base commit.
+git archive -o /path/to/temp $(git merge-base main features/add-my-dashboard)
 dbt deps
 dbt build
 piperider run
 
-# PR branch
-git switch features/add-my-dashboard
+# Working tree
 dbt deps
 dbt build
 piperider run
@@ -84,14 +83,66 @@ piperider run
 piperider compare-reports --last
 ```
 
+Please note that the comparison is made between the **working tree** and the **default base** (main or master). It differs slightly from `main....HEAD`
+
+### Compare with the specific branch or git reference
+
+If you have a specific branch other than the default base branch (`main` or the `master`), you can specify a different branch by using the `--base-branch` option.&#x20;
+
+```
+piperider compare --base-branch <branch-name>
+```
+
+Or any supported git reference in the first argument, such as HEAD, commit hash, or a tag.
+
+```
+piperider compare <git-ref>
+```
+
+For example:
+
+```
+piperider compare --base-branch develop
+piperider compare develop
+piperider compare HEAD
+piperider compare 9ed4e5f
+piperider compare v0.32.0
+```
+
+### Compare between two git references
+
+In addition to comparing the. current working tree and a reference, \
+PipeRider can also perform comparisons of any two commit references. To achieve this, PipeRider employs a three-dot notation similar to `git diff <commit>...<commit>`&#x20;
+
+```
+piperider compare <base-ref>...<target-ref>
+```
+
+For example:
+
+```
+piperider compare develop...feature/my-featur
+piperider compare 9ed4e5f...06ec1ef
+piperider compare feature/abc...v0.32.0
+piperider compare HEAD~1...HEAD
+```
+
+The following table illustrates how `compare` works by using the `git diff` equivalents as an example.
+
+| piperider compare                       | git                          |
+| --------------------------------------- | ---------------------------- |
+| piperider compare                       | git diff --merge-base main   |
+| piperider compare --base-branch \<base> | git diff --merge-base base   |
+| piperider compare \<base>               | git diff --merge-base base   |
+| piperider compare \<base>...\<target>   | git diff \<base>...\<target> |
+
 ## Comparison Recipe
 
 Comparison recipe is a yaml description to describe how to run a compare. Here is an example of a recipe
 
 ```yaml
-# .piperider/compare/default.yml
 base:
-  branch: main
+  ref: <git-ref>
   dbt:
     commands:
     - dbt deps
@@ -107,7 +158,7 @@ target:
     command: piperider run
 ```
 
-The recipe is generated when initiating the PipeRider project, it will compare current branch with the main branch.
+The recipe is automatically generated when you execute the `piperider compare` command. PipeRider will compare the current working tree with the base branch `<git-ref>`, which by default is `main` (or `master`).
 
 ```
 piperider compare
@@ -209,7 +260,7 @@ jobs:
 
 This workflow is triggered on every pull request and runs the `InfuseAI/piperider-compare-action`, which compares the current pull request with the target branch. It automatically installs any required packages and related connectors and provides a comment on the pull request with the comparison output. To use this feature, please grant the action **write** permission so that it can add the comparison output as a comment on the pull request.
 
-![](<../.gitbook/assets/image (3) (1).png>)
+![](<../.gitbook/assets/截圖 2023-09-18 下午3.33.34.png>)
 
 For more information about the `InfuseAI/piperider-compare-action`, please visit our [GitHub repository](https://github.com/InfuseAI/piperider-compare-action).
 
