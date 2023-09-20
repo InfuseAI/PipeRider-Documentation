@@ -145,7 +145,7 @@ The following table illustrates how `compare` works by using the `git diff` equi
 
 ## Comparison Recipe
 
-A Comparison Recipe is a yaml file that describes how to run a compare. The following is an example of a basic recipe:
+A Comparison Recipe is a yaml file that details the commands to be executed as part of the  compare process. The following is an example of a basic recipe:
 
 ```yaml
 base:
