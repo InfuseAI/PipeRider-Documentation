@@ -6,6 +6,12 @@ description: Release notes for PipeRider Cloud
 
 [PipeRider Cloud](broken-reference/) accompanies [PipeRider OSS](../get-started/quick-start.md) and provides a convenient online service to store, share, and compare PipeRider reports online with your team.
 
+## 2023-09-22
+
+* PipeRider Cloud [Quick Look](https://cloud.piperider.io/quick-look) released. Allows users to generate a lightweight Impact Report (schema change and Lineage Diff) from the following sources:
+  * Upload 1 and 2 dbt manifest files
+  * Paste the link to a public GitHub repository
+
 ## 2023-08-24
 
 * PipeRider Impact Reports (Comparison reports) now contain back-links to the pull request that they were created for.
