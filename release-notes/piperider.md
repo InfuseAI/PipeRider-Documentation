@@ -6,6 +6,16 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+## PipeRider OSS v0.34.0
+
+Release date: [2023-09-22](https://github.com/InfuseAI/piperider/releases/tag/v0.34.0)
+
+### Features
+
+* `--skip-datasource` option added to `piperider run` and `piperider compare` that generates a lightweight comparison based on dbt manifest files and features schema changes and Lineage Diff.
+
+Please check the [release notes](https://github.com/InfuseAI/piperider/releases/tag/v0.34.0) for all changes.
+
 ## PipeRider OSS v0.33.0
 
 Release date: [2023-09-07](https://github.com/InfuseAI/piperider/releases/tag/v0.33.0)
