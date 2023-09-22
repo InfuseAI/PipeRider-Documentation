@@ -1,26 +1,79 @@
 ---
-description: Data impact assessment for code-change in dbt projects
+description: Zero-config Data Impact Assessment for dbt Projects
 ---
 
 # Introduction
 
-[PipeRider](https://github.com/infuseai/piperider) is a **data impact assessment tool for dbt data projects**, we call it “code review for data”. Using PipeRider, you are able to see the downstream impact of code changes so you can confidently merge changes, without breaking prod.
+## What is `PipeRider`?
 
-PipeRider provides data profile comparison and column lineage diffs that visualize the impact radius of your code-change with side-by-side data profiling statistics and impact summaries to help you review dbt project updates.
+[PipeRider](https://github.com/infuseai/piperider) is a **data impact assessment tool for dbt data projects**.&#x20;
 
-Features include:
+PipeRider compares the data in your dbt project from before and after making data modeling changes and generates **Impact Reports and Summaries**.  Use the generated reports to verify your changes and enable you to merge into prod confidently, without unexpected impact.
 
-* **PipeRider Data Profile Reports** - Perform **data reconnaissance** and get a holistic view of your data. Know what you’re dealing with before making changes.
-* **PipeRider Data Impact Report** - See the **before-and-after** **impact** of your code changes in rich HTML reports. Includes column Lineage Diff when used with [PipeRider Cloud](broken-reference).
-* **Pull Request Impact Summary** - Get an overview of the **points-of-impact** of your code changes right in pull-request comments. Includes deep-linking into your Impact Report so **code-reviewers can find out more information** easily.
-  * Variations of Impact Summaries are available on the command line, in Impact Reports, and in pull request comments.
+## What are `Impact Reports`?
 
-## How it works
+Impact Reports provide details about the impact radius of data modeling changes and downstream impact.&#x20;
 
-1. **Zero-config installation** for dbt projects - Just install and compare to get an Impact Report from your code changes.
-2. **Compare code-changes** **during development** to make sure your code is having the desired impact.
-3. **Automate it in your CI process,** with [PipeRider’s official GitHub Action](https://github.com/marketplace/actions/piperider-compare-action), to get an Impact Summary in your pull request comment.&#x20;
+PipeRider surfaces impact in three main places.
 
-## Getting Started
+### Impact Reports
 
-Find out how to [install PipeRider](get-started/install-piperider.md) and get your first Impact Report, or follow our [Quick Start](get-started/quick-start.md) for sample project that dbt’s Jaffle Shop.
+An HTML report that contains a full breakdown of your data including:
+
+* **Impact Summary** - An overview of impacted resources and the types of impact.
+* **Data profile diff** - A detailed comparison of data profile statistics about your data.
+* **Lineage Diff** - A visualization in the form of a directed acyclic graph (DAG) that shows the impact to the data pipeline after changes.
+* **Metrics diff** - A graph-based comparison of how dbt metrics have been impacted.
+
+### Pull Request Impact Summary
+
+An overview of the data impact in a dbt project that is automatically added to the comments section of a pull request, and includes:
+
+* **Impact Overview** - The number and types of impact that have occurred due to code changes in the pull request.
+* **Resource Impact** - A list of models and an assessment of impact.
+* **Metrics Impact** - Details of metrics impacted by the code changes.
+
+### CLI Impact Summary
+
+A surface-level summary that shows the main areas of impact when running PipeRider on the command line.
+
+## Why use `PipeRider`?
+
+* **See the scope of impact** that your dbt project code changes have on your data.
+* **Improve your development process** by understanding your data and the impact of your changes.
+* **Improve your code-review process** by verifying data impact before merging code changes.
+* **Improve communication** between stakeholders and teammates by sharing and discussing Impact Reports.
+* Keep a historical **record of data impact** reports for future reference.
+* **Compare** the current state of your project **with any point in the past**.
+
+## Getting started with `PipeRider`
+
+PipeRider is a **zero-config installation for dbt projects**, no, _really_. In the majority of cases you can run PipeRider locally and generate an Impact Report in [just two commands](get-started/install-piperider.md).
+
+1. Follow the [Quick Start guide](get-started/quick-start.md) to try out using PipeRider locally.
+2. Sign up for [PipeRider Cloud](piperider-cloud/get-started.md) and upload and [share your first report](piperider-cloud/upload-data-reports.md).
+3. Set up PipeRider in your CI process using the [PipeRider Compare GitHub Action](https://github.com/InfuseAI/piperider-compare-action).
+
+## Try `PipeRider` without installing
+
+It’s also possible to try our PipeRider without installing.
+
+Head to [Quick Look](https://cloud.piperider.io/quick-look) on PipeRider Cloud and do one of the following:
+
+* Paste a link to a pull request on your dbt project.
+* Upload two dbt manifest.json files.
+
+PipeRider Cloud will generate an Impact report with **schema change** and **Lineage Diff**.
+
+{% hint style="info" %}
+Note that Impact Reports generated from dbt manifest files and GitHub links are more lightweight than the full report and focus on schema change and Lineage Diff.
+{% endhint %}
+
+## Join the `PipeRider` community
+
+* [Star PipeRider](https://github.com/InfuseAI/piperider) on GitHub.
+* Join the [#tools-piperider](https://getdbt.slack.com/archives/C05C28V7CPP) channel on the [dbt Slack](https://www.getdbt.com/community/join-the-community).
+* Join the [PipeRider Discord](https://piperider.io/discord) community
+* Report a [bug or post a feature request](https://github.com/InfuseAI/piperider/issues/new/choose)
+
+##
