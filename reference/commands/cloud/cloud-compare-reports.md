@@ -1,7 +1,5 @@
 # cloud compare-reports
 
-### `compare-reports`
-
 ```
 piperider cloud compare-reports --base <base-report> --target <target-report>
 ```
