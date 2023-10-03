@@ -59,23 +59,6 @@ pip install 'piperider[duckdb]'
 &#x20;PipeRider requires Python 3.7+
 {% endhint %}
 
-## Tag models to profile
-
-Use a config block to add the 'piperider tag to the following models:&#x20;
-
-* &#x20;`models/customers.sql`&#x20;
-* &#x20;`models/orders.sql`.
-
-```
-{{ config(tags=['piperider']) }}
-```
-
-Refer to [Specify resources to profile](specify-resources-to-profile.md) for other methods of selecting resources.
-
-{% hint style="info" %}
-If you don't specify models to profile, PipeRider will only be able to detect schema changes
-{% endhint %}
-
 ## Make a change to the project
 
 Now that the dbt project is configured and PipeRider is installed, you can follow the normal practice of create a new branch to make your project changes on.
