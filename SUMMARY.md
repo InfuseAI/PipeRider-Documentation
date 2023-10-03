@@ -69,7 +69,7 @@
 ## Links
 
 * [PipeRider on GitHub](https://github.com/infuseai/piperider)
-* [PipeRider Blog](https://blog.piperider.io)
+* [PipeRider Blog](https://medium.com/inthepipeline)
 
 ## Release Notes
 

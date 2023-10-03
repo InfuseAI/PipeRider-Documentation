@@ -85,6 +85,7 @@ jobs:
   piperider-compare:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: write
     steps:
     - uses: actions/checkout@v3
