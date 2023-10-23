@@ -6,6 +6,29 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
 
+
+
+## PipeRider OSS v0.37.0
+
+Release date: [2023-10-19](https://github.com/InfuseAI/piperider/releases/tag/v0.37.0)
+
+* dbt profile and target can now be selected with options `--dbt-profile` and `--dbt-target` ([GitHub Issue 898](https://github.com/InfuseAI/piperider/issues/898))
+* Service account impersonation now supported ([GitHub Issue 899](https://github.com/InfuseAI/piperider/issues/899))
+* Bug fixes.
+
+## PipeRider OSS v0.36.0
+
+Release date:  [2023-10-12](https://github.com/InfuseAI/piperider/releases/tag/v0.36.0)
+
+Bug fixes.
+
+## PipeRider OSS v0.35.0
+
+Release date:  [2023-09-28](https://github.com/InfuseAI/piperider/releases/tag/v0.35.0)
+
+* PipeRider CLI support share to temporary quick look
+* \[Report Improvement] Disclaimer is now shown in report if the `--skip-datasource` option is used to let users know that only metadata was used and a data profile was **not** performed
+
 ## PipeRider OSS v0.34.0
 
 Release date: [2023-09-22](https://github.com/InfuseAI/piperider/releases/tag/v0.34.0)

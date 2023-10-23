@@ -6,6 +6,17 @@ description: Release notes for PipeRider Cloud
 
 [PipeRider Cloud](broken-reference/) accompanies [PipeRider OSS](../get-started/quick-start.md) and provides a convenient online service to store, share, and compare PipeRider reports online with your team.
 
+
+
+## 2023-10-19
+
+* Sign-up/sign-in with GitHub is now supported
+
+## 2023-10-12
+
+* Gravatar now supported
+* Users can now request to join a workspace from a report link that was not previously shared (unauthorized report).
+
 ## 2023-09-22
 
 * PipeRider Cloud [Quick Look](https://cloud.piperider.io/quick-look) released. Allows users to generate a lightweight Impact Report (schema change and Lineage Diff) from the following sources:
