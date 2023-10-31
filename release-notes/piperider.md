@@ -8,6 +8,12 @@ Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperi
 
 
 
+## PipeRider OSS v0.38.0
+
+Release date: ​ [2023-10-26](https://github.com/InfuseAI/piperider/releases/tag/v0.38.0)
+
+Bug fixes and chores.
+
 ## PipeRider OSS v0.37.0
 
 Release date: [2023-10-19](https://github.com/InfuseAI/piperider/releases/tag/v0.37.0)
