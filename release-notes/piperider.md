@@ -4,9 +4,15 @@ description: Release notes for PipeRider OSS
 
 # PipeRider
 
-Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.&#x20;
+Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.
 
 
+
+## PipeRider OSS v0.38.0
+
+Release date: [2023-10-26](https://github.com/InfuseAI/piperider/releases/tag/v0.38.0)
+
+Bug fixes and chores.
 
 ## PipeRider OSS v0.37.0
 
@@ -18,13 +24,13 @@ Release date: [2023-10-19](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 ## PipeRider OSS v0.36.0
 
-Release date:  [2023-10-12](https://github.com/InfuseAI/piperider/releases/tag/v0.36.0)
+Release date: [2023-10-12](https://github.com/InfuseAI/piperider/releases/tag/v0.36.0)
 
 Bug fixes.
 
 ## PipeRider OSS v0.35.0
 
-Release date:  [2023-09-28](https://github.com/InfuseAI/piperider/releases/tag/v0.35.0)
+Release date: [2023-09-28](https://github.com/InfuseAI/piperider/releases/tag/v0.35.0)
 
 * PipeRider CLI support share to temporary quick look
 * \[Report Improvement] Disclaimer is now shown in report if the `--skip-datasource` option is used to let users know that only metadata was used and a data profile was **not** performed
@@ -128,8 +134,6 @@ Release date: [2023-06-07](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 * Fix wrong source table name when users specify identifier in dbt schema
 
-
-
 ## PipeRider OSS v0.26.1
 
 Release date: [2023-06-06](https://github.com/InfuseAI/piperider/releases/tag/v0.26.1)
@@ -138,15 +142,13 @@ Release date: [2023-06-06](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 * Fix PipeRider compare action helper for init-less flow
 
-
-
 ## PipeRider OSS v0.26.0
 
 Release date: [2023-06-01](https://github.com/InfuseAI/piperider/releases/tag/v0.26.0)
 
 ### Features
 
-* **Support for dry run and interactive mode**: The `piperider compare` command now includes the new options `--dry-run` and `--interactive`.&#x20;
+* **Support for dry run and interactive mode**: The `piperider compare` command now includes the new options `--dry-run` and `--interactive`.
 * **Improvements to the Report UI**: Sidebar enhancements including column orders, a modified state indicator, overview item, and hide column nodes for no-profiling models.
 
 ### Fixes
@@ -157,9 +159,7 @@ Release date: [2023-06-01](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 ### Changes
 
-* **dbt test results are now included by default:** It's no longer neccessary to use  `--dbt-run-results`, but it can still be specified without error.
-
-
+* **dbt test results are now included by default:** It's no longer neccessary to use `--dbt-run-results`, but it can still be specified without error.
 
 ## PipeRider OSS v0.25.1
 
@@ -183,7 +183,7 @@ Increased focus on dbt project integration.
 
 The following features are now deprecated and will be removed from a future version of PipeRider:
 
-* &#x20;Using PipeRider in **non-dbt projects**&#x20;
+* Using PipeRider in **non-dbt projects**
 * **PipeRider assertions**
 
 These features are still included in PipeRider for the time being, but are not recommended for continued use.
@@ -211,7 +211,7 @@ Release date: [2023-04-20](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 * **AWS Athena Support**: PipeRider now supports querying and profiling data stored in AWS Athena.
 * **Skipped model reasons**: We have added the ability to display the reason why certain models were skipped during profiling and metric queries, making it easier for users to understand and improve their data pipeline.
-* **Compare Recipe Enhancements**:&#x20;
+* **Compare Recipe Enhancements**:
   * Our Compare recipe has been enhanced to support both file and Jinja formats, allowing users to template values from environment variables for more dynamic comparisons.
   * The `compare` command now supports [comparing to a file](../get-started/compare.md#recipe-example-base-is-from-file). This means you can manually set the baseline to an existing report, and then use that in future comparisons without the need to run the baseline profile each time.
 * **Other Enhancements and Bug Fixes**: We have also made several other enhancements and bug fixes, including the addition of buttons for GitHub, Discord, and documentation feedback, ensuring users have an easy and efficient way to provide feedback and suggestions for future improvements.
@@ -224,11 +224,11 @@ Release date: [2023-03-30](https://github.com/InfuseAI/piperider/releases/tag/v0
 * We have made some layout adjustments to our application to improve its responsiveness and overall user experience.
 * Resolved an issue related to symbolic links on Windows.
 
-## PipeRider OSS v0.21.0&#x20;
+## PipeRider OSS v0.21.0
 
 Release date [03-16-2023](https://github.com/InfuseAI/piperider/releases/tag/v0.21.0)
 
-* Changed to using 'three-dot compare' (instead of two-dot) when running `piperider compare`. Refer to the GitHub documentation for more information on [two-dot and three-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons).&#x20;
+* Changed to using 'three-dot compare' (instead of two-dot) when running `piperider compare`. Refer to the GitHub documentation for more information on [two-dot and three-dot Git diff comparisons](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-comparing-branches-in-pull-requests#three-dot-and-two-dot-git-diff-comparisons).
 
 ## PipeRider OSS v0.20.0
 
@@ -236,6 +236,3 @@ Release date: [2023-03-07](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 * Improved the cloud signup process.
 * `piperider compare` now supports PipeRider cloud.
-
-
-
