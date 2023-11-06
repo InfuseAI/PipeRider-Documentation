@@ -6,11 +6,17 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.
 
+## PipeRider OSS v0.39.0
 
+Release date: [2023-11-02](https://github.com/InfuseAI/piperider/releases/tag/v0.39.0)
+
+* Support added for DuckDB accessing files stored in S3
+* Removal of PipeRider Assertions feature
+* Bug fixes
 
 ## PipeRider OSS v0.38.0
 
-Release date:  [2023-10-26](https://github.com/InfuseAI/piperider/releases/tag/v0.38.0)
+Release date: [2023-10-26](https://github.com/InfuseAI/piperider/releases/tag/v0.38.0)
 
 Bug fixes and chores.
 
@@ -20,7 +26,7 @@ Release date: [2023-10-19](https://github.com/InfuseAI/piperider/releases/tag/v0
 
 * dbt profile and target can now be selected with options `--dbt-profile` and `--dbt-target` ([GitHub Issue 898](https://github.com/InfuseAI/piperider/issues/898))
 * Service account impersonation now supported ([GitHub Issue 899](https://github.com/InfuseAI/piperider/issues/899))
-* Bug fixes.
+* Bug fixes
 
 ## PipeRider OSS v0.36.0
 
