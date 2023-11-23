@@ -6,6 +6,18 @@ description: Release notes for PipeRider OSS
 
 Please refer to the [PipeRider Releases page](https://github.com/InfuseAI/piperider/releases) on GitHub for more details, including notes on bug fixes and release candidates.
 
+## PipeRider OSS v0.41.0
+
+Release date: [2023-11-23](https://github.com/InfuseAI/piperider/releases/tag/v0.41.0)
+
+* Support for dbt 1.7 added
+
+## PipeRider OSS v0.40.0
+
+Release date: [2023-11-09](https://github.com/InfuseAI/piperider/releases/tag/v0.40.0)
+
+* Bug fixes
+
 ## PipeRider OSS v0.39.0
 
 Release date: [2023-11-02](https://github.com/InfuseAI/piperider/releases/tag/v0.39.0)
